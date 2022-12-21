@@ -51,7 +51,7 @@ export default function Home() {
                 </td>
                 <td className="align-middle text-center">{track.platformId}</td>
                 <td className="align-middle text-center">{track.title}</td>
-                <td className="align-middle text-center">{timeAgo.format(new Date(track.createdAtTime))}</td>
+                <td className="align-middle text-center">{timeAgo.format(new Date(track.createdAtTime || ''))}</td>
                 <td className="align-middle text-center"></td>
                 <td className="align-middle text-center"></td>
               </tr>
