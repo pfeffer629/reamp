@@ -64,6 +64,7 @@ export default function Home() {
                   <Image
                     className="rounded-md m-0 mx-auto"
                     src={`${track.lossyArtworkUrl}?img-width=50&img-height=50&img-fit=scale-down&img-quality=50`}
+                    alt={track.title}
                   />
                 </td>
                 <td className="text-center py-[8px]">
