@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Gilroy-Bold";
+  src: url("/fonts/Gilroy-ExtraBold.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gilroy-Light";
+  src: url("/fonts/Gilroy-Light.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gilroy-Medium";
+  src: url("/fonts/Gilroy-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gilroy-Regular";
+  src: url("/fonts/Gilroy-Regular.ttf") format("truetype");
+}
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -90,6 +110,7 @@ body {
 }
 
 body {
+  font-family: "Gilroy-Regular";
   color: rbg(--foreground-rgb);
   background: linear-gradient(
       to bottom,
