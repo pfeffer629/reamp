@@ -1,6 +1,6 @@
 interface IBackButton{
   className: string;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick: React.MouseEventHandler<SVGSVGElement>;
 }
 
 function BackButton(props:IBackButton) {

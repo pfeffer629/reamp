@@ -2,7 +2,7 @@ import React from "react";
 
 interface IPlayButton{
   className: string;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick: React.MouseEventHandler<SVGSVGElement>;
 }
 
 function PlayButton(props:IPlayButton) {
