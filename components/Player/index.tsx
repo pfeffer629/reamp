@@ -2,10 +2,10 @@ import {useState} from 'react';
 import ReactPlayer from 'react-player/lazy'
 
 type PlayerProps = {
-  audioUrl: string,
+  url: string,
 }
 
-export default function Player({audioUrl}: PlayerProps) {
+export default function Player({url}: PlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleOnReady = () => {
@@ -13,6 +13,6 @@ export default function Player({audioUrl}: PlayerProps) {
   }
 
   return (
-    <ReactPlayer url={audioUrl} onReady={handleOnReady} playing={isPlaying} />
+    <ReactPlayer url={url} onReady={handleOnReady} playing={isPlaying} />
   );
 }
