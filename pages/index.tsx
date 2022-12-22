@@ -89,7 +89,7 @@ export default function Home() {
               alt={currentTrack?.title}
               height={48}
               width={48}
-              src={currentTrack?.lossyArtworkUrl}
+              src={currentTrack?.lossyArtworkUrl || ''}
               className="mr-[22px]"
             />
             <div>
