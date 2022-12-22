@@ -2,7 +2,7 @@ import React from "react";
 
 type PlayButtonProps = {
   className: string;
-  onClick: React.MouseEventHandler<SVGSVGElement>;
+  onClick?: React.MouseEventHandler<SVGSVGElement>;
 }
 
 function PlayButton({className, onClick}: PlayButtonProps) {

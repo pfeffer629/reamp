@@ -1,6 +1,6 @@
 type ForwardButtonProps = {
   className: string;
-  onClick: React.MouseEventHandler<SVGSVGElement>;
+  onClick?: React.MouseEventHandler<SVGSVGElement>;
 }
 
 function ForwardButton({className, onClick}: ForwardButtonProps) {
