@@ -106,7 +106,7 @@ export default function Home() {
         </div>
       }
       <div className="hidden"> 
-        <Player url={currentTrack?.lossyAudioUrl} />
+        <Player url={currentTrack?.lossyAudioUrl || ''} />
       </div>
     </>
   );
