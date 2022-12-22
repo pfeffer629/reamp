@@ -13,7 +13,6 @@ import en from 'javascript-time-ago/locale/en'
 TimeAgo.addDefaultLocale(en)
 
 export default function Home() {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState<ITrack | null>(null);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo('en-US')
@@ -26,10 +25,6 @@ export default function Home() {
 
   if (isLoading) {
     return <div>Loading</div>
-  }
-
-  const handleOnReady = () => {
-    setIsPlaying(true)
   }
 
   return (
