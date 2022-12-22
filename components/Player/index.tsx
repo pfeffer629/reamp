@@ -2,12 +2,10 @@ import {useState} from 'react';
 import ReactPlayer from 'react-player/lazy'
 
 export interface IPlayerProps {
-  currentSong: {
-    lossyAudioUrl: string,
-  }
+  audioUrl: string
 }
 
-export default function Player(currentSong:IPlayerProps) {
+export default function Player(audioUrl:IPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleOnReady = () => {
@@ -15,6 +13,6 @@ export default function Player(currentSong:IPlayerProps) {
   }
 
   return (
-    <ReactPlayer url={currentSong?.lossyAudioUrl} controls onReady={handleOnReady} playing={isPlaying} />
+    <ReactPlayer url={audioUrl} controls onReady={handleOnReady} playing={isPlaying} />
   );
 }
