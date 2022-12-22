@@ -14,13 +14,13 @@ TimeAgo.addDefaultLocale(en)
 
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentSong, setCurrentSong] = useState<ITrack | null>(null);
+  const [currentTrack, setCurrentTrack] = useState<ITrack | null>(null);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo('en-US')
 
   useEffect(() => {
     if (!isLoading) {
-      setCurrentSong(tracks[0])
+      setCurrentTrack(tracks[0])
     }
   }, [isLoading, tracks]);
 
@@ -59,7 +59,7 @@ export default function Home() {
               tracks.map((track) => (
               <tr key={track.id}>
                 <td className="py-[8px]">
-                  <PlayButton className="cursor-pointer m-0 mx-auto" onClick={() => setCurrentSong(track)} />
+                  <PlayButton className="cursor-pointer m-0 mx-auto" onClick={() => setCurrentTrack(track)} />
                 </td>
                 <td>
                   <Image
@@ -82,19 +82,19 @@ export default function Home() {
           </tbody>
         </table>
       </main>
-      {Object.keys(currentSong).length > 0 &&
+      {currentTrack &&
         <div className="fixed bg-[#000] h-[80px] w-full bottom-0 flex justify-between items-center px-[22px]">
           <div className="flex">
             <Image
-              alt={currentSong?.title}
+              alt={currentTrack?.title}
               height={48}
               width={48}
-              src={currentSong?.lossyArtworkUrl}
+              src={currentTrack?.lossyArtworkUrl}
               className="mr-[22px]"
             />
             <div>
-              <p>{currentSong?.title}</p>
-              <p>{currentSong?.artist?.name}</p>
+              <p>{currentTrack?.title}</p>
+              <p>{currentTrack?.artist?.name}</p>
             </div>
           </div>
           <div className="flex flex-col items-center">
@@ -111,7 +111,7 @@ export default function Home() {
         </div>
       }
       <div className="hidden"> 
-        <Player url={currentSong?.lossyAudioUrl} controls onReady={handleOnReady} playing={isPlaying} />
+        <Player url={currentTrack?.lossyAudioUrl} controls onReady={handleOnReady} playing={isPlaying} />
       </div>
     </>
   );
