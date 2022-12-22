@@ -82,7 +82,7 @@ export default function Home() {
           </tbody>
         </table>
       </main>
-      {currentTrack &&
+      {currentTrack  &&
         <div className="fixed bg-[#000] h-[80px] w-full bottom-0 flex justify-between items-center px-[22px]">
           <div className="flex">
             <Image
