@@ -1,9 +1,9 @@
-interface IForwardButton{
+type ForwardButtonProps = {
   className: string;
   onClick: React.MouseEventHandler<SVGSVGElement>;
 }
 
-function ForwardButton(props:IForwardButton) {
+function ForwardButton({className, onClick}: PlayButtonProps) {
 	return (
 		<svg
 			width={14}
@@ -11,8 +11,8 @@ function ForwardButton(props:IForwardButton) {
 			viewBox="0 0 14 13"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			className={props.className}
-			onClick={props.onClick}
+			className={className}
+			onClick={onClick}
 		>
 			<path
 				d="M0.349609 2.23566L0.349609 10.732C0.349609 11.1698 0.805068 11.4326 1.14824 11.1928L7.64232 6.65497C7.96486 6.42959 7.95035 5.92003 7.61558 5.71596L1.12151 1.75742C0.777515 1.54774 0.349609 1.81285 0.349609 2.23566Z"

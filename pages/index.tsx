@@ -13,7 +13,7 @@ TimeAgo.addDefaultLocale(en)
 
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentSong, setCurrentSong] = useState({});
+  const [currentSong, setCurrentSong] = useState<{[key: string]: string | number | boolean}>({});
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo('en-US')
 
@@ -65,6 +65,8 @@ export default function Home() {
                     className="rounded-md m-0 mx-auto"
                     src={`${track.lossyArtworkUrl}?img-width=50&img-height=50&img-fit=scale-down&img-quality=50`}
                     alt={track.title}
+                    width={50}
+                    height={50}
                   />
                 </td>
                 <td className="text-center py-[8px]">

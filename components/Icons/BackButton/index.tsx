@@ -1,9 +1,9 @@
-interface IBackButton{
+type BackButtonProps = {
   className: string;
   onClick: React.MouseEventHandler<SVGSVGElement>;
 }
 
-function BackButton(props:IBackButton) {
+function BackButton({className, onClick}: BackButtonProps) {
 	return (
 		<svg
 			width={14}
@@ -11,8 +11,8 @@ function BackButton(props:IBackButton) {
 			viewBox="0 0 14 13"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			className={props.className}
-			onClick={props.onClick}
+			className={className}
+			onClick={onClick}
 		>
 			<path
 				d="M13.5273 10.7868L13.5273 2.29042C13.5273 1.85263 13.0719 1.58985 12.7287 1.82965L6.23459 6.36749C5.91205 6.59287 5.92656 7.10243 6.26133 7.3065L12.7554 11.265C13.0994 11.4747 13.5273 11.2096 13.5273 10.7868Z"

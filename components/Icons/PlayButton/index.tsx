@@ -1,11 +1,11 @@
 import React from "react";
 
-interface IPlayButton{
+type PlayButtonProps = {
   className: string;
   onClick: React.MouseEventHandler<SVGSVGElement>;
 }
 
-function PlayButton(props:IPlayButton) {
+function PlayButton({className, onClick}: PlayButtonProps) {
 	return (
 		<svg
 			width={16}
@@ -13,8 +13,8 @@ function PlayButton(props:IPlayButton) {
 			viewBox="0 0 16 20"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			className={props.className}
-			onClick={props.onClick}
+			className={className}
+			onClick={onClick}
 		>
 			<path
 				fillRule="evenodd"
