@@ -4,7 +4,6 @@ import ReactPlayer from 'react-player/lazy'
 export interface IPlayerProps {
   currentSong: {
     lossyAudioUrl: string,
-    [key]: string | number,
   }
 }
 
