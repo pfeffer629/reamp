@@ -6,6 +6,7 @@ import Player from '../components/Player';
 import PlayButton from '../components/Icons/PlayButton';
 import BackButton from '../components/Icons/BackButton';
 import ForwardButton from '../components/Icons/ForwardButton';
+import { ITrack } from "@spinamp/spinamp-sdk";
 
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
