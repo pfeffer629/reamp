@@ -3,7 +3,7 @@ type ForwardButtonProps = {
   onClick: React.MouseEventHandler<SVGSVGElement>;
 }
 
-function ForwardButton({className, onClick}: PlayButtonProps) {
+function ForwardButton({className, onClick}: ForwardButtonProps) {
 	return (
 		<svg
 			width={14}
