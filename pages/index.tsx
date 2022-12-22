@@ -14,7 +14,7 @@ TimeAgo.addDefaultLocale(en)
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSong, setCurrentSong] = useState({});
-  const { tracks, isLoading, isError, refetch } = usePaginatedTracksQuery(40);
+  const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo('en-US')
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function Home() {
                   <PlayButton className="cursor-pointer m-0 mx-auto" onClick={() => setCurrentSong(track)} />
                 </td>
                 <td>
-                  <img
+                  <Image
                     className="rounded-md m-0 mx-auto"
                     src={`${track.lossyArtworkUrl}?img-width=50&img-height=50&img-fit=scale-down&img-quality=50`}
                   />
