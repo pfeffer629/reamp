@@ -14,7 +14,7 @@ TimeAgo.addDefaultLocale(en)
 
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentSong, setCurrentSong] = useState<ITrack | Record<string, never>>({});
+  const [currentSong, setCurrentSong] = useState<ITrack | null>(null);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo('en-US')
 
