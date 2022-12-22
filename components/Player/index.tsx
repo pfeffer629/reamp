@@ -13,6 +13,6 @@ export default function Player({audioUrl}: PlayerProps) {
   }
 
   return (
-    <ReactPlayer url={audioUrl} controls onReady={handleOnReady} playing={isPlaying} />
+    <ReactPlayer url={audioUrl} onReady={handleOnReady} playing={isPlaying} />
   );
 }

@@ -111,7 +111,7 @@ export default function Home() {
         </div>
       }
       <div className="hidden"> 
-        <Player url={currentTrack?.lossyAudioUrl} controls onReady={handleOnReady} playing={isPlaying} />
+        <Player url={currentTrack?.lossyAudioUrl} />
       </div>
     </>
   );
