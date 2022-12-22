@@ -1,7 +1,11 @@
 import {useState} from 'react';
 import ReactPlayer from 'react-player/lazy'
 
-export default function Player(audioUrl) {
+type PlayerProps = {
+  audioUrl: string,
+}
+
+export default function Player({audioUrl}: PlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleOnReady = () => {
