@@ -1,9 +1,9 @@
-type ForwardButtonProps = {
-  className: string;
+type NextButtonProps = {
+  className?: string;
   onClick?: React.MouseEventHandler<SVGSVGElement>;
 }
 
-function ForwardButton({className, onClick}: ForwardButtonProps) {
+function NextButton({className, onClick}: NextButtonProps) {
 	return (
 		<svg
 			width={14}
@@ -26,4 +26,4 @@ function ForwardButton({className, onClick}: ForwardButtonProps) {
 	);
 }
 
-export default ForwardButton;
+export default NextButton;

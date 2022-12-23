@@ -1,5 +1,5 @@
 type BackButtonProps = {
-  className: string;
+  className?: string;
   onClick?: React.MouseEventHandler<SVGSVGElement>;
 }
 

@@ -1,7 +1,5 @@
-import React from "react";
-
 type PlayButtonProps = {
-  className: string;
+  className?: string;
   onClick?: React.MouseEventHandler<SVGSVGElement>;
 }
 

@@ -4,8 +4,6 @@ import Image from 'next/image';
 import {usePaginatedTracksQuery} from "@spinamp/spinamp-hooks";
 import Player from '../components/Player';
 import PlayButton from '../components/Icons/PlayButton';
-import BackButton from '../components/Icons/BackButton';
-import ForwardButton from '../components/Icons/ForwardButton';
 import { ITrack } from "@spinamp/spinamp-sdk";
 
 import TimeAgo from 'javascript-time-ago'
@@ -14,6 +12,7 @@ TimeAgo.addDefaultLocale(en)
 
 export default function Home() {
   const [currentTrack, setCurrentTrack] = useState<ITrack | null>(null);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo('en-US')
 
@@ -26,6 +25,31 @@ export default function Home() {
   if (isLoading) {
     return <div>Loading</div>
   }
+
+  const handleSelectTrack = (track: ITrack) => {
+    setCurrentTrack(track)
+    setCurrentTrackIndex(tracks.indexOf(track))
+  };
+
+  const handleBack = () => {
+    if (currentTrackIndex === 0) {
+      setCurrentTrack(tracks[tracks.length - 1])
+      setCurrentTrackIndex(tracks.length - 1)
+    } else {
+      setCurrentTrack(tracks[currentTrackIndex - 1])
+      setCurrentTrackIndex(currentTrackIndex - 1)
+    }
+  };
+
+  const handleNext = () => {
+    if (currentTrackIndex === tracks.length - 1) {
+      setCurrentTrack(tracks[0])
+      setCurrentTrackIndex(0)
+    } else {
+      setCurrentTrack(tracks[currentTrackIndex + 1])
+      setCurrentTrackIndex(currentTrackIndex + 1)
+    }
+  };
 
   return (
     <>
@@ -54,7 +78,7 @@ export default function Home() {
               tracks.map((track) => (
               <tr key={track.id}>
                 <td className="py-[8px]">
-                  <PlayButton className="cursor-pointer m-0 mx-auto" onClick={() => setCurrentTrack(track)} />
+                  <PlayButton className="cursor-pointer m-0 mx-auto" onClick={() => handleSelectTrack(track)} />
                 </td>
                 <td>
                   <Image
@@ -77,37 +101,13 @@ export default function Home() {
           </tbody>
         </table>
       </main>
-      {currentTrack  &&
-        <div className="fixed bg-[#000] h-[80px] w-full bottom-0 flex justify-between items-center px-[22px]">
-          <div className="flex">
-            <Image
-              alt={currentTrack?.title}
-              height={48}
-              width={48}
-              src={currentTrack?.lossyArtworkUrl || ''}
-              className="mr-[22px]"
-            />
-            <div>
-              <p>{currentTrack?.title}</p>
-              <p>{currentTrack?.artist?.name}</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex items-center">
-              <BackButton className="cursor-pointer" />
-              <PlayButton className="cursor-pointer mx-[30px]" />
-              <ForwardButton className="cursor-pointer" />
-            </div>
-            <input type="range" className="w-full max-w-[430px] h-full mt-2"/>
-          </div>
-          <div>
-          hello
-          </div>
-        </div>
+      {currentTrack &&
+        <Player 
+          currentTrack={currentTrack} 
+          handleBack={handleBack} 
+          handleNext={handleNext}
+        />
       }
-      <div className="hidden"> 
-        <Player url={currentTrack?.lossyAudioUrl || ''} />
-      </div>
     </>
   );
 }
