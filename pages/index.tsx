@@ -1,23 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
-import Player from "../components/Player";
 import PlayButton from "../components/Icons/PlayButton";
 import { ITrack } from "@spinamp/spinamp-sdk";
+import TrackContext from "../contexts/TrackContext";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 TimeAgo.addDefaultLocale(en);
 
 export default function Home() {
-  const [currentTrack, setCurrentTrack] = useState<ITrack | null>(null);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo("en-US");
+  const {setCurrentTrack, setIsPlaying} = useContext(TrackContext);
 
   useEffect(() => {
     if (!isLoading) {
+      console.log(tracks[0])
       setCurrentTrack(tracks[0]);
     }
   }, [isLoading, tracks]);
@@ -27,29 +28,12 @@ export default function Home() {
   }
 
   const handleSelectTrack = (track: ITrack) => {
+    console.log(track)
     setCurrentTrack(track);
+    setIsPlaying(true);
     setCurrentTrackIndex(tracks.indexOf(track));
   };
 
-  const handleBack = () => {
-    if (currentTrackIndex === 0) {
-      setCurrentTrack(tracks[tracks.length - 1]);
-      setCurrentTrackIndex(tracks.length - 1);
-    } else {
-      setCurrentTrack(tracks[currentTrackIndex - 1]);
-      setCurrentTrackIndex(currentTrackIndex - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (currentTrackIndex === tracks.length - 1) {
-      setCurrentTrack(tracks[0]);
-      setCurrentTrackIndex(0);
-    } else {
-      setCurrentTrack(tracks[currentTrackIndex + 1]);
-      setCurrentTrackIndex(currentTrackIndex + 1);
-    }
-  };
 
   return (
     <>
@@ -131,7 +115,7 @@ export default function Home() {
             </div>
             {tracks &&
               tracks.map((track) => (
-              <div className="flex flex-col space-y-4">
+              <div className="flex flex-col space-y-4" key={track.id}>
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
                   <div className="w-[46px]">
                     <div className="flex items-center h-full justify-center">
@@ -197,11 +181,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Player 
-        currentTrack={currentTrack} 
-        handleBack={handleBack} 
-        handleNext={handleNext} 
-      />
     </>
   );
 }

@@ -1,5 +1,9 @@
 /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *,:after,:before{
     border:0 solid #e5e7eb
 }
@@ -1323,4 +1327,138 @@ html{
         font-size:1.25rem;
         line-height:1.75rem
     }
+}
+
+/* white range slider 1 px */
+::-webkit-slider-runnable-track {
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 1px;
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+}
+
+/* white range slider thumb */
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #fff;
+    height: 1px;
+    width: 1px;
+    border-radius: 1px;
+    background: #fff;
+    cursor: pointer;
+    margin-top: -8px;
+    /* slider thumb color */
+}
+
+/* white range slider thumb hover */
+::-webkit-slider-thumb:hover {
+    background: #fff;
+}
+
+/* white range slider thumb focus */
+::-webkit-slider-thumb:focus {
+    box-shadow: 0 0 1px #fff;
+}
+
+/* white range slider thumb active */
+::-webkit-slider-thumb:active {
+    background: #fff;
+}
+
+/* white range slider track */
+::-moz-range-track {
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 1px;
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+}
+
+/* white range slider thumb */
+::-moz-range-thumb {
+    border: 1px solid #fff;
+    height: 1px;
+    width: 1px;
+    border-radius: 1px;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* white range slider thumb hover */
+::-moz-range-thumb:hover {
+    background: #fff;
+}
+
+/* white range slider thumb focus */
+::-moz-range-thumb:focus {
+    box-shadow: 0 0 1px #fff;
+}
+
+/* white range slider thumb active */
+::-moz-range-thumb:active {
+    background: #fff;
+}
+
+/* white range slider track */
+::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 1px 0;
+    color: transparent;
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+}
+
+/* white range slider thumb */
+::-ms-thumb {
+    border: 1px solid #fff;
+    height: 1px;
+    width: 1px;
+    border-radius: 1px;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* white range slider thumb hover */
+::-ms-thumb:hover {
+    background: #fff;
+}
+input[type="range"] {
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #999;
+    border-radius: 5px;
+    width: 100%;
+    height: 1px;
+    outline: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #fff;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+input[type="range"][orient="vertical"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #fff;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1);
 }
