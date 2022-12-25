@@ -2,14 +2,21 @@ import React, {createContext, useState} from "react";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import Player from "../components/Player";
 
-export const TrackContext = createContext({});
+interface ITrackContextData {
+  currentTrack: ITrack;
+  setCurrentTrack: React.Dispatch<React.SetStateAction<object>>;
+  isPlaying: boolean;
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-export function TrackProvider({ track, children }: { track: ITrack, children: React.ReactNode }) {
-  const [currentTrack, setCurrentTrack] = useState({lossyAudioUrl: 'https://www.youtube.com/watch?v=ysz5S6PUM-U'})
+export const TrackContext = createContext<ITrackContextData>({} as ITrackContextData);
+
+export function TrackProvider({ children }: { children: React.ReactNode }) {
+  const [currentTrack, setCurrentTrack] = useState({})
   const [isPlaying, setIsPlaying] = useState(false)
 
 	return (
-		<TrackContext.Provider value={{currentTrack, setCurrentTrack, isPlaying, setIsPlaying}}>
+		<TrackContext.Provider value={{currentTrack, setCurrentTrack, isPlaying, setIsPlaying} as ITrackContextData}>
 			{children}
 		</TrackContext.Provider>
 	);

@@ -1,8 +1,6 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
-import PlayButton from "../components/Icons/PlayButton";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../contexts/TrackContext";
 
@@ -13,7 +11,7 @@ TimeAgo.addDefaultLocale(en);
 export default function Home() {
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo("en-US");
-  const {setCurrentTrack, setIsPlaying} = useContext(TrackContext);
+  const { setCurrentTrack, setIsPlaying } = useContext(TrackContext);
 
   useEffect(() => {
     if (!isLoading) {
@@ -21,17 +19,15 @@ export default function Home() {
     }
   }, [isLoading, tracks]);
 
-  if (isLoading) {
+  if (isLoading || isError) {
     return <div>Loading</div>;
   }
 
   const handleSelectTrack = (track: ITrack) => {
-    console.log(track)
+    console.log(track);
     setCurrentTrack(track);
     setIsPlaying(true);
-    setCurrentTrackIndex(tracks.indexOf(track));
   };
-
 
   return (
     <>
@@ -113,69 +109,79 @@ export default function Home() {
             </div>
             {tracks &&
               tracks.map((track) => (
-              <div className="flex flex-col space-y-4" key={track.id}>
-                <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
-                  <div className="w-[46px]">
-                    <div className="flex items-center h-full justify-center">
-                      <div className="cursor-pointer hover:bg-gray-800/80 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px]">
+                <div className="flex flex-col space-y-4" key={track.id}>
+                  <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
+                    <div className="w-[46px]">
+                      <div className="flex items-center h-full justify-center">
+                        <div className="cursor-pointer hover:bg-gray-800/80 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px]">
+                          <img
+                            loading="lazy"
+                            alt="Play Button"
+                            src="/icons/PlayButton.png"
+                            className="w-[14px] translate-x-[1px]"
+                            onClick={() => handleSelectTrack(track)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-[9px]">
+                      <div className="w-[52px] aspect-square overflow-hidden h-full flex items-center">
                         <img
-                          loading="lazy"
-                          src="/icons/PlayButton.png"
-                          className="w-[14px] translate-x-[1px]"
-                          onClick={() => handleSelectTrack(track)}
+                          src={`${track.lossyArtworkUrl}?img-width=500&img-height=500&img-fit=scale-down&img-quality=100`}
+                          alt={track.title}                          
+                          className="rounded-[5px]"
+                        />
+                      </div>
+                    </div>
+                    <a
+                      className="flex items-center w-[191px]"
+                      href="/track/0x0bc2a24ce568dad89691116d5b34deb6c203f342/612"
+                    >
+                      <div className="flex flex-col justify-center w-full pr-2">
+                        <div className="truncate w-full">{track.title}</div>
+                        <div className="text-whiteDisabled truncate w-full">
+                          {track.artist.name}
+                        </div>
+                      </div>
+                    </a>
+                    <div className="w-[130px] flex items-center justify-center h-[70px]">
+                      {timeAgo.format(new Date(track.createdAtTime || 0))}
+                    </div>
+                    <div className="w-[130px] flex items-center justify-center h-[70px]">
+                      0
+                    </div>
+                    <div className="w-[70px] flex items-center justify-center h-[70px]">
+                      <div className="flex items-center space-x-1">
+                        <div className="font-sans pb-[2px]">Ξ</div>
+                        <div>0.59</div>
+                      </div>
+                    </div>
+                    <div className="w-[60px] flex items-center justify-center h-[70px]">
+                      <div className="cursor-pointer hover:scale-125 transition-all p-2 hover:bg-slate-800/40 rounded-md select-none">
+                        <img
+                          src="/icons/HeartFilled.png"
+                          alt="Heart Filled"
+                          className="w-[14px]"
+                        />
+                      </div>
+                    </div>
+                    <div className="w-[130px] flex items-center justify-center h-[70px]">
+                      <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 pt-[2px] select-none">
+                        collect
+                      </div>
+                    </div>
+                    <div className="w-[60px] flex items-center justify-center h-[70px]">
+                      <div className="bg-transparent hover:bg-gray-500/30 p-2 transition-all transform rounded-lg cursor-pointer duration-300">
+                        <img
+                          src="/icons/ThreeDots.png"
+                          alt="Three Dots"
+                          className="w-[16px]"
                         />
                       </div>
                     </div>
                   </div>
-                  <div className="p-[9px]">
-                    <div className="w-[52px] aspect-square overflow-hidden h-full flex items-center">
-                      <img
-                        src={`${track.lossyArtworkUrl}?img-width=500&img-height=500&img-fit=scale-down&img-quality=100`}
-                        className="rounded-[5px]"
-                      />
-                    </div>
-                  </div>
-                  <a
-                    className="flex items-center w-[191px]"
-                    href="/track/0x0bc2a24ce568dad89691116d5b34deb6c203f342/612"
-                  >
-                    <div className="flex flex-col justify-center w-full pr-2">
-                      <div className="truncate w-full">{track.title}</div>
-                      <div className="text-whiteDisabled truncate w-full">
-                        {track.artist.name}
-                      </div>
-                    </div>
-                  </a>
-                  <div className="w-[130px] flex items-center justify-center h-[70px]">
-                    3 hours ago
-                  </div>
-                  <div className="w-[130px] flex items-center justify-center h-[70px]">
-                    0
-                  </div>
-                  <div className="w-[70px] flex items-center justify-center h-[70px]">
-                    <div className="flex items-center space-x-1">
-                      <div className="font-sans pb-[2px]">Ξ</div>
-                      <div>0.59</div>
-                    </div>
-                  </div>
-                  <div className="w-[60px] flex items-center justify-center h-[70px]">
-                    <div className="cursor-pointer hover:scale-125 transition-all p-2 hover:bg-slate-800/40 rounded-md select-none">
-                      <img src="/icons/HeartFilled.png" className="w-[14px]" />
-                    </div>
-                  </div>
-                  <div className="w-[130px] flex items-center justify-center h-[70px]">
-                    <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 pt-[2px] select-none">
-                      collect
-                    </div>
-                  </div>
-                  <div className="w-[60px] flex items-center justify-center h-[70px]">
-                    <div className="bg-transparent hover:bg-gray-500/30 p-2 transition-all transform rounded-lg cursor-pointer duration-300">
-                      <img src="/icons/ThreeDots.png" className="w-[16px]" />
-                    </div>
-                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>

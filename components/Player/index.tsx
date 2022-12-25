@@ -1,21 +1,15 @@
 import {useState, useEffect, useRef, useContext} from 'react';
-import { ITrack } from "@spinamp/spinamp-sdk";
 import PauseButton from '../Icons/PauseButton';
 import PlayButton from '../Icons/PlayButton';
 import BackButton from '../Icons/BackButton';
 import NextButton from '../Icons/NextButton';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import ReactPlayer from "react-player/lazy";
 
 const AudioPlayer = dynamic(() => import('./AudioPlayer'), { ssr: false });
 
 import TrackContext from "../../contexts/TrackContext";
-
-type PlayerProps = {
-  currentTrack: ITrack;
-  handleNext?: React.MouseEventHandler<SVGSVGElement>;
-  handleBack?: React.MouseEventHandler<SVGSVGElement>;
-}
 
 export default function Player() {
   const [elapsed, setElapsed] = useState(0);
@@ -31,7 +25,7 @@ export default function Player() {
     )}`;
   };
 
-  const playerRef = useRef<ReactPlayer | null>();
+  const playerRef = useRef<ReactPlayer | null>(null);
 
   useEffect(() => {
     setInterval(() => {
@@ -114,6 +108,7 @@ export default function Player() {
       </div>
       <div className="invisible h-0 w-0"> 
         <AudioPlayer
+          url={currentTrack.lossyAudioUrl}
           playerRef={playerRef}
           onReady={handleOnReady} 
           playing={isPlaying}
