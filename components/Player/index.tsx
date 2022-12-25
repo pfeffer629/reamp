@@ -11,9 +11,10 @@ type PlayerProps = {
   currentTrack: ITrack;
   handleNext?: React.MouseEventHandler<SVGSVGElement>;
   handleBack?: React.MouseEventHandler<SVGSVGElement>;
+  autoPlay?: boolean;
 }
 
-export default function Player({currentTrack, handleNext, handleBack}: PlayerProps) {
+export default function Player({currentTrack, handleNext, handleBack, autoPlay = false}: PlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -44,7 +45,8 @@ export default function Player({currentTrack, handleNext, handleBack}: PlayerPro
     if (playerRef && playerRef.current) {
       setDuration(playerRef.current.getDuration())
     }
-  }, [playerRef, currentTrack]);
+    setIsPlaying(autoPlay)
+  }, [playerRef, currentTrack, autoPlay]);
 
   const handleOnReady = () => {
     if (playerRef && playerRef.current) {
