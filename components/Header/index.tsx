@@ -1,3 +1,7 @@
+import {
+  ConnectButton,
+} from "@rainbow-me/rainbowkit";
+
 export default function Header() {
   return (
     <div className="w-[895px] mx-auto py-4">
@@ -13,24 +17,8 @@ export default function Header() {
           </div>
         </div>
         <div className="min-w-[330px]">
-          <div className="flex items-center justify-end px-4 text-gray-400">
-            <div className="flex items-center text-lg cursor-pointer p-1.5 px-6 rounded-lg shadow bg-transparent hover:bg-brown-100 dark:hover:bg-brown-900 text-bgDark dark:text-bg active:bg-brown-300 dark:active:bg-brown-800 transition-all duration-300 select-none">
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                strokeWidth="0"
-                viewBox="0 0 24 24"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g>
-                  <path fill="none" d="M0 0h24v24H0z"></path>
-                  <path d="M4 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"></path>
-                </g>
-              </svg>
-              <div className="text-sm tracking-wide ml-3">Login</div>
-            </div>
+          <div className="flex justify-end">
+            <ConnectButton className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 pt-[2px] select-none" />
           </div>
         </div>
       </div>

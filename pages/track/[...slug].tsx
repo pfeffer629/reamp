@@ -16,7 +16,7 @@ export default function Track() {
       </div>
       <div className="flex justify-between w-full">
         <div
-          className="w-[40%] rounded-lg overflow-hidden shadow-md shadow-white/20 transform transition-all duration-[3s] active:rotate-[1800deg] active:scale-75"
+          className="w-[40%] h-[40%] rounded-lg overflow-hidden shadow-md shadow-white/20 transform transition-all duration-[3s] active:rotate-[1800deg] active:scale-75"
           draggable="false"
         >
           <img
