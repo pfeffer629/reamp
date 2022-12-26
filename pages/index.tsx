@@ -13,7 +13,7 @@ TimeAgo.addDefaultLocale(en);
 export default function Home() {
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo("en-US");
-  const { setCurrentTrack, setIsPlaying } = useContext(TrackContext);
+  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying } = useContext(TrackContext);
 
   useEffect(() => {
     if (!isLoading) {
@@ -27,6 +27,7 @@ export default function Home() {
 
   const handleSelectTrack = (track: ITrack) => {
     setCurrentTrack(track);
+    setCurrentTrackIndex(tracks.indexOf(track));
     setIsPlaying(true);
   };
 
