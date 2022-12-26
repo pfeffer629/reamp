@@ -55,6 +55,8 @@ export default function Player() {
 
   const handleOnReady = () => {
     if (playerRef && playerRef.current) {
+      console.log(playerRef.current.getDuration());
+
       setDuration(playerRef.current.getDuration());
     }
   };
@@ -93,13 +95,15 @@ export default function Player() {
     <>
       <div className="fixed min-w-[1280px] bg-[#000] h-[80px] w-full bottom-0 flex justify-center items-center px-[22px]">
         <div className="flex w-[360px]">
-          <Image
-            alt={currentTrack?.title}
-            height={52}
-            width={52}
-            src={currentTrack?.lossyArtworkUrl || ""}
-            className="mr-[22px]"
-          />
+          {currentTrack?.lossyArtworkUrl &&
+            <Image
+              alt={currentTrack?.title}
+              height={52}
+              width={52}
+              src={currentTrack?.lossyArtworkUrl || ""}
+              className="mr-[22px]"
+            />
+          }
           <div>
             <p>{currentTrack?.title}</p>
             <p>{currentTrack?.artist?.name}</p>
