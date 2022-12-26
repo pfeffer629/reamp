@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Sidebar() {
   return (
     <div className="w-[230px] bg-sidebarBg border-r border-darkLine relative">
-      <div className="fixed">
+      <div className="fixed bg-sidebarBg border-r border-darkLine">
         <div className="p-[27px] h-[calc(100vh-30px)] flex flex-col w-[230px]">
           <div className="">
             <Link className="relative group transition-all" href="/">
