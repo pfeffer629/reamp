@@ -4,7 +4,7 @@ import { useTrackQuery } from "@spinamp/spinamp-hooks";
 export default function Track() {
   const router = useRouter();
   const { slug } = router.query;
-  const { data, error, isLoading } = useTrackQuery(slug.toString());
+  const { data, error, isLoading } = useTrackQuery(slug ? slug.toString() : '');
   console.log(data)
   if (isLoading) {
     return <div></div>
@@ -22,7 +22,7 @@ export default function Track() {
           <img
             className="w-full"
             draggable="false"
-            src={data.lossyArtworkUrl}
+            src={data?.lossyArtworkUrl}
           />
         </div>
         <div className="w-[56%]">
@@ -33,7 +33,7 @@ export default function Track() {
             <div>
               Creator:
               <div className="w-14 rounded-full overflow-hidden shadow-md">
-                <img src={data.lossy_artwork_url} />
+                {/*<img src={data.lossy_artwork_url} />*/}
               </div>
             </div>
             <div>
@@ -41,7 +41,7 @@ export default function Track() {
                 <a
                   target="_blank"
                   className="py-1 hover:text-green-300 active:text-green-500 flex items-center space-x-2"
-                  href={data.websiteUrl}
+                  href={data?.websiteUrl}
                 >
                   <svg
                     stroke="currentColor"

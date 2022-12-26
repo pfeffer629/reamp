@@ -8,7 +8,7 @@ interface ITrackContextData {
   isPlaying: boolean;
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
   currentTrackIndex: number;
-  setCurrentTrackIndex: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentTrackIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const TrackContext = createContext<ITrackContextData>({} as ITrackContextData);
