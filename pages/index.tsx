@@ -1,5 +1,6 @@
 import { useEffect, useContext } from "react";
 import Head from "next/head";
+import Image from "next/image";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../contexts/TrackContext";
