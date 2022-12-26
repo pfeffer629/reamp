@@ -93,9 +93,11 @@ export default function Home() {
                     </div>
                     <div className="p-[9px]">
                       <div className="w-[52px] aspect-square overflow-hidden h-full flex items-center">
-                        <img
-                          src={`${track.lossyArtworkUrl}?img-width=500&img-height=500&img-fit=scale-down&img-quality=100`}
+                        <Image
                           alt={track.title}
+                          height={52}
+                          width={52}
+                          src={track.lossyArtworkUrl || ""}
                           className="rounded-[5px]"
                         />
                       </div>
