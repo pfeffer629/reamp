@@ -1447,18 +1447,6 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
-
-input[type="range"][orient="vertical"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    background-color: #fff;
-    width: 12px;
-    height: 12px;
-    margin-top: -6px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-}
-
 input[type="range"]::-webkit-slider-thumb:active {
     transform: scale(1);
 }

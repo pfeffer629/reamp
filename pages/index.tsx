@@ -3,6 +3,7 @@ import Head from "next/head";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../contexts/TrackContext";
+import Link from "next/link";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
@@ -20,11 +21,10 @@ export default function Home() {
   }, [isLoading, tracks]);
 
   if (isLoading || isError) {
-    return <div>Loading</div>;
+    return <div></div>;
   }
 
   const handleSelectTrack = (track: ITrack) => {
-    console.log(track);
     setCurrentTrack(track);
     setIsPlaying(true);
   };
@@ -37,54 +37,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="w-[895px] mx-auto py-12">
-        <div className="flex items-center justify-between">
-          <div className="relative text-searchBarText">
-            <input
-              type="text"
-              className="px-[14px] pl-[34px] rounded-lg w-[380px] h-[41px] pt-[4px] flex items-center bg-blackSecondary relative outline-none ring-0 text-[12px]"
-              placeholder="Search web3 artists, collectors, and curators"
-            />
-            <div className="absolute pl-[14px] top-0 pt-[4px] flex items-center justify-center h-[41px]">
-              •
-            </div>
-          </div>
-          <div className="min-w-[330px]">
-            <div className="flex items-center justify-end px-4 text-gray-400">
-              <div className="flex items-center text-lg cursor-pointer p-1.5 px-6 rounded-lg shadow bg-transparent hover:bg-brown-100 dark:hover:bg-brown-900 text-bgDark dark:text-bg active:bg-brown-300 dark:active:bg-brown-800 transition-all duration-300 select-none">
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth="0"
-                  viewBox="0 0 24 24"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g>
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path d="M4 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"></path>
-                  </g>
-                </svg>
-                <div className="text-sm tracking-wide ml-3">Login</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="relative pt-6">
+      <div className="w-[895px] mx-auto">
+        <div className="relative">
           <div className="flex items-center space-x-8 z-10">
-            <a
+            <Link
               className="text-selectedTab cursor-pointer relative z-10 pb-2"
               href="/"
             >
               ✿ Freshly Minted
-            </a>
-            <a
+            </Link>
+            <Link
               className="text-whiteDisabled cursor-pointer relative z-10 pb-2"
               href="/live"
             >
               ✻ Live Activity
-            </a>
+            </Link>
           </div>
           <div className="absolute bottom-0 w-full h-[2px] bg-whiteDisabled z-0"></div>
           <div
@@ -128,14 +95,14 @@ export default function Home() {
                       <div className="w-[52px] aspect-square overflow-hidden h-full flex items-center">
                         <img
                           src={`${track.lossyArtworkUrl}?img-width=500&img-height=500&img-fit=scale-down&img-quality=100`}
-                          alt={track.title}                          
+                          alt={track.title}
                           className="rounded-[5px]"
                         />
                       </div>
                     </div>
-                    <a
+                    <Link
                       className="flex items-center w-[191px]"
-                      href="/track/0x0bc2a24ce568dad89691116d5b34deb6c203f342/612"
+                      href={`/track/${track.slug}`}
                     >
                       <div className="flex flex-col justify-center w-full pr-2">
                         <div className="truncate w-full">{track.title}</div>
@@ -143,7 +110,7 @@ export default function Home() {
                           {track.artist.name}
                         </div>
                       </div>
-                    </a>
+                    </Link>
                     <div className="w-[130px] flex items-center justify-center h-[70px]">
                       {timeAgo.format(new Date(track.createdAtTime || 0))}
                     </div>

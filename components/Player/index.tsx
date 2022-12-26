@@ -1,20 +1,29 @@
-import {useState, useEffect, useRef, useContext} from 'react';
-import PauseButton from '../Icons/PauseButton';
-import PlayButton from '../Icons/PlayButton';
-import BackButton from '../Icons/BackButton';
-import NextButton from '../Icons/NextButton';
-import Image from 'next/image';
-import dynamic from 'next/dynamic';
+import { useState, useEffect, useRef, useContext } from "react";
+import PauseButton from "../Icons/PauseButton";
+import PlayButton from "../Icons/PlayButton";
+import BackButton from "../Icons/BackButton";
+import NextButton from "../Icons/NextButton";
+import Image from "next/image";
+import dynamic from "next/dynamic";
 import ReactPlayer from "react-player/lazy";
+import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 
-const AudioPlayer = dynamic(() => import('./AudioPlayer'), { ssr: false });
+const AudioPlayer = dynamic(() => import("./AudioPlayer"), { ssr: false });
 
 import TrackContext from "../../contexts/TrackContext";
 
 export default function Player() {
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
-  const {currentTrack, isPlaying, setIsPlaying} = useContext(TrackContext);
+  const {
+    currentTrack,
+    setCurrentTrack,
+    currentTrackIndex,
+    setCurrentTrackIndex,
+    isPlaying,
+    setIsPlaying,
+  } = useContext(TrackContext);
+  const { tracks } = usePaginatedTracksQuery(40);
 
   const convertToMinutes = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -30,7 +39,7 @@ export default function Player() {
   useEffect(() => {
     setInterval(() => {
       if (playerRef && playerRef.current) {
-        const currentTime = playerRef.current.getCurrentTime()
+        const currentTime = playerRef.current.getCurrentTime();
         setElapsed(currentTime);
       }
     }, 100);
@@ -40,19 +49,39 @@ export default function Player() {
 
   useEffect(() => {
     if (playerRef && playerRef.current) {
-      setDuration(playerRef.current.getDuration())
+      setDuration(playerRef.current.getDuration());
     }
   }, [playerRef, currentTrack]);
 
   const handleOnReady = () => {
     if (playerRef && playerRef.current) {
-      setDuration(playerRef.current.getDuration())
+      setDuration(playerRef.current.getDuration());
     }
-  }
+  };
 
   const handlePlayPause = () => {
-    setIsPlaying(!isPlaying)
-  }
+    setIsPlaying(!isPlaying);
+  };
+
+  const handleBack = () => {
+    if (currentTrackIndex === 0) {
+      setCurrentTrack(tracks[tracks.length - 1]);
+      setCurrentTrackIndex(tracks.length - 1);
+    } else {
+      setCurrentTrack(tracks[currentTrackIndex - 1]);
+      setCurrentTrackIndex(currentTrackIndex - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentTrackIndex === tracks.length - 1) {
+      setCurrentTrack(tracks[0]);
+      setCurrentTrackIndex(0);
+    } else {
+      setCurrentTrack(tracks[currentTrackIndex + 1]);
+      setCurrentTrackIndex(currentTrackIndex + 1);
+    }
+  };
 
   const seekTo = (time: number) => {
     if (playerRef && playerRef.current) {
@@ -62,13 +91,13 @@ export default function Player() {
 
   return (
     <>
-      <div className="fixed bg-[#000] h-[80px] w-full bottom-0 flex justify-center items-center px-[22px]">
-        <div className="flex w-1/5">
+      <div className="fixed min-w-[1280px] bg-[#000] h-[80px] w-full bottom-0 flex justify-center items-center px-[22px]">
+        <div className="flex w-[360px]">
           <Image
             alt={currentTrack?.title}
             height={48}
             width={48}
-            src={currentTrack?.lossyArtworkUrl || ''}
+            src={currentTrack?.lossyArtworkUrl || ""}
             className="mr-[22px]"
           />
           <div>
@@ -76,19 +105,23 @@ export default function Player() {
             <p>{currentTrack?.artist?.name}</p>
           </div>
         </div>
-        <div className="flex flex-col items-center w-4/5">
+        <div className="flex flex-col items-center w-full my-[18px]">
           <div className="flex items-center">
-            <BackButton className="cursor-pointer" />
-            <div className="mx-[30px] my-[18px] cursor-pointer" onClick={handlePlayPause}>
-              {!isPlaying ? <PlayButton /> : <PauseButton />}
+            <BackButton className="cursor-pointer" onClick={handleBack} />
+            <div className="mx-[30px] cursor-pointer" onClick={handlePlayPause}>
+              {!isPlaying ? (
+                <PlayButton width={16} height={16} />
+              ) : (
+                <PauseButton width={16} height={16} />
+              )}
             </div>
-            <NextButton className="cursor-pointer" />
+            <NextButton className="cursor-pointer" onClick={handleNext} />
           </div>
-          <div className="flex w-full justify-center">
-            <span className="w-[12px] mr-[20px]">{convertToMinutes(elapsed)}</span>
-            <input 
-              type="range" 
-              className="w-full max-w-[430px] h-full mt-2"
+          <div className="flex w-full justify-center max-w-[560px] items-center">
+            <span className="mr-[20px]">{convertToMinutes(elapsed)}</span>
+            <input
+              type="range"
+              className="w-full h-full"
               step={1}
               min={0}
               max={duration || 0}
@@ -99,18 +132,16 @@ export default function Player() {
                 seekTo(parseFloat(e.target.value) || 0);
               }}
             />
-            <span className="w-[12px] ml-[20px]">{convertToMinutes(duration)}</span>
+            <span className="ml-[20px]">{convertToMinutes(duration)}</span>
           </div>
         </div>
-        <div className="w-1/5">
-        hello
-        </div>
+        <div className="w-[360px]">hello</div>
       </div>
-      <div className="invisible h-0 w-0"> 
+      <div className="invisible h-0 w-0">
         <AudioPlayer
           url={currentTrack.lossyAudioUrl}
           playerRef={playerRef}
-          onReady={handleOnReady} 
+          onReady={handleOnReady}
           playing={isPlaying}
         />
       </div>
