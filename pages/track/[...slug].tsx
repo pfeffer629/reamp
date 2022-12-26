@@ -6,7 +6,7 @@ export default function Track() {
   const { slug } = router.query;
   const { data, error, isLoading } = useTrackQuery(slug ? slug.toString() : '');
   console.log(data)
-  if (isLoading) {
+  if (isLoading || error) {
     return <div></div>
   }
   return (

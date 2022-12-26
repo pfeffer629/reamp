@@ -18,7 +18,7 @@ export default function Header() {
         </div>
         <div className="min-w-[330px]">
           <div className="flex justify-end">
-            <ConnectButton className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 pt-[2px] select-none" />
+            <ConnectButton />
           </div>
         </div>
       </div>
