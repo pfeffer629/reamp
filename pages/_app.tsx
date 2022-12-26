@@ -66,7 +66,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <SpinampProvider>
         <TrackProvider>
           <RainbowKitProvider chains={chains} theme={darkTheme()}>
-            <div className="flex w-[1280px] font-gilroy overflow-hidden">
+            <div className="flex w-[1280px] font-Gilroy overflow-hidden">
               <Sidebar />
               <div className="mx-auto">
                 <Header />
