@@ -4,10 +4,10 @@ import { useTrackQuery } from "@spinamp/spinamp-hooks";
 export default function Track() {
   const router = useRouter();
   const { slug } = router.query;
-  const { data, error, isLoading } = useTrackQuery(slug ? slug.toString() : '');
-  console.log(data)
+  const { data, error, isLoading } = useTrackQuery(slug ? slug.toString() : "");
+  console.log(data);
   if (isLoading || error) {
-    return <div></div>
+    return <div></div>;
   }
   return (
     <div className="w-[895px] mx-auto">
@@ -26,9 +26,7 @@ export default function Track() {
           />
         </div>
         <div className="w-[56%]">
-          <div className="text-whiteDisabled">
-            {data?.description}
-          </div>
+          <div className="text-whiteDisabled">{data?.description}</div>
           <div>
             <div>
               Creator:

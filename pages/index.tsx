@@ -13,14 +13,8 @@ TimeAgo.addDefaultLocale(en);
 export default function Home() {
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo("en-US");
-  const { currentTrack, setCurrentTrack, setCurrentTrackIndex, setIsPlaying } = useContext(TrackContext);
-console.log(isLoading)
-console.log(tracks)
-  useEffect(() => {
-    if (!isLoading && Object.keys(currentTrack).length === 0) {
-      setCurrentTrack(tracks[0]);
-    }
-  }, [isLoading, tracks]);
+  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying } =
+    useContext(TrackContext);
 
   if (isLoading || isError) {
     return <div></div>;
@@ -41,28 +35,6 @@ console.log(tracks)
       </Head>
 
       <div className="w-[895px] mx-auto">
-        <div className="relative">
-          <div className="flex items-center space-x-8 z-10">
-            <Link
-              className="text-selectedTab cursor-pointer relative z-10 pb-2"
-              href="/"
-            >
-              ✿ Freshly Minted
-            </Link>
-            <Link
-              className="text-whiteDisabled cursor-pointer relative z-10 pb-2"
-              href="/live"
-            >
-              ✻ Live Activity
-            </Link>
-          </div>
-          <div className="absolute bottom-0 w-full h-[2px] bg-whiteDisabled z-0"></div>
-          <div
-            className="bottom-0 w-10 h-[2px] bg-white z-10 opacity-100
-             transform transition-all duration-500 absolute left-0
-             left-0 w-[124px]"
-          ></div>
-        </div>
         <div className="py-4 flex flex-col space-y-4 min-h-[calc(100vh-160px)]">
           <div className="w-full">
             <div className="flex items-center">
@@ -131,8 +103,8 @@ console.log(tracks)
                     <div className="w-[60px] flex items-center justify-center h-[70px]">
                       <div className="cursor-pointer hover:scale-125 transition-all p-2 hover:bg-slate-800/40 rounded-md select-none">
                         <img
-                          src="/icons/HeartFilled.png"
-                          alt="Heart Filled"
+                          src="/icons/HeartEmpty.png"
+                          alt="Heart Empty"
                           className="w-[14px]"
                         />
                       </div>

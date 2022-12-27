@@ -1,6 +1,69 @@
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Sidebar() {
+  const [currentDate, setCurrentDate] = useState("");
+  const [currentTime, setCurrentTime] = useState("");
+  const [location, setLocation] = useState("");
+
+  useEffect(() => {
+    const fetchLocation = async () => {
+      let cityAndCountry = "";
+      // get the location of the user:
+      const location = await fetch("https://ipapi.co/json/").then((res) =>
+        res.json()
+      );
+      if (location) {
+        cityAndCountry = `${location.city}, ${location.country_name}`;
+        setLocation(cityAndCountry);
+      }
+    };
+
+    const fetchAndSetDateTime = () => {
+      const date = new Date();
+      setCurrentDate(
+        date.toLocaleDateString("en-US", {
+          weekday: "short",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          timeZone: "America/New_York",
+        })
+      );
+      const amOrPm = date.getHours() >= 12 ? "PM" : "AM";
+      const curTime =
+        date
+          .toLocaleTimeString("en-US") // now i want to remove the seconds from the time
+          .split(":")
+          .slice(0, 2)
+          .join(":") + ` ${amOrPm}`;
+
+      setCurrentTime(curTime);
+    };
+    const interval = setInterval(() => {
+      fetchAndSetDateTime();
+    }, 1000);
+    fetchAndSetDateTime();
+    fetchLocation();
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // save location on localStorage on each change:
+  useEffect(() => {
+    if (location && location.length > 0) {
+      localStorage.setItem("location", location);
+    }
+  }, [location]);
+
+  // read location from localStorage on first render:
+  useEffect(() => {
+    const locationFromLocalStorage = localStorage.getItem("location");
+    if (locationFromLocalStorage) {
+      setLocation(locationFromLocalStorage);
+    }
+  }, []);
+
   return (
     <div className="w-[230px] bg-sidebarBg border-r border-darkLine relative">
       <div className="fixed bg-sidebarBg border-r border-darkLine">
@@ -21,9 +84,9 @@ export default function Sidebar() {
               </div>
             </Link>
             <div className="text-[13px] pt-2 text-whiteDisabled h-14">
-              7:32 PM • White Plains, United States
+              {currentTime} • {location}
               <br />
-              Sun, December 25, 2022
+              {currentDate}
             </div>
           </div>
           <div className="my-[22px] border-b border-darkLine w-full h-1"></div>
@@ -32,19 +95,27 @@ export default function Sidebar() {
             <div>Discover</div>
           </div>
           <div className="flex flex-col space-y-[3px]">
-            <Link href="/" as="/" className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
+            <Link
+              href="/"
+              as="/"
+              className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+            >
               <div
                 className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
-                style={{"inset": "41.94% 89.88% 41.94% 7.14%"}}
+                style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
               ></div>
               <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
                 Freshly Minted
               </div>
             </Link>
-            <Link href="/live" as="/live" className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
+            <Link
+              href="/live"
+              as="/live"
+              className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+            >
               <div
                 className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
-                style={{"inset": "41.94% 89.88% 41.94% 7.14%"}}
+                style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
               ></div>
               <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
                 Live Activity
@@ -59,7 +130,7 @@ export default function Sidebar() {
             <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
               <div
                 className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
-                style={{"inset": "41.94% 89.88% 41.94% 7.14%"}}
+                style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
               ></div>
               <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
                 Favorites
@@ -68,7 +139,7 @@ export default function Sidebar() {
             <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
               <div
                 className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
-                style={{"inset": "41.94% 89.88% 41.94% 7.14%"}}
+                style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
               ></div>
               <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
                 Playlists
@@ -77,7 +148,7 @@ export default function Sidebar() {
             <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
               <div
                 className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
-                style={{"inset": "41.94% 89.88% 41.94% 7.14%"}}
+                style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
               ></div>
               <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
                 My Collection
@@ -88,7 +159,7 @@ export default function Sidebar() {
             <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
               <div
                 className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
-                style={{"inset": "41.94% 89.88% 41.94% 7.14%"}}
+                style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
               ></div>
               <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
                 Submit Feedback

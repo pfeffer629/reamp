@@ -5,22 +5,23 @@ import { TrackProvider } from "../contexts/TrackContext";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Player from "../components/Player";
-import '@rainbow-me/rainbowkit/styles.css';
+import "@rainbow-me/rainbowkit/styles.css";
 import {
   RainbowKitProvider,
   getDefaultWallets,
   connectorsForWallets,
-  darkTheme
-} from '@rainbow-me/rainbowkit';
+  darkTheme,
+} from "@rainbow-me/rainbowkit";
 import {
   argentWallet,
   trustWallet,
   ledgerWallet,
-} from '@rainbow-me/rainbowkit/wallets';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
+} from "@rainbow-me/rainbowkit/wallets";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { mainnet, polygon, optimism, arbitrum, goerli } from "wagmi/chains";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
+import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -28,23 +29,23 @@ const { chains, provider, webSocketProvider } = configureChains(
     polygon,
     optimism,
     arbitrum,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : []),
   ],
   [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY as string}),
+    alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY as string }),
     publicProvider(),
   ]
 );
 
 const { wallets } = getDefaultWallets({
-  appName: 'REAMP',
+  appName: "REAMP",
   chains,
 });
 
 const connectors = connectorsForWallets([
   ...wallets,
   {
-    groupName: 'Other',
+    groupName: "Other",
     wallets: [
       argentWallet({ chains }),
       trustWallet({ chains }),
@@ -65,10 +66,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <WagmiConfig client={wagmiClient}>
       <SpinampProvider>
         <TrackProvider>
-          <RainbowKitProvider chains={chains} theme={darkTheme()}>
+          <RainbowKitProvider chains={chains} theme={darkTheme({accentColor: '#222222'})} >
             <div className="flex w-[1280px] font-Gilroy overflow-hidden">
               <Sidebar />
-              <div className="mx-auto">
+              <div className="mx-auto w-[895px]">
                 <Header />
                 <Component {...pageProps} />
               </div>

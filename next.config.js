@@ -2,10 +2,8 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: [
-      "spinamp.mypinata.cloud",
-    ],
-  }
-}
+    domains: ["spinamp.mypinata.cloud"],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
