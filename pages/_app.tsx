@@ -18,21 +18,15 @@ import {
   ledgerWallet,
 } from "@rainbow-me/rainbowkit/wallets";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { mainnet, polygon, optimism, arbitrum, goerli } from "wagmi/chains";
+import { mainnet } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 
 const { chains, provider, webSocketProvider } = configureChains(
+  [mainnet],
   [
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : []),
-  ],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY as string }),
+    // alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY as string }),
     publicProvider(),
   ]
 );
@@ -66,7 +60,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <WagmiConfig client={wagmiClient}>
       <SpinampProvider>
         <TrackProvider>
-          <RainbowKitProvider chains={chains} theme={darkTheme({accentColor: '#222222'})} >
+          <RainbowKitProvider
+            chains={chains}
+            theme={darkTheme({ accentColor: "#222222" })}
+          >
             <div className="flex w-[1280px] font-Gilroy overflow-hidden">
               <Sidebar />
               <div className="mx-auto w-[895px]">

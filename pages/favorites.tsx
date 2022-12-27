@@ -2,7 +2,7 @@ import { useEffect, useContext, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
-import { ITrack } from "@spinamp/spinamp-sdk";
+import { ITrack, fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import TrackContext from "../contexts/TrackContext";
 import Link from "next/link";
 import { supabase } from "../utils/supabase";
@@ -12,9 +12,8 @@ import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 TimeAgo.addDefaultLocale(en);
 
-export default function Home() {
-  const [favorites, setFavorites] = useState([]);
-  const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
+export default function Favorites() {
+  const [tracks, setTracks] = useState([]);
   const timeAgo = new TimeAgo("en-US");
   const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying } =
     useContext(TrackContext);
@@ -23,10 +22,6 @@ export default function Home() {
   useEffect(() => {
     getFavorites(address);
   }, [address]);
-
-  if (isLoading || isError) {
-    return <div></div>;
-  }
 
   const handleSelectTrack = (track: ITrack) => {
     setCurrentTrack(track);
@@ -49,7 +44,9 @@ export default function Home() {
       if (error && status !== 406) {
         throw error;
       }
-      setFavorites(favorites.tracks);
+      fetchTracksByIds(favorites.tracks).then((tracks) => {
+        setTracks(tracks);
+      });
     } catch (error) {
       console.log("Error loading user favorites!");
     }

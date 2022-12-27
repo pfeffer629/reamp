@@ -127,7 +127,11 @@ export default function Sidebar() {
             <div>My Profile</div>
           </div>
           <div className="flex flex-col space-y-[3px]">
-            <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
+            <Link
+              href="/favorites"
+              as="/favorites"
+              className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+            >
               <div
                 className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
                 style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
@@ -135,7 +139,7 @@ export default function Sidebar() {
               <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
                 Favorites
               </div>
-            </div>
+            </Link>
             <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
               <div
                 className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
