@@ -14,6 +14,7 @@ TimeAgo.addDefaultLocale(en);
 
 export default function Favorites() {
   const [tracks, setTracks] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const timeAgo = new TimeAgo("en-US");
   const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying } =
     useContext(TrackContext);
@@ -45,8 +46,9 @@ export default function Favorites() {
         throw error;
       }
       fetchTracksByIds(favorites.tracks).then((tracks) => {
-        setTracks(tracks);
+        setTracks(tracks)
       });
+      setFavorites(favorites.tracks);
     } catch (error) {
       console.log("Error loading user favorites!");
     }
@@ -121,11 +123,19 @@ export default function Favorites() {
                   </div>
                   <div className="w-[60px] flex items-center justify-center h-[70px]">
                     <div className="cursor-pointer hover:scale-125 transition-all p-2 hover:bg-slate-800/40 rounded-md select-none">
-                      <img
-                        src="/icons/HeartFilled.png"
-                        alt="Heart Filled"
-                        className="w-[14px]"
-                      />
+                      {favorites.includes(track.id) ? (
+                        <img
+                          src="/icons/HeartFilled.png"
+                          alt="Heart Filled"
+                          className="w-[14px]"
+                        />
+                      ) : (
+                        <img
+                          src="/icons/HeartEmpty.png"
+                          alt="Heart Empty"
+                          className="w-[14px]"
+                        />
+                      )}
                     </div>
                   </div>
                   <div className="w-[130px] flex items-center justify-center h-[70px]">
