@@ -6,7 +6,7 @@ export default function Sidebar() {
       <div className="fixed bg-sidebarBg border-r border-darkLine">
         <div className="p-[27px] h-[calc(100vh-30px)] flex flex-col w-[230px]">
           <div className="">
-            <Link className="relative group transition-all" href="/">
+            <Link className="relative group transition-all" href="/" as="/">
               <div className="pb-[4px] h-8">
                 <img
                   src="/images/reamp-logo-white.png"
@@ -32,7 +32,7 @@ export default function Sidebar() {
             <div>Discover</div>
           </div>
           <div className="flex flex-col space-y-[3px]">
-            <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
+            <Link href="/" as="/" className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
               <div
                 className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
                 style={{"inset": "41.94% 89.88% 41.94% 7.14%"}}
@@ -40,8 +40,8 @@ export default function Sidebar() {
               <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
                 Freshly Minted
               </div>
-            </div>
-            <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
+            </Link>
+            <Link href="/live" as="/live" className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
               <div
                 className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
                 style={{"inset": "41.94% 89.88% 41.94% 7.14%"}}
@@ -49,7 +49,7 @@ export default function Sidebar() {
               <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
                 Live Activity
               </div>
-            </div>
+            </Link>
           </div>
           <div className="flex items-center w-full mt-[30px] space-x-[11px] text-whiteDisabled pb-[8px]">
             <div className="h-[13px] mb-[2px] w-[2px] rounded-md bg-whiteDisabled"></div>

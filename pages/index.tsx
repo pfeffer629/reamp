@@ -14,7 +14,8 @@ export default function Home() {
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo("en-US");
   const { currentTrack, setCurrentTrack, setCurrentTrackIndex, setIsPlaying } = useContext(TrackContext);
-
+console.log(isLoading)
+console.log(tracks)
   useEffect(() => {
     if (!isLoading && Object.keys(currentTrack).length === 0) {
       setCurrentTrack(tracks[0]);
@@ -124,7 +125,7 @@ export default function Home() {
                     <div className="w-[70px] flex items-center justify-center h-[70px]">
                       <div className="flex items-center space-x-1">
                         <div className="font-sans pb-[2px]">Ξ</div>
-                        <div>0.59</div>
+                        <div>0</div>
                       </div>
                     </div>
                     <div className="w-[60px] flex items-center justify-center h-[70px]">
