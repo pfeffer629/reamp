@@ -121,19 +121,11 @@ export default function Favorites() {
                   </div>
                   <div className="w-[60px] flex items-center justify-center h-[70px]">
                     <div className="cursor-pointer hover:scale-125 transition-all p-2 hover:bg-slate-800/40 rounded-md select-none">
-                      {favorites.includes(track.id) ? (
-                        <img
-                          src="/icons/HeartFilled.png"
-                          alt="Heart Filled"
-                          className="w-[14px]"
-                        />
-                      ) : (
-                        <img
-                          src="/icons/HeartEmpty.png"
-                          alt="Heart Empty"
-                          className="w-[14px]"
-                        />
-                      )}
+                      <img
+                        src="/icons/HeartFilled.png"
+                        alt="Heart Filled"
+                        className="w-[14px]"
+                      />
                     </div>
                   </div>
                   <div className="w-[130px] flex items-center justify-center h-[70px]">
