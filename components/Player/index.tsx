@@ -15,6 +15,7 @@ import TrackContext from "../../contexts/TrackContext";
 export default function Player() {
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(0.3);
   const {
     currentTrack,
     setCurrentTrack,
@@ -156,11 +157,11 @@ export default function Player() {
           <input
             type="range"
             className="w-24 h-full mx-[12px]"
-            step={1}
             min={0}
-            onMouseDown={() => null}
-            onMouseUp={() => null}
-            onChange={() => null}
+            max={1}
+            step={0.01}
+            value={volume}
+            onChange={(e) => setVolume(Number(e.target.value))}
           />
           <img
             alt="Small Three Dots"
@@ -175,6 +176,7 @@ export default function Player() {
           playerRef={playerRef}
           onReady={handleOnReady}
           playing={isPlaying}
+          volume={volume}
         />
       </div>
     </>
