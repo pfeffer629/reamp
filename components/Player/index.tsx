@@ -126,6 +126,16 @@ export default function Player() {
             <NextButton className="cursor-pointer" onClick={handleNext} />
           </div>
           <div className="flex w-full justify-center max-w-[560px] items-center mt-[8px]">
+            <img
+              src="/icons/Shuffle.png"
+              alt="Shuffle"
+              className="cursor-pointer mr-[22px]"
+            />
+            <img
+              src="/icons/HeartEmpty.png"
+              alt="Heart Empty"
+              className="cursor-pointer w-[14px] h-[14px] mr-[18px]"
+            />
             <span className="mr-[20px] text-xs">{convertToMinutes(elapsed)}</span>
             <input
               type="range"
@@ -141,6 +151,16 @@ export default function Player() {
               }}
             />
             <span className="ml-[20px] text-xs">{convertToMinutes(duration)}</span>
+            <img
+              src="/icons/Repeat.png"
+              alt="Repeat"
+              className="cursor-pointer ml-[18px]"
+            />
+            <img
+              src="/icons/AddToPlaylist.png"
+              alt="Add To Playlist"
+              className="cursor-pointer ml-[22px]"
+            />
           </div>
         </div>
         <div className="w-[360px] flex items-center justify-end">
@@ -163,11 +183,12 @@ export default function Player() {
             value={volume}
             onChange={(e) => setVolume(Number(e.target.value))}
           />
-          <img
-            alt="Small Three Dots"
-            src="/icons/SmallThreeDots.png"
-            className="mr-[12px] cursor-pointer"
-          />
+          <div className="mr-[12px] bg-transparent hover:bg-gray-500/30 p-2 transition-all transform rounded-lg cursor-pointer duration-300">
+            <img
+              alt="Small Three Dots"
+              src="/icons/SmallThreeDots.png"
+            />
+          </div>
         </div>
       </div>
       <div className="invisible h-0 w-0">
