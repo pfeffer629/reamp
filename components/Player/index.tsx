@@ -139,7 +139,26 @@ export default function Player() {
             <span className="ml-[20px]">{convertToMinutes(duration)}</span>
           </div>
         </div>
-        <div className="w-[360px]">hello</div>
+        <div className="w-[360px] flex items-center justify-end">
+          <img
+            alt="Volume"
+            src="/icons/Volume.png"
+          />
+          <input
+            type="range"
+            className="w-24 h-full mx-[12px]"
+            step={1}
+            min={0}
+            onMouseDown={() => null}
+            onMouseUp={() => null}
+            onChange={() => null}
+          />
+          <img
+            alt="Small Three Dots"
+            src="/icons/SmallThreeDots.png"
+            className="mr-[12px]"
+          />
+        </div>
       </div>
       <div className="invisible h-0 w-0">
         <AudioPlayer
