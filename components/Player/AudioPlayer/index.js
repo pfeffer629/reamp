@@ -1,6 +1,6 @@
 import ReactPlayer from "react-player/lazy";
 
-function AudioPlayer({ playerRef, url, onReady, playing, volume, onEnded }) {
+function AudioPlayer({ playerRef, url, onReady, playing, volume, onEnded, loop }) {
   return (
     <ReactPlayer
       ref={playerRef}
@@ -9,6 +9,7 @@ function AudioPlayer({ playerRef, url, onReady, playing, volume, onEnded }) {
       playing={playing}
       volume={volume}
       onEnded={onEnded}
+      loop={loop}
     />
   );
 }

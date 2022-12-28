@@ -16,6 +16,7 @@ export default function Player() {
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.3);
+  const [repeat, setRepeat] = useState(false);
   const {
     currentTrack,
     setCurrentTrack,
@@ -56,8 +57,6 @@ export default function Player() {
 
   const handleOnReady = () => {
     if (playerRef && playerRef.current) {
-      console.log(playerRef.current.getDuration());
-
       setDuration(playerRef.current.getDuration());
     }
   };
@@ -151,11 +150,20 @@ export default function Player() {
               }}
             />
             <span className="ml-[20px] text-xs">{convertToMinutes(duration)}</span>
-            <img
-              src="/icons/Repeat.svg"
-              alt="Repeat"
-              className="cursor-pointer ml-[18px]"
-            />
+            {repeat ?
+              <img
+                src="/icons/RepeatOnce.svg"
+                alt="Repeat Once"
+                className="cursor-pointer ml-[18px]"
+                onClick={() => setRepeat(false)}                
+              /> :
+              <img
+                src="/icons/Repeat.svg"
+                alt="Repeat"
+                className="cursor-pointer ml-[18px]"
+                onClick={() => setRepeat(true)}
+              />
+            }
             <img
               src="/icons/AddToPlaylist.svg"
               alt="Add To Playlist"
@@ -199,6 +207,7 @@ export default function Player() {
           playing={isPlaying}
           volume={volume}
           onEnded={handleNext}
+          loop={repeat}
         />
       </div>
     </>
