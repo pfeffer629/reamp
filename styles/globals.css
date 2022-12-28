@@ -1545,8 +1545,6 @@ input[type="range"] {
   display: block;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: #999;
-  border-radius: 5px;
   height: 1px;
   outline: 0;
 }

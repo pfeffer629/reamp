@@ -37,10 +37,7 @@ export default function Home() {
 
   async function getFavorites(address: string) {
     try {
-      const {
-        data: favorites,
-        error,
-      } = await supabase
+      const { data: favorites, error } = await supabase
         .from("favorites")
         .select("tracks")
         .eq("user_id", address)
@@ -51,17 +48,20 @@ export default function Home() {
         setFavorites(favorites.tracks);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
   async function addFavorite(trackId: string) {
-    if (address) {    
+    if (address) {
       const updatedFavorites = [...favorites, trackId];
       try {
         const { error } = await supabase
           .from("favorites")
-          .upsert({ user_id: address, tracks: updatedFavorites }, { onConflict: 'user_id' })
+          .upsert(
+            { user_id: address, tracks: updatedFavorites },
+            { onConflict: "user_id" }
+          );
         if (error) {
           throw error;
         }
@@ -72,12 +72,15 @@ export default function Home() {
   }
 
   async function removeFavorite(trackId: string) {
-    if (address) {    
+    if (address) {
       const updatedFavorites = favorites.filter((track) => track !== trackId);
       try {
         const { error } = await supabase
           .from("favorites")
-          .upsert({ user_id: address, tracks: updatedFavorites }, { onConflict: 'user_id' })
+          .upsert(
+            { user_id: address, tracks: updatedFavorites },
+            { onConflict: "user_id" }
+          );
         if (error) {
           throw error;
         }

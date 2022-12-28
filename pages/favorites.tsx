@@ -62,10 +62,7 @@ export default function Favorites() {
 
   async function getFavorites(address: string) {
     try {
-      const {
-        data: favorites,
-        error,
-      } = await supabase
+      const { data: favorites, error } = await supabase
         .from("favorites")
         .select("tracks")
         .eq("user_id", address)
@@ -80,7 +77,7 @@ export default function Favorites() {
         setFavorites(favorites.tracks);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 

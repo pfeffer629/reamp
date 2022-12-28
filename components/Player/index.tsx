@@ -94,7 +94,7 @@ export default function Player() {
 
   return (
     <>
-      <div className="fixed min-w-[1280px] bg-[#000] h-[80px] w-full bottom-0 flex justify-center items-center px-[22px] font-Gilroy">
+      <div className="fixed min-w-[1280px] bg-sidebarBg h-[80px] w-full bottom-0 flex justify-center items-center px-[22px] font-Gilroy border-t border-darkLine">
         <div className="flex w-[360px]">
           {currentTrack?.lossyArtworkUrl && (
             <Image
@@ -139,7 +139,7 @@ export default function Player() {
             <span className="mr-[20px] text-xs">{convertToMinutes(elapsed)}</span>
             <input
               type="range"
-              className="w-full h-full"
+              className="w-full h-[8px] border-radius-0 border-x-2 border-white-500"
               step={1}
               min={0}
               max={duration || 0}
