@@ -93,20 +93,23 @@ export default function Player() {
 
   return (
     <>
-      <div className="fixed min-w-[1280px] bg-[#000] h-[80px] w-full bottom-0 flex justify-center items-center px-[22px] font-Gilroy text-xs">
+      <div className="fixed min-w-[1280px] bg-[#000] h-[80px] w-full bottom-0 flex justify-center items-center px-[22px] font-Gilroy">
         <div className="flex w-[360px]">
           {currentTrack?.lossyArtworkUrl && (
             <Image
               alt={currentTrack?.title}
-              height={52}
-              width={52}
+              height={64}
+              width={64}
               src={currentTrack?.lossyArtworkUrl || ""}
-              className="mr-[22px]"
+              className="mr-[22px] rounded-[5px]"
             />
           )}
           <div>
-            <p>{currentTrack?.title}</p>
-            <p>{currentTrack?.artist?.name}</p>
+            <p className="text-sm font-extrabold">{currentTrack?.title}</p>
+            <p className="text-xs text-whiteDisabled">{currentTrack?.artist?.name}</p>
+            <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 mt-[6px] select-none">
+              collect
+            </div>
           </div>
         </div>
         <div className="flex flex-col items-center w-full my-[18px]">
