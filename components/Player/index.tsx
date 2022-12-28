@@ -127,14 +127,14 @@ export default function Player() {
           </div>
           <div className="flex w-full justify-center w-[360px] items-center mt-[8px]">
             <img
-              src="/icons/Shuffle.png"
+              src="/icons/Shuffle.svg"
               alt="Shuffle"
               className="cursor-pointer mr-[22px]"
             />
             <img
-              src="/icons/HeartEmpty.png"
+              src="/icons/SmallHeart.svg"
               alt="Heart Empty"
-              className="cursor-pointer w-[14px] h-[14px] mr-[18px]"
+              className="cursor-pointer mr-[18px]"
             />
             <span className="mr-[20px] text-xs">{convertToMinutes(elapsed)}</span>
             <input
@@ -152,12 +152,12 @@ export default function Player() {
             />
             <span className="ml-[20px] text-xs">{convertToMinutes(duration)}</span>
             <img
-              src="/icons/Repeat.png"
+              src="/icons/Repeat.svg"
               alt="Repeat"
               className="cursor-pointer ml-[18px]"
             />
             <img
-              src="/icons/AddToPlaylist.png"
+              src="/icons/AddToPlaylist.svg"
               alt="Add To Playlist"
               className="cursor-pointer ml-[22px]"
             />
@@ -166,12 +166,12 @@ export default function Player() {
         <div className="w-[360px] flex items-center justify-end">
           <img
             alt="Small Share"
-            src="/icons/SmallShare.png"
+            src="/icons/SmallShare.svg"
             className="mr-[16px] cursor-pointer"
           />
           <img
             alt="Volume"
-            src="/icons/Volume.png"
+            src="/icons/Volume.svg"
             className="cursor-pointer"            
           />
           <input
@@ -186,7 +186,7 @@ export default function Player() {
           <div className="mr-[12px] bg-transparent hover:bg-gray-500/30 p-2 transition-all transform rounded-lg cursor-pointer duration-300">
             <img
               alt="Small Three Dots"
-              src="/icons/SmallThreeDots.png"
+              src="/icons/SmallThreeDots.svg"
             />
           </div>
         </div>
