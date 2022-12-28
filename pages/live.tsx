@@ -1,11 +1,8 @@
 import { useFeaturedPlaylistsQuery } from "@spinamp/spinamp-hooks";
-import { useAccount, useSigner } from "wagmi";
 
 export default function Live() {
   const { playlists, isLoading, isError } = useFeaturedPlaylistsQuery();
-  const { data: signer } = useSigner();
 
-  console.log(signer);
   if (isLoading || isError) {
     return <div></div>;
   }

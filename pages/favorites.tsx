@@ -1,5 +1,4 @@
 import { useEffect, useContext, useState } from "react";
-import Head from "next/head";
 import Image from "next/image";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 import { ITrack, fetchTracksByIds } from "@spinamp/spinamp-sdk";
@@ -33,7 +32,7 @@ export default function Favorites() {
   async function addFavorite(trackId: string) {
     const updatedFavorites = [...favorites, trackId];
     try {
-      let { error } = await supabase
+      const { error } = await supabase
         .from("favorites")
         .update({ tracks: updatedFavorites })
         .eq("user_id", address);
@@ -51,7 +50,7 @@ export default function Favorites() {
   async function removeFavorite(trackId: string) {
     const updatedFavorites = favorites.filter((track) => track !== trackId);
     try {
-      let { error } = await supabase
+      const { error } = await supabase
         .from("favorites")
         .update({ tracks: updatedFavorites })
         .eq("user_id", address);
@@ -68,7 +67,7 @@ export default function Favorites() {
 
   async function getFavorites(address) {
     try {
-      let {
+      const {
         data: favorites,
         error,
         status,

@@ -19,9 +19,7 @@ import {
 } from "@rainbow-me/rainbowkit/wallets";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { mainnet } from "wagmi/chains";
-import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
-import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [mainnet],
