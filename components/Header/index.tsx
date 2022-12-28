@@ -25,7 +25,7 @@ export default function Header() {
           </div>
         </div>
       </div>
-      {(currentRoute === "/" || currentRoute === "/live") &&
+      {(currentRoute === "/" || currentRoute === "/live") && (
         <div className="relative mt-4">
           <div className="flex items-center space-x-8 z-10">
             <Link
@@ -56,13 +56,17 @@ export default function Header() {
              `}
           ></div>
         </div>
-      }
-      {(currentRoute === "/favorites" || currentRoute === "/playlists" || currentRoute === "/collection") &&
+      )}
+      {(currentRoute === "/favorites" ||
+        currentRoute === "/playlists" ||
+        currentRoute === "/collection") && (
         <div className="relative mt-4">
           <div className="flex items-center space-x-8 z-10">
             <Link
               className={`${
-                currentRoute === "/favorites" ? "text-selectedTab" : "text-whiteDisabled"
+                currentRoute === "/favorites"
+                  ? "text-selectedTab"
+                  : "text-whiteDisabled"
               } cursor-pointer relative z-10 pb-2`}
               href="/favorites"
             >
@@ -93,13 +97,13 @@ export default function Header() {
           <div
             className={`${currentRoute === "/playlists" && "left-0"} 
             ${currentRoute === "/playlists" && "left-[150px]"} 
-            ${currentRoute === "/collection && left-[300px]"} cursor-pointer
+            ${currentRoute === "/collection" && "left-[300px]"} cursor-pointer
             bottom-0 w-10 h-[2px] bg-white z-10 opacity-100
              transform transition-all duration-500 absolute w-[124px]
              `}
           ></div>
         </div>
-      }
+      )}
     </div>
   );
 }

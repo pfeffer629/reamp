@@ -1,5 +1,4 @@
 import { useEffect, useContext, useState } from "react";
-import Head from "next/head";
 import Image from "next/image";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 import { ITrack } from "@spinamp/spinamp-sdk";
@@ -13,7 +12,7 @@ import en from "javascript-time-ago/locale/en";
 TimeAgo.addDefaultLocale(en);
 
 export default function Home() {
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState<string[]>([]);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo("en-US");
   const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying } =
@@ -21,7 +20,9 @@ export default function Home() {
   const { address } = useAccount();
 
   useEffect(() => {
-    getFavorites(address);
+    if (address) {
+      getFavorites(address);
+    }
   }, [address]);
 
   if (isLoading || isError) {
@@ -34,39 +35,36 @@ export default function Home() {
     setIsPlaying(true);
   };
 
-  async function getFavorites(address) {
+  async function getFavorites(address: string) {
     try {
-      let {
+      const {
         data: favorites,
         error,
-        status,
       } = await supabase
         .from("favorites")
         .select("tracks")
         .eq("user_id", address)
         .single();
-
-      if (error && status !== 406) {
+      if (error) {
         throw error;
+      } else {
+        setFavorites(favorites.tracks);
       }
-      setFavorites(favorites.tracks);
     } catch (error) {
-      console.log("Error loading user favorites!");
+      console.log(error)
     }
   }
+
   async function addFavorite(trackId: string) {
     const updatedFavorites = [...favorites, trackId];
     try {
-      let { error } = await supabase
+      const { error } = await supabase
         .from("favorites")
         .update({ tracks: updatedFavorites })
         .eq("user_id", address);
-
-      if (error && status !== 406) {
+      if (error) {
         throw error;
       }
-    } catch (error) {
-      console.log("Error loading user favorites!");
     } finally {
       setFavorites(updatedFavorites);
     }
@@ -75,16 +73,13 @@ export default function Home() {
   async function removeFavorite(trackId: string) {
     const updatedFavorites = favorites.filter((track) => track !== trackId);
     try {
-      let { error } = await supabase
+      const { error } = await supabase
         .from("favorites")
         .update({ tracks: updatedFavorites })
         .eq("user_id", address);
-
-      if (error && status !== 406) {
+      if (error) {
         throw error;
       }
-    } catch (error) {
-      console.log("Error loading user favorites!");
     } finally {
       setFavorites(updatedFavorites);
     }

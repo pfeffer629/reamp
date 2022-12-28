@@ -1,6 +1,5 @@
 import { useEffect, useContext, useState } from "react";
 import Image from "next/image";
-import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 import { ITrack, fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import TrackContext from "../contexts/TrackContext";
 import Link from "next/link";
@@ -12,15 +11,17 @@ import en from "javascript-time-ago/locale/en";
 TimeAgo.addDefaultLocale(en);
 
 export default function Favorites() {
-  const [tracks, setTracks] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [tracks, setTracks] = useState<ITrack[]>([]);
+  const [favorites, setFavorites] = useState<string[]>([]);
   const timeAgo = new TimeAgo("en-US");
   const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying } =
     useContext(TrackContext);
   const { address } = useAccount();
 
   useEffect(() => {
-    getFavorites(address);
+    if (address) {
+      getFavorites(address);
+    }
   }, [address]);
 
   const handleSelectTrack = (track: ITrack) => {
@@ -36,12 +37,9 @@ export default function Favorites() {
         .from("favorites")
         .update({ tracks: updatedFavorites })
         .eq("user_id", address);
-
-      if (error && status !== 406) {
+      if (error) {
         throw error;
       }
-    } catch (error) {
-      console.log("Error loading user favorites!");
     } finally {
       setFavorites(updatedFavorites);
     }
@@ -54,38 +52,35 @@ export default function Favorites() {
         .from("favorites")
         .update({ tracks: updatedFavorites })
         .eq("user_id", address);
-
-      if (error && status !== 406) {
+      if (error) {
         throw error;
       }
-    } catch (error) {
-      console.log("Error loading user favorites!");
     } finally {
       setFavorites(updatedFavorites);
     }
   }
 
-  async function getFavorites(address) {
+  async function getFavorites(address: string) {
     try {
       const {
         data: favorites,
         error,
-        status,
       } = await supabase
         .from("favorites")
         .select("tracks")
         .eq("user_id", address)
         .single();
 
-      if (error && status !== 406) {
-        throw error;
-      }
-      fetchTracksByIds(favorites.tracks).then((tracks) => {
+      fetchTracksByIds(favorites?.tracks).then((tracks) => {
         setTracks(tracks);
       });
-      setFavorites(favorites.tracks);
+      if (error) {
+        throw error;
+      } else {
+        setFavorites(favorites.tracks);
+      }
     } catch (error) {
-      console.log("Error loading user favorites!");
+      console.log(error)
     }
   }
 
