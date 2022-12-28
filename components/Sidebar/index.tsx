@@ -153,7 +153,7 @@ export default function Sidebar() {
                     Playlists
                   </div>
                 </div>
-                <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
+                {/*<div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
                   <div
                     className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
                     style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
@@ -161,7 +161,7 @@ export default function Sidebar() {
                   <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
                     My Collection
                   </div>
-                </div>
+                </div>*/}
               </div>
               <div className="pt-[36px]">
                 <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
