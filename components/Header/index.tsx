@@ -70,7 +70,12 @@ export default function Header() {
               } cursor-pointer relative z-10 pb-2`}
               href="/favorites"
             >
-              My Favorites
+              <img
+                src="/icons/SmallHeartFilled.png"
+                alt="Small Heart Filled"
+                className="inline-block"
+              />
+              &nbsp;My Favorites
             </Link>
             <Link
               className={`${
@@ -80,7 +85,7 @@ export default function Header() {
               } cursor-pointer relative z-10 pb-2`}
               href="/playlists"
             >
-              My Playlists
+              ✦  My Playlists
             </Link>
             <Link
               className={`${
@@ -90,7 +95,7 @@ export default function Header() {
               } cursor-pointer relative z-10 pb-2`}
               href="/playlists"
             >
-              My Collection
+              ❏  My Collection
             </Link>
           </div>
           <div className="absolute bottom-0 w-full h-[2px] bg-whiteDisabled z-0"></div>
