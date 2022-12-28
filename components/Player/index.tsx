@@ -125,7 +125,7 @@ export default function Player() {
             <NextButton className="cursor-pointer" onClick={handleNext} />
           </div>
           <div className="flex w-full justify-center max-w-[560px] items-center mt-[8px]">
-            <span className="mr-[20px]">{convertToMinutes(elapsed)}</span>
+            <span className="mr-[20px] text-xs">{convertToMinutes(elapsed)}</span>
             <input
               type="range"
               className="w-full h-full"
@@ -139,7 +139,7 @@ export default function Player() {
                 seekTo(parseFloat(e.target.value) || 0);
               }}
             />
-            <span className="ml-[20px]">{convertToMinutes(duration)}</span>
+            <span className="ml-[20px] text-xs">{convertToMinutes(duration)}</span>
           </div>
         </div>
         <div className="w-[360px] flex items-center justify-end">
