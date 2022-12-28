@@ -56,32 +56,36 @@ export default function Home() {
   }
 
   async function addFavorite(trackId: string) {
-    const updatedFavorites = [...favorites, trackId];
-    try {
-      const { error } = await supabase
-        .from("favorites")
-        .update({ tracks: updatedFavorites })
-        .eq("user_id", address);
-      if (error) {
-        throw error;
+    if (address) {    
+      const updatedFavorites = [...favorites, trackId];
+      try {
+        const { error } = await supabase
+          .from("favorites")
+          .update({ tracks: updatedFavorites })
+          .eq("user_id", address);
+        if (error) {
+          throw error;
+        }
+      } finally {
+        setFavorites(updatedFavorites);
       }
-    } finally {
-      setFavorites(updatedFavorites);
     }
   }
 
   async function removeFavorite(trackId: string) {
-    const updatedFavorites = favorites.filter((track) => track !== trackId);
-    try {
-      const { error } = await supabase
-        .from("favorites")
-        .update({ tracks: updatedFavorites })
-        .eq("user_id", address);
-      if (error) {
-        throw error;
+    if (address) {    
+      const updatedFavorites = favorites.filter((track) => track !== trackId);
+      try {
+        const { error } = await supabase
+          .from("favorites")
+          .update({ tracks: updatedFavorites })
+          .eq("user_id", address);
+        if (error) {
+          throw error;
+        }
+      } finally {
+        setFavorites(updatedFavorites);
       }
-    } finally {
-      setFavorites(updatedFavorites);
     }
   }
 
@@ -165,7 +169,7 @@ export default function Home() {
                         <img
                           src="/icons/HeartEmpty.png"
                           alt="Heart Empty"
-                          className="w-[14px]"
+                          className={`${address && "cursor-default"} w-[14px]`}
                           onClick={() => addFavorite(track.id)}
                         />
                       )}
