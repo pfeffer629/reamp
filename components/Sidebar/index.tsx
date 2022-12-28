@@ -124,7 +124,7 @@ export default function Sidebar() {
               </div>
             </Link>
           </div>
-          {account.address && (
+          {address && (
             <>
               <div className="flex items-center w-full mt-[30px] space-x-[11px] text-whiteDisabled pb-[8px]">
                 <div className="h-[13px] mb-[2px] w-[2px] rounded-md bg-whiteDisabled"></div>
