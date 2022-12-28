@@ -28,19 +28,19 @@ export default function Live() {
         </div>
         <div className="flex flex-wrap space-x-2 py-1">
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
-            <div className="">681</div>
+            <div className="">760</div>
             <div className="text-searchBarText">Artists</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
-            <div className="">6,930</div>
+            <div className="">10,336</div>
             <div className="text-searchBarText">Collectors</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
-            <div className="">39,133</div>
+            <div className="">47,178</div>
             <div className="text-searchBarText">Tracks</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
-            <div className="">$11,242,064</div>
+            <div className="">$12,486,282</div>
             <div className="text-searchBarText">Total Volume (USD)</div>
           </div>
         </div>
