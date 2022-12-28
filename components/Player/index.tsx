@@ -113,7 +113,7 @@ export default function Player() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center w-full my-[18px]">
+        <div className="flex flex-col items-center w-[720px] my-[18px]">
           <div className="flex items-center">
             <BackButton className="cursor-pointer" onClick={handleBack} />
             <div className="mx-[30px] cursor-pointer" onClick={handlePlayPause}>
@@ -125,7 +125,7 @@ export default function Player() {
             </div>
             <NextButton className="cursor-pointer" onClick={handleNext} />
           </div>
-          <div className="flex w-full justify-center max-w-[560px] items-center mt-[8px]">
+          <div className="flex w-full justify-center w-[360px] items-center mt-[8px]">
             <img
               src="/icons/Shuffle.png"
               alt="Shuffle"
