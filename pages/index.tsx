@@ -54,6 +54,41 @@ export default function Home() {
       console.log("Error loading user favorites!");
     }
   }
+  async function addFavorite(trackId: string) {
+    const updatedFavorites = [...favorites, trackId];
+    try {
+      let { error } = await supabase
+        .from("favorites")
+        .update({ tracks: updatedFavorites })
+        .eq("user_id", address);
+
+      if (error && status !== 406) {
+        throw error;
+      }
+    } catch (error) {
+      console.log("Error loading user favorites!");
+    } finally {
+      setFavorites(updatedFavorites);
+    }
+  }
+
+  async function removeFavorite(trackId: string) {
+    const updatedFavorites = favorites.filter((track) => track !== trackId);
+    try {
+      let { error } = await supabase
+        .from("favorites")
+        .update({ tracks: updatedFavorites })
+        .eq("user_id", address);
+
+      if (error && status !== 406) {
+        throw error;
+      }
+    } catch (error) {
+      console.log("Error loading user favorites!");
+    } finally {
+      setFavorites(updatedFavorites);
+    }
+  }
 
   return (
     <div className="w-[895px] mx-auto">
@@ -129,12 +164,14 @@ export default function Home() {
                           src="/icons/HeartFilled.png"
                           alt="Heart Filled"
                           className="w-[14px]"
+                          onClick={() => removeFavorite(track.id)}
                         />
                       ) : (
                         <img
                           src="/icons/HeartEmpty.png"
                           alt="Heart Empty"
                           className="w-[14px]"
+                          onClick={() => addFavorite(track.id)}
                         />
                       )}
                     </div>

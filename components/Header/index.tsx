@@ -25,36 +25,81 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="relative mt-4">
-        <div className="flex items-center space-x-8 z-10">
-          <Link
+      {(currentRoute === "/" || currentRoute === "/live") &&
+        <div className="relative mt-4">
+          <div className="flex items-center space-x-8 z-10">
+            <Link
+              className={`${
+                currentRoute === "/" ? "text-selectedTab" : "text-whiteDisabled"
+              } cursor-pointer relative z-10 pb-2`}
+              href="/"
+            >
+              ✿ Freshly Minted
+            </Link>
+            <Link
+              className={`${
+                currentRoute === "/live"
+                  ? "text-selectedTab"
+                  : "text-whiteDisabled"
+              } cursor-pointer relative z-10 pb-2`}
+              href="/live"
+            >
+              ✻ Live Activity
+            </Link>
+          </div>
+          <div className="absolute bottom-0 w-full h-[2px] bg-whiteDisabled z-0"></div>
+          <div
             className={`${
-              currentRoute === "/" ? "text-selectedTab" : "text-whiteDisabled"
-            } cursor-pointer relative z-10 pb-2`}
-            href="/"
-          >
-            ✿ Freshly Minted
-          </Link>
-          <Link
-            className={`${
-              currentRoute === "/live"
-                ? "text-selectedTab"
-                : "text-whiteDisabled"
-            } cursor-pointer relative z-10 pb-2`}
-            href="/live"
-          >
-            ✻ Live Activity
-          </Link>
+              currentRoute === "/" ? "left-0" : "left-[150px]"
+            } bottom-0 w-10 h-[2px] bg-white z-10 opacity-100
+             transform transition-all duration-500 absolute w-[124px]
+             `}
+          ></div>
         </div>
-        <div className="absolute bottom-0 w-full h-[2px] bg-whiteDisabled z-0"></div>
-        <div
-          className={`${
-            currentRoute === "/" ? "left-0" : "left-[150px]"
-          } bottom-0 w-10 h-[2px] bg-white z-10 opacity-100
-           transform transition-all duration-500 absolute w-[124px]
-           `}
-        ></div>
-      </div>
+      }
+      {(currentRoute === "/favorites" || currentRoute === "/playlists" || currentRoute === "/collection") &&
+        <div className="relative mt-4">
+          <div className="flex items-center space-x-8 z-10">
+            <Link
+              className={`${
+                currentRoute === "/favorites" ? "text-selectedTab" : "text-whiteDisabled"
+              } cursor-pointer relative z-10 pb-2`}
+              href="/favorites"
+            >
+              My Favorites
+            </Link>
+            <Link
+              className={`${
+                currentRoute === "/playlists"
+                  ? "text-selectedTab"
+                  : "text-whiteDisabled"
+              } cursor-pointer relative z-10 pb-2`}
+              href="/playlists"
+            >
+              My Playlists
+            </Link>
+            <Link
+              className={`${
+                currentRoute === "/collection"
+                  ? "text-selectedTab"
+                  : "text-whiteDisabled"
+              } cursor-pointer relative z-10 pb-2`}
+              href="/playlists"
+            >
+              My Collection
+            </Link>
+          </div>
+          <div className="absolute bottom-0 w-full h-[2px] bg-whiteDisabled z-0"></div>
+          <div
+            className={`${currentRoute === "/playlists" && "left-0"} 
+            ${currentRoute === "/playlists" && "left-[150px]"} 
+            ${currentRoute === "/collection && left-[300px]"} cursor-pointer
+            bottom-0 w-10 h-[2px] bg-white z-10 opacity-100
+             transform transition-all duration-500 absolute w-[124px]
+             `}
+          ></div>
+        </div>
+      }
     </div>
   );
 }

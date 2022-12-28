@@ -30,6 +30,42 @@ export default function Favorites() {
     setIsPlaying(true);
   };
 
+  async function addFavorite(trackId: string) {
+    const updatedFavorites = [...favorites, trackId];
+    try {
+      let { error } = await supabase
+        .from("favorites")
+        .update({ tracks: updatedFavorites })
+        .eq("user_id", address);
+
+      if (error && status !== 406) {
+        throw error;
+      }
+    } catch (error) {
+      console.log("Error loading user favorites!");
+    } finally {
+      setFavorites(updatedFavorites);
+    }
+  }
+
+  async function removeFavorite(trackId: string) {
+    const updatedFavorites = favorites.filter((track) => track !== trackId);
+    try {
+      let { error } = await supabase
+        .from("favorites")
+        .update({ tracks: updatedFavorites })
+        .eq("user_id", address);
+
+      if (error && status !== 406) {
+        throw error;
+      }
+    } catch (error) {
+      console.log("Error loading user favorites!");
+    } finally {
+      setFavorites(updatedFavorites);
+    }
+  }
+
   async function getFavorites(address) {
     try {
       let {
@@ -46,7 +82,7 @@ export default function Favorites() {
         throw error;
       }
       fetchTracksByIds(favorites.tracks).then((tracks) => {
-        setTracks(tracks)
+        setTracks(tracks);
       });
       setFavorites(favorites.tracks);
     } catch (error) {
@@ -128,12 +164,14 @@ export default function Favorites() {
                           src="/icons/HeartFilled.png"
                           alt="Heart Filled"
                           className="w-[14px]"
+                          onClick={() => removeFavorite(track.id)}
                         />
                       ) : (
                         <img
                           src="/icons/HeartEmpty.png"
                           alt="Heart Empty"
                           className="w-[14px]"
+                          onClick={() => addFavorite(track.id)}
                         />
                       )}
                     </div>
