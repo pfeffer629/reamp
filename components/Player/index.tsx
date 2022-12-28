@@ -198,6 +198,7 @@ export default function Player() {
           onReady={handleOnReady}
           playing={isPlaying}
           volume={volume}
+          onEnded={handleNext}
         />
       </div>
     </>
