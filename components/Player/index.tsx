@@ -93,7 +93,7 @@ export default function Player() {
 
   return (
     <>
-      <div className="fixed min-w-[1280px] bg-[#000] h-[80px] w-full bottom-0 flex justify-center items-center px-[22px]">
+      <div className="fixed min-w-[1280px] bg-[#000] h-[80px] w-full bottom-0 flex justify-center items-center px-[22px] font-Gilroy text-xs">
         <div className="flex w-[360px]">
           {currentTrack?.lossyArtworkUrl && (
             <Image
@@ -121,7 +121,7 @@ export default function Player() {
             </div>
             <NextButton className="cursor-pointer" onClick={handleNext} />
           </div>
-          <div className="flex w-full justify-center max-w-[560px] items-center">
+          <div className="flex w-full justify-center max-w-[560px] items-center mt-[8px]">
             <span className="mr-[20px]">{convertToMinutes(elapsed)}</span>
             <input
               type="range"
@@ -141,8 +141,14 @@ export default function Player() {
         </div>
         <div className="w-[360px] flex items-center justify-end">
           <img
+            alt="Small Share"
+            src="/icons/SmallShare.png"
+            className="mr-[16px] cursor-pointer"
+          />
+          <img
             alt="Volume"
             src="/icons/Volume.png"
+            className="cursor-pointer"            
           />
           <input
             type="range"
@@ -156,7 +162,7 @@ export default function Player() {
           <img
             alt="Small Three Dots"
             src="/icons/SmallThreeDots.png"
-            className="mr-[12px]"
+            className="mr-[12px] cursor-pointer"
           />
         </div>
       </div>

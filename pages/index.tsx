@@ -61,7 +61,7 @@ export default function Home() {
       try {
         const { error } = await supabase
           .from("favorites")
-          .upsert({ user_id: address, tracks: updatedFavorites })
+          .upsert({ user_id: address, tracks: updatedFavorites }, { onConflict: 'user_id' })
         if (error) {
           throw error;
         }
@@ -77,8 +77,7 @@ export default function Home() {
       try {
         const { error } = await supabase
           .from("favorites")
-          .update({ tracks: updatedFavorites })
-          .eq("user_id", address);
+          .upsert({ user_id: address, tracks: updatedFavorites }, { onConflict: 'user_id' })
         if (error) {
           throw error;
         }
