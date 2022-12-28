@@ -61,8 +61,7 @@ export default function Home() {
       try {
         const { error } = await supabase
           .from("favorites")
-          .update({ tracks: updatedFavorites })
-          .eq("user_id", address);
+          .upsert({ user_id: address, tracks: updatedFavorites })
         if (error) {
           throw error;
         }
