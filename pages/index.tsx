@@ -168,7 +168,7 @@ export default function Home() {
                         <img
                           src="/icons/HeartEmpty.png"
                           alt="Heart Empty"
-                          className={`${address && "cursor-default"} w-[14px]`}
+                          className={`${!address && "cursor-default"} w-[14px]`}
                           onClick={() => addFavorite(track.id)}
                         />
                       )}
