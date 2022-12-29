@@ -1,85 +1,26 @@
-import { useEffect, useContext, useState } from "react";
+import { useContext } from "react";
 import Image from "next/image";
-import { ITrack, fetchTracksByIds } from "@spinamp/spinamp-sdk";
+import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../contexts/TrackContext";
+import FavoritesContext from "../contexts/FavoritesContext";
 import Link from "next/link";
-import { supabase } from "../utils/supabase";
-import { useAccount } from "wagmi";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 TimeAgo.addDefaultLocale(en);
 
 export default function Favorites() {
-  const [tracks, setTracks] = useState<ITrack[]>([]);
-  const [favorites, setFavorites] = useState<string[]>([]);
   const timeAgo = new TimeAgo("en-US");
   const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying } =
     useContext(TrackContext);
-  const { address } = useAccount();
-
-  useEffect(() => {
-    if (address) {
-      getFavorites(address);
-    }
-  }, [address]);
+  const { favorites, favoriteTracks, addFavorite, removeFavorite } =
+    useContext(FavoritesContext);
 
   const handleSelectTrack = (track: ITrack) => {
     setCurrentTrack(track);
-    setCurrentTrackIndex(tracks.indexOf(track));
+    setCurrentTrackIndex(favoriteTracks.indexOf(track));
     setIsPlaying(true);
   };
-
-  async function addFavorite(trackId: string) {
-    const updatedFavorites = [...favorites, trackId];
-    try {
-      const { error } = await supabase
-        .from("favorites")
-        .update({ tracks: updatedFavorites })
-        .eq("user_id", address);
-      if (error) {
-        throw error;
-      }
-    } finally {
-      setFavorites(updatedFavorites);
-    }
-  }
-
-  async function removeFavorite(trackId: string) {
-    const updatedFavorites = favorites.filter((track) => track !== trackId);
-    try {
-      const { error } = await supabase
-        .from("favorites")
-        .update({ tracks: updatedFavorites })
-        .eq("user_id", address);
-      if (error) {
-        throw error;
-      }
-    } finally {
-      setFavorites(updatedFavorites);
-    }
-  }
-
-  async function getFavorites(address: string) {
-    try {
-      const { data: favorites, error } = await supabase
-        .from("favorites")
-        .select("tracks")
-        .eq("user_id", address)
-        .single();
-
-      fetchTracksByIds(favorites?.tracks).then((tracks) => {
-        setTracks(tracks);
-      });
-      if (error) {
-        throw error;
-      } else {
-        setFavorites(favorites.tracks);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   return (
     <div className="w-[895px] mx-auto">
@@ -97,8 +38,8 @@ export default function Favorites() {
             <div className="w-[60px]"></div>
             <div className="w-[130px] text-center">Collect</div>
           </div>
-          {tracks &&
-            tracks.map((track) => (
+          {favoriteTracks &&
+            favoriteTracks.map((track) => (
               <div className="flex flex-col space-y-4" key={track.id}>
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
                   <div className="w-[46px]">

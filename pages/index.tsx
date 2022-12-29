@@ -1,29 +1,24 @@
-import { useEffect, useContext, useState } from "react";
+import { useContext } from "react";
 import Image from "next/image";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../contexts/TrackContext";
 import Link from "next/link";
-import { supabase } from "../utils/supabase";
 import { useAccount } from "wagmi";
+import FavoritesContext from "../contexts/FavoritesContext";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 TimeAgo.addDefaultLocale(en);
 
 export default function Home() {
-  const [favorites, setFavorites] = useState<string[]>([]);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo("en-US");
   const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying } =
     useContext(TrackContext);
+  const { favorites, addFavorite, removeFavorite } =
+    useContext(FavoritesContext);
   const { address } = useAccount();
-
-  useEffect(() => {
-    if (address) {
-      getFavorites(address);
-    }
-  }, [address]);
 
   if (isLoading || isError) {
     return <div></div>;
@@ -34,61 +29,6 @@ export default function Home() {
     setCurrentTrackIndex(tracks.indexOf(track));
     setIsPlaying(true);
   };
-
-  async function getFavorites(address: string) {
-    try {
-      const { data: favorites, error } = await supabase
-        .from("favorites")
-        .select("tracks")
-        .eq("user_id", address)
-        .single();
-      if (error) {
-        throw error;
-      } else {
-        setFavorites(favorites.tracks);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function addFavorite(trackId: string) {
-    if (address) {
-      const updatedFavorites = [...favorites, trackId];
-      try {
-        const { error } = await supabase
-          .from("favorites")
-          .upsert(
-            { user_id: address, tracks: updatedFavorites },
-            { onConflict: "user_id" }
-          );
-        if (error) {
-          throw error;
-        }
-      } finally {
-        setFavorites(updatedFavorites);
-      }
-    }
-  }
-
-  async function removeFavorite(trackId: string) {
-    if (address) {
-      const updatedFavorites = favorites.filter((track) => track !== trackId);
-      try {
-        const { error } = await supabase
-          .from("favorites")
-          .upsert(
-            { user_id: address, tracks: updatedFavorites },
-            { onConflict: "user_id" }
-          );
-        if (error) {
-          throw error;
-        }
-      } finally {
-        setFavorites(updatedFavorites);
-      }
-    }
-  }
 
   return (
     <div className="w-[895px] mx-auto">

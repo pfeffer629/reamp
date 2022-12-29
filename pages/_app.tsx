@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { SpinampProvider } from "@spinamp/spinamp-hooks";
 import { TrackProvider } from "../contexts/TrackContext";
+import { FavoritesProvider } from "../contexts/FavoritesContext";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Player from "../components/Player";
@@ -62,14 +63,16 @@ export default function App({ Component, pageProps }: AppProps) {
             chains={chains}
             theme={darkTheme({ accentColor: "#222222" })}
           >
-            <div className="flex w-[1280px] font-Gilroy overflow-hidden">
-              <Sidebar />
-              <div className="mx-auto w-[895px]">
-                <Header />
-                <Component {...pageProps} />
+            <FavoritesProvider>
+              <div className="flex w-[1280px] font-Gilroy overflow-hidden">
+                <Sidebar />
+                <div className="mx-auto w-[895px]">
+                  <Header />
+                  <Component {...pageProps} />
+                </div>
               </div>
-            </div>
-            <Player />
+              <Player />
+            </FavoritesProvider>
           </RainbowKitProvider>
         </TrackProvider>
       </SpinampProvider>

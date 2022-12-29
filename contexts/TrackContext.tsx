@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
 import { ITrack } from "@spinamp/spinamp-sdk";
-import Player from "../components/Player";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 
 interface ITrackContextData {
