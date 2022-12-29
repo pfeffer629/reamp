@@ -9,6 +9,7 @@ import ReactPlayer from "react-player/lazy";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 import TrackContext from "../../contexts/TrackContext";
 import FavoritesContext from "../../contexts/FavoritesContext";
+import { useAccount } from "wagmi";
 
 const AudioPlayer = dynamic(() => import("./AudioPlayer"), { ssr: false });
 
@@ -33,6 +34,7 @@ export default function Player() {
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
+  const { address } = useAccount();
 
   const convertToMinutes = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
