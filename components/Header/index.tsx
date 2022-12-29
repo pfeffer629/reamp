@@ -71,7 +71,7 @@ export default function Header() {
               href="/favorites"
             >
               <img
-                src="/icons/SmallHeartFilled.png"
+                src="/icons/SmallHeartFilled.svg"
                 alt="Small Heart Filled"
                 className="inline-block"
               />
