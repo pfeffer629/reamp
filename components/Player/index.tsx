@@ -7,10 +7,11 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import ReactPlayer from "react-player/lazy";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
+import TrackContext from "../../contexts/TrackContext";
+import FavoritesContext from "../../contexts/FavoritesContext";
 
 const AudioPlayer = dynamic(() => import("./AudioPlayer"), { ssr: false });
 
-import TrackContext from "../../contexts/TrackContext";
 
 export default function Player() {
   const [elapsed, setElapsed] = useState(0);
@@ -29,6 +30,8 @@ export default function Player() {
     unshuffleTracks,
     shuffledTracks,
   } = useContext(TrackContext);
+  const { favorites, addFavorite, removeFavorite } =
+    useContext(FavoritesContext);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
 
   const convertToMinutes = (seconds: number) => {
@@ -152,11 +155,21 @@ export default function Player() {
                 onClick={shuffleTracks}
               />
             }
-            <img
-              src="/icons/SmallHeart.svg"
-              alt="Heart Empty"
-              className="cursor-pointer mr-[18px]"
-            />
+            {favorites.includes(currentTrack.id) ? (
+              <img
+                src="/icons/SmallHeartFilled.svg"
+                alt="Heart Filled"
+                className={`${!address && "cursor-default"} cursor-pointer mr-[18px]`}
+                onClick={() => removeFavorite(currentTrack.id)}
+              />
+            ) : (
+              <img
+                src="/icons/SmallHeart.svg"
+                alt="Heart Empty"
+                className={`${!address && "cursor-default"} cursor-pointer mr-[18px]`}
+                onClick={() => addFavorite(currentTrack.id)}
+              />
+            )}
             <span className="mr-[20px] text-xs">{convertToMinutes(elapsed)}</span>
             <input
               type="range"
