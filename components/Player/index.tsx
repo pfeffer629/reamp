@@ -17,7 +17,6 @@ export default function Player() {
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.3);
   const [repeat, setRepeat] = useState(false);
-  const [shuffle, setShuffle] = useState(false);
   const {
     currentTrack,
     setCurrentTrack,
@@ -25,8 +24,12 @@ export default function Player() {
     setCurrentTrackIndex,
     isPlaying,
     setIsPlaying,
+    shuffle,
+    shuffleTracks,
+    unshuffleTracks,
+    shuffledTracks,
   } = useContext(TrackContext);
-  const { tracks } = usePaginatedTracksQuery(40);
+  const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
 
   const convertToMinutes = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -56,6 +59,10 @@ export default function Player() {
     }
   }, [playerRef, currentTrack]);
 
+  if (isLoading || isError) {
+    return <div></div>;
+  }
+
   const handleOnReady = () => {
     if (playerRef && playerRef.current) {
       setDuration(playerRef.current.getDuration());
@@ -67,21 +74,26 @@ export default function Player() {
   };
 
   const handleBack = () => {
+    if (elapsed > 2) {
+      seekTo(0)
+      return
+    }
+
     if (currentTrackIndex === 0) {
-      setCurrentTrack(tracks[tracks.length - 1]);
+      shuffle ? setCurrentTrack(shuffledTracks[tracks.length - 1]) : setCurrentTrack(tracks[tracks.length - 1]);
       setCurrentTrackIndex(tracks.length - 1);
     } else {
-      setCurrentTrack(tracks[currentTrackIndex - 1]);
+      shuffle ? setCurrentTrack(shuffledTracks[currentTrackIndex - 1]) : setCurrentTrack(tracks[currentTrackIndex - 1]);
       setCurrentTrackIndex(currentTrackIndex - 1);
     }
   };
 
   const handleNext = () => {
     if (currentTrackIndex === tracks.length - 1) {
-      setCurrentTrack(tracks[0]);
+      shuffle ? setCurrentTrack(shuffledTracks[0]) : setCurrentTrack(tracks[0]);
       setCurrentTrackIndex(0);
     } else {
-      setCurrentTrack(tracks[currentTrackIndex + 1]);
+      shuffle ? setCurrentTrack(shuffledTracks[currentTrackIndex + 1]) : setCurrentTrack(tracks[currentTrackIndex + 1]);
       setCurrentTrackIndex(currentTrackIndex + 1);
     }
   };
@@ -131,13 +143,13 @@ export default function Player() {
                 src="/icons/ShuffleFilled.svg"
                 alt="Shuffle"
                 className="cursor-pointer mr-[22px]"
-                onClick={() => setShuffle(false)}
+                onClick={unshuffleTracks}
               /> :
               <img
                 src="/icons/Shuffle.svg"
                 alt="Shuffle"
                 className="cursor-pointer mr-[22px]"
-                onClick={() => setShuffle(true)}
+                onClick={shuffleTracks}
               />
             }
             <img
