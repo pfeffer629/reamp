@@ -25,12 +25,20 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const currentRoute = router.pathname;
 
 	useEffect(() => {
-    if (address && currentRoute === "/favorites") {
+    if (address && (currentRoute === "/favorites" || currentRoute === "/")) {
       getFavorites(address);
     }
   }, [address, currentRoute]);
 
+	useEffect(() => {
+    if (!address) {
+      setFavorites([]);
+      setFavoriteTracks([]);
+    }
+  }, [address, currentRoute]);
+
   async function addFavorite(trackId: string) {
+  	if (!address) { return }
     const updatedFavorites = [...favorites, trackId];
     try {
       const { error } = await supabase
@@ -46,6 +54,7 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   }
 
   async function removeFavorite(trackId: string) {
+  	if (!address) { return }
     const updatedFavorites = favorites.filter((track) => track !== trackId);
     try {
       const { error } = await supabase
