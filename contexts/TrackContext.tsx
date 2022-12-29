@@ -10,6 +10,10 @@ interface ITrackContextData {
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
   currentTrackIndex: number;
   setCurrentTrackIndex: React.Dispatch<React.SetStateAction<number>>;
+  shuffle: boolean;
+  shuffleTracks: any;
+  unshuffleTracks: any;
+  shuffledTracks: ITrack[];
 }
 
 export const TrackContext = createContext<ITrackContextData>(
@@ -37,10 +41,12 @@ export function TrackProvider({ children }: { children: React.ReactNode }) {
   }
 
   useEffect(() => {
-    if (shuffle) {
+    console.log(currentTrack)
+    if (shuffle && Object.keys(currentTrack).length === 0) {
+      console.log(currentTrack)
       setCurrentTrackIndex(shuffledTracks.indexOf(currentTrack))
     }
-  }, [shuffle]);
+  }, [shuffle, currentTrack]);
 
   const unshuffleTracks = () => {
     setShuffle(false)
