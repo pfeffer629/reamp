@@ -17,6 +17,7 @@ export default function Player() {
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.3);
   const [repeat, setRepeat] = useState(false);
+  const [shuffle, setShuffle] = useState(false);
   const {
     currentTrack,
     setCurrentTrack,
@@ -125,11 +126,20 @@ export default function Player() {
             <NextButton className="cursor-pointer" onClick={handleNext} />
           </div>
           <div className="flex w-full justify-center w-[360px] items-center mt-[8px]">
-            <img
-              src="/icons/Shuffle.svg"
-              alt="Shuffle"
-              className="cursor-pointer mr-[22px]"
-            />
+            {shuffle ? 
+              <img
+                src="/icons/ShuffleFilled.svg"
+                alt="Shuffle"
+                className="cursor-pointer mr-[22px]"
+                onClick={() => setShuffle(false)}
+              /> :
+              <img
+                src="/icons/Shuffle.svg"
+                alt="Shuffle"
+                className="cursor-pointer mr-[22px]"
+                onClick={() => setShuffle(true)}
+              />
+            }
             <img
               src="/icons/SmallHeart.svg"
               alt="Heart Empty"
