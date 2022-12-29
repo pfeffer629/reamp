@@ -110,7 +110,7 @@ export default function Player() {
         <div className="flex w-[360px]">
           {currentTrack?.lossyArtworkUrl && (
             <Image
-              alt={currentTrack?.title}
+              alt={currentTrack?.title || ""}
               height={64}
               width={64}
               src={currentTrack?.lossyArtworkUrl || ""}

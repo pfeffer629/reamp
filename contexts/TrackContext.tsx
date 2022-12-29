@@ -38,19 +38,12 @@ export function TrackProvider({ children }: { children: React.ReactNode }) {
     }
     setShuffle(true)
     setShuffledTracks(shuffledTracksArray)
+    setCurrentTrackIndex(shuffledTracksArray.indexOf(currentTrack as ITrack))
   }
-
-  useEffect(() => {
-    console.log(currentTrack)
-    if (shuffle && Object.keys(currentTrack).length === 0) {
-      console.log(currentTrack)
-      setCurrentTrackIndex(shuffledTracks.indexOf(currentTrack))
-    }
-  }, [shuffle, currentTrack]);
 
   const unshuffleTracks = () => {
     setShuffle(false)
-    setCurrentTrackIndex(tracks.indexOf(currentTrack))
+    setCurrentTrackIndex(tracks.indexOf(currentTrack as ITrack))
   }
 
   useEffect(() => {
