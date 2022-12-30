@@ -68,7 +68,7 @@ export default function Live() {
                 className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
               >
                 <img
-                  src="/playlists/cover1.png"
+                  src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/playlists/cover1.png"
                   alt="playlist"
                   className="w-[204px] h-[210px] rounded-[10px]"
                 />
