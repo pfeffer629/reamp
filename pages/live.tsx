@@ -81,7 +81,7 @@ export default function Live() {
                 <div className="flex items-center space-x-[9px]">
                   <div>
                     <img
-                      src="/users/user1.png"
+                      src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/users/user1.png"
                       alt="user"
                       className="w-[21px] aspect-square"
                     />
