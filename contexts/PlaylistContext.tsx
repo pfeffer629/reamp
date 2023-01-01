@@ -5,6 +5,10 @@ import { ITrack, fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import { useRouter } from "next/router";
 
 interface IPlaylistContextData {
+  userPlaylists: any[];
+  toggleModal: any,
+  showModal: boolean,
+  createPlaylist: any,
 }
 
 export const PlaylistContext = createContext<IPlaylistContextData>(
@@ -13,8 +17,8 @@ export const PlaylistContext = createContext<IPlaylistContextData>(
 
 export function PlaylistProvider({ children }: { children: React.ReactNode }) {
   const [showModal, setShowModal] = useState(false);
-  const [trackToAdd, setTrackToAdd] = useState({});
-  const [userPlaylists, setUserPlaylists] = useState({});
+  const [trackToAdd, setTrackToAdd] = useState({} as ITrack);
+  const [userPlaylists, setUserPlaylists] = useState([]);
   const { address } = useAccount();
   const router = useRouter();
   const currentRoute = router.pathname;
@@ -40,7 +44,7 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
           .select("*")
           .eq("user_id", address)
 
-        setUserPlaylists(playlists);
+        setUserPlaylists(playlists as []);
       } catch (error) {
         throw(error);
       }
@@ -49,7 +53,7 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  async function createPlaylist(name) {
+  async function createPlaylist(name: string) {
   	if (!address) { return }
     try {
       const { error } = await supabase

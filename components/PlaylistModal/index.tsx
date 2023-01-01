@@ -2,8 +2,10 @@ import { useState, useContext } from "react";
 import PlaylistContext from "../../contexts/PlaylistContext";
 import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
+TimeAgo.addDefaultLocale(en);
 
-export default function PlaylistModal({ className, onClick }: BackButtonProps) {
+export default function PlaylistModal() {
   const [playlistName, setPlaylistName] = useState("");
   const { showModal, toggleModal, createPlaylist, userPlaylists } =
     useContext(PlaylistContext);
@@ -77,7 +79,7 @@ export default function PlaylistModal({ className, onClick }: BackButtonProps) {
                     </div>
                     <div className="flex flex-row items-center space-x-[9px]">
                       <img
-                        src={ensAvatar}
+                        src={ensAvatar || ""}
                         alt="user"
                         className="w-[21px] aspect-square rounded-[10px]"
                       />
