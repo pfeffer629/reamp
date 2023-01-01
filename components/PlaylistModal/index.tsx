@@ -21,8 +21,6 @@ export default function PlaylistModal() {
     setPlaylistName("");
   };
 
-  console.log(ensAvatar);
-
   return (
     <div
       className={showModal ? "relative z-10" : "hidden"}
