@@ -43,8 +43,7 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
     try {
       const { error } = await supabase
         .from("favorites")
-        .update({ tracks: updatedFavorites })
-        .eq("user_id", address);
+        .upsert({ user_id: address, tracks: updatedFavorites }, {onConflict: 'user_id'})
       if (error) {
         throw error;
       }
@@ -70,23 +69,27 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   }
 
   async function getFavorites(address: string) {
-    try {
-      const { data: favorites, error } = await supabase
-        .from("favorites")
-        .select("tracks")
-        .eq("user_id", address)
-        .single();
+    if (address) {
+      try {
+        const { data: favorites, error } = await supabase
+          .from("favorites")
+          .select("tracks")
+          .eq("user_id", address)
+          .single();
 
-      fetchTracksByIds(favorites?.tracks).then((tracks) => {
-        setFavoriteTracks(tracks);
-      });
-      if (error) {
-        throw error;
-      } else {
-        setFavorites(favorites.tracks);
+        fetchTracksByIds(favorites?.tracks).then((tracks) => {
+          setFavoriteTracks(tracks);
+        });
+        if (error) {
+          throw error;
+        } else {
+          setFavorites(favorites.tracks);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+    } else {
+      return;
     }
   }
 

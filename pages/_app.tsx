@@ -3,9 +3,11 @@ import type { AppProps } from "next/app";
 import { SpinampProvider } from "@spinamp/spinamp-hooks";
 import { TrackProvider } from "../contexts/TrackContext";
 import { FavoritesProvider } from "../contexts/FavoritesContext";
+import { PlaylistProvider } from "../contexts/PlaylistContext";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Player from "../components/Player";
+import PlaylistModal from "../components/PlaylistModal";
 import "@rainbow-me/rainbowkit/styles.css";
 import {
   RainbowKitProvider,
@@ -64,14 +66,17 @@ export default function App({ Component, pageProps }: AppProps) {
             theme={darkTheme({ accentColor: "#222222" })}
           >
             <FavoritesProvider>
-              <div className="flex w-[1280px] font-Gilroy overflow-hidden">
-                <Sidebar />
-                <div className="mx-auto w-[895px]">
-                  <Header />
-                  <Component {...pageProps} />
+              <PlaylistProvider>
+                <div className="flex w-[1280px] font-Gilroy overflow-hidden">
+                  <Sidebar />
+                  <div className="mx-auto w-[895px]">
+                    <Header />
+                    <Component {...pageProps} />
+                  </div>
+                  <PlaylistModal />
                 </div>
-              </div>
-              <Player />
+                <Player />
+              </PlaylistProvider>
             </FavoritesProvider>
           </RainbowKitProvider>
         </TrackProvider>

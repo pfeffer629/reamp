@@ -9,10 +9,10 @@ import ReactPlayer from "react-player/lazy";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 import TrackContext from "../../contexts/TrackContext";
 import FavoritesContext from "../../contexts/FavoritesContext";
+import PlaylistContext from "../../contexts/PlaylistContext";
 import { useAccount } from "wagmi";
 
 const AudioPlayer = dynamic(() => import("./AudioPlayer"), { ssr: false });
-
 
 export default function Player() {
   const [elapsed, setElapsed] = useState(0);
@@ -33,6 +33,7 @@ export default function Player() {
   } = useContext(TrackContext);
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
+  const { toggleModal } = useContext(PlaylistContext);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const { address } = useAccount();
 
@@ -80,15 +81,19 @@ export default function Player() {
 
   const handleBack = () => {
     if (elapsed > 2) {
-      seekTo(0)
-      return
+      seekTo(0);
+      return;
     }
 
     if (currentTrackIndex === 0) {
-      shuffle ? setCurrentTrack(shuffledTracks[tracks.length - 1]) : setCurrentTrack(tracks[tracks.length - 1]);
+      shuffle
+        ? setCurrentTrack(shuffledTracks[tracks.length - 1])
+        : setCurrentTrack(tracks[tracks.length - 1]);
       setCurrentTrackIndex(tracks.length - 1);
     } else {
-      shuffle ? setCurrentTrack(shuffledTracks[currentTrackIndex - 1]) : setCurrentTrack(tracks[currentTrackIndex - 1]);
+      shuffle
+        ? setCurrentTrack(shuffledTracks[currentTrackIndex - 1])
+        : setCurrentTrack(tracks[currentTrackIndex - 1]);
       setCurrentTrackIndex(currentTrackIndex - 1);
     }
   };
@@ -98,7 +103,9 @@ export default function Player() {
       shuffle ? setCurrentTrack(shuffledTracks[0]) : setCurrentTrack(tracks[0]);
       setCurrentTrackIndex(0);
     } else {
-      shuffle ? setCurrentTrack(shuffledTracks[currentTrackIndex + 1]) : setCurrentTrack(tracks[currentTrackIndex + 1]);
+      shuffle
+        ? setCurrentTrack(shuffledTracks[currentTrackIndex + 1])
+        : setCurrentTrack(tracks[currentTrackIndex + 1]);
       setCurrentTrackIndex(currentTrackIndex + 1);
     }
   };
@@ -112,19 +119,21 @@ export default function Player() {
   return (
     <>
       <div className="fixed min-w-[1280px] bg-sidebarBg h-[80px] w-full bottom-0 flex justify-center items-center px-[22px] font-Gilroy border-t border-darkLine">
-        <div className="flex w-[360px]">
+        <div className="flex w-[360px] items-center">
           {currentTrack?.lossyArtworkUrl && (
             <Image
               alt={currentTrack?.title || ""}
               height={64}
               width={64}
               src={currentTrack?.lossyArtworkUrl || ""}
-              className="mr-[22px] rounded-[5px]"
+              className="mr-[22px] rounded-[5px] max-h-16"
             />
           )}
           <div>
             <p className="text-sm font-extrabold">{currentTrack?.title}</p>
-            <p className="text-xs text-whiteDisabled">{currentTrack?.artist?.name}</p>
+            <p className="text-xs text-whiteDisabled">
+              {currentTrack?.artist?.name}
+            </p>
             <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 mt-[6px] select-none">
               collect
             </div>
@@ -143,36 +152,43 @@ export default function Player() {
             <NextButton className="cursor-pointer" onClick={handleNext} />
           </div>
           <div className="flex w-full justify-center w-[360px] items-center mt-[8px]">
-            {shuffle ? 
+            {shuffle ? (
               <img
                 src="/icons/ShuffleFilled.svg"
                 alt="Shuffle"
                 className="cursor-pointer mr-[22px]"
                 onClick={unshuffleTracks}
-              /> :
+              />
+            ) : (
               <img
                 src="/icons/Shuffle.svg"
                 alt="Shuffle"
                 className="cursor-pointer mr-[22px]"
                 onClick={shuffleTracks}
               />
-            }
+            )}
             {favorites.includes(currentTrack.id) ? (
               <img
                 src="/icons/SmallHeartFilled.svg"
                 alt="Heart Filled"
-                className={`${!address && "cursor-default"} cursor-pointer mr-[18px]`}
+                className={`${
+                  !address && "cursor-default"
+                } cursor-pointer mr-[18px]`}
                 onClick={() => removeFavorite(currentTrack.id)}
               />
             ) : (
               <img
                 src="/icons/SmallHeart.svg"
                 alt="Heart Empty"
-                className={`${!address && "cursor-default"} cursor-pointer mr-[18px]`}
+                className={`${
+                  !address && "cursor-default"
+                } cursor-pointer mr-[18px]`}
                 onClick={() => addFavorite(currentTrack.id)}
               />
             )}
-            <span className="mr-[20px] text-xs">{convertToMinutes(elapsed)}</span>
+            <span className="mr-[20px] text-xs">
+              {convertToMinutes(elapsed)}
+            </span>
             <input
               type="range"
               className="w-full h-[8px] border-radius-0 border-x-2 border-white-500"
@@ -186,25 +202,29 @@ export default function Player() {
                 seekTo(parseFloat(e.target.value) || 0);
               }}
             />
-            <span className="ml-[20px] text-xs">{convertToMinutes(duration)}</span>
-            {repeat ?
+            <span className="ml-[20px] text-xs">
+              {convertToMinutes(duration)}
+            </span>
+            {repeat ? (
               <img
                 src="/icons/RepeatOnce.svg"
                 alt="Repeat Once"
                 className="cursor-pointer ml-[18px]"
-                onClick={() => setRepeat(false)}                
-              /> :
+                onClick={() => setRepeat(false)}
+              />
+            ) : (
               <img
                 src="/icons/Repeat.svg"
                 alt="Repeat"
                 className="cursor-pointer ml-[18px]"
                 onClick={() => setRepeat(true)}
               />
-            }
+            )}
             <img
               src="/icons/AddToPlaylist.svg"
               alt="Add To Playlist"
               className="cursor-pointer ml-[22px]"
+              onClick={() => toggleModal(currentTrack)}
             />
           </div>
         </div>
@@ -217,7 +237,7 @@ export default function Player() {
           <img
             alt="Volume"
             src="/icons/Volume.svg"
-            className="cursor-pointer"            
+            className="cursor-pointer"
           />
           <input
             type="range"
@@ -229,10 +249,7 @@ export default function Player() {
             onChange={(e) => setVolume(Number(e.target.value))}
           />
           <div className="mr-[12px] bg-transparent hover:bg-gray-500/30 p-2 transition-all transform rounded-lg cursor-pointer duration-300">
-            <img
-              alt="Small Three Dots"
-              src="/icons/SmallThreeDots.svg"
-            />
+            <img alt="Small Three Dots" src="/icons/SmallThreeDots.svg" />
           </div>
         </div>
       </div>
