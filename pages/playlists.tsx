@@ -7,6 +7,8 @@ import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 TimeAgo.addDefaultLocale(en);
+import PauseButton from "../components/Icons/PauseButton";
+import PlayButton from "../components/Icons/PlayButton";
 
 export default function Playlists() {
   const { userPlaylists } = useContext(PlaylistContext);
@@ -26,11 +28,14 @@ export default function Playlists() {
               key={playlist.id}
               className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
             >
-              <img
-                src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/playlists/cover1.png"
-                alt="playlist"
-                className="w-[204px] h-[210px] rounded-[10px]"
-              />
+              <div className="relative inline">
+                <img
+                  src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/playlists/cover1.png"
+                  alt="playlist"
+                  className="w-[204px] h-[210px] rounded-[10px]"
+                />
+                <PlayButton className="absolute top-0 bottom-0 left-0 right-0 m-auto" height={25} width={20} />
+              </div>
               <div className="pt-2">
                 <div className="text-whiteDisabled text-[11px]">
                   PLAYLIST • {playlist.tracks.length} TRACKS
