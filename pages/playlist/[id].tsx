@@ -9,9 +9,9 @@ import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 TimeAgo.addDefaultLocale(en);
 
-export default function Favorites() {
+export default function Playlist() {
   const timeAgo = new TimeAgo("en-US");
-  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
+  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying } =
     useContext(TrackContext);
   const { favorites, favoriteTracks, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
@@ -20,7 +20,6 @@ export default function Favorites() {
     setCurrentTrack(track);
     setCurrentTrackIndex(favoriteTracks.indexOf(track));
     setIsPlaying(true);
-    setTracklist(favoriteTracks);
   };
 
   return (

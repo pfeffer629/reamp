@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { ITrack } from "@spinamp/spinamp-sdk";
+import { ITrack, fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 
 interface ITrackContextData {
@@ -21,23 +21,29 @@ export const TrackContext = createContext<ITrackContextData>(
 
 export function TrackProvider({ children }: { children: React.ReactNode }) {
   const [currentTrack, setCurrentTrack] = useState({});
-  const [shuffledTracks, setShuffledTracks] = useState<ITrack[]>([]);
   const [shuffle, setShuffle] = useState(false);
+  const [playlistTracks, setPlaylistTracks] = useState<ITrack[]>([]);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [tracklist, setTracklist] = useState([]);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
 
-  const shuffleTracks = () => {
-    const shuffledTracksArray = [...tracks];
-    for (let i = shuffledTracksArray.length - 1; i > 0; i--) {
+  const randomizeArray = (tracks) => {
+    const shuffledTracks = tracks;
+    for (let i = tracks.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      const temp = shuffledTracksArray[i];
-      shuffledTracksArray[i] = shuffledTracksArray[j];
-      shuffledTracksArray[j] = temp;
+      const temp = tracks[i];
+      tracks[i] = tracks[j];
+      tracks[j] = temp;
     }
+    return shuffledTracks;
+  }
+
+  const shuffleTracks = () => {
+    const shuffledTracks = randomizeArray([...tracks])
     setShuffle(true)
-    setShuffledTracks(shuffledTracksArray)
-    setCurrentTrackIndex(shuffledTracksArray.indexOf(currentTrack as ITrack))
+    setTracklist(shuffledTracks)
+    setCurrentTrackIndex(shuffledTracks.indexOf(currentTrack as ITrack))
   }
 
   const unshuffleTracks = () => {
@@ -48,6 +54,7 @@ export function TrackProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!isLoading && Object.keys(currentTrack).length === 0) {
       setCurrentTrack(tracks[0]);
+      setTracklist(tracks);
     }
   }, [isLoading, tracks]);
 
@@ -64,7 +71,8 @@ export function TrackProvider({ children }: { children: React.ReactNode }) {
           shuffle,
           shuffleTracks,
           unshuffleTracks,
-          shuffledTracks
+          tracklist,
+          setTracklist,
         } as ITrackContextData
       }
     >

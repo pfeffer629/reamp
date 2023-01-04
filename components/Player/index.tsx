@@ -30,6 +30,7 @@ export default function Player() {
     shuffleTracks,
     unshuffleTracks,
     shuffledTracks,
+    tracklist,
   } = useContext(TrackContext);
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
@@ -85,27 +86,23 @@ export default function Player() {
       return;
     }
 
+    console.log(tracklist);
+
     if (currentTrackIndex === 0) {
-      shuffle
-        ? setCurrentTrack(shuffledTracks[tracks.length - 1])
-        : setCurrentTrack(tracks[tracks.length - 1]);
-      setCurrentTrackIndex(tracks.length - 1);
+      setCurrentTrack(tracklist[tracklist.length - 1]);
+      setCurrentTrackIndex(tracklist.length - 1);
     } else {
-      shuffle
-        ? setCurrentTrack(shuffledTracks[currentTrackIndex - 1])
-        : setCurrentTrack(tracks[currentTrackIndex - 1]);
+      setCurrentTrack(tracklist[currentTrackIndex - 1]);
       setCurrentTrackIndex(currentTrackIndex - 1);
     }
   };
 
   const handleNext = () => {
-    if (currentTrackIndex === tracks.length - 1) {
-      shuffle ? setCurrentTrack(shuffledTracks[0]) : setCurrentTrack(tracks[0]);
+    if (currentTrackIndex === tracklist.length - 1) {
+      setCurrentTrack(tracklist[0]);
       setCurrentTrackIndex(0);
     } else {
-      shuffle
-        ? setCurrentTrack(shuffledTracks[currentTrackIndex + 1])
-        : setCurrentTrack(tracks[currentTrackIndex + 1]);
+      setCurrentTrack(tracklist[currentTrackIndex + 1]);
       setCurrentTrackIndex(currentTrackIndex + 1);
     }
   };

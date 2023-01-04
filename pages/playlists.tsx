@@ -1,23 +1,39 @@
 import { useContext } from "react";
 import Image from "next/image";
-import { ITrack } from "@spinamp/spinamp-sdk";
+import { ITrack, fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import PlaylistContext from "../contexts/PlaylistContext";
+import TrackContext from "../contexts/TrackContext";
+import PlayButton from "../components/Icons/PlayButton";
 import Link from "next/link";
 import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 TimeAgo.addDefaultLocale(en);
-import PauseButton from "../components/Icons/PauseButton";
-import PlayButton from "../components/Icons/PlayButton";
 
 export default function Playlists() {
   const { userPlaylists } = useContext(PlaylistContext);
+  const {
+    setCurrentTrack,
+    setCurrentTrackIndex,
+    setIsPlaying,
+    setTracklist,
+    shuffle,
+  } = useContext(TrackContext);
   const { address } = useAccount();
   const { data: ensAvatar } = useEnsAvatar({
     address: "0x4449b8e2B2068D71EA27735115aa11B4870cCA38",
   });
   const { data: ensName } = useEnsName({ address });
   const timeAgo = new TimeAgo("en-US");
+
+  const handleSelectPlaylist = (playlist: string[]) => {
+    fetchTracksByIds(playlist.tracks).then((tracks) => {
+      setCurrentTrack(tracks[0]);
+      setCurrentTrackIndex(0);
+      setIsPlaying(true);
+      setTracklist(tracks);
+    });
+  };
 
   return (
     <div className="py-4 flex flex-col space-y-4">
@@ -30,18 +46,23 @@ export default function Playlists() {
             >
               <div className="relative inline">
                 <img
-                  src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/playlists/cover1.png"
+                  src={playlist.cover}
                   alt="playlist"
                   className="w-[204px] h-[210px] rounded-[10px]"
                 />
-                <PlayButton className="absolute top-0 bottom-0 left-0 right-0 m-auto" height={25} width={20} />
+                <PlayButton
+                  className="absolute top-0 bottom-0 left-0 right-0 m-auto"
+                  height={25}
+                  width={20}
+                  onClick={() => handleSelectPlaylist(playlist)}
+                />
               </div>
               <div className="pt-2">
                 <div className="text-whiteDisabled text-[11px]">
                   PLAYLIST • {playlist.tracks.length} TRACKS
                 </div>
               </div>
-              <div className="text-white text-[18px]">{playlist.name}</div>
+              <div className="text-white text-[20px]">{playlist.name}</div>
               <div className="flex flex-row items-center space-x-[9px]">
                 <img
                   src={ensAvatar || ""}
