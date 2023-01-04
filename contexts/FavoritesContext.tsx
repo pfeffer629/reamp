@@ -78,7 +78,7 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
           .single();
 
         fetchTracksByIds(favorites?.tracks).then((tracks) => {
-          setFavoriteTracks(tracks);
+          setFavoriteTracks(tracks.reverse());
         });
         if (error) {
           throw error;
