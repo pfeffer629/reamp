@@ -133,9 +133,9 @@ export default function Player() {
             <p className="text-xs text-whiteDisabled">
               {currentTrack?.artist?.name}
             </p>
-            <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 mt-[6px] select-none">
+            {/*            <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 mt-[6px] select-none">
               collect
-            </div>
+            </div>*/}
           </div>
         </div>
         <div className="flex flex-col items-center w-[720px] my-[18px]">
