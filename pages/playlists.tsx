@@ -26,8 +26,8 @@ export default function Playlists() {
   const { data: ensName } = useEnsName({ address });
   const timeAgo = new TimeAgo("en-US");
 
-  const handleSelectPlaylist = (playlist: string[]) => {
-    fetchTracksByIds(playlist.tracks).then((tracks) => {
+  const handleSelectPlaylist = (playlistTracks: string[]) => {
+    fetchTracksByIds(playlistTracks).then((tracks) => {
       if (shuffle) {
         setTracklist(tracks);
         const shuffledTracks = shuffleArray([...tracks]);
@@ -54,7 +54,7 @@ export default function Playlists() {
             >
               <div
                 className="relative inline"
-                onClick={() => handleSelectPlaylist(playlist)}
+                onClick={() => handleSelectPlaylist(playlist.tracks)}
               >
                 <img
                   src={playlist.cover}

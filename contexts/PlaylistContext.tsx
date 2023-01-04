@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 
 interface IPlaylistContextData {
   userPlaylists: any[];
+  recentPlaylists: any[];
   toggleModal: any,
   showModal: boolean,
   createPlaylist: any,

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import Image from "next/image";
 import { ITrack } from "@spinamp/spinamp-sdk";
-import TrackContext from "../contexts/TrackContext";
-import FavoritesContext from "../contexts/FavoritesContext";
+import TrackContext from "../../contexts/TrackContext";
+import FavoritesContext from "../../contexts/FavoritesContext";
 import Link from "next/link";
 
 import TimeAgo from "javascript-time-ago";

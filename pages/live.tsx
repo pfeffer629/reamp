@@ -4,6 +4,7 @@ import TrackContext from "../contexts/TrackContext";
 import PlayButton from "../components/Icons/PlayButton";
 import TimeAgo from "javascript-time-ago";
 import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
+import shuffleArray from "../utils/shuffleArray";
 
 export default function Live() {
   const { recentPlaylists } = useContext(PlaylistContext);
@@ -17,8 +18,8 @@ export default function Live() {
   } = useContext(TrackContext);
   const timeAgo = new TimeAgo("en-US");
 
-  const handleSelectPlaylist = (playlist: string[]) => {
-    fetchTracksByIds(playlist.tracks).then((tracks) => {
+  const handleSelectPlaylist = (playlistTracks: string[]) => {
+    fetchTracksByIds(playlistTracks).then((tracks) => {
       if (shuffle) {
         setTracklist(tracks);
         const shuffledTracks = shuffleArray([...tracks]);
@@ -96,7 +97,7 @@ export default function Live() {
               >
                 <div
                   className="relative inline"
-                  onClick={() => handleSelectPlaylist(playlist)}
+                  onClick={() => handleSelectPlaylist(playlist.tracks)}
                 >
                   <img
                     src={playlist.cover}
