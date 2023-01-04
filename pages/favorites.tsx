@@ -27,12 +27,11 @@ export default function Favorites() {
     if (shuffle) {
       const shuffledTracks = shuffleArray(favoriteTracks);
       setCurrentTrackIndex(shuffledTracks.indexOf(track));
-      setTracklist(tracks);
-      setShuffledTracklist(tracks);
+      setShuffledTracklist(shuffledTracks);
     } else {
       setCurrentTrackIndex(favoriteTracks.indexOf(track));
-      setTracklist(favoriteTracks);
     }
+    setTracklist(favoriteTracks);
     setCurrentTrack(track);
     setIsPlaying(true);
   };
