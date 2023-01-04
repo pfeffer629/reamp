@@ -12,8 +12,14 @@ TimeAgo.addDefaultLocale(en);
 
 export default function Favorites() {
   const timeAgo = new TimeAgo("en-US");
-  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist, shuffle } =
-    useContext(TrackContext);
+  const {
+    setCurrentTrack,
+    setCurrentTrackIndex,
+    setIsPlaying,
+    setTracklist,
+    shuffle,
+    setShuffledTracklist,
+  } = useContext(TrackContext);
   const { favorites, favoriteTracks, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
 
@@ -21,9 +27,10 @@ export default function Favorites() {
     if (shuffle) {
       const shuffledTracks = shuffleArray(favoriteTracks);
       setCurrentTrackIndex(shuffledTracks.indexOf(track));
-      setTracklist(shuffledTracks);
+      setTracklist(tracks);
+      setShuffledTracklist(tracks);
     } else {
-      setCurrentTrackIndex(favoriteTracks.indexOf(track))
+      setCurrentTrackIndex(favoriteTracks.indexOf(track));
       setTracklist(favoriteTracks);
     }
     setCurrentTrack(track);

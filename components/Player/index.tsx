@@ -6,7 +6,6 @@ import NextButton from "../Icons/NextButton";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import ReactPlayer from "react-player/lazy";
-import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 import TrackContext from "../../contexts/TrackContext";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import PlaylistContext from "../../contexts/PlaylistContext";
@@ -29,13 +28,12 @@ export default function Player() {
     shuffle,
     shuffleTracks,
     unshuffleTracks,
-    shuffledTracks,
     tracklist,
+    shuffledTracklist,
   } = useContext(TrackContext);
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { toggleModal } = useContext(PlaylistContext);
-  const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const { address } = useAccount();
 
   const convertToMinutes = (seconds: number) => {
@@ -66,10 +64,6 @@ export default function Player() {
     }
   }, [playerRef, currentTrack]);
 
-  if (isLoading || isError) {
-    return <div></div>;
-  }
-
   const handleOnReady = () => {
     if (playerRef && playerRef.current) {
       setDuration(playerRef.current.getDuration());
@@ -86,14 +80,22 @@ export default function Player() {
       return;
     }
 
-    console.log(tracklist);
-
     if (currentTrackIndex === 0) {
-      setCurrentTrack(tracklist[tracklist.length - 1]);
-      setCurrentTrackIndex(tracklist.length - 1);
+      if (shuffle) {
+        setCurrentTrack(shuffledTracklist[shuffledTracklist.length - 1]);
+        setCurrentTrackIndex(shuffledTracklist.length - 1);
+      } else {
+        setCurrentTrack(tracklist[tracklist.length - 1]);
+        setCurrentTrackIndex(tracklist.length - 1);
+      }
     } else {
-      setCurrentTrack(tracklist[currentTrackIndex - 1]);
-      setCurrentTrackIndex(currentTrackIndex - 1);
+      if (shuffle) {
+        setCurrentTrack(shuffledTracklist[currentTrackIndex - 1]);
+        setCurrentTrackIndex(currentTrackIndex - 1);
+      } else {
+        setCurrentTrack(tracklist[currentTrackIndex - 1]);
+        setCurrentTrackIndex(currentTrackIndex - 1);
+      }
     }
   };
 

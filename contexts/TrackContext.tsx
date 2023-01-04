@@ -14,6 +14,9 @@ interface ITrackContextData {
   shuffleTracks: any;
   unshuffleTracks: any;
   tracklist: ITrack[];
+  setTracklist: React.Dispatch<React.SetStateAction<ITrack[]>>;
+  shuffledTracklist: ITrack[];
+  setShuffledTracklist: React.Dispatch<React.SetStateAction<ITrack[]>>;
 }
 
 export const TrackContext = createContext<ITrackContextData>(
@@ -26,19 +29,21 @@ export function TrackProvider({ children }: { children: React.ReactNode }) {
   const [playlistTracks, setPlaylistTracks] = useState<ITrack[]>([]);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [tracklist, setTracklist] = useState([]);
+  const [tracklist, setTracklist] = useState<ITrack[]>([]);
+  const [shuffledTracklist, setShuffledTracklist] = useState<ITrack[]>([]);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
 
   const shuffleTracks = () => {
     const shuffledTracks = shuffleArray([...tracklist])
     setShuffle(true)
-    setTracklist(shuffledTracks)
+    setShuffledTracklist(shuffledTracks)
     setCurrentTrackIndex(shuffledTracks.indexOf(currentTrack as ITrack))
   }
 
   const unshuffleTracks = () => {
     setShuffle(false)
-    setCurrentTrackIndex(tracks.indexOf(currentTrack as ITrack))
+    setShuffledTracklist([])
+    setCurrentTrackIndex(tracklist.indexOf(currentTrack as ITrack))
   }
 
   useEffect(() => {
@@ -63,6 +68,7 @@ export function TrackProvider({ children }: { children: React.ReactNode }) {
           unshuffleTracks,
           tracklist,
           setTracklist,
+          shuffledTracklist,
         } as ITrackContextData
       }
     >

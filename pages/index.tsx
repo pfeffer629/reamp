@@ -14,7 +14,7 @@ TimeAgo.addDefaultLocale(en);
 export default function Home() {
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo("en-US");
-  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying } =
+  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
     useContext(TrackContext);
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
@@ -27,6 +27,7 @@ export default function Home() {
   const handleSelectTrack = (track: ITrack) => {
     setCurrentTrack(track);
     setCurrentTrackIndex(tracks.indexOf(track));
+    setTracklist(tracks);
     setIsPlaying(true);
   };
 

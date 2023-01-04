@@ -1,10 +1,8 @@
 import { useContext } from "react";
-import Image from "next/image";
-import { ITrack, fetchTracksByIds } from "@spinamp/spinamp-sdk";
+import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
 import PlayButton from "../components/Icons/PlayButton";
-import Link from "next/link";
 import shuffleArray from "../utils/shuffleArray";
 import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 import TimeAgo from "javascript-time-ago";
@@ -18,6 +16,7 @@ export default function Playlists() {
     setCurrentTrackIndex,
     setIsPlaying,
     setTracklist,
+    setShuffledTracklist,
     shuffle,
   } = useContext(TrackContext);
   const { address } = useAccount();
@@ -30,10 +29,11 @@ export default function Playlists() {
   const handleSelectPlaylist = (playlist: string[]) => {
     fetchTracksByIds(playlist.tracks).then((tracks) => {
       if (shuffle) {
-        const shuffledTracks = shuffleArray([...tracks])
-        setTracklist(shuffledTracks)
+        setTracklist(tracks);
+        const shuffledTracks = shuffleArray([...tracks]);
+        setShuffledTracklist(shuffledTracks);
         setCurrentTrack(shuffledTracks[0]);
-        setCurrentTrackIndex(0)
+        setCurrentTrackIndex(0);
       } else {
         setTracklist(tracks);
         setCurrentTrack(tracks[0]);
@@ -52,7 +52,10 @@ export default function Playlists() {
               key={playlist.id}
               className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
             >
-              <div className="relative inline">
+              <div
+                className="relative inline"
+                onClick={() => handleSelectPlaylist(playlist)}
+              >
                 <img
                   src={playlist.cover}
                   alt="playlist"
@@ -62,7 +65,6 @@ export default function Playlists() {
                   className="absolute top-0 bottom-0 left-0 right-0 m-auto"
                   height={25}
                   width={20}
-                  onClick={() => handleSelectPlaylist(playlist)}
                 />
               </div>
               <div className="pt-2">

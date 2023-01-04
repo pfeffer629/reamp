@@ -3,8 +3,7 @@ import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
 import PlayButton from "../components/Icons/PlayButton";
 import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
-import { ITrack, fetchTracksByIds } from "@spinamp/spinamp-sdk";
+import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 
 export default function Live() {
   const { recentPlaylists } = useContext(PlaylistContext);
@@ -13,16 +12,25 @@ export default function Live() {
     setCurrentTrackIndex,
     setIsPlaying,
     setTracklist,
+    setShuffledTracklist,
     shuffle,
   } = useContext(TrackContext);
   const timeAgo = new TimeAgo("en-US");
 
   const handleSelectPlaylist = (playlist: string[]) => {
     fetchTracksByIds(playlist.tracks).then((tracks) => {
-      setCurrentTrack(tracks[0]);
-      setCurrentTrackIndex(0);
+      if (shuffle) {
+        setTracklist(tracks);
+        const shuffledTracks = shuffleArray([...tracks]);
+        setShuffledTracklist(shuffledTracks);
+        setCurrentTrack(shuffledTracks[0]);
+        setCurrentTrackIndex(0);
+      } else {
+        setTracklist(tracks);
+        setCurrentTrack(tracks[0]);
+        setCurrentTrackIndex(0);
+      }
       setIsPlaying(true);
-      setTracklist(tracks);
     });
   };
 

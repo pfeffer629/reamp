@@ -9,6 +9,7 @@ interface IPlaylistContextData {
   toggleModal: any,
   showModal: boolean,
   createPlaylist: any,
+  addToPlaylist: any,
 }
 
 export const PlaylistContext = createContext<IPlaylistContextData>(
