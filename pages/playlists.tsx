@@ -5,6 +5,7 @@ import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
 import PlayButton from "../components/Icons/PlayButton";
 import Link from "next/link";
+import shuffleArray from "../utils/shuffleArray";
 import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
@@ -28,10 +29,17 @@ export default function Playlists() {
 
   const handleSelectPlaylist = (playlist: string[]) => {
     fetchTracksByIds(playlist.tracks).then((tracks) => {
-      setCurrentTrack(tracks[0]);
-      setCurrentTrackIndex(0);
+      if (shuffle) {
+        const shuffledTracks = shuffleArray([...tracks])
+        setTracklist(shuffledTracks)
+        setCurrentTrack(shuffledTracks[0]);
+        setCurrentTrackIndex(0)
+      } else {
+        setTracklist(tracks);
+        setCurrentTrack(tracks[0]);
+        setCurrentTrackIndex(0);
+      }
       setIsPlaying(true);
-      setTracklist(tracks);
     });
   };
 

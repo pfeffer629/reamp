@@ -4,6 +4,7 @@ import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../contexts/TrackContext";
 import FavoritesContext from "../contexts/FavoritesContext";
 import Link from "next/link";
+import shuffleArray from "../utils/shuffleArray";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
@@ -11,16 +12,22 @@ TimeAgo.addDefaultLocale(en);
 
 export default function Favorites() {
   const timeAgo = new TimeAgo("en-US");
-  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
+  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist, shuffle } =
     useContext(TrackContext);
   const { favorites, favoriteTracks, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
 
   const handleSelectTrack = (track: ITrack) => {
+    if (shuffle) {
+      const shuffledTracks = shuffleArray(favoriteTracks);
+      setCurrentTrackIndex(shuffledTracks.indexOf(track));
+      setTracklist(shuffledTracks);
+    } else {
+      setCurrentTrackIndex(favoriteTracks.indexOf(track))
+      setTracklist(favoriteTracks);
+    }
     setCurrentTrack(track);
-    setCurrentTrackIndex(favoriteTracks.indexOf(track));
     setIsPlaying(true);
-    setTracklist(favoriteTracks);
   };
 
   return (

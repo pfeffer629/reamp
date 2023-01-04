@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import { ITrack, fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
+import shuffleArray from "../utils/shuffleArray";
 
 interface ITrackContextData {
   currentTrack: ITrack;
@@ -12,7 +13,7 @@ interface ITrackContextData {
   shuffle: boolean;
   shuffleTracks: any;
   unshuffleTracks: any;
-  shuffledTracks: ITrack[];
+  tracklist: ITrack[];
 }
 
 export const TrackContext = createContext<ITrackContextData>(
@@ -28,19 +29,8 @@ export function TrackProvider({ children }: { children: React.ReactNode }) {
   const [tracklist, setTracklist] = useState([]);
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
 
-  const randomizeArray = (tracks) => {
-    const shuffledTracks = tracks;
-    for (let i = tracks.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = tracks[i];
-      tracks[i] = tracks[j];
-      tracks[j] = temp;
-    }
-    return shuffledTracks;
-  }
-
   const shuffleTracks = () => {
-    const shuffledTracks = randomizeArray([...tracks])
+    const shuffledTracks = shuffleArray([...tracklist])
     setShuffle(true)
     setTracklist(shuffledTracks)
     setCurrentTrackIndex(shuffledTracks.indexOf(currentTrack as ITrack))
