@@ -47,10 +47,13 @@ export default function Favorites() {
             </div>
             <div className="w-[191px]">Track</div>
             <div className="w-[130px] text-center">Released</div>
-            <div className="w-[130px] text-center">Collectors</div>
-            <div className="w-[70px] text-center">Value</div>
+            <div className="w-[200px] text-center">Platform</div>
             <div className="w-[60px]"></div>
-            <div className="w-[130px] text-center">Collect</div>
+            <div className="w-[130px] text-center">
+              {
+                //Collect
+              }
+            </div>
           </div>
           {favoriteTracks &&
             favoriteTracks.map((track) => (
@@ -94,27 +97,23 @@ export default function Favorites() {
                   <div className="w-[130px] flex items-center justify-center h-[70px]">
                     {timeAgo.format(new Date(track.createdAtTime || 0))}
                   </div>
-                  <div className="w-[130px] flex items-center justify-center h-[70px]">
-                    0
-                  </div>
-                  <div className="w-[70px] flex items-center justify-center h-[70px]">
+                  <div className="w-[200px] flex items-center justify-center h-[70px]">
                     <div className="flex items-center space-x-1">
-                      <div className="font-sans pb-[2px]">Ξ</div>
-                      <div>0</div>
+                      <div className="font-sans pb-[2px] capitalize">{track.platformId}</div>
                     </div>
                   </div>
                   <div className="w-[60px] flex items-center justify-center h-[70px]">
                     <div className="cursor-pointer hover:scale-125 transition-all p-2 hover:bg-slate-800/40 rounded-md select-none">
                       {favorites.includes(track.id) ? (
                         <img
-                          src="/icons/HeartFilled.png"
+                          src="/icons/SmallHeartFilled.svg"
                           alt="Heart Filled"
                           className="w-[14px]"
                           onClick={() => removeFavorite(track.id)}
                         />
                       ) : (
                         <img
-                          src="/icons/HeartEmpty.png"
+                          src="/icons/SmallHeart.svg"
                           alt="Heart Empty"
                           className="w-[14px]"
                           onClick={() => addFavorite(track.id)}
@@ -123,8 +122,15 @@ export default function Favorites() {
                     </div>
                   </div>
                   <div className="w-[130px] flex items-center justify-center h-[70px]">
-                    <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 pt-[2px] select-none">
+                    {/*<div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 pt-[2px] select-none">
                       collect
+                    </div>*/}
+                    <div className="cursor-pointer hover:scale-125 transition-all p-2 hover:bg-slate-800/40 rounded-md select-none">
+                      <img
+                        alt="Small Share"
+                        src="/icons/SmallShare.svg"
+                        className="w-[14px]"
+                      />
                     </div>
                   </div>
                   <div className="w-[60px] flex items-center justify-center h-[70px]">
