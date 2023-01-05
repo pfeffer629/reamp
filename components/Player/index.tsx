@@ -37,6 +37,32 @@ export default function Player() {
   const { toggleModal } = useContext(PlaylistContext);
   const { address } = useAccount();
 
+  useEffect(() => {
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault()
+        setIsPlaying(!isPlaying)
+      }
+    });
+    if ('mediaSession' in navigator) {
+
+      navigator.mediaSession.setActionHandler('play', () => { 
+        console.log("play")
+        setIsPlaying(true) 
+      });
+      navigator.mediaSession.setActionHandler('pause', () => { 
+        console.log("pausw")
+        setIsPlaying(false) 
+      });
+      navigator.mediaSession.setActionHandler('previoustrack', () => { 
+        handleBack()
+      });
+      navigator.mediaSession.setActionHandler('nexttrack', () => { 
+        handleNext()
+      });
+    }
+  }, [isPlaying, currentTrack]);
+
   const convertToMinutes = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds - minutes * 60;
@@ -76,6 +102,7 @@ export default function Player() {
   };
 
   const handleBack = () => {
+    console.log("back")
     if (elapsed > 2) {
       seekTo(0);
       return;
@@ -101,6 +128,7 @@ export default function Player() {
   };
 
   const handleNext = () => {
+    console.log("next")
     if (currentTrackIndex === tracklist.length - 1) {
       setCurrentTrack(tracklist[0]);
       setCurrentTrackIndex(0);
