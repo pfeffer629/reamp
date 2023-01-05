@@ -45,20 +45,19 @@ export default function Player() {
       }
     });
     if ('mediaSession' in navigator) {
-
       navigator.mediaSession.setActionHandler('play', () => { 
-        console.log("play")
         setIsPlaying(true) 
       });
       navigator.mediaSession.setActionHandler('pause', () => { 
-        console.log("pausw")
         setIsPlaying(false) 
       });
       navigator.mediaSession.setActionHandler('previoustrack', () => { 
         handleBack()
+        setIsPlaying(true) 
       });
       navigator.mediaSession.setActionHandler('nexttrack', () => { 
         handleNext()
+        setIsPlaying(true)
       });
     }
   }, [isPlaying, currentTrack]);
@@ -128,7 +127,6 @@ export default function Player() {
   };
 
   const handleNext = () => {
-    console.log("next")
     if (currentTrackIndex === tracklist.length - 1) {
       setCurrentTrack(tracklist[0]);
       setCurrentTrackIndex(0);
