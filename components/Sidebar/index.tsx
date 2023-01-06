@@ -75,7 +75,7 @@ export default function Sidebar() {
               <Link className="relative group transition-all" href="/" as="/">
                 <div className="pb-[4px] h-8">
                   <img
-                    src="/images/reamp-logo-white.png"
+                    src="/images/Reamp_WHT.svg"
                     alt="reamp logo"
                     className="w-[115px] group-hover:opacity-0 transition-all"
                   />
