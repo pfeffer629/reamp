@@ -16,11 +16,11 @@ export default function Sidebar() {
         res.json()
       );
       if (location) {
-        cityAndCountry = `${location.city}, ${location.country_name}`;
+        cityAndCountry = `${location.city}, ${location.region_code}`;
         setLocation(cityAndCountry);
       }
     };
-
+  
     const fetchAndSetDateTime = () => {
       const date = new Date();
       setCurrentDate(
@@ -32,14 +32,8 @@ export default function Sidebar() {
           timeZone: "America/New_York",
         })
       );
-      const amOrPm = date.getHours() >= 12 ? "PM" : "AM";
-      const curTime =
-        date
-          .toLocaleTimeString("en-US") // now i want to remove the seconds from the time
-          .split(":")
-          .slice(0, 2)
-          .join(":") + ` ${amOrPm}`;
-
+      // remove the AM/PM indicator from the time string
+      const curTime = date.toLocaleTimeString("en-US");
       setCurrentTime(curTime);
     };
     const interval = setInterval(() => {
@@ -47,9 +41,10 @@ export default function Sidebar() {
     }, 1000);
     fetchAndSetDateTime();
     fetchLocation();
-
+  
     return () => clearInterval(interval);
   }, []);
+  
 
   // save location on localStorage on each change:
   useEffect(() => {
