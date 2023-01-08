@@ -37,8 +37,8 @@ export default function Live() {
 
   return (
     <div>
-      <div className="py-4 flex flex-col space-y-4">
-        <div className="flex items-center space-x-2 py-1">
+      <div className="flex flex-col space-y-4">
+        <div className="flex items-center space-x-2">
           <div>Ecosystem Highlights</div>
           <div className="p-2 mb-1 text-sm cursor-pointer transition-all hover:bg-gray-700/40 bg-transparent rounded-md">
             <svg
@@ -54,21 +54,21 @@ export default function Live() {
             </svg>
           </div>
         </div>
-        <div className="flex flex-wrap space-x-2 py-1">
-          <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
-            <div className="">760</div>
+        <div className="flex flex-wrap space-x-3">
+            <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
+            <div className="">771</div>
             <div className="text-searchBarText">Artists</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
-            <div className="">10,336</div>
+            <div className="">10,513</div>
             <div className="text-searchBarText">Collectors</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
-            <div className="">47,178</div>
+            <div className="">48,695</div>
             <div className="text-searchBarText">Tracks</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
-            <div className="">$12,486,282</div>
+            <div className="">$12,539,724</div>
             <div className="text-searchBarText">Total Volume (USD)</div>
           </div>
         </div>
