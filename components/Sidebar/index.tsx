@@ -81,13 +81,13 @@ export default function Sidebar() {
                   />
                 </div>
               </Link>
-              <div className="text-[13px] pt-2 text-whiteDisabled h-14">
+              <div className="text-[13px] pt-2 text-whiteDisabled h-10">
                 {currentTime} • {location}
                 <br />
                 {currentDate}
               </div>
             </div>
-            <div className="my-[22px] border-b border-darkLine w-full h-1"></div>
+            <div className="my-[18px] border-b border-darkLine w-full h-1"></div>
             <div className="flex items-center w-full space-x-[11px] text-whiteDisabled pb-[8px]">
               <div className="h-[13px] mb-[2px] w-[2px] rounded-md bg-whiteDisabled"></div>
               <div>Discover</div>
