@@ -85,6 +85,7 @@ export default function Sidebar() {
               {currentDate}
               <br />
               {location} • {currentTime}
+
               </div>
             </div>
             <div className="my-[18px] border-b border-darkLine w-full h-1"></div>
