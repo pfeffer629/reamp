@@ -80,7 +80,7 @@ export default function Sidebar() {
                     className="w-[115px] group-hover:opacity-0 transition-all"
                   />
                   <img
-                    src="/images/reamp-logo-blue.png"
+                    src="/images/Reamp_aqua.svg"
                     alt="reamp logo"
                     className="w-[115px] absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-all"
                   />
