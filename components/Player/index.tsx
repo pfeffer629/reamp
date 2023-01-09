@@ -17,7 +17,7 @@ const AudioPlayer = dynamic(() => import("./AudioPlayer"), { ssr: false });
 export default function Player() {
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(0.3);
+  const [volume, setVolume] = useState(0.8);
   const [repeat, setRepeat] = useState(false);
   const {
     currentTrack,

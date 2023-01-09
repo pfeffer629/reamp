@@ -6,14 +6,14 @@ export default function Header() {
   const router = useRouter();
   const currentRoute = router.pathname;
 
-  return (
+  return ( /*search bar */
     <div className="mx-auto py-4">
       <div className="flex items-center justify-between">
         <div className="relative text-searchBarText">
           <input
             type="text"
             className="px-[14px] pl-[34px] rounded-lg w-[380px] h-[41px] pt-[4px] flex items-center bg-blackSecondary relative outline-none ring-0 text-[12px]"
-            placeholder="Search web3 artists, collectors, and curators"
+            placeholder="Search web3 music, artists, and collectors"
           />
           <div className="absolute pl-[14px] top-0 pt-[4px] flex items-center justify-center h-[41px]">
             •
@@ -26,16 +26,16 @@ export default function Header() {
         </div>
       </div>
       {(currentRoute === "/" || currentRoute === "/live") && (
-        <div className="relative mt-4">
-          <div className="flex items-center space-x-8 z-10">
+        <div className="relative mt-6 text-sm"> 
+          <div className="flex items-center space-x-14 z-10">
             <Link
               className={`${
                 currentRoute === "/" ? "text-selectedTab" : "text-whiteDisabled"
               } cursor-pointer relative z-10 pb-2`}
               href="/"
-            >
-              ✿ Freshly Minted
+            >✿ Freshly Minted
             </Link>
+
             <Link
               className={`${
                 currentRoute === "/live"
@@ -47,10 +47,12 @@ export default function Header() {
               ✻ Live Activity
             </Link>
           </div>
+
+            {/* white header border*/}
           <div className="absolute bottom-0 w-full h-[2px] bg-whiteDisabled z-0"></div>
           <div
             className={`${
-              currentRoute === "/" ? "left-0" : "left-[150px]"
+              currentRoute === "/" ? "left-0" : "left-[144px]"
             } bottom-0 w-10 h-[2px] bg-white z-10 opacity-100
              transform transition-all duration-500 absolute w-[124px]
              `}
@@ -60,8 +62,8 @@ export default function Header() {
       {(currentRoute === "/favorites" ||
         currentRoute === "/playlists" ||
         currentRoute === "/collection") && (
-        <div className="relative mt-4">
-          <div className="flex items-center space-x-8 z-10">
+        <div className="relative mt-6 text-sm">
+          <div className="flex items-center space-x-14 z-10">
             <Link
               className={`${
                 currentRoute === "/favorites"
@@ -75,7 +77,7 @@ export default function Header() {
                 alt="Small Heart Filled"
                 className="inline-block"
               />
-              &nbsp;My Favorites
+              &nbsp; My Favorites
             </Link>
             <Link
               className={`${

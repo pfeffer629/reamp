@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <div className="w-[895px] mx-auto">
-      <div className="py-4 flex flex-col space-y-4 min-h-[calc(100vh-160px)]">
+      <div className="flex flex-col space-y-4 min-h-[calc(100vh-160px)]">
         <div className="w-full">
           <div className="flex items-center">
             <div className="w-[46px]"></div>
