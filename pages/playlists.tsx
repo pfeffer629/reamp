@@ -54,7 +54,6 @@ export default function Playlists() {
             >
               <div
                 className="relative inline"
-                onClick={() => handleSelectPlaylist(playlist.tracks)}
               >
                 <img
                   src={playlist.cover}
@@ -65,6 +64,7 @@ export default function Playlists() {
                   className="absolute top-0 bottom-0 left-0 right-0 m-auto"
                   height={25}
                   width={20}
+                  onClick={() => handleSelectPlaylist(playlist.tracks)}
                 />
               </div>
               <div className="pt-2">

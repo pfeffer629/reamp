@@ -1,29 +1,65 @@
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import { ITrack } from "@spinamp/spinamp-sdk";
-import TrackContext from "../../contexts/TrackContext";
-import FavoritesContext from "../../contexts/FavoritesContext";
+import PlaylistContext from "../../contexts/PlaylistContext";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 TimeAgo.addDefaultLocale(en);
 
 export default function Playlist() {
+  const [playlist, setPlaylist] = useState({});
+  const router = useRouter();
+  const { id } = router.query
   const timeAgo = new TimeAgo("en-US");
-  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying } =
-    useContext(TrackContext);
-  const { favorites, favoriteTracks, addFavorite, removeFavorite } =
-    useContext(FavoritesContext);
-
-  const handleSelectTrack = (track: ITrack) => {
-    setCurrentTrack(track);
-    setCurrentTrackIndex(favoriteTracks.indexOf(track));
-    setIsPlaying(true);
-  };
+  const { userPlaylists } = useContext(PlaylistContext);
+  const { address } = useAccount();
+  const { data: ensAvatar } = useEnsAvatar({
+    address: "0x4449b8e2B2068D71EA27735115aa11B4870cCA38",
+  });
+  const { data: ensName } = useEnsName({ address });
+  useEffect(() => {
+    setPlaylist(userPlaylists.filter(playlist => playlist.id === id))
+  }, [userPlaylists]);
 
   return (
     <div className="w-[895px] mx-auto">
+      <div
+        key={playlist.id}
+        className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
+      >
+        <div
+          className="relative inline"
+        >
+          <img
+            src={playlist.cover}
+            alt="playlist"
+            className="w-[204px] h-[210px] rounded-[10px]"
+          />
+        </div>
+        <div className="pt-2">
+          <div className="text-whiteDisabled text-[11px]">
+            {/*PLAYLIST • {playlist.tracks.length} TRACKS*/}
+          </div>
+        </div>
+        <div className="text-white text-[20px]">{playlist.name}</div>
+        <div className="flex flex-row items-center space-x-[9px]">
+          <img
+            src={ensAvatar || ""}
+            alt="user"
+            className="w-[21px] aspect-square rounded-[10px]"
+          />
+          &nbsp;{ensName}
+        </div>
+        <div className="pt-2">
+          <div className="text-white text-[15px]">
+            {timeAgo.format(new Date(playlist.created_at || 0))}
+          </div>
+        </div>
+      </div>
       <div className="py-4 flex flex-col space-y-4 min-h-[calc(100vh-160px)]">
         <div className="w-full">
           <div className="flex items-center">
@@ -38,8 +74,8 @@ export default function Playlist() {
             <div className="w-[60px]"></div>
             <div className="w-[130px] text-center">Collect</div>
           </div>
-          {favoriteTracks &&
-            favoriteTracks.map((track) => (
+          {playlist.tracks &&
+            playlist.tracks.map((track) => (
               <div className="flex flex-col space-y-4" key={track.id}>
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
                   <div className="w-[46px]">
