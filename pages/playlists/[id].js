@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
-import { ITrack } from "@spinamp/spinamp-sdk";
 import PlaylistContext from "../../contexts/PlaylistContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -92,7 +91,6 @@ export default function Playlist() {
                           alt="Play Button"
                           src="/icons/PlayButton.png"
                           className="w-[14px] translate-x-[1px]"
-                          onClick={() => handleSelectTrack(track)}
                         />
                       </div>
                     </div>
@@ -133,21 +131,7 @@ export default function Playlist() {
                   </div>
                   <div className="w-[60px] flex items-center justify-center h-[70px]">
                     <div className="cursor-pointer hover:scale-125 transition-all p-2 hover:bg-slate-800/40 rounded-md select-none">
-                      {favorites.includes(track.id) ? (
-                        <img
-                          src="/icons/HeartFilled.png"
-                          alt="Heart Filled"
-                          className="w-[14px]"
-                          onClick={() => removeFavorite(track.id)}
-                        />
-                      ) : (
-                        <img
-                          src="/icons/HeartEmpty.png"
-                          alt="Heart Empty"
-                          className="w-[14px]"
-                          onClick={() => addFavorite(track.id)}
-                        />
-                      )}
+
                     </div>
                   </div>
                   <div className="w-[130px] flex items-center justify-center h-[70px]">

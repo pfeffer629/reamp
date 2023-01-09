@@ -81,7 +81,7 @@ export default function Sidebar() {
                   />
                 </div>
               </Link>
-              <div className="text-[13px] pt-2 text-whiteDisabled h-10">
+              <div className="text-[13px] pt-2 text-whiteDisabled h-10 whitespace-nowrap">
               {currentDate}
               <br />
               {location} • {currentTime}
