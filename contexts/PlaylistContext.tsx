@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { supabase } from "../utils/supabase";
 import { useAccount } from "wagmi";
-import { ITrack } from "@spinamp/spinamp-sdk";
+import { ITrack, fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import { useRouter } from "next/router";
 
 interface IPlaylistContextData {
@@ -11,6 +11,7 @@ interface IPlaylistContextData {
   showModal: boolean,
   createPlaylist: any,
   addToPlaylist: any,
+  selectedPlaylist: any,
 }
 
 export const PlaylistContext = createContext<IPlaylistContextData>(
@@ -22,9 +23,17 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
   const [trackToAdd, setTrackToAdd] = useState({} as ITrack);
   const [userPlaylists, setUserPlaylists] = useState([]);
   const [recentPlaylists, setRecentPlaylists] = useState([]);
+  const [selectedPlaylist, setSelectedPlaylist] = useState({});
   const { address } = useAccount();
   const router = useRouter();
   const currentRoute = router.pathname;
+  const { id } = router.query
+
+  useEffect(() => {
+    if (id && currentRoute === "/playlists/[id]") {
+      getPlaylist(id as string);
+    }
+  }, [id, currentRoute]);
 
 	useEffect(() => {
     if (address && (currentRoute === "/playlists" || currentRoute === "/")) {
@@ -56,6 +65,26 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
       setRecentPlaylists(playlists as []);
     } catch (error) {
       throw(error);
+    }
+  }
+
+  async function getPlaylist(id: string) {
+    if (id) {
+      try {
+        const { data: playlist, error } = await supabase
+          .from("playlists")
+          .select("*")
+          .eq("id", id)
+          .single()
+
+        fetchTracksByIds(playlist?.tracks).then((tracks) => {
+          setSelectedPlaylist({cover: playlist.cover, tracks: tracks});
+        });
+      } catch (error) {
+        throw(error);
+      }
+    } else {
+      return
     }
   }
 
@@ -115,6 +144,7 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
           userPlaylists,
           recentPlaylists,
           addToPlaylist,
+          selectedPlaylist,
         } as IPlaylistContextData
       }
     >

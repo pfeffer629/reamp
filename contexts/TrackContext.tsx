@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { ITrack, fetchTracksByIds } from "@spinamp/spinamp-sdk";
+import { ITrack } from "@spinamp/spinamp-sdk";
 import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 import shuffleArray from "../utils/shuffleArray";
 

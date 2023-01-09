@@ -5,6 +5,7 @@ import PlayButton from "../components/Icons/PlayButton";
 import TimeAgo from "javascript-time-ago";
 import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import shuffleArray from "../utils/shuffleArray";
+import Link from "next/link";
 
 export default function Live() {
   const { recentPlaylists } = useContext(PlaylistContext);
@@ -18,7 +19,9 @@ export default function Live() {
   } = useContext(TrackContext);
   const timeAgo = new TimeAgo("en-US");
 
-  const handleSelectPlaylist = (playlistTracks: string[]) => {
+  const handleSelectPlaylist = (e: React.MouseEvent<SVGSVGElement>, playlistTracks: string[]) => {
+    e.preventDefault();
+    e.stopPropagation();
     fetchTracksByIds(playlistTracks).then((tracks) => {
       if (shuffle) {
         setTracklist(tracks);
@@ -56,19 +59,19 @@ export default function Live() {
         </div>
         <div className="flex flex-wrap space-x-3">
             <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
-            <div className="">771</div>
+            <div className="">770</div>
             <div className="text-searchBarText">Artists</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
-            <div className="">10,513</div>
+            <div className="">10,544</div>
             <div className="text-searchBarText">Collectors</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
-            <div className="">48,695</div>
+            <div className="">48,817</div>
             <div className="text-searchBarText">Tracks</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
-            <div className="">$12,539,724</div>
+            <div className="">$12,560,833</div>
             <div className="text-searchBarText">Total Volume (USD)</div>
           </div>
         </div>
@@ -88,48 +91,50 @@ export default function Live() {
             </svg>
           </div>
         </div>
-        <div className="py-4 flex flex-wrap space-x-2">
+        <div className="py-4 flex flex-wrap">
           {recentPlaylists.length > 0 &&
             recentPlaylists.map((playlist) => (
-              <div
-                key={playlist.id}
-                className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
-              >
+              <Link href={`/playlists/${playlist.id}`} as={`/playlists/${playlist.id}`}>
                 <div
-                  className="relative inline"
+                  key={playlist.id}
+                  className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
                 >
-                  <img
-                    src={playlist.cover}
-                    alt="playlist"
-                    className="w-[204px] h-[210px] rounded-[10px]"
-                  />
-                  <PlayButton
-                    className="absolute top-0 bottom-0 left-0 right-0 m-auto"
-                    height={25}
-                    width={20}
-                    onClick={() => handleSelectPlaylist(playlist.tracks)}
-                  />
-                </div>
-                <div className="pt-2">
-                  <div className="text-whiteDisabled text-[11px]">
-                    PLAYLIST • {playlist.tracks.length} TRACKS
+                  <div
+                    className="relative inline"
+                  >
+                    <img
+                      src={playlist.cover}
+                      alt="playlist"
+                      className="w-[204px] h-[210px] rounded-[10px]"
+                    />
+                    <PlayButton
+                      className="absolute top-0 bottom-0 left-0 right-0 m-auto"
+                      height={25}
+                      width={20}
+                      onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
+                    />
+                  </div>
+                  <div className="pt-2">
+                    <div className="text-whiteDisabled text-[11px]">
+                      PLAYLIST • {playlist.tracks.length} TRACKS
+                    </div>
+                  </div>
+                  <div className="text-white text-[20px]">{playlist.name}</div>
+                  <div className="flex flex-row items-center space-x-[9px]">
+                    <img
+                      src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/users/user1.png"
+                      alt="user"
+                      className="w-[21px] aspect-square"
+                    />
+                    &nbsp;Placeholder name
+                  </div>
+                  <div className="pt-2">
+                    <div className="text-whiteDisabled text-[15px]">
+                      {timeAgo.format(new Date(playlist.created_at || 0))}
+                    </div>
                   </div>
                 </div>
-                <div className="text-white text-[20px]">{playlist.name}</div>
-                <div className="flex flex-row items-center space-x-[9px]">
-                  <img
-                    src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/users/user1.png"
-                    alt="user"
-                    className="w-[21px] aspect-square"
-                  />
-                  &nbsp;Placeholder name
-                </div>
-                <div className="pt-2">
-                  <div className="text-whiteDisabled text-[15px]">
-                    {timeAgo.format(new Date(playlist.created_at || 0))}
-                  </div>
-                </div>
-              </div>
+              </Link>
             ))}
         </div>
       </div>
