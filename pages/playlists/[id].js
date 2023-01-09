@@ -22,30 +22,36 @@ export default function Playlist() {
   });
   const { data: ensName } = useEnsName({ address });
   useEffect(() => {
-    setPlaylist(userPlaylists.filter(playlist => playlist.id === id))
-  }, [userPlaylists]);
+    if (id) {
+      setPlaylist(userPlaylists.filter(playlist => playlist.id === id))
+    }
+  }, [userPlaylists, id]);
+
+  if (Object.keys(playlist)) {
+    return (<div></div>)
+  }
 
   return (
     <div className="w-[895px] mx-auto">
       <div
-        key={playlist.id}
+        key={playlist?.id}
         className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
       >
         <div
           className="relative inline"
         >
           <img
-            src={playlist.cover}
+            src={playlist?.cover}
             alt="playlist"
             className="w-[204px] h-[210px] rounded-[10px]"
           />
         </div>
         <div className="pt-2">
           <div className="text-whiteDisabled text-[11px]">
-            {/*PLAYLIST • {playlist.tracks.length} TRACKS*/}
+            {/*PLAYLIST • {playlist?.tracks.length} TRACKS*/}
           </div>
         </div>
-        <div className="text-white text-[20px]">{playlist.name}</div>
+        <div className="text-white text-[20px]">{playlist?.name}</div>
         <div className="flex flex-row items-center space-x-[9px]">
           <img
             src={ensAvatar || ""}
@@ -56,7 +62,7 @@ export default function Playlist() {
         </div>
         <div className="pt-2">
           <div className="text-white text-[15px]">
-            {timeAgo.format(new Date(playlist.created_at || 0))}
+            {timeAgo.format(new Date(playlist?.created_at || 0))}
           </div>
         </div>
       </div>
@@ -74,7 +80,7 @@ export default function Playlist() {
             <div className="w-[60px]"></div>
             <div className="w-[130px] text-center">Collect</div>
           </div>
-          {playlist.tracks &&
+          {playlist?.tracks &&
             playlist.tracks.map((track) => (
               <div className="flex flex-col space-y-4" key={track.id}>
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
