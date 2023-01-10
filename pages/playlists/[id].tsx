@@ -11,7 +11,7 @@ TimeAgo.addDefaultLocale(en);
 export default function Playlist() {
   const timeAgo = new TimeAgo("en-US");
   const { selectedPlaylist } = useContext(PlaylistContext);
-  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
+  const { currentTrack, setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
     useContext(TrackContext);
 
   const handleSelectTrack = (track: ITrack) => {

@@ -13,6 +13,7 @@ TimeAgo.addDefaultLocale(en);
 export default function Favorites() {
   const timeAgo = new TimeAgo("en-US");
   const {
+    currentTrack,
     setCurrentTrack,
     setCurrentTrackIndex,
     setIsPlaying,
