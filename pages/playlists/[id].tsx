@@ -27,9 +27,7 @@ export default function Playlist() {
         key={selectedPlaylist?.id}
         className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
       >
-        <div
-          className="relative inline"
-        >
+        <div className="relative inline">
           <img
             src={selectedPlaylist?.cover}
             alt="playlist"
@@ -57,15 +55,51 @@ export default function Playlist() {
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
                   <div className="w-[46px]">
                     <div className="flex items-center h-full justify-center">
-                      <div className="cursor-pointer hover:bg-gray-800/80 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px]">
-                        <img
-                          loading="lazy"
-                          alt="Play Button"
-                          src="/icons/PlayButton.png"
-                          className="w-[14px] translate-x-[1px]"
-                          onClick={() => handleSelectTrack(track)}
-                        />
-                      </div>
+                      {currentTrack.id === track.id && isPlaying ? (
+                        <div className="flex justify-center items-center w-[38px] h-[38px]">
+                          <svg
+                            fill="#fff"
+                            id="loading-bar"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="22"
+                            viewBox="0 0 16 22"
+                          >
+                            <g>
+                              <rect
+                                className="loading-bar"
+                                width="4"
+                                height="20"
+                                rx="5"
+                              />
+                              <rect
+                                className="loading-bar-middle"
+                                width="4"
+                                height="20"
+                                rx="5"
+                                x="6"
+                              />
+                              <rect
+                                className="loading-bar"
+                                width="4"
+                                height="20"
+                                rx="5"
+                                x="12"
+                              />
+                            </g>
+                          </svg>
+                        </div>
+                      ) : (
+                        <div className="cursor-pointer hover:bg-gray-800/80 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px]">
+                          <img
+                            loading="lazy"
+                            alt="Play Button"
+                            src="/icons/PlayButton.png"
+                            className="w-[14px] translate-x-[1px]"
+                            onClick={() => handleSelectTrack(track)}
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="p-[9px]">
@@ -103,9 +137,7 @@ export default function Playlist() {
                     </div>
                   </div>
                   <div className="w-[60px] flex items-center justify-center h-[70px]">
-                    <div className="cursor-pointer hover:scale-125 transition-all p-2 hover:bg-slate-800/40 rounded-md select-none">
-
-                    </div>
+                    <div className="cursor-pointer hover:scale-125 transition-all p-2 hover:bg-slate-800/40 rounded-md select-none"></div>
                   </div>
                   <div className="w-[130px] flex items-center justify-center h-[70px]">
                     <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 pt-[2px] select-none">

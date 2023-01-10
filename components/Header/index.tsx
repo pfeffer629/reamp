@@ -6,7 +6,8 @@ export default function Header() {
   const router = useRouter();
   const currentRoute = router.pathname;
 
-  return ( /*search bar */
+  return (
+    /*search bar */
     <div className="mx-auto py-4">
       <div className="flex items-center justify-between">
         <div className="relative text-searchBarText">
@@ -26,14 +27,15 @@ export default function Header() {
         </div>
       </div>
       {(currentRoute === "/" || currentRoute === "/live") && (
-        <div className="relative mt-6 text-sm"> 
+        <div className="relative mt-6 text-sm">
           <div className="flex items-center space-x-14 z-10">
             <Link
               className={`${
                 currentRoute === "/" ? "text-selectedTab" : "text-whiteDisabled"
               } cursor-pointer relative z-10 pb-2`}
               href="/"
-            >✿ Freshly Minted
+            >
+              ✿ Freshly Minted
             </Link>
 
             <Link
@@ -48,7 +50,7 @@ export default function Header() {
             </Link>
           </div>
 
-            {/* white header border*/}
+          {/* white header border*/}
           <div className="absolute bottom-0 w-full h-[2px] bg-whiteDisabled z-0"></div>
           <div
             className={`${

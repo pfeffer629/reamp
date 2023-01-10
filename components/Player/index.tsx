@@ -38,26 +38,26 @@ export default function Player() {
   const { address } = useAccount();
 
   useEffect(() => {
-    window.addEventListener('keydown', (e) => {
-      if (e.code === 'Space') {
-        e.preventDefault()
-        setIsPlaying(!isPlaying)
+    window.addEventListener("keydown", (e) => {
+      if (e.code === "Space") {
+        e.preventDefault();
+        setIsPlaying(!isPlaying);
       }
     });
-    if ('mediaSession' in navigator) {
-      navigator.mediaSession.setActionHandler('play', () => { 
-        setIsPlaying(true) 
+    if ("mediaSession" in navigator) {
+      navigator.mediaSession.setActionHandler("play", () => {
+        setIsPlaying(true);
       });
-      navigator.mediaSession.setActionHandler('pause', () => { 
-        setIsPlaying(false) 
+      navigator.mediaSession.setActionHandler("pause", () => {
+        setIsPlaying(false);
       });
-      navigator.mediaSession.setActionHandler('previoustrack', () => { 
-        handleBack()
-        setIsPlaying(true) 
+      navigator.mediaSession.setActionHandler("previoustrack", () => {
+        handleBack();
+        setIsPlaying(true);
       });
-      navigator.mediaSession.setActionHandler('nexttrack', () => { 
-        handleNext()
-        setIsPlaying(true)
+      navigator.mediaSession.setActionHandler("nexttrack", () => {
+        handleNext();
+        setIsPlaying(true);
       });
     }
   }, [isPlaying, currentTrack]);
@@ -101,7 +101,7 @@ export default function Player() {
   };
 
   const handleBack = () => {
-    console.log("back")
+    console.log("back");
     if (elapsed > 2) {
       seekTo(0);
       return;

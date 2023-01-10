@@ -20,7 +20,7 @@ export default function Sidebar() {
         setLocation(cityAndCountry);
       }
     };
-  
+
     const fetchAndSetDateTime = () => {
       const date = new Date();
       setCurrentDate(
@@ -41,10 +41,9 @@ export default function Sidebar() {
     }, 1000);
     fetchAndSetDateTime();
     fetchLocation();
-  
+
     return () => clearInterval(interval);
   }, []);
-  
 
   // save location on localStorage on each change:
   useEffect(() => {
@@ -82,10 +81,9 @@ export default function Sidebar() {
                 </div>
               </Link>
               <div className="text-[13px] pt-2 text-whiteDisabled h-10 whitespace-nowrap">
-              {currentDate}
-              <br />
-              {location} • {currentTime}
-
+                {currentDate}
+                <br />
+                {location} • {currentTime}
               </div>
             </div>
             <div className="my-[18px] border-b border-darkLine w-full h-1"></div>

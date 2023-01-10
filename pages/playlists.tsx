@@ -27,7 +27,10 @@ export default function Playlists() {
   const { data: ensName } = useEnsName({ address });
   const timeAgo = new TimeAgo("en-US");
 
-  const handleSelectPlaylist = (e: React.MouseEvent<SVGSVGElement>, playlistTracks: string[]) => {
+  const handleSelectPlaylist = (
+    e: React.MouseEvent<SVGSVGElement>,
+    playlistTracks: string[]
+  ) => {
     e.preventDefault();
     e.stopPropagation();
     fetchTracksByIds(playlistTracks).then((tracks) => {
@@ -51,14 +54,15 @@ export default function Playlists() {
       <div className="py-4 flex flex-wrap">
         {userPlaylists.length > 0 &&
           userPlaylists.map((playlist) => (
-            <Link href={`/playlists/${playlist.id}`} as={`/playlists/${playlist.id}`}>
+            <Link
+              href={`/playlists/${playlist.id}`}
+              as={`/playlists/${playlist.id}`}
+            >
               <div
                 key={playlist.id}
                 className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
               >
-                <div
-                  className="relative inline"
-                >
+                <div className="relative inline">
                   <img
                     src={playlist.cover}
                     alt="playlist"
