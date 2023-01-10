@@ -1561,3 +1561,27 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-webkit-slider-thumb:active {
   transform: scale(1);
 }
+
+@keyframes loading-bar-morph {
+  0% {
+    transform: scaleY(1)
+  }
+  25% {
+    transform: scaleY(0.3)
+  }
+  50% {
+    transform: scaleY(0.7)
+  }
+  75% {
+    transform: scaleY(0.15)
+  }
+}
+
+.loading-bar {
+  animation: loading-bar-morph 1s linear .1s infinite;
+  transform-origin: center;
+}
+.loading-bar-middle {
+  animation: loading-bar-morph 1s linear .2s infinite;
+  transform-origin: center;
+}

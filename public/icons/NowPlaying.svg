@@ -1,0 +1,7 @@
+<svg fill="#fff" id="loading-bar" xmlns="http://www.w3.org/2000/svg" width="30" height="22" viewBox="0 0 36 22">
+  <g>
+    <rect id="loading-bar-left" width="6" height="20" rx="5" />
+    <rect id="loading-bar-middle" width="6" height="20" rx="5" x="10"/>
+    <rect id="loading-bar-right" width="6" height="20" rx="5" x="20"/>
+  </g>
+</svg>

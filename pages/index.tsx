@@ -14,7 +14,7 @@ TimeAgo.addDefaultLocale(en);
 export default function Home() {
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
   const timeAgo = new TimeAgo("en-US");
-  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
+  const { isPlaying, currentTrack, setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
     useContext(TrackContext);
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
@@ -56,15 +56,27 @@ export default function Home() {
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
                   <div className="w-[46px]">
                     <div className="flex items-center h-full justify-center">
-                      <div className="cursor-pointer hover:bg-gray-800/80 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px]">
-                        <img
-                          loading="lazy"
-                          alt="Play Button"
-                          src="/icons/PlayButton.png"
-                          className="w-[14px] translate-x-[1px]"
-                          onClick={() => handleSelectTrack(track)}
-                        />
-                      </div>
+                      {currentTrack.id === track.id && isPlaying ?
+                        <div className="flex justify-center items-center w-[38px] h-[38px]">
+                          <svg fill="#fff" id="loading-bar" xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22">
+                            <g>
+                              <rect className="loading-bar" width="4" height="20" rx="5" />
+                              <rect className="loading-bar-middle" width="4" height="20" rx="5" x="6"/>
+                              <rect className="loading-bar" width="4" height="20" rx="5" x="12"/>
+                            </g>
+                          </svg>
+                        </div>
+                        :
+                        <div className="cursor-pointer hover:bg-gray-800/80 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px]">
+                          <img
+                            loading="lazy"
+                            alt="Play Button"
+                            src="/icons/PlayButton.png"
+                            className="w-[14px] translate-x-[1px]"
+                            onClick={() => handleSelectTrack(track)}
+                          />
+                        </div>
+                      }
                     </div>
                   </div>
                   <div className="p-[9px]">
