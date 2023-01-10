@@ -16,6 +16,7 @@ export default function Favorites() {
     currentTrack,
     setCurrentTrack,
     setCurrentTrackIndex,
+    isPlaying,
     setIsPlaying,
     setTracklist,
     shuffle,
