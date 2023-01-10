@@ -75,20 +75,20 @@ export default function Home() {
                             <g>
                               <rect
                                 className="loading-bar"
-                                width="4"
+                                width="3"
                                 height="20"
                                 rx="5"
                               />
                               <rect
                                 className="loading-bar-middle"
-                                width="4"
+                                width="3"
                                 height="20"
                                 rx="5"
                                 x="6"
                               />
                               <rect
                                 className="loading-bar"
-                                width="4"
+                                width="3"
                                 height="20"
                                 rx="5"
                                 x="12"
