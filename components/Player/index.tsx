@@ -254,7 +254,7 @@ export default function Player() {
               />
             )}
             <img
-              src="/icons/AddToPlaylist.svg"
+              src="/icons/Playlist.svg"
               alt="Add To Playlist"
               className="cursor-pointer ml-[22px]"
               onClick={() => toggleModal(currentTrack)}
