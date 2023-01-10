@@ -48,6 +48,9 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
   }, [currentRoute]);
 
   const toggleModal = (currentTrack=null) => {
+    if (!address) {
+      return
+    }
   	setShowModal(!showModal)
   	if (currentTrack) {
   		setTrackToAdd(currentTrack)
