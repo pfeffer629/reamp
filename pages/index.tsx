@@ -101,7 +101,7 @@ export default function Home() {
                           <img
                             loading="lazy"
                             alt="Play Button"
-                            src="/icons/Play_controls.svg"
+                            src="/icons/Play_Controls.svg"
                             className="w-[14px] translate-x-[1px]"
                             onClick={() => handleSelectTrack(track)}
                           />
