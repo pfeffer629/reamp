@@ -1578,10 +1578,10 @@ input[type="range"]::-webkit-slider-thumb:active {
 }
 
 .loading-bar {
-  animation: loading-bar-morph 1s linear .1s infinite;
+  animation: loading-bar-morph 1.1s linear .1s infinite;
   transform-origin: center;
 }
 .loading-bar-middle {
-  animation: loading-bar-morph 1s linear .2s infinite;
+  animation: loading-bar-morph 1.1s linear .2s infinite;
   transform-origin: center;
 }
