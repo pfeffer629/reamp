@@ -189,42 +189,42 @@ export default function Player() {
               <img
                 src="/icons/ShuffleFilled.svg"
                 alt="Shuffle"
-                className="cursor-pointer mr-[22px]"
+                className="cursor-pointer mr-[18px]"
                 onClick={unshuffleTracks}
               />
             ) : (
               <img
                 src="/icons/Shuffle.svg"
                 alt="Shuffle"
-                className="cursor-pointer mr-[22px]"
+                className="cursor-pointer mr-[18px]"
                 onClick={shuffleTracks}
               />
             )}
             {favorites.includes(currentTrack.id) ? (
               <img
-                src="/icons/SmallHeartFilled.svg"
+                src="/icons/HeartFilled2.svg"
                 alt="Heart Filled"
                 className={`${
                   !address && "cursor-default"
-                } cursor-pointer mr-[18px]`}
+                } cursor-pointer mr-[16px]`}
                 onClick={() => removeFavorite(currentTrack.id)}
               />
             ) : (
               <img
-                src="/icons/SmallHeart.svg"
+                src="/icons/HeartControls.svg"
                 alt="Heart Empty"
                 className={`${
                   !address && "cursor-default"
-                } cursor-pointer mr-[18px]`}
+                } cursor-pointer mr-[16px]`}
                 onClick={() => addFavorite(currentTrack.id)}
               />
             )}
-            <span className="mr-[20px] text-xs">
+            <span className="mr-[18px] text-xs">
               {convertToMinutes(elapsed)}
             </span>
             <input
               type="range"
-              className="w-full h-[8px] border-radius-0 border-x-2 border-white-500"
+              className="w-full h-[8px] border-radius-0 border-white-500"
               step={1}
               min={0}
               max={duration || 0}
@@ -256,7 +256,7 @@ export default function Player() {
             <img
               src="/icons/Playlist.svg"
               alt="Add To Playlist"
-              className="cursor-pointer ml-[22px]"
+              className="cursor-pointer ml-[16px]"
               onClick={() => toggleModal(currentTrack)}
             />
           </div>
@@ -265,7 +265,12 @@ export default function Player() {
           <img
             alt="Small Share"
             src="/icons/SmallShare.svg"
-            className="mr-[16px] cursor-pointer"
+            className="mr-[12px] cursor-pointer"
+          />
+          <img
+            alt="Small Share"
+            src="/icons/Add_to_Queue.svg"
+            className="mr-[12px] cursor-pointer"
           />
           <img
             alt="Volume"
@@ -274,7 +279,7 @@ export default function Player() {
           />
           <input
             type="range"
-            className="w-24 h-full mx-[12px]"
+            className="w-16 h-full mx-[12px]"
             min={0}
             max={1}
             step={0.01}

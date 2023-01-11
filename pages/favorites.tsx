@@ -70,28 +70,28 @@ export default function Favorites() {
                             id="loading-bar"
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
-                            height="22"
+                            height="20"
                             viewBox="0 0 16 22"
                           >
                             <g>
                               <rect
                                 className="loading-bar"
-                                width="4"
-                                height="20"
-                                rx="5"
+                                width="2.6"
+                                height="19"
+                                rx="2"
                               />
                               <rect
                                 className="loading-bar-middle"
-                                width="4"
+                                width="2.6"
                                 height="20"
-                                rx="5"
+                                rx="2"
                                 x="6"
                               />
                               <rect
                                 className="loading-bar"
-                                width="4"
-                                height="20"
-                                rx="5"
+                                width="2.6"
+                                height="19"
+                                rx="2"
                                 x="12"
                               />
                             </g>
@@ -102,7 +102,7 @@ export default function Favorites() {
                           <img
                             loading="lazy"
                             alt="Play Button"
-                            src="/icons/PlayButton.png"
+                            src="/icons/Play_Controls.svg"
                             className="w-[14px] translate-x-[1px]"
                             onClick={() => handleSelectTrack(track)}
                           />
