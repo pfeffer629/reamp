@@ -24,7 +24,7 @@ export default function Artists() {
                   ? Object.values(data.artist.profiles)[0].avatarUrl?.replace("ipfs://", "https://ipfs.io/ipfs/")
                   : ""
               }
-              alt="playlist"
+              alt="artist avatar"
               className="w-[120px] h-[120px] rounded-[100px]"
             />
           </div>
