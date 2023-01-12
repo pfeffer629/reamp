@@ -104,6 +104,7 @@ export default function Live() {
               <Link
                 href={`/playlists/${playlist.id}`}
                 as={`/playlists/${playlist.id}`}
+                key={playlist.id}
               >
                 <div
                   key={playlist.id}
