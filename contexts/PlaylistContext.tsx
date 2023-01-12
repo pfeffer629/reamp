@@ -119,7 +119,8 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       throw(error);
     } finally {
-      setShowModal(false  )
+      setShowModal(false)
+      getPlaylists(address)
     }
   }
  
@@ -136,6 +137,7 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
       throw(error);
     } finally {  
       setShowModal(false)
+      getPlaylists(address)
     }
   }
 
