@@ -5,8 +5,9 @@ import { useArtistQuery } from "@spinamp/spinamp-hooks";
 
 export default function Artists() {
   const router = useRouter();
-  const { id } = router.query;
-  const { data, isLoading, isError } = useArtistQuery(id.join("/"));
+  const { slug } = router.query;
+  console.log(slug);
+  const { data, isLoading, isError } = useArtistQuery(slug);
 
   if (isLoading || isError) {
     return <div></div>;

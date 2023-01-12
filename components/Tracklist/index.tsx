@@ -124,7 +124,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                         <div className="truncate w-full">{track.title}</div>
                       </Link>
                       <div className="text-whiteDisabled truncate w-full">
-                        <Link href={`/artists/${track.artistId}`}>
+                        <Link href={`/artists/${track.artist.slug}`}>
                           {track.artist.name}
                         </Link>
                       </div>
