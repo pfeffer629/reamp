@@ -8,7 +8,5 @@ export default function Home() {
     return <div></div>;
   }
 
-  return (
-    <Tracklist tracks={tracks} />
-  );
+  return <Tracklist tracks={tracks} />;
 }

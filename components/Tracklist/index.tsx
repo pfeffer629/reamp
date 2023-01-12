@@ -14,7 +14,7 @@ type TracklistProps = {
   tracks: ITrack[];
 };
 
-export default function Tracklist({tracks}: TracklistProps) {
+export default function Tracklist({ tracks }: TracklistProps) {
   const timeAgo = new TimeAgo("en-US");
   const {
     isPlaying,
@@ -118,17 +118,18 @@ export default function Tracklist({tracks}: TracklistProps) {
                       />
                     </div>
                   </div>
-                  <Link
-                    className="flex items-center w-[191px]"
-                    href={`/tracks/${track.slug}`}
-                  >
+                  <div className="flex items-center w-[191px]">
                     <div className="flex flex-col justify-center w-full pr-2">
-                      <div className="truncate w-full">{track.title}</div>
+                      <Link href={`/tracks/${track.slug}`}>
+                        <div className="truncate w-full">{track.title}</div>
+                      </Link>
                       <div className="text-whiteDisabled truncate w-full">
-                        {track.artist.name}
+                        <Link href={`/artists/${track.artistId}`}>
+                          {track.artist.name}
+                        </Link>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                   <div className="w-[130px] flex items-center justify-center h-[70px]">
                     {timeAgo.format(new Date(track.createdAtTime || 0))}
                   </div>

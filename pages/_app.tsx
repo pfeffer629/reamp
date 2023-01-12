@@ -67,7 +67,9 @@ export default function App({ Component, pageProps }: AppProps) {
           >
             <FavoritesProvider>
               <PlaylistProvider>
-                <title>Reamp.xyz | Discover, listen, and collect Music NFTs</title>
+                <title>
+                  Reamp.xyz | Discover, listen, and collect Music NFTs
+                </title>
                 <div className="flex w-[1280px] font-Gilroy overflow-hidden">
                   <Sidebar />
                   <div className="mx-auto w-[895px]">

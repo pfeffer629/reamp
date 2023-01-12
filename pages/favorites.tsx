@@ -5,7 +5,5 @@ import FavoritesContext from "../contexts/FavoritesContext";
 export default function Favorites() {
   const { favoriteTracks } = useContext(FavoritesContext);
 
-  return (
-    <Tracklist tracks={favoriteTracks} />
-  );
+  return <Tracklist tracks={favoriteTracks} />;
 }
