@@ -64,7 +64,7 @@ export default function Live() {
           <img className="mr-[44px]" src="/icons/Zora.svg" />
           <img className="mr-[44px]" src="/icons/Nina.svg" />
         </div>
-        <div className="flex flex-wrap space-x-3">
+        <div className="flex flex-wrap space-x-3 pt-[16px] pb-[38px]">
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
             <div className="">770</div>
             <div className="text-searchBarText">Artists</div>
@@ -82,7 +82,7 @@ export default function Live() {
             <div className="text-searchBarText">Total Volume (USD)</div>
           </div>
         </div>
-        <div className="flex items-center space-x-2 py-1 mt-6">
+        <div className="flex items-center space-x-2 py-1">
           <div>Recent Playlists</div>
           <div className="p-2 mb-1 text-sm cursor-pointer transition-all hover:bg-gray-700/40 bg-transparent rounded-md">
             <svg
@@ -98,7 +98,7 @@ export default function Live() {
             </svg>
           </div>
         </div>
-        <div className="py-4 flex flex-wrap">
+        <div className="flex flex-wrap">
           {recentPlaylists.length > 0 &&
             recentPlaylists.map((playlist) => (
               <Link
