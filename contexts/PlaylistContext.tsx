@@ -7,11 +7,11 @@ import { useRouter } from "next/router";
 interface IPlaylistContextData {
   userPlaylists: any[];
   recentPlaylists: any[];
-  toggleModal: any,
-  showModal: boolean,
-  createPlaylist: any,
-  addToPlaylist: any,
-  selectedPlaylist: any,
+  toggleModal: any;
+  showModal: boolean;
+  createPlaylist: any;
+  addToPlaylist: any;
+  selectedPlaylist: any;
 }
 
 export const PlaylistContext = createContext<IPlaylistContextData>(
@@ -27,7 +27,7 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
   const { address } = useAccount();
   const router = useRouter();
   const currentRoute = router.pathname;
-  const { id } = router.query
+  const { id } = router.query;
 
   useEffect(() => {
     if (id && currentRoute === "/playlists/[id]") {
@@ -35,39 +35,39 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
     }
   }, [id, currentRoute]);
 
-	useEffect(() => {
+  useEffect(() => {
     if (address && (currentRoute === "/playlists" || currentRoute === "/")) {
       getPlaylists(address);
     }
   }, [address, currentRoute]);
- 
+
   useEffect(() => {
     if (currentRoute === "/live") {
       getRecentPlaylists();
     }
   }, [currentRoute]);
 
-  const toggleModal = (currentTrack=null) => {
+  const toggleModal = (currentTrack = null) => {
     if (!address) {
-      return
+      return;
     }
-  	setShowModal(!showModal)
-  	if (currentTrack) {
-  		setTrackToAdd(currentTrack)
-  	}
-  }
+    setShowModal(!showModal);
+    if (currentTrack) {
+      setTrackToAdd(currentTrack);
+    }
+  };
 
   async function getRecentPlaylists() {
     try {
       const { data: playlists, error } = await supabase
         .from("playlists")
         .select("*")
-        .order('created_at', { ascending: false })
-        .limit(40)
+        .order("created_at", { ascending: false })
+        .limit(40);
 
       setRecentPlaylists(playlists as []);
     } catch (error) {
-      throw(error);
+      throw error;
     }
   }
 
@@ -78,18 +78,18 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
           .from("playlists")
           .select("*")
           .eq("id", id)
-          .single()
+          .single();
 
         fetchTracksByIds(playlist?.tracks).then((tracks) => {
-          playlist.tracks = tracks
-          console.log(playlist)
+          playlist.tracks = tracks;
+          console.log(playlist);
           setSelectedPlaylist(playlist);
         });
       } catch (error) {
-        throw(error);
+        throw error;
       }
     } else {
-      return
+      return;
     }
   }
 
@@ -99,11 +99,11 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
         const { data: playlists, error } = await supabase
           .from("playlists")
           .select("*")
-          .eq("user_id", address)
+          .eq("user_id", address);
 
         setUserPlaylists(playlists as []);
       } catch (error) {
-        throw(error);
+        throw error;
       }
     } else {
       return;
@@ -111,33 +111,41 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
   }
 
   async function createPlaylist(name: string) {
-  	if (!address || !name) { return }
+    if (!address || !name) {
+      return;
+    }
     try {
       const { error } = await supabase
         .from("playlists")
-        .insert({ user_id: address,  name: name, tracks: [trackToAdd.id], cover: trackToAdd.lossyArtworkUrl })
+        .insert({
+          user_id: address,
+          name: name,
+          tracks: [trackToAdd.id],
+          cover: trackToAdd.lossyArtworkUrl,
+        });
     } catch (error) {
-      throw(error);
+      throw error;
     } finally {
-      setShowModal(false)
-      getPlaylists(address)
+      setShowModal(false);
+      getPlaylists(address);
     }
   }
- 
+
   async function addToPlaylist(playlistId: string) {
-    const trackId = trackToAdd.id
-    if (!address) { return }
+    const trackId = trackToAdd.id;
+    if (!address) {
+      return;
+    }
     try {
-      let response = await supabase
-        .rpc('add_track_to_playlist', {
-          track_id: trackId,
-          id: playlistId, 
-        })
+      let response = await supabase.rpc("add_track_to_playlist", {
+        track_id: trackId,
+        id: playlistId,
+      });
     } catch (error) {
-      throw(error);
-    } finally {  
-      setShowModal(false)
-      getPlaylists(address)
+      throw error;
+    } finally {
+      setShowModal(false);
+      getPlaylists(address);
     }
   }
 
@@ -145,7 +153,7 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
     <PlaylistContext.Provider
       value={
         {
-        	showModal,
+          showModal,
           toggleModal,
           createPlaylist,
           userPlaylists,
@@ -155,9 +163,9 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
         } as IPlaylistContextData
       }
     >
-    	{children}
-	  </PlaylistContext.Provider>
-  )
+      {children}
+    </PlaylistContext.Provider>
+  );
 }
 
 export default PlaylistContext;

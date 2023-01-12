@@ -34,17 +34,17 @@ export function TrackProvider({ children }: { children: React.ReactNode }) {
   const { tracks, isLoading, isError } = usePaginatedTracksQuery(40);
 
   const shuffleTracks = () => {
-    const shuffledTracks = shuffleArray([...tracklist])
-    setShuffle(true)
-    setShuffledTracklist(shuffledTracks)
-    setCurrentTrackIndex(shuffledTracks.indexOf(currentTrack as ITrack))
-  }
+    const shuffledTracks = shuffleArray([...tracklist]);
+    setShuffle(true);
+    setShuffledTracklist(shuffledTracks);
+    setCurrentTrackIndex(shuffledTracks.indexOf(currentTrack as ITrack));
+  };
 
   const unshuffleTracks = () => {
-    setShuffle(false)
-    setShuffledTracklist([])
-    setCurrentTrackIndex(tracklist.indexOf(currentTrack as ITrack))
-  }
+    setShuffle(false);
+    setShuffledTracklist([]);
+    setCurrentTrackIndex(tracklist.indexOf(currentTrack as ITrack));
+  };
 
   useEffect(() => {
     if (!isLoading && Object.keys(currentTrack).length === 0) {

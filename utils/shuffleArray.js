@@ -7,6 +7,6 @@ const shuffleArray = (array) => {
     array[j] = temp;
   }
   return shuffledArray;
-}
+};
 
 export default shuffleArray;

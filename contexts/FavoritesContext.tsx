@@ -8,8 +8,8 @@ interface IFavoritesContextData {
   favorites: string[];
   favoriteTracks: ITrack[];
   setFavorites: React.Dispatch<React.SetStateAction<string[]>>;
-  addFavorite: any,
-  removeFavorite: any,
+  addFavorite: any;
+  removeFavorite: any;
 }
 
 export const FavoritesContext = createContext<IFavoritesContextData>(
@@ -24,13 +24,13 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const currentRoute = router.pathname;
 
-	useEffect(() => {
+  useEffect(() => {
     if (address && (currentRoute === "/favorites" || currentRoute === "/")) {
       getFavorites(address);
     }
   }, [address, currentRoute]);
 
-	useEffect(() => {
+  useEffect(() => {
     if (!address) {
       setFavorites([]);
       setFavoriteTracks([]);
@@ -38,12 +38,17 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   }, [address, currentRoute]);
 
   async function addFavorite(trackId: string) {
-  	if (!address) { return }
+    if (!address) {
+      return;
+    }
     const updatedFavorites = [...favorites, trackId];
     try {
       const { error } = await supabase
         .from("favorites")
-        .upsert({ user_id: address, tracks: updatedFavorites }, {onConflict: 'user_id'})
+        .upsert(
+          { user_id: address, tracks: updatedFavorites },
+          { onConflict: "user_id" }
+        );
       if (error) {
         throw error;
       }
@@ -53,7 +58,9 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   }
 
   async function removeFavorite(trackId: string) {
-  	if (!address) { return }
+    if (!address) {
+      return;
+    }
     const updatedFavorites = favorites.filter((track) => track !== trackId);
     try {
       const { error } = await supabase

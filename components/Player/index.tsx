@@ -101,7 +101,6 @@ export default function Player() {
   };
 
   const handleBack = () => {
-    console.log("back");
     if (elapsed > 2) {
       seekTo(0);
       return;
@@ -128,11 +127,21 @@ export default function Player() {
 
   const handleNext = () => {
     if (currentTrackIndex === tracklist.length - 1) {
-      setCurrentTrack(tracklist[0]);
-      setCurrentTrackIndex(0);
+      if (shuffle) {
+        setCurrentTrack(shuffledTracklist[0]);
+        setCurrentTrackIndex(0);
+      } else {
+        setCurrentTrack(tracklist[currentTrackIndex + 1]);
+        setCurrentTrackIndex(currentTrackIndex + 1);
+      }
     } else {
-      setCurrentTrack(tracklist[currentTrackIndex + 1]);
-      setCurrentTrackIndex(currentTrackIndex + 1);
+      if (shuffle) {
+        setCurrentTrack(shuffledTracklist[currentTrackIndex + 1]);
+        setCurrentTrackIndex(currentTrackIndex + 1);
+      } else {
+        setCurrentTrack(tracklist[currentTrackIndex + 1]);
+        setCurrentTrackIndex(currentTrackIndex + 1);
+      }
     }
   };
 
