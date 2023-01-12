@@ -61,19 +61,19 @@ export default function Live() {
           </div>
         </div>
         <div className="flex flex-wrap space-x-3">
-          <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
+          <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
             <div className="">770</div>
             <div className="text-searchBarText">Artists</div>
           </div>
-          <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
+          <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
             <div className="">10,544</div>
             <div className="text-searchBarText">Collectors</div>
           </div>
-          <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
+          <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
             <div className="">48,817</div>
             <div className="text-searchBarText">Tracks</div>
           </div>
-          <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-darkLine inline-flex">
+          <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
             <div className="">$12,560,833</div>
             <div className="text-searchBarText">Total Volume (USD)</div>
           </div>
