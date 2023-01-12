@@ -164,7 +164,7 @@ export default function Player() {
             </Link>
             <Link
               className="text-xs text-whiteDisabled"
-              href={`/artists/${currentTrack.artist.slug}`}
+              href={`/artists/${currentTrack.artist?.slug}`}
             >
               <p>{currentTrack?.artist?.name}</p>
             </Link>
