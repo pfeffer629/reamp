@@ -17,7 +17,7 @@ export default function Artists() {
         <div className="inline-block mr-[32px]">
           <div className="relative inline">
             <img
-              src={Object.values(data.artist.profiles)[0].avatarUrl}
+              src={data.artist ? Object.values(data.artist.profiles)[0].avatarUrl : ""}
               alt="playlist"
               className="w-[120px] h-[120px] rounded-[100px]"
             />
@@ -29,7 +29,7 @@ export default function Artists() {
               ARTIST
             </div>
           </div>
-          <div className="text-white text-[30px]">{data.artist.name}</div>
+          <div className="text-white text-[30px]">{data.artist?.name}</div>
         </div>
       </div>
       <div className="relative mt-6 text-sm">
