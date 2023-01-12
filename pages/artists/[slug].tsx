@@ -5,7 +5,9 @@ import { useArtistQuery } from "@spinamp/spinamp-hooks";
 export default function Artists() {
   const router = useRouter();
   const { slug } = router.query;
-  const { data, isLoading, isError } = useArtistQuery(slug ? slug.toString() : "");
+  const { data, isLoading, isError } = useArtistQuery(
+    slug ? slug.toString() : ""
+  );
 
   if (isLoading || isError) {
     return <div></div>;
@@ -17,7 +19,11 @@ export default function Artists() {
         <div className="inline-block mr-[32px]">
           <div className="relative inline">
             <img
-              src={data.artist ? Object.values(data.artist.profiles)[0].avatarUrl : ""}
+              src={
+                data.artist
+                  ? Object.values(data.artist.profiles)[0].avatarUrl
+                  : ""
+              }
               alt="playlist"
               className="w-[120px] h-[120px] rounded-[100px]"
             />
@@ -25,9 +31,7 @@ export default function Artists() {
         </div>
         <div className="flex flex-col justify-center">
           <div className="pt-2">
-            <div className="text-whiteDisabled text-[11px]">
-              ARTIST
-            </div>
+            <div className="text-whiteDisabled text-[11px]">ARTIST</div>
           </div>
           <div className="text-white text-[30px]">{data.artist?.name}</div>
         </div>
@@ -39,6 +43,7 @@ export default function Artists() {
           </div>
         </div>
         <div className="absolute bottom-0 w-full h-[2px] bg-whiteDisabled z-0"></div>
+        <div className="left-0 cursor-pointer bottom-0 w-10 h-[2px] bg-white z-10 opacity-100 transform transition-all duration-500 absolute w-[124px]"></div>
       </div>
       <Tracklist tracks={data.tracks} />
     </div>
