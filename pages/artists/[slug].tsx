@@ -21,7 +21,7 @@ export default function Artists() {
             <img
               src={
                 data.artist
-                  ? Object.values(data.artist.profiles)[0].avatarUrl
+                  ? Object.values(data.artist.profiles)[0].avatarUrl.replace("ipfs://", "https://ipfs.io/ipfs/")
                   : ""
               }
               alt="playlist"
