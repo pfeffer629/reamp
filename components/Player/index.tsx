@@ -158,13 +158,18 @@ export default function Player() {
           <div>
             <Link
               className="text-sm font-extrabold"
-              href={`/track/${currentTrack.slug}`}
+              href={`/tracks/${currentTrack.slug}`}
             >
               {currentTrack?.title}
             </Link>
-            <p className="text-xs text-whiteDisabled">
-              {currentTrack?.artist?.name}
-            </p>
+            <Link
+              className="text-xs text-whiteDisabled"
+              href={`/artists/${currentTrack.artistId}`}
+            >
+              <p>
+                {currentTrack?.artist?.name}
+              </p>
+            </Link>
             {/*            
             <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 mt-[6px] select-none">
               collect
