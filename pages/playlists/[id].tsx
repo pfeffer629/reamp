@@ -1,38 +1,9 @@
 import { useContext } from "react";
-import Image from "next/image";
 import PlaylistContext from "../../contexts/PlaylistContext";
-import TrackContext from "../../contexts/TrackContext";
-import FavoritesContext from "../../contexts/FavoritesContext";
 import Tracklist from "../../components/Tracklist";
-import Link from "next/link";
-import { ITrack } from "@spinamp/spinamp-sdk";
-import { useAccount } from "wagmi";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
-TimeAgo.addDefaultLocale(en);
 
 export default function Playlist() {
-  const timeAgo = new TimeAgo("en-US");
   const { selectedPlaylist } = useContext(PlaylistContext);
-  const {
-    currentTrack,
-    setCurrentTrack,
-    setCurrentTrackIndex,
-    isPlaying,
-    setIsPlaying,
-    setTracklist,
-  } = useContext(TrackContext);
-  const { favorites, addFavorite, removeFavorite } =
-    useContext(FavoritesContext);
-  const { address } = useAccount();
-
-  const handleSelectTrack = (track: ITrack) => {
-    setCurrentTrack(track);
-    setCurrentTrackIndex(selectedPlaylist.tracks.indexOf(track));
-    setTracklist(selectedPlaylist.tracks);
-    setIsPlaying(true);
-  };
-  console.log(selectedPlaylist);
 
   return (
     <div className="w-[895px] mx-auto">

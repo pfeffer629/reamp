@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import Image from "next/image";
-import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../../contexts/TrackContext";
 import Link from "next/link";
@@ -11,7 +10,11 @@ import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 TimeAgo.addDefaultLocale(en);
 
-export default function Tracklist({tracks}: ITrack[]) {
+type TracklistProps = {
+  tracks: ITrack[];
+};
+
+export default function Tracklist({tracks}: TracklistProps) {
   const timeAgo = new TimeAgo("en-US");
   const {
     isPlaying,
