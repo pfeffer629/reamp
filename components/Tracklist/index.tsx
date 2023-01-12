@@ -5,7 +5,6 @@ import TrackContext from "../../contexts/TrackContext";
 import Link from "next/link";
 import { useAccount } from "wagmi";
 import FavoritesContext from "../../contexts/FavoritesContext";
-import shuffleArray from "../../utils/shuffleArray";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
@@ -24,22 +23,14 @@ export default function Tracklist({ tracks }: TracklistProps) {
     setCurrentTrackIndex,
     setIsPlaying,
     setTracklist,
-    shuffle,
-    setShuffledTracklist,
   } = useContext(TrackContext);
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { address } = useAccount();
 
   const handleSelectTrack = (track: ITrack) => {
-    if (shuffle) {
-      const shuffledTracks = shuffleArray(tracks);
-      setCurrentTrackIndex(shuffledTracks.indexOf(track));
-      setShuffledTracklist(shuffledTracks);
-    } else {
-      setCurrentTrackIndex(tracks.indexOf(track));
-    }
     setCurrentTrack(track);
+    setCurrentTrackIndex(tracks.indexOf(track));
     setTracklist(tracks);
     setIsPlaying(true);
   };
@@ -57,7 +48,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
             <div className="w-[130px] text-center">Released</div>
             <div className="w-[200px] text-center">Platform</div>
             <div className="w-[60px]">Favorite</div>
-            <div className="w-[130px] text-center">Share</div>
+            <div className="w-[130px] text-center">Share
+            </div>
           </div>
           {tracks &&
             tracks.map((track) => (
