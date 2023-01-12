@@ -1,4 +1,3 @@
-import { usePaginatedTracksQuery } from "@spinamp/spinamp-hooks";
 import Tracklist from "../../components/Tracklist";
 import { useRouter } from "next/router";
 import { useArtistQuery } from "@spinamp/spinamp-hooks";

@@ -57,7 +57,6 @@ export default function Tracklist({ tracks }: TracklistProps) {
           {tracks &&
             tracks.map((track) => (
               <div className="flex flex-col space-y-4" key={track.id}>
-                {console.log(track.artist?.slug)}
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
                   <div className="w-[46px]">
                     <div className="flex items-center h-full justify-center">
