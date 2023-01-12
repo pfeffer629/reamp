@@ -47,11 +47,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
             <div className="w-[191px]">Track</div>
             <div className="w-[130px] text-center">Released</div>
             <div className="w-[200px] text-center">Platform</div>
-            <div className="w-[60px]"></div>
-            <div className="w-[130px] text-center">
-              {
-                //Collect
-              }
+            <div className="w-[60px]">Favorite</div>
+            <div className="w-[130px] text-center">Share
             </div>
           </div>
           {tracks &&
