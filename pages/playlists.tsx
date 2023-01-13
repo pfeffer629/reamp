@@ -50,7 +50,7 @@ export default function Playlists() {
   };
 
   return (
-    <div className="py-4 flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4">
       <div className="py-4 flex flex-wrap">
         {userPlaylists.length > 0 &&
           userPlaylists.map((playlist) => (

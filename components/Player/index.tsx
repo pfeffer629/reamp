@@ -161,18 +161,18 @@ export default function Player() {
               height={64}
               width={64}
               src={currentTrack?.lossyArtworkUrl || ""}
-              className="mr-[22px] rounded-[5px] max-h-16"
+              className="mr-[18px] rounded-[5px] max-h-16"
             />
           )}
           <div>
             <Link
-              className="text-sm font-extrabold"
+              className="text-sm font-extrabold hover:underline"
               href={`/tracks/${currentTrack.slug}`}
             >
               {currentTrack?.title}
             </Link>
             <Link
-              className="text-xs text-whiteDisabled"
+              className="text-xs text-whiteDisabled hover:underline"
               href={`/artists/${currentTrack.artist?.slug}`}
             >
               <p>{currentTrack?.artist?.name}</p>
