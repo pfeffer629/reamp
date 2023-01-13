@@ -64,7 +64,7 @@ export default function Live() {
           <img className="mr-[44px]" src="/icons/Zora.svg" />
           <img className="mr-[44px]" src="/icons/Nina.svg" />
         </div>
-        <div className="flex flex-wrap space-x-3 pt-[16px] pb-[38px]">
+        <div className="flex flex-wrap space-x-3 pb-[10px]">
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
             <div className="">779</div>
             <div className="text-searchBarText">Artists</div>
@@ -82,9 +82,9 @@ export default function Live() {
             <div className="text-searchBarText">Total Volume (USD)</div>
           </div>
         </div>
-        <div className="flex items-center space-x-2 py-1">
-          <div>Recent Playlists</div>
-          <div className="p-2 mb-1 text-sm cursor-pointer transition-all hover:bg-gray-700/40 bg-transparent rounded-md">
+        <div className="flex items-center space-x-1">
+          <div>Recently Playlists</div>
+          <div className="p-2 text-sm cursor-pointer transition-all hover:bg-gray-700/40 bg-transparent rounded-md">
             <svg
               stroke="currentColor"
               fill="currentColor"
@@ -108,7 +108,7 @@ export default function Live() {
               >
                 <div
                   key={playlist.id}
-                  className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
+                  className="px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px]"
                 >
                   <div className="relative inline">
                     <img
