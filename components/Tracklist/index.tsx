@@ -44,9 +44,9 @@ export default function Tracklist({ tracks }: TracklistProps) {
             <div className="p-[9px]">
               <div className="w-[52px]">Cover</div>
             </div>
-            <div className="w-[191px]">Track</div>
-            <div className="w-[130px] text-center">Released</div>
-            <div className="w-[200px] text-center">Platform</div>
+            <div className="w-[191px] pl-2">Track</div>
+            <div className="w-[130px] pl-6 text-left">Released</div>
+            <div className="w-[200px] pl-1 text-center">Platform</div>
             <div className="w-[60px]">Favorite</div>
             <div className="w-[130px] text-center">Share
             </div>
@@ -93,11 +93,11 @@ export default function Tracklist({ tracks }: TracklistProps) {
                           </svg>
                         </div>
                       ) : (
-                        <div className="cursor-pointer hover:bg-gray-800/80 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px]">
+                        <div className="cursor-pointer hover:scale-125 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px]">
                           <img
                             loading="lazy"
                             alt="Play Button"
-                            src="/icons/PlayButton.png"
+                            src="/icons/Play_Controls.svg"
                             className="w-[14px] translate-x-[1px]"
                             onClick={() => handleSelectTrack(track)}
                           />
@@ -116,30 +116,30 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       />
                     </div>
                   </div>
-                  <div className="flex items-center w-[191px]">
-                    <div className="flex flex-col justify-center w-full pr-2">
+                  <div className="flex items-center w-[190px] ">
+                    <div className="flex flex-col justify-center w-full ml-2 ">
                       <Link href={`/tracks/${track.slug}`}>
-                        <div className="truncate w-full">{track.title}</div>
+                        <div className="truncate w-full hover:underline">{track.title}</div>
                       </Link>
-                      <div className="text-whiteDisabled truncate w-full">
+                      <div className="text-whiteDisabled truncate w-full hover:underline ">
                         <Link href={`/artists/${track.artist?.slug}`}>
                           {track.artist.name}
                         </Link>
                       </div>
                     </div>
                   </div>
-                  <div className="w-[130px] flex items-center justify-center h-[70px]">
+                  <div className="w-[130px] flex items-center justify-left pl-6 h-[70px]">
                     {timeAgo.format(new Date(track.createdAtTime || 0))}
                   </div>
                   <div className="w-[200px] flex items-center justify-center h-[70px]">
                     <div className="flex items-center space-x-1">
-                      <div className="font-sans pb-[2px] capitalize">
+                      <div className="pb-[2px] pl-1 capitalize">
                         {track.platformId}
                       </div>
                     </div>
                   </div>
                   <div className="w-[60px] flex items-center justify-center h-[70px]">
-                    <div className="cursor-pointer hover:scale-125 transition-all p-2 hover:bg-slate-800/40 rounded-md select-none">
+                    <div className="cursor-pointer hover:scale-125 transition-all p-2 select-none">
                       {favorites.includes(track.id) ? (
                         <img
                           src="/icons/SmallHeartFilled.svg"
@@ -161,7 +161,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                     {/*<div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 pt-[2px] select-none">
                       collect
                     </div>*/}
-                    <div className="cursor-pointer hover:scale-125 transition-all p-2 hover:bg-slate-800/40 rounded-md select-none">
+                    <div className="cursor-pointer hover:scale-125 transition-all p-2 select-none">
                       <img
                         alt="Small Share"
                         src="/icons/SmallShare.svg"
@@ -170,9 +170,9 @@ export default function Tracklist({ tracks }: TracklistProps) {
                     </div>
                   </div>
                   <div className="w-[60px] flex items-center justify-center h-[70px]">
-                    <div className="bg-transparent hover:bg-gray-500/30 p-2 transition-all transform rounded-lg cursor-pointer duration-300">
+                    <div className="bg-transparent p-2 hover:scale-125 transition-all cursor-pointer duration-300">
                       <img
-                        src="/icons/ThreeDots.png"
+                        src="/icons/SmallThreeDots.svg"
                         alt="Three Dots"
                         className="w-[16px]"
                       />

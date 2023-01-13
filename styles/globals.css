@@ -1587,3 +1587,7 @@ input[type="range"]::-webkit-slider-thumb:active {
   animation: loading-bar-morph 1.1s linear .2s infinite;
   transform-origin: center;
 }
+
+  .animate-slide-right-left:hover {
+    animation: slide-right-left-loop 0.9s linear infinite;
+}
