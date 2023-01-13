@@ -70,21 +70,21 @@ export default function Tracklist({ tracks }: TracklistProps) {
                             <g>
                               <rect
                                 className="loading-bar"
-                                width="2.3"
+                                width="2.5"
                                 height="19"
                                 rx="2"
                                 x="3"
                               />
                               <rect
                                 className="loading-bar-middle"
-                                width="2.3"
+                                width="2.5"
                                 height="19"
                                 rx="2"
                                 x="8"
                               />
                               <rect
                                 className="loading-bar"
-                                width="2.3"
+                                width="2.5"
                                 height="19"
                                 rx="2"
                                 x="13"

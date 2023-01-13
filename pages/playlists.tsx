@@ -52,8 +52,8 @@ export default function Playlists() {
   return (
     <div className="py-4 flex flex-col space-y-4">
       <div className="py-4 flex flex-wrap">
-        {userPlaylists.length > 0 &&
-          userPlaylists.map((playlist) => (
+      {userPlaylists.length > 0 &&
+          userPlaylists.reverse().map((playlist) => (
             <Link
               href={`/playlists/${playlist.id}`}
               as={`/playlists/${playlist.id}`}
