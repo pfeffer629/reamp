@@ -83,7 +83,7 @@ export default function Live() {
           </div>
         </div>
         <div className="flex items-center space-x-1">
-          <div>Recently Playlists</div>
+          <div>Recent Playlists</div>
           <div className="p-2 text-sm cursor-pointer transition-all hover:bg-gray-700/40 bg-transparent rounded-md">
             <svg
               stroke="currentColor"
@@ -123,12 +123,12 @@ export default function Live() {
                       onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
                     />
                   </div>
-                  <div className="pt-2">
+                  <div className="pt-3 pb-.5">
                     <div className="text-whiteDisabled text-[11px]">
                       PLAYLIST • {playlist.tracks.length} TRACKS
                     </div>
                   </div>
-                  <div className="text-white text-[20px]">{playlist.name}</div>
+                  <div className="text-white text-[18px] pb-1">{playlist.name}</div>
                   <div className="flex flex-row items-center space-x-[9px]">
                     <img
                       src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/users/user1.png"
@@ -138,7 +138,7 @@ export default function Live() {
                     &nbsp;Placeholder name
                   </div>
                   <div className="pt-2">
-                    <div className="text-whiteDisabled text-[15px]">
+                    <div className="text-whiteDisabled text-[14px]">
                       {timeAgo.format(new Date(playlist.created_at || 0))}
                     </div>
                   </div>
