@@ -64,7 +64,7 @@ export default function Live() {
           <img className="mr-[44px]" src="/icons/Zora.svg" />
           <img className="mr-[44px]" src="/icons/Nina.svg" />
         </div>
-        <div className="flex flex-wrap space-x-3 pb-[10px]">
+        <div className="flex flex-wrap space-x-3 pb-[10px] tracking-wide">
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
             <div className="">779</div>
             <div className="text-searchBarText">Artists</div>
