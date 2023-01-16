@@ -69,6 +69,7 @@ export function TrackProvider({ children }: { children: React.ReactNode }) {
           tracklist,
           setTracklist,
           shuffledTracklist,
+          setShuffledTracklist,
         } as ITrackContextData
       }
     >
