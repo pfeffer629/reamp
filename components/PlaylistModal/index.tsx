@@ -1,6 +1,7 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import PlaylistContext from "../../contexts/PlaylistContext";
 import TrackContext from "../../contexts/TrackContext";
+import useDragScroll from "../../utils/useDragScroll";
 import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
@@ -21,6 +22,11 @@ export default function PlaylistModal() {
   });
   const { currentTrack } = useContext(TrackContext);
   const { data: ensName } = useEnsName({ address });
+  const ref = useRef(null)
+  useDragScroll({
+    sliderRef: ref
+  })
+
   const timeAgo = new TimeAgo("en-US");
 
   const handleClose = () => {
@@ -64,12 +70,12 @@ export default function PlaylistModal() {
                 onClick={handleClose}
               />
             </div>
-            <div className="flex flex-start">
+            <div className="flex flex-start overflow-auto scrollbar-hide cursor-pointer" ref={ref}>
               {userPlaylists.length > 0 ? (
                 userPlaylists.map((playlist) => (
                   <div
                     key={playlist.id}
-                    className="text-left px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
+                    className="shrink-0 text-left px-[8px] py-[10px] transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
                   >
                     <img
                       src={playlist.cover}

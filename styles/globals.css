@@ -1591,3 +1591,12 @@ input[type="range"]::-webkit-slider-thumb:active {
   .animate-slide-right-left:hover {
     animation: slide-right-left-loop 0.9s linear infinite;
 }
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
