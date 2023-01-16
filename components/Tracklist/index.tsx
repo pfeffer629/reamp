@@ -131,12 +131,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
                   <div className="w-[138px] flex items-center justify-left pl-6 h-[70px]">
                     {timeAgo.format(new Date(track.createdAtTime || 0))}
                   </div>
-                  <div className="w-[200px] flex items-center justify-center h-[70px]">
-                    <div className="flex items-center space-x-1">
-                      <div className="pb-[2px] pl-1 capitalize">
-                        {track.platformId}
-                      </div>
-                    </div>
+                  <div className="w-[200px] flex items-center justify-center h-[70px] capitalize">
+                    {track.platformId}
                   </div>
                   <div className="w-[60px] flex items-center justify-center h-[70px]">
                     <div className="cursor-pointer hover:scale-125 transition-all p-2 select-none">

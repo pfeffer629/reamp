@@ -129,13 +129,13 @@ export default function Live() {
                     </div>
                   </div>
                   <div className="text-white text-[18px] pb-1">{playlist.name}</div>
-                  <div className="flex flex-row items-center space-x-[9px]">
+                  <div className="flex flex-row items-center space-x-[9px] truncate">
                     <img
                       src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/users/user1.png"
                       alt="user"
                       className="w-[21px] aspect-square"
                     />
-                    &nbsp;Placeholder name
+                    &nbsp;{playlist.user_id}
                   </div>
                   <div className="pt-2">
                     <div className="text-whiteDisabled text-[14px]">
