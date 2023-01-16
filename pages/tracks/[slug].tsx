@@ -3,18 +3,15 @@ import { useRouter } from "next/router";
 import { useTrackQuery } from "@spinamp/spinamp-hooks";
 import PlayButton from "../../components/Icons/PlayButton";
 import TrackContext from "../../contexts/TrackContext";
+import { ITrack } from "@spinamp/spinamp-sdk";
 
 export default function Track() {
   const router = useRouter();
   const { slug } = router.query;
   const { data, error, isLoading } = useTrackQuery(slug ? slug.toString() : "");
   const {
-    isPlaying,
-    currentTrack,
     setCurrentTrack,
-    setCurrentTrackIndex,
     setIsPlaying,
-    setTracklist,
   } = useContext(TrackContext);
 
   const handleSelectTrack = (track: ITrack) => {
@@ -25,6 +22,7 @@ export default function Track() {
   if (isLoading || error) {
     return <div></div>;
   }
+
   return (
     <div className="w-[895px] mx-auto">
       <div className="py-8 border-t-[0.5px] border-white/30 mt-8">
@@ -44,7 +42,7 @@ export default function Track() {
             className="cursor-pointer absolute top-0 bottom-0 left-0 right-0 m-auto"
             height={100}
             width={80}
-            onClick={(e) => handleSelectTrack(data)}
+            onClick={() => handleSelectTrack(data as ITrack)}
           />
         </div>
         <div className="w-[56%]">

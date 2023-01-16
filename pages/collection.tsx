@@ -4,28 +4,28 @@ import { useEvmWalletNFTs } from "@moralisweb3/next";
 import PlayButton from "../components/Icons/PlayButton";
 
 export default function Collection() {
-  const [nfts, setNfts] = useState([]);
-  const { address } = useAccount();
-  const { data, isFetching } = useEvmWalletNFTs({ address });
-  const { data: ensAvatar } = useEnsAvatar({
-    address: address,
-  });
-  const { data: ensName } = useEnsName({ address });
-  const svgAvatar = `pfp/Reamp_pfp_${
-    ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-  }.svg`;
+  // const [nfts, setNfts] = useState([]);
+  // const { address } = useAccount();
+  // const { data, isFetching } = useEvmWalletNFTs({ address });
+  // const { data: ensAvatar } = useEnsAvatar({
+  //   address: address,
+  // });
+  // const { data: ensName } = useEnsName({ address });
+  // const svgAvatar = `pfp/Reamp_pfp_${
+  //   ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
+  // }.svg`;
 
-  useEffect(() => {
-    if (!isFetching && data?.length > 0) {
-      setNfts(
-        data.filter((nft) => nft._data.metadata?.losslessAudio?.length > 0)
-      );
-    }
-  }, [data, isFetching]);
+  // useEffect(() => {
+  //   if (!isFetching && data?.length > 0) {
+  //     setNfts(
+  //       data.filter((nft) => nft._data.metadata?.losslessAudio?.length > 0)
+  //     );
+  //   }
+  // }, [data, isFetching]);
 
   return (
     <div className="flex flex-col space-y-4">
-      <div className="py-4 flex flex-wrap">
+      {/*<div className="py-4 flex flex-wrap">
         {nfts.length > 0 &&
           nfts.map((nft) => (
             <div
@@ -63,7 +63,7 @@ export default function Collection() {
               </div>
             </div>
           ))}
-      </div>
+      </div>*/}
     </div>
   );
 }
