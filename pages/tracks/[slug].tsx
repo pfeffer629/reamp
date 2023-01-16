@@ -1,10 +1,26 @@
+import { useContext } from "react";
 import { useRouter } from "next/router";
 import { useTrackQuery } from "@spinamp/spinamp-hooks";
+import PlayButton from "../../components/Icons/PlayButton";
+import TrackContext from "../../contexts/TrackContext";
 
 export default function Track() {
   const router = useRouter();
   const { slug } = router.query;
   const { data, error, isLoading } = useTrackQuery(slug ? slug.toString() : "");
+  const {
+    isPlaying,
+    currentTrack,
+    setCurrentTrack,
+    setCurrentTrackIndex,
+    setIsPlaying,
+    setTracklist,
+  } = useContext(TrackContext);
+
+  const handleSelectTrack = (track: ITrack) => {
+    setCurrentTrack(track);
+    setIsPlaying(true);
+  };
 
   if (isLoading || error) {
     return <div></div>;
@@ -23,6 +39,12 @@ export default function Track() {
             className="w-full"
             draggable="false"
             src={data?.lossyArtworkUrl}
+          />
+          <PlayButton
+            className="cursor-pointer absolute top-0 bottom-0 left-0 right-0 m-auto"
+            height={100}
+            width={80}
+            onClick={(e) => handleSelectTrack(data)}
           />
         </div>
         <div className="w-[56%]">
