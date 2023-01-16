@@ -25,8 +25,10 @@ export default function Playlists() {
     address: address,
   });
   const { data: ensName } = useEnsName({ address });
+  const svgAvatar = `pfp/Reamp_pfp_${
+    ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
+  }.svg`;
   const timeAgo = new TimeAgo("en-US");
-  const svgAvatar = `pfp/Reamp_pfp_${["blue", "green", "orange", "yellowpink"][Math.floor(Math.random()*4)]}.svg`;
 
   const handleSelectPlaylist = (
     e: React.MouseEvent<SVGSVGElement>,

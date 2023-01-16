@@ -22,10 +22,10 @@ export default function PlaylistModal() {
   });
   const { currentTrack } = useContext(TrackContext);
   const { data: ensName } = useEnsName({ address });
-  const ref = useRef(null)
+  const ref = useRef(null);
   useDragScroll({
-    sliderRef: ref
-  })
+    sliderRef: ref,
+  });
 
   const timeAgo = new TimeAgo("en-US");
 
@@ -70,7 +70,10 @@ export default function PlaylistModal() {
                 onClick={handleClose}
               />
             </div>
-            <div className="flex flex-start overflow-auto scrollbar-hide cursor-pointer" ref={ref}>
+            <div
+              className="flex flex-start overflow-auto scrollbar-hide cursor-pointer"
+              ref={ref}
+            >
               {userPlaylists.length > 0 ? (
                 userPlaylists.map((playlist) => (
                   <div

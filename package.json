@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@moralisweb3/common-evm-utils": "^2.11.1",
+    "@moralisweb3/next": "^2.11.1",
     "@next/font": "13.0.7",
     "@rainbow-me/rainbowkit": "^0.8.1",
     "@spinamp/spinamp-hooks": "^0.0.6",
@@ -19,6 +21,7 @@
     "eslint-config-next": "13.0.7",
     "ethers": "^5.7.2",
     "javascript-time-ago": "^2.5.9",
+    "moralis": "^2.11.1",
     "next": "13.0.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",

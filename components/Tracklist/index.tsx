@@ -48,8 +48,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
             <div className="w-[130px] pl-6 text-left">Released</div>
             <div className="w-[200px] pl-1 text-center">Platform</div>
             <div className="w-[60px]">Favorite</div>
-            <div className="w-[130px] text-center">Share
-            </div>
+            <div className="w-[130px] text-center">Share</div>
           </div>
           {tracks &&
             tracks.map((track) => (
@@ -119,7 +118,9 @@ export default function Tracklist({ tracks }: TracklistProps) {
                   <div className="flex items-center w-[190px] ">
                     <div className="flex flex-col justify-center w-full ml-2 ">
                       <Link href={`/tracks/${track.slug}`}>
-                        <div className="truncate w-full hover:underline">{track.title}</div>
+                        <div className="truncate w-full hover:underline">
+                          {track.title}
+                        </div>
                       </Link>
                       <div className="text-whiteDisabled truncate w-full hover:underline ">
                         <Link href={`/artists/${track.artist?.slug}`}>
