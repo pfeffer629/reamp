@@ -50,7 +50,7 @@ export default function Track() {
             <div className="flex flex-row items-center space-x-[9px]">
               <img
                 src={
-                  data.artist
+                  data?.artist
                     ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
                         "ipfs://",
                         "https://ipfs.io/ipfs/"
@@ -59,7 +59,7 @@ export default function Track() {
                 }
                 className="w-[21px] aspect-square rounded-[10px]"
               />
-              &nbsp;{data.artist.name}
+              &nbsp;{data?.artist.name}
             </div>
             <div>
               <div className="shadow-md py-1">
