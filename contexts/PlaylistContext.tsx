@@ -99,6 +99,7 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
         const { data: playlists, error } = await supabase
           .from("playlists")
           .select("*")
+          .order("created_at", { ascending: false })
           .eq("user_id", address);
 
         setUserPlaylists(playlists as []);
