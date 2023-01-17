@@ -45,7 +45,7 @@ export default function Collection() {
   //                 className="absolute top-0 bottom-0 left-0 right-0 m-auto"
   //                 height={25}
   //                 width={20}
-  //                 onClick={() => handleSelectTrack(data as ITrack)}                  
+  //                 onClick={() => handleSelectTrack(data as ITrack)}
   //               />
   //             </div>
   //             <div className="pt-2">
@@ -67,5 +67,5 @@ export default function Collection() {
   //     </div>
   //   </div>
   // );
-  return <div></div>
+  return <div></div>;
 }

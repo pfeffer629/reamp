@@ -5,6 +5,7 @@ import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
 import PlayButton from "../components/Icons/PlayButton";
 import shuffleArray from "../utils/shuffleArray";
+import svgAvatar from "../utils/svgAvatar";
 import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
@@ -25,9 +26,6 @@ export default function Playlists() {
     address: address,
   });
   const { data: ensName } = useEnsName({ address });
-  const svgAvatar = `pfp/Reamp_pfp_${
-    ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-  }.svg`;
   const timeAgo = new TimeAgo("en-US");
 
   const handleSelectPlaylist = (

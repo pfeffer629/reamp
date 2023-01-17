@@ -5,6 +5,7 @@ import TrackContext from "../../contexts/TrackContext";
 import Link from "next/link";
 import { useAccount } from "wagmi";
 import FavoritesContext from "../../contexts/FavoritesContext";
+import shuffleArray from "../../utils/shuffleArray";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
@@ -23,15 +24,21 @@ export default function Tracklist({ tracks }: TracklistProps) {
     setCurrentTrackIndex,
     setIsPlaying,
     setTracklist,
+    tracklist,
+    setShuffledTracklist,
   } = useContext(TrackContext);
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { address } = useAccount();
 
   const handleSelectTrack = (track: ITrack) => {
+    if (tracks !== tracklist) {
+      const shuffledTracks = shuffleArray([...tracks]);
+      setTracklist(tracks);
+      setShuffledTracklist(shuffledTracks);
+    }
     setCurrentTrack(track);
     setCurrentTrackIndex(tracks.indexOf(track));
-    setTracklist(tracks);
     setIsPlaying(true);
   };
 

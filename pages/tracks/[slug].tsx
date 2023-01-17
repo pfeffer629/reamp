@@ -3,16 +3,14 @@ import { useRouter } from "next/router";
 import { useTrackQuery } from "@spinamp/spinamp-hooks";
 import PlayButton from "../../components/Icons/PlayButton";
 import TrackContext from "../../contexts/TrackContext";
+import svgAvatar from "../../utils/svgAvatar";
 import { ITrack } from "@spinamp/spinamp-sdk";
 
 export default function Track() {
   const router = useRouter();
   const { slug } = router.query;
   const { data, error, isLoading } = useTrackQuery(slug ? slug.toString() : "");
-  const {
-    setCurrentTrack,
-    setIsPlaying,
-  } = useContext(TrackContext);
+  const { setCurrentTrack, setIsPlaying } = useContext(TrackContext);
 
   const handleSelectTrack = (track: ITrack) => {
     setCurrentTrack(track);
@@ -48,11 +46,20 @@ export default function Track() {
         <div className="w-[56%]">
           <div className="text-whiteDisabled">{data?.description}</div>
           <div>
-            <div>
-              Creator:
-              <div className="w-14 rounded-full overflow-hidden shadow-md">
-                {/*<img src={data.lossy_artwork_url} />*/}
-              </div>
+            Creator:
+            <div className="flex flex-row items-center space-x-[9px]">
+              <img
+                src={
+                  data.artist
+                    ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
+                        "ipfs://",
+                        "https://ipfs.io/ipfs/"
+                      )
+                    : svgAvatar
+                }
+                className="w-[21px] aspect-square rounded-[10px]"
+              />
+              &nbsp;{data.artist.name}
             </div>
             <div>
               <div className="shadow-md py-1">
