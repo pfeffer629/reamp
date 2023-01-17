@@ -18,8 +18,11 @@ export default function PlaylistModal() {
   } = useContext(PlaylistContext);
   const { address } = useAccount();
   const { data: ensAvatar } = useEnsAvatar({
-    address: "0x4449b8e2B2068D71EA27735115aa11B4870cCA38",
+    address: address,
   });
+  const svgAvatar = `pfp/Reamp_pfp_${
+    ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
+  }.svg`;
   const { currentTrack } = useContext(TrackContext);
   const { data: ensName } = useEnsName({ address });
   const ref = useRef(null);
@@ -101,7 +104,7 @@ export default function PlaylistModal() {
                     </div>
                     <div className="flex flex-row items-center space-x-[9px]">
                       <img
-                        src={ensAvatar || ""}
+                        src={ensAvatar || svgAvatar}
                         alt="user"
                         className="w-[21px] aspect-square rounded-[10px]"
                       />
