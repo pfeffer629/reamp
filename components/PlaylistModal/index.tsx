@@ -50,7 +50,7 @@ export default function PlaylistModal() {
             className="fixed inset-0 bg-black/[0.6] transition-opacity z-5"
             onClick={handleClose}
           ></div>
-          <div className="z-10 w-[830px] bg-black[/0.6] p-[30px] border-darkLine border-[1px] rounded-2xl">
+          <div className="z-10 w-[830px] bg-black/[0.6] p-[30px] border-darkLine border-[1px] rounded-2xl">
             <div className="sm:flex sm:items-center justify-between">
               <div className="px-[12px] rounded-lg w-[380px] h-[41px] flex items-center bg-transparent relative outline-none border-darkLine border-[1px]">
                 <input

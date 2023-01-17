@@ -82,7 +82,6 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
 
         fetchTracksByIds(playlist?.tracks).then((tracks) => {
           playlist.tracks = tracks;
-          console.log(playlist);
           setSelectedPlaylist(playlist);
         });
       } catch (error) {

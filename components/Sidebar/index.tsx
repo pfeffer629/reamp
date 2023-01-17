@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAccount } from "wagmi";
+import FeedbackModal from "./FeedbackModal";
 
 export default function Sidebar() {
   const [currentDate, setCurrentDate] = useState("");
   const [currentTime, setCurrentTime] = useState("");
   const [location, setLocation] = useState("");
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const { address } = useAccount();
 
   useEffect(() => {
@@ -188,11 +190,13 @@ export default function Sidebar() {
                 className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
                 style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
               ></div>
-              <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
+              <div
+                className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]"
+                onClick={() => setShowFeedbackModal(true)}
+              >
                 Submit Feedback
               </div>
             </div>
-
             <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
               <div
                 className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
@@ -204,7 +208,6 @@ export default function Sidebar() {
                 </a>
               </div>
             </div>
-
             <div className="w-[177px] h-[31px] rounded-md space-x-4 flex items-center text-[12px] relative group transition-all duration-500 pl-[14px]">
               <a target="_blank" href="https://twitter.com/reamp__">
                 <div className="cursor-pointer hover:text-selectedTab transition-all duration-300">
@@ -246,6 +249,10 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
+      <FeedbackModal
+        show={showFeedbackModal}
+        close={() => setShowFeedbackModal(false)}
+      />
     </div>
   );
 }
