@@ -131,8 +131,8 @@ export default function Player() {
         setCurrentTrack(shuffledTracklist[0]);
         setCurrentTrackIndex(0);
       } else {
-        setCurrentTrack(tracklist[currentTrackIndex + 1]);
-        setCurrentTrackIndex(currentTrackIndex + 1);
+        setCurrentTrack(tracklist[0]);
+        setCurrentTrackIndex(0);
       }
     } else {
       if (shuffle) {
