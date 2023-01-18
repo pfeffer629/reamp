@@ -5,6 +5,7 @@ import useDragScroll from "../../utils/useDragScroll";
 import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
+import svgAvatar from "../../utils/svgAvatar"
 TimeAgo.addDefaultLocale(en);
 
 export default function PlaylistModal() {
@@ -20,9 +21,6 @@ export default function PlaylistModal() {
   const { data: ensAvatar } = useEnsAvatar({
     address: address,
   });
-  const svgAvatar = `pfp/Reamp_pfp_${
-    ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-  }.svg`;
   const { currentTrack } = useContext(TrackContext);
   const { data: ensName } = useEnsName({ address });
   const ref = useRef(null);

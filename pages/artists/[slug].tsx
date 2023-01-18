@@ -1,6 +1,7 @@
 import Tracklist from "../../components/Tracklist";
 import { useRouter } from "next/router";
 import { useArtistQuery } from "@spinamp/spinamp-hooks";
+import svgAvatar from "../../utils/svgAvatar"
 
 export default function Artists() {
   const router = useRouter();
@@ -17,20 +18,18 @@ export default function Artists() {
     <div>
       <div className="flex">
         <div className="inline-block mr-[32px]">
-          <div className="relative inline">
-            <img
-              src={
-                data.artist
-                  ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
-                      "ipfs://",
-                      "https://ipfs.io/ipfs/"
-                    )
-                  : ""
-              }
-              alt="artist avatar"
-              className="w-[120px] h-[120px] rounded-[100px]"
-            />
-          </div>
+          <img
+            src={
+              data.artist
+                ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
+                    "ipfs://",
+                    "https://ipfs.io/ipfs/"
+                  )
+                : svgAvatar
+            }
+            alt="artist avatar"
+            className="w-[120px] h-[120px] rounded-[100px] object-cover"
+          />
         </div>
         <div className="flex flex-col justify-center">
           <div className="pt-2">
