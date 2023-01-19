@@ -20,7 +20,7 @@ export default function Artists() {
         <div className="inline-block mr-[32px]">
           <img
             src={
-              Object.values(data.artist.profiles)[0].avatarUrl?.replace(
+              Object.values(data.artist?.profiles)[0].avatarUrl?.replace(
                 "ipfs://",
                 "https://ipfs.io/ipfs/"
               ) || svgAvatar
