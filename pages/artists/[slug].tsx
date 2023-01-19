@@ -1,7 +1,7 @@
 import Tracklist from "../../components/Tracklist";
 import { useRouter } from "next/router";
 import { useArtistQuery } from "@spinamp/spinamp-hooks";
-import svgAvatar from "../../utils/svgAvatar"
+import svgAvatar from "../../utils/svgAvatar";
 
 export default function Artists() {
   const router = useRouter();
@@ -14,18 +14,23 @@ export default function Artists() {
     return <div></div>;
   }
 
+  console.log(
+    Object.values(data.artist.profiles)[0].avatarUrl?.replace(
+      "ipfs://",
+      "https://ipfs.io/ipfs/"
+    ) || svgAvatar
+  );
+
   return (
     <div>
       <div className="flex">
         <div className="inline-block mr-[32px]">
           <img
             src={
-              data.artist
-                ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
-                    "ipfs://",
-                    "https://ipfs.io/ipfs/"
-                  )
-                : svgAvatar
+              Object.values(data.artist.profiles)[0].avatarUrl?.replace(
+                "ipfs://",
+                "https://ipfs.io/ipfs/"
+              ) || svgAvatar
             }
             alt="artist avatar"
             className="w-[120px] h-[120px] rounded-[100px] object-cover"
@@ -35,7 +40,13 @@ export default function Artists() {
           <div className="pt-2">
             <div className="text-whiteDisabled text-[11px]">ARTIST</div>
           </div>
-          <div className="text-white text-[30px]">{data.artist?.name}</div>
+          <div className="flex">
+            <span className="text-white text-[30px]">{data.artist?.name}</span>
+            <img
+              src="/icons/SmallHeart.svg"
+              className="inline-block cursor-pointer ml-[15px]"
+            />
+          </div>
         </div>
       </div>
       <div className="relative mt-6 text-sm">

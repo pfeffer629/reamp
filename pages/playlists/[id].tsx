@@ -23,7 +23,15 @@ export default function Playlist() {
               PUBLIC PLAYLIST • {selectedPlaylist?.tracks?.length} TRACKS
             </div>
           </div>
-          <div className="text-white text-[30px]">{selectedPlaylist?.name}</div>
+          <div>
+            <span className="text-white text-[30px]">
+              {selectedPlaylist?.name}
+            </span>
+            <img
+              src="/icons/SmallHeart.svg"
+              className="inline-block cursor-pointer ml-[15px]"
+            />
+          </div>
           <div className="flex flex-row items-center space-x-[9px]">
             <img
               src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/users/user1.png"

@@ -24,7 +24,13 @@ export default function Track() {
   return (
     <div className="w-[895px] mx-auto">
       <div className="py-8 border-t-[0.5px] border-white/30 mt-8">
-        <div className="text-4xl font-bold">{data?.title}</div>
+        <div className="text-4xl font-bold">
+          <span>{data?.title}</span>
+          <img
+            src="/icons/SmallHeart.svg"
+            className="inline-block cursor-pointer ml-[15px]"
+          />
+        </div>
       </div>
       <div className="flex justify-between w-full">
         <div

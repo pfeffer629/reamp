@@ -1,11 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
-function useDragScroll({
-  sliderRef,
-  reliants = [],
-  momentumVelocity = 0.1
-}) {
-  const [hasSwiped, setHasSwiped] = useState(false)
+function useDragScroll({ sliderRef, reliants = [], momentumVelocity = 0.1 }) {
+  const [hasSwiped, setHasSwiped] = useState(false);
 
   const init = useCallback(() => {
     const slider = sliderRef.current;
@@ -13,33 +9,33 @@ function useDragScroll({
     let startX;
     let scrollLeft;
 
-    slider.addEventListener('mousedown', (e) => {
+    slider.addEventListener("mousedown", (e) => {
       isDown = true;
-      slider.classList.remove('cursor-pointer');
-      slider.classList.add('active');
-      slider.classList.add('cursor-grab');
+      slider.classList.remove("cursor-pointer");
+      slider.classList.add("active");
+      slider.classList.add("cursor-grab");
       startX = e.pageX - slider.offsetLeft;
       scrollLeft = slider.scrollLeft;
       cancelMomentumTracking();
     });
 
-    slider.addEventListener('mouseleave', () => {
+    slider.addEventListener("mouseleave", () => {
       isDown = false;
-      slider.classList.add('cursor-pointer');
-      slider.classList.remove('active');
-      slider.classList.remove('cursor-grab');
+      slider.classList.add("cursor-pointer");
+      slider.classList.remove("active");
+      slider.classList.remove("cursor-grab");
     });
 
-    slider.addEventListener('mouseup', () => {
+    slider.addEventListener("mouseup", () => {
       isDown = false;
-      slider.classList.add('cursor-pointer');
-      slider.classList.remove('active');
-      slider.classList.remove('cursor-grab');
+      slider.classList.add("cursor-pointer");
+      slider.classList.remove("active");
+      slider.classList.remove("cursor-grab");
       beginMomentumTracking();
-      setTimeout(() => setHasSwiped(false), 0)
+      setTimeout(() => setHasSwiped(false), 0);
     });
 
-    slider.addEventListener('mousemove', (e) => {
+    slider.addEventListener("mousemove", (e) => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - slider.offsetLeft;
@@ -48,15 +44,15 @@ function useDragScroll({
       slider.scrollLeft = scrollLeft - walk;
       velX = slider.scrollLeft - prevScrollLeft;
       if (slider.scrollLeft - prevScrollLeft && !hasSwiped) {
-        setHasSwiped(true)
+        setHasSwiped(true);
       }
     });
 
-    // Momentum 
+    // Momentum
     let velX = 0;
     let momentumID;
 
-    slider.addEventListener('wheel', (e) => {
+    slider.addEventListener("wheel", (e) => {
       cancelMomentumTracking();
     });
 
@@ -74,15 +70,15 @@ function useDragScroll({
         momentumID = requestAnimationFrame(momentumLoop);
       }
     }
-  })
+  });
 
   useEffect(() => {
     init();
-  }, [...reliants])
+  }, [...reliants]);
 
   return {
     hasSwiped,
-  }
+  };
 }
 
-export default useDragScroll
+export default useDragScroll;
