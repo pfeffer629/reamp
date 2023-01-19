@@ -18,7 +18,7 @@ export default function Artists() {
     <div>
       <div className="flex">
         <div className="inline-block mr-[32px]">
-          {data?.artist?.profiles.length > 0 && Object.values(data.artist?.profiles)[0].avatarUrl ? 
+          {data?.artist?.profiles?.length > 0 && Object.values(data.artist?.profiles)[0].avatarUrl ? 
             <img
               src={
                 Object.values(data.artist?.profiles)[0].avatarUrl?.replace(
