@@ -25,7 +25,7 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const currentRoute = router.pathname;
 
   useEffect(() => {
-    if (address && (currentRoute === "/favorites" || currentRoute === "/")) {
+    if (address) {
       getFavorites(address);
     }
   }, [address, currentRoute]);
