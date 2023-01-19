@@ -30,6 +30,9 @@ export default function Track() {
   return (
     <div className="w-[895px] mx-auto">
       <div className="py-8 border-t-[0.5px] border-white/30 mt-8">
+        <div className="text-l text-whiteDisabled">
+          <span>{data?.artist.name}</span>
+        </div>
         <div className="text-4xl font-bold">
           <span>{data?.title}</span>
           {favorites.includes(data.id) ? (
@@ -47,9 +50,6 @@ export default function Track() {
               onClick={() => addFavorite(data.id)}
             />
           )}
-        </div>
-        <div className="text-l">
-          <span>{data?.artist.name}</span>
         </div>
       </div>
       <div className="flex justify-between w-full">
