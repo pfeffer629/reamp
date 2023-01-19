@@ -9,9 +9,19 @@ export default function Artists() {
   const { data, isLoading, isError } = useArtistQuery(
     slug ? slug.toString() : ""
   );
+  let avatar;
 
   if (isLoading || isError) {
     return <div></div>;
+  }
+
+  if (data.artist && data.artist.profiles.length > 0) {
+    avatar = Object.values(data.artist?.profiles)[0].avatarUrl?.replace(
+      "ipfs://",
+      "https://ipfs.io/ipfs/"
+    );
+  } else {
+    avatar = svgAvatar;
   }
 
   return (
@@ -19,12 +29,7 @@ export default function Artists() {
       <div className="flex">
         <div className="inline-block mr-[32px]">
           <img
-            src={
-              Object.values(data.artist?.profiles)[0].avatarUrl?.replace(
-                "ipfs://",
-                "https://ipfs.io/ipfs/"
-              ) || svgAvatar
-            }
+            src={avatar}
             alt="artist avatar"
             className="w-[120px] h-[120px] rounded-[100px] object-cover"
           />
