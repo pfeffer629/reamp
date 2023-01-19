@@ -34,12 +34,12 @@ export default function Track() {
         </div>
         <div className="text-4xl font-bold">
           <span>{data?.title}</span>
-          {favorites.includes(data?.id as string) ? (
+          {favorites.includes(data?.id) ? (
             <img
               src="/icons/SmallHeartFilled.svg"
               alt="Heart Filled"
               className="inline-block cursor-pointer ml-[15px]"
-              onClick={() => removeFavorite(data.id)}
+              onClick={() => removeFavorite(data?.id)}
             />
           ) : (
             <img
@@ -48,7 +48,7 @@ export default function Track() {
               className={`${
                 !address && "cursor-default"
               } inline-block cursor-pointer ml-[15px]`}
-              onClick={() => addFavorite(data.id)}
+              onClick={() => addFavorite(data?.id)}
             />
           )}
         </div>
