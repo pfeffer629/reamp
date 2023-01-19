@@ -34,7 +34,7 @@ export default function Track() {
         </div>
         <div className="text-4xl font-bold">
           <span>{data?.title}</span>
-          {favorites.includes(data?.id) ? (
+          {favorites.includes(data?.id as string) ? (
             <img
               src="/icons/SmallHeartFilled.svg"
               alt="Heart Filled"
