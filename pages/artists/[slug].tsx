@@ -14,13 +14,6 @@ export default function Artists() {
     return <div></div>;
   }
 
-  console.log(
-    Object.values(data.artist.profiles)[0].avatarUrl?.replace(
-      "ipfs://",
-      "https://ipfs.io/ipfs/"
-    ) || svgAvatar
-  );
-
   return (
     <div>
       <div className="flex">

@@ -5,12 +5,17 @@ import PlayButton from "../../components/Icons/PlayButton";
 import TrackContext from "../../contexts/TrackContext";
 import svgAvatar from "../../utils/svgAvatar";
 import { ITrack } from "@spinamp/spinamp-sdk";
+import FavoritesContext from "../../contexts/FavoritesContext";
+import { useAccount } from "wagmi";
 
 export default function Track() {
   const router = useRouter();
   const { slug } = router.query;
   const { data, error, isLoading } = useTrackQuery(slug ? slug.toString() : "");
   const { setCurrentTrack, setIsPlaying } = useContext(TrackContext);
+  const { favorites, addFavorite, removeFavorite } =
+    useContext(FavoritesContext);
+  const { address } = useAccount();
 
   const handleSelectTrack = (track: ITrack) => {
     setCurrentTrack(track);
@@ -20,16 +25,31 @@ export default function Track() {
   if (isLoading || error) {
     return <div></div>;
   }
+  console.log(data)
 
   return (
     <div className="w-[895px] mx-auto">
       <div className="py-8 border-t-[0.5px] border-white/30 mt-8">
         <div className="text-4xl font-bold">
           <span>{data?.title}</span>
-          <img
-            src="/icons/SmallHeart.svg"
-            className="inline-block cursor-pointer ml-[15px]"
-          />
+          {favorites.includes(data.id) ? (
+            <img
+              src="/icons/SmallHeartFilled.svg"
+              alt="Heart Filled"
+              className="inline-block cursor-pointer ml-[15px]"
+              onClick={() => removeFavorite(data.id)}
+            />
+          ) : (
+            <img
+              src="/icons/SmallHeart.svg"
+              alt="Heart Empty"
+              className={`${!address && "cursor-default"} inline-block cursor-pointer ml-[15px]`}
+              onClick={() => addFavorite(data.id)}
+            />
+          )}
+        </div>
+        <div className="text-l">
+          <span>{data?.artist.name}</span>
         </div>
       </div>
       <div className="flex justify-between w-full">
