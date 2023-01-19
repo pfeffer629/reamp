@@ -25,7 +25,6 @@ export default function Track() {
   if (isLoading || error) {
     return <div></div>;
   }
-  console.log(data)
 
   return (
     <div className="w-[895px] mx-auto">
@@ -35,7 +34,7 @@ export default function Track() {
         </div>
         <div className="text-4xl font-bold">
           <span>{data?.title}</span>
-          {favorites.includes(data.id) ? (
+          {favorites.includes(data?.id) ? (
             <img
               src="/icons/SmallHeartFilled.svg"
               alt="Heart Filled"
@@ -46,7 +45,9 @@ export default function Track() {
             <img
               src="/icons/SmallHeart.svg"
               alt="Heart Empty"
-              className={`${!address && "cursor-default"} inline-block cursor-pointer ml-[15px]`}
+              className={`${
+                !address && "cursor-default"
+              } inline-block cursor-pointer ml-[15px]`}
               onClick={() => addFavorite(data.id)}
             />
           )}
