@@ -136,7 +136,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       </div>
                     </div>
                   </div>
-                  <div className="w-[138px] flex items-center justify-left pl-6 h-[70px]">
+                  <div className="w-[140px] flex items-center justify-left pl-6 h-[72px]">
                     {timeAgo.format(new Date(track.createdAtTime || 0))}
                   </div>
                   <div className="w-[200px] flex items-center justify-center h-[70px] capitalize">
