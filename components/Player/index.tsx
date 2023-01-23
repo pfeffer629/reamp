@@ -3,6 +3,7 @@ import PauseButton from "../Icons/PauseButton";
 import PlayButton from "../Icons/PlayButton";
 import BackButton from "../Icons/BackButton";
 import NextButton from "../Icons/NextButton";
+import CopiedToClipboard from "../CopiedToClipboard";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import ReactPlayer from "react-player/lazy";
@@ -15,6 +16,7 @@ import Link from "next/link";
 const AudioPlayer = dynamic(() => import("./AudioPlayer"), { ssr: false });
 
 export default function Player() {
+  const [copyToClipbard, setCopyToClipbard] = useState(false)
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
@@ -96,6 +98,11 @@ export default function Player() {
     }
   };
 
+  const shareTrack = () => {
+    setCopyToClipbard(true)
+    navigator.clipboard.writeText(`reamp.vercel.app/tracks/${currentTrack.id}`)
+  };
+
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
@@ -153,6 +160,7 @@ export default function Player() {
 
   return (
     <>
+      {copyToClipbard && <CopiedToClipboard />}
       <div className="fixed min-w-[1280px] bg-sidebarBg h-[80px] w-full bottom-0 flex justify-center items-center px-[22px] font-Gilroy border-t border-darkLine">
         <div className="flex w-[360px] items-center">
           {currentTrack?.lossyArtworkUrl && (
@@ -278,9 +286,10 @@ export default function Player() {
             alt="Small Share"
             src="/icons/SmallShare.svg"
             className="mr-[12px] cursor-pointer"
+            onClick={shareTrack}
           />
           <img
-            alt="Small Share"
+            alt="Add to Queue"
             src="/icons/Add_to_Queue.svg"
             className="mr-[12px] cursor-pointer"
           />
