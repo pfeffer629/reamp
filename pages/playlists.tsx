@@ -61,7 +61,7 @@ export default function Playlists() {
             >
               <div
                 key={playlist.id}
-                className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
+                className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px]"
               >
                 <div className="relative inline">
                   <img
@@ -77,21 +77,21 @@ export default function Playlists() {
                   />
                 </div>
                 <div className="pt-2">
-                  <div className="text-whiteDisabled text-[11px]">
-                    PLAYLIST • {playlist.tracks.length} TRACKS
+                  <div className="text-whiteDisabled text-xs font-normal">
+                    Playlist • {playlist.tracks.length} {playlist.tracks.length === 1 ? 'Track' : 'Tracks'}
                   </div>
                 </div>
-                <div className="text-white text-[20px]">{playlist.name}</div>
-                <div className="flex flex-row items-center space-x-[9px]">
+                <div className="text-white text-[20px] text-base">{playlist.name}</div>
+                <div className="flex flex-row items-center pt-1 text-sm space-x-[9px] hover:underline">
                   <img
                     src={ensAvatar || svgAvatar}
                     alt="user"
-                    className="w-[21px] aspect-square rounded-[10px]"
+                    className="w-[21px] aspect-square rounded-[10px] "
                   />
                   &nbsp;{ensName}
                 </div>
                 <div className="pt-2">
-                  <div className="text-white text-[15px]">
+                  <div className="text-whiteDisabled text-[15px] text-xs">
                     {timeAgo.format(new Date(playlist.created_at || 0))}
                   </div>
                 </div>
