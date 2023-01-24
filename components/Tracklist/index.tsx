@@ -53,9 +53,9 @@ export default function Tracklist({ tracks }: TracklistProps) {
             </div>
             <div className="w-[191px] pl-2">Track</div>
             <div className="w-[130px] pl-6 text-left">Released</div>
-            <div className="w-[200px] pl-1 text-center">Platform</div>
-            <div className="w-[60px]">Favorite</div>
-            <div className="w-[130px] text-center">Share</div>
+            <div className="w-[200px] pl-6 text-center">Platform</div>
+            <div className="w-[66px]">Favorite</div>
+            <div className="w-[138px] text-center">Share</div>
           </div>
           {tracks &&
             tracks.map((track) => (
@@ -142,8 +142,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
                   <div className="w-[200px] flex items-center justify-center h-[70px] capitalize">
                     {track.platformId}
                   </div>
-                  <div className="w-[60px] flex items-center justify-center h-[70px]">
-                    <div className="cursor-pointer hover:scale-125 transition-all p-2 select-none">
+                  <div className="w-[60px] flex items-center pr-3 justify-center h-[70px]">
+                    <div className="cursor-pointer hover:scale-125 transition-all select-none">
                       {favorites.includes(track.id) ? (
                         <img
                           src="/icons/SmallHeartFilled.svg"
