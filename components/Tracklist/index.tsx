@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Image from "next/image";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../../contexts/TrackContext";
@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useAccount } from "wagmi";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import shuffleArray from "../../utils/shuffleArray";
+import CopiedToClipboard from "../../components/CopiedToClipboard";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
@@ -17,6 +18,7 @@ type TracklistProps = {
 
 export default function Tracklist({ tracks }: TracklistProps) {
   const timeAgo = new TimeAgo("en-US");
+  const [copyToClipbard, setCopyToClipbard] = useState(false);
   const {
     isPlaying,
     currentTrack,
@@ -31,6 +33,16 @@ export default function Tracklist({ tracks }: TracklistProps) {
     useContext(FavoritesContext);
   const { address } = useAccount();
 
+  const shareTrack = () => {
+    setCopyToClipbard(true);
+    navigator.clipboard.writeText(
+      `reamp.vercel.app/tracks/${currentTrack.slug}`
+    );
+    setTimeout(() => {
+      setCopyToClipbard(false);
+    }, 8000);
+  };
+
   const handleSelectTrack = (track: ITrack) => {
     if (tracks !== tracklist) {
       const shuffledTracks = shuffleArray([...tracks]);
@@ -44,6 +56,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
 
   return (
     <div className="w-[895px] mx-auto">
+      {copyToClipbard && <CopiedToClipboard />}
       <div className="flex flex-col space-y-4 min-h-[calc(100vh-160px)]">
         <div className="w-full">
           <div className="flex items-center">
@@ -170,6 +183,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                         alt="Small Share"
                         src="/icons/SmallShare.svg"
                         className="w-[14px]"
+                        onClick={shareTrack}
                       />
                     </div>
                   </div>
