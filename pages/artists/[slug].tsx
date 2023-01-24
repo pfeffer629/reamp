@@ -18,25 +18,24 @@ export default function Artists() {
     <div>
       <div className="flex">
         <div className="inline-block mr-[32px]">
-          {data?.artist && Object.keys(data.artist?.profiles).length > 0 && Object.values(data.artist?.profiles)[0].avatarUrl ? 
+          {data?.artist &&
+          Object.keys(data.artist?.profiles).length > 0 &&
+          Object.values(data.artist?.profiles)[0].avatarUrl ? (
             <img
-              src={
-                Object.values(data.artist?.profiles)[0].avatarUrl?.replace(
-                  "ipfs://",
-                  "https://ipfs.io/ipfs/"
-                )
-              }
+              src={Object.values(data.artist?.profiles)[0].avatarUrl?.replace(
+                "ipfs://",
+                "https://ipfs.io/ipfs/"
+              )}
               alt="artist avatar"
               className="w-[120px] h-[120px] rounded-[100px] object-cover"
-            /> : 
+            />
+          ) : (
             <img
-              src={
-                svgAvatar
-              }
+              src={svgAvatar}
               alt="artist avatar"
               className="w-[120px] h-[120px] rounded-[100px] object-cover"
-            /> 
-          }
+            />
+          )}
         </div>
         <div className="flex flex-col justify-center">
           <div className="pt-2">

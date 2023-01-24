@@ -5,7 +5,7 @@ import useDragScroll from "../../utils/useDragScroll";
 import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
-import svgAvatar from "../../utils/svgAvatar"
+import svgAvatar from "../../utils/svgAvatar";
 TimeAgo.addDefaultLocale(en);
 
 export default function PlaylistModal() {
