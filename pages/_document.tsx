@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <meta name="description" content="DISCOVER, CONNECT, COLLECT" />
+        <meta name="description" content="Reamp.xyz | Discover, Listen, and Collect Music NFTs" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
