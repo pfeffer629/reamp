@@ -106,7 +106,7 @@ export default function Player() {
 
     setTimeout(() => {
       setCopyToClipbard(false);
-    }, 8000);
+    }, 4000);
   };
 
   const handlePlayPause = () => {

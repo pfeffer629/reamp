@@ -40,7 +40,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
     );
     setTimeout(() => {
       setCopyToClipbard(false);
-    }, 8000);
+    }, 4000);
   };
 
   const handleSelectTrack = (track: ITrack) => {
