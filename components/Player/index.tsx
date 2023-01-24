@@ -38,12 +38,12 @@ export default function Player() {
   const { address } = useAccount();
 
   useEffect(() => {
-    window.addEventListener("keydown", (e) => {
-      if (e.code === "Space") {
-        e.preventDefault();
-        setIsPlaying(!isPlaying);
-      }
-    });
+    // window.addEventListener("keydown", (e) => {
+    //   if (e.code === "Space") {
+    //     e.preventDefault();
+    //     setIsPlaying(!isPlaying);
+    //   }
+    // });
     if ("mediaSession" in navigator) {
       navigator.mediaSession.setActionHandler("play", () => {
         setIsPlaying(true);
