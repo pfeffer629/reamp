@@ -165,18 +165,30 @@ export default function Player() {
             />
           )}
           <div>
-            <Link
-              className="text-sm font-extrabold hover:underline"
-              href={`/tracks/${currentTrack.slug}`}
-            >
-              {currentTrack?.title}
-            </Link>
-            <Link
-              className="text-xs text-whiteDisabled hover:underline"
-              href={`/artists/${currentTrack.artist?.slug}`}
-            >
-              <p>{currentTrack?.artist?.name}</p>
-            </Link>
+            {currentTrack.slug ? (
+              <Link
+                className="text-sm font-extrabold hover:underline"
+                href={`/tracks/${currentTrack.slug}`}
+              >
+                {currentTrack?.title}
+              </Link>
+            ) : (
+              <span className="text-sm font-extrabold">
+                {currentTrack?.title}
+              </span>
+            )}
+            {currentTrack.artist?.slug ? (
+              <Link
+                className="text-xs text-whiteDisabled hover:underline"
+                href={`/artists/${currentTrack.artist?.slug}`}
+              >
+                <p>{currentTrack?.artist?.name}</p>
+              </Link>
+            ) : (
+              <span className="text-xs text-whiteDisabled">
+                <p>{currentTrack?.artist?.name}</p>
+              </span>
+            )}
             {/*            
             <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 mt-[6px] select-none">
               collect

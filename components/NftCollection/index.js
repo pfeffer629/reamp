@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useEnsName, useEnsAvatar } from "wagmi";
 import { useEvmWalletNFTs } from "@moralisweb3/next";
 import PlayButton from "../Icons/PlayButton";
+import { ITrack } from "@spinamp/spinamp-sdk";
+import TrackContext from "../../contexts/TrackContext";
 
 export default function NftCollection({ address }) {
+  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
+    useContext(TrackContext);
+
   const [nfts, setNfts] = useState([]);
   const { data: ensAvatar } = useEnsAvatar({
     address: address,
@@ -15,12 +20,32 @@ export default function NftCollection({ address }) {
   }.svg`;
 
   useEffect(() => {
-    if (!isFetching && data?.length > 0) {
+    if (!isFetching && data && data?.length > 0) {
       setNfts(
         data.filter((nft) => nft._data.metadata?.losslessAudio?.length > 0)
       );
     }
   }, [data, isFetching]);
+
+  const handleSelectTrack = (track) => {
+    const formattedTrack = {
+      id: track.tokenHash,
+      title: track.name,
+      artist: {
+        name: track.artist,
+      },
+      lossyAudioUrl: track.losslessAudio.replace(
+        "ipfs://",
+        "https://ipfs.io/ipfs/"
+      ),
+      lossyArtworkUrl: track.image.replace("ipfs://", "https://ipfs.io/ipfs/"),
+      description: track.description,
+    };
+    setCurrentTrack(formattedTrack);
+    setTracklist([formattedTrack]);
+    setCurrentTrackIndex(0);
+    setIsPlaying(true);
+  };
 
   return (
     <>
@@ -43,7 +68,7 @@ export default function NftCollection({ address }) {
                 className="absolute top-0 bottom-0 left-0 right-0 m-auto"
                 height={25}
                 width={20}
-                onClick={() => handleSelectTrack(data as ITrack)}
+                onClick={() => handleSelectTrack(nft._data.metadata)}
               />
             </div>
             <div className="pt-2">
