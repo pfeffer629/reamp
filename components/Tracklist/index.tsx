@@ -18,7 +18,7 @@ type TracklistProps = {
 
 export default function Tracklist({ tracks }: TracklistProps) {
   const timeAgo = new TimeAgo("en-US");
-  const [copyToClipbard, setCopyToClipbard] = useState(false)
+  const [copyToClipbard, setCopyToClipbard] = useState(false);
   const {
     isPlaying,
     currentTrack,
@@ -32,10 +32,15 @@ export default function Tracklist({ tracks }: TracklistProps) {
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { address } = useAccount();
-  
+
   const shareTrack = () => {
-    setCopyToClipbard(true)
-    navigator.clipboard.writeText(`reamp.vercel.app/tracks/${currentTrack.id}`)
+    setCopyToClipbard(true);
+    navigator.clipboard.writeText(
+      `reamp.vercel.app/tracks/${currentTrack.slug}`
+    );
+    setTimeout(() => {
+      setCopyToClipbard(false);
+    }, 8000);
   };
 
   const handleSelectTrack = (track: ITrack) => {

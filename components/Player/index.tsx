@@ -16,7 +16,7 @@ import Link from "next/link";
 const AudioPlayer = dynamic(() => import("./AudioPlayer"), { ssr: false });
 
 export default function Player() {
-  const [copyToClipbard, setCopyToClipbard] = useState(false)
+  const [copyToClipbard, setCopyToClipbard] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
@@ -99,8 +99,14 @@ export default function Player() {
   };
 
   const shareTrack = () => {
-    setCopyToClipbard(true)
-    navigator.clipboard.writeText(`reamp.vercel.app/tracks/${currentTrack.id}`)
+    setCopyToClipbard(true);
+    navigator.clipboard.writeText(
+      `reamp.vercel.app/tracks/${currentTrack.slug}`
+    );
+
+    setTimeout(() => {
+      setCopyToClipbard(false);
+    }, 8000);
   };
 
   const handlePlayPause = () => {
