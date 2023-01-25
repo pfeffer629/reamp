@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useMemo } from "react";
 import { useEnsName, useEnsAvatar } from "wagmi";
 import { useCollectionQuery } from "@spinamp/spinamp-hooks";
 import PlayButton from "../Icons/PlayButton";
@@ -14,9 +14,9 @@ export default function NftCollection({ address }) {
   });
   const { data, error, isLoading } = useCollectionQuery(address);
   const { data: ensName } = useEnsName({ address });
-  const svgAvatar = `pfp/Reamp_pfp_${
+  const svgAvatar = useMemo(() => `pfp/Reamp_pfp_${
     ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-  }.svg`;
+  }.svg`, []);
 
   if (isLoading || error) {
     return <div></div>;
