@@ -185,18 +185,33 @@ export default function Sidebar() {
             )}
           </div>
           <div className="pb-[65px]">
-            <div
-              className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
-              onClick={() => setShowFeedbackModal(true)}
-            >
+            {address ? 
               <div
-                className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
-                style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
-              ></div>
-              <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
-                Submit Feedback
-              </div>
-            </div>
+                className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+                onClick={() => setShowFeedbackModal(true)}
+              >
+                <div
+                  className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
+                  style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
+                ></div>
+                <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
+                  Submit Feedback
+                </div>
+              </div> :
+              <a
+                className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+                href="https://form.typeform.com/to/i5cEbCte"
+                target="_blank"
+              >
+                <div
+                  className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
+                  style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
+                ></div>
+                <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
+                  Request Access
+                </div>
+              </a>
+            }
             <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
               <a href="https://form.typeform.com/to/vtVCzPtc" target="_blank">
                 <div
