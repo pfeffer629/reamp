@@ -159,7 +159,6 @@ export default function Live() {
           {recentPlaylists.length > 0 &&
             !address &&
             recentPlaylists.map((playlist) => (
-              <div>
                 <div
                   key={playlist.id}
                   className="px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px]"
@@ -203,7 +202,6 @@ export default function Live() {
                     </div>
                   </div>
                 </div>
-              </div>
             ))}
         </div>
       </div>
