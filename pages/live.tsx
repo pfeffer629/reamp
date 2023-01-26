@@ -5,6 +5,7 @@ import PlayButton from "../components/Icons/PlayButton";
 import TimeAgo from "javascript-time-ago";
 import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import shuffleArray from "../utils/shuffleArray";
+import ethAccounts from "../utils/ethAccounts";
 import Link from "next/link";
 import { useAccount } from "wagmi";
 
@@ -42,7 +43,7 @@ export default function Live() {
       }
       setIsPlaying(true);
     });
-  };
+  }; 
 
   return (
     <div>
@@ -141,11 +142,11 @@ export default function Live() {
                   </div>
                   <div className="flex flex-row items-center space-x-[9px] truncate">
                     <img
-                      src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/users/user1.png"
+                      src={ethAccounts[playlist.user_id]["avatar"]}
                       alt="user"
-                      className="w-[21px] aspect-square"
+                      className="w-[21px] rounded-xl"
                     />
-                    &nbsp;{playlist.user_id}
+                    &nbsp;{ethAccounts[playlist.user_id]["ens"]}
                   </div>
                   <div className="pt-2">
                     <div className="text-whiteDisabled text-[14px]">
@@ -190,11 +191,11 @@ export default function Live() {
                   </div>
                   <div className="flex flex-row items-center space-x-[9px] truncate">
                     <img
-                      src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/users/user1.png"
+                      src={ethAccounts[playlist.user_id]["avatar"]}
                       alt="user"
-                      className="w-[21px] aspect-square"
+                      className="w-[21px] rounded-xl"
                     />
-                    &nbsp;{playlist.user_id}
+                    &nbsp;{ethAccounts[playlist.user_id]["ens"]}
                   </div>
                   <div className="pt-2">
                     <div className="text-whiteDisabled text-[14px]">

@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import PlaylistContext from "../../contexts/PlaylistContext";
 import Tracklist from "../../components/Tracklist";
+import ethAccounts from "../../utils/ethAccounts";
 
 export default function Playlist() {
   const { selectedPlaylist } = useContext(PlaylistContext);
-
+console.log(selectedPlaylist.user_id)
   return (
     <div className="w-[895px] mx-auto">
       <div className="flex">
@@ -30,11 +31,11 @@ export default function Playlist() {
           </div>
           <div className="flex flex-row items-center space-x-[9px]">
             <img
-              src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/users/user1.png"
+              src={ethAccounts[selectedPlaylist.user_id] && ethAccounts[selectedPlaylist.user_id]["avatar"]}
               alt="user"
-              className="w-[21px] aspect-square"
+              className="w-[21px] rounded-xl"
             />
-            &nbsp;Placeholder name
+            &nbsp;{ethAccounts[selectedPlaylist.user_id] && ethAccounts[selectedPlaylist.user_id]["ens"]}
           </div>
         </div>
       </div>
