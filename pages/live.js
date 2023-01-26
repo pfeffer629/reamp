@@ -24,8 +24,8 @@ export default function Live() {
   const timeAgo = new TimeAgo("en-US");
 
   const handleSelectPlaylist = (
-    e: React.MouseEvent<SVGSVGElement>,
-    playlistTracks: string[]
+    e,
+    playlistTracks
   ) => {
     e.preventDefault();
     e.stopPropagation();

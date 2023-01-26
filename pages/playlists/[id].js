@@ -5,7 +5,7 @@ import ethAccounts from "../../utils/ethAccounts";
 
 export default function Playlist() {
   const { selectedPlaylist } = useContext(PlaylistContext);
-console.log(selectedPlaylist.user_id)
+
   return (
     <div className="w-[895px] mx-auto">
       <div className="flex">
