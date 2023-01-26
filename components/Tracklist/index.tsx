@@ -137,15 +137,26 @@ export default function Tracklist({ tracks }: TracklistProps) {
                   </div>
                   <div className="flex items-center w-[190px] ">
                     <div className="flex flex-col justify-center w-full ml-2 ">
-                      <Link href={`/tracks/${track.slug}`}>
-                        <div className="truncate w-full hover:underline">
-                          {track.title}
-                        </div>
-                      </Link>
-                      <div className="text-whiteDisabled truncate w-full hover:underline ">
-                        <Link href={`/artists/${track.artist?.slug}`}>
-                          {track.artist.name}
+                      {address ? (
+                        <Link href={`/tracks/${track.slug}`}>
+                          <div className="truncate w-full hover:underline">
+                            {track.title}
+                          </div>
                         </Link>
+                      ) : (
+                        <div className="truncate w-full">{track.title}</div>
+                      )}
+                      <div className="text-whiteDisabled truncate w-full">
+                        {address ? (
+                          <Link
+                            href={`/artists/${track.artist?.slug}`}
+                            className="hover:underline"
+                          >
+                            {track.artist.name}
+                          </Link>
+                        ) : (
+                          <span>{track.artist.name}</span>
+                        )}
                       </div>
                     </div>
                   </div>

@@ -6,6 +6,7 @@ import TimeAgo from "javascript-time-ago";
 import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import shuffleArray from "../utils/shuffleArray";
 import Link from "next/link";
+import { useAccount } from "wagmi";
 
 export default function Live() {
   const { recentPlaylists } = useContext(PlaylistContext);
@@ -17,6 +18,8 @@ export default function Live() {
     setShuffledTracklist,
     shuffle,
   } = useContext(TrackContext);
+  const { address } = useAccount();
+
   const timeAgo = new TimeAgo("en-US");
 
   const handleSelectPlaylist = (
@@ -100,6 +103,7 @@ export default function Live() {
         </div>
         <div className="flex flex-wrap">
           {recentPlaylists.length > 0 &&
+            address &&
             recentPlaylists.map((playlist) => (
               <Link
                 href={`/playlists/${playlist.id}`}
@@ -116,12 +120,16 @@ export default function Live() {
                       alt="playlist"
                       className="w-[204px] h-[210px] rounded-[10px]"
                     />
-                    <PlayButton
-                      className="absolute top-0 bottom-0 left-0 right-0 m-auto"
-                      height={25}
-                      width={20}
-                      onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
-                    />
+                    {address && (
+                      <PlayButton
+                        className="absolute top-0 bottom-0 left-0 right-0 m-auto"
+                        height={25}
+                        width={20}
+                        onClick={(e) =>
+                          handleSelectPlaylist(e, playlist.tracks)
+                        }
+                      />
+                    )}
                   </div>
                   <div className="pt-3 pb-.5">
                     <div className="text-whiteDisabled text-[11px]">
@@ -146,6 +154,55 @@ export default function Live() {
                   </div>
                 </div>
               </Link>
+            ))}
+          {recentPlaylists.length > 0 &&
+            !address &&
+            recentPlaylists.map((playlist) => (
+              <div>
+                <div
+                  key={playlist.id}
+                  className="px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px]"
+                >
+                  <div className="relative inline">
+                    <img
+                      src={playlist.cover}
+                      alt="playlist"
+                      className="w-[204px] h-[210px] rounded-[10px]"
+                    />
+                    {address && (
+                      <PlayButton
+                        className="absolute top-0 bottom-0 left-0 right-0 m-auto"
+                        height={25}
+                        width={20}
+                        onClick={(e) =>
+                          handleSelectPlaylist(e, playlist.tracks)
+                        }
+                      />
+                    )}
+                  </div>
+                  <div className="pt-3 pb-.5">
+                    <div className="text-whiteDisabled text-[11px]">
+                      PLAYLIST • {playlist.tracks.length} TRACKS
+                    </div>
+                  </div>
+                  <div className="text-white text-[18px] pb-1">
+                    {playlist.name}
+                  </div>
+                  <div className="flex flex-row items-center space-x-[9px] truncate">
+                    <img
+                      src="https://reamp-javitoshi-o6khee0h5-javitoshi.vercel.app/users/user1.png"
+                      alt="user"
+                      className="w-[21px] aspect-square"
+                    />
+                    &nbsp;{playlist.user_id}
+                  </div>
+                  <div className="pt-2">
+                    <div className="text-whiteDisabled text-[14px]">
+                      {timeAgo.format(new Date(playlist.created_at || 0))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
         </div>
       </div>

@@ -179,7 +179,7 @@ export default function Player() {
             />
           )}
           <div>
-            {currentTrack.slug ? (
+            {currentTrack.slug && address ? (
               <Link
                 className="text-sm font-extrabold hover:underline"
                 href={`/tracks/${currentTrack.slug}`}
@@ -191,7 +191,7 @@ export default function Player() {
                 {currentTrack?.title}
               </span>
             )}
-            {currentTrack.artist?.slug ? (
+            {currentTrack.artist?.slug && address ? (
               <Link
                 className="text-xs text-whiteDisabled hover:underline"
                 href={`/artists/${currentTrack.artist?.slug}`}

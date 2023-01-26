@@ -29,21 +29,20 @@ export default function Track() {
   return (
     <div className="w-[895px] mx-auto">
       <div className="py-4 border-t-[0.5px] border-white/30 mt-8">
-
-      <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled pt-2 pb-2">
-              <img
-                src={
-                  data?.artist
-                    ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
-                        "ipfs://",
-                        "https://ipfs.io/ipfs/"
-                      )
-                    : svgAvatar
-                }
-                className="w-[21px] aspect-square rounded-[10px]"
-              />
-              &nbsp;{data?.artist.name}
-            </div>
+        <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled pt-2 pb-2">
+          <img
+            src={
+              data?.artist
+                ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
+                    "ipfs://",
+                    "https://ipfs.io/ipfs/"
+                  )
+                : svgAvatar
+            }
+            className="w-[21px] aspect-square rounded-[10px]"
+          />
+          &nbsp;{data?.artist.name}
+        </div>
 
         <div className="text-3xl font-bold">
           <span>{data?.title}</span>
@@ -86,14 +85,13 @@ export default function Track() {
         <div className="w-[56%]">
           <div className="text-whiteDisabled">{data?.description}</div>
           <div>
-            
             <div>
               <div className="shadow-md py-1">
                 <a
                   target="_blank"
                   className="py-1 hover:text-selectedTab flex items-center space-x-2"
                   href={data?.websiteUrl}
-                >  
+                >
                   <svg
                     stroke="currentColor"
                     fill="currentColor"

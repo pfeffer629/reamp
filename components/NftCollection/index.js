@@ -14,9 +14,13 @@ export default function NftCollection({ address }) {
   });
   const { data, error, isLoading } = useCollectionQuery(address);
   const { data: ensName } = useEnsName({ address });
-  const svgAvatar = useMemo(() => `pfp/Reamp_pfp_${
-    ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-  }.svg`, []);
+  const svgAvatar = useMemo(
+    () =>
+      `pfp/Reamp_pfp_${
+        ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
+      }.svg`,
+    []
+  );
 
   if (isLoading || error) {
     return <div></div>;
@@ -56,9 +60,7 @@ export default function NftCollection({ address }) {
             <div className="pt-2">
               <div className="text-whiteDisabled text-[11px]">TRACK</div>
             </div>
-            <div className="text-white text-[20px]">
-              {track.artist.name}
-            </div>
+            <div className="text-white text-[20px]">{track.artist.name}</div>
             <div className="flex flex-row items-center space-x-[9px]">
               <img
                 src={ensAvatar || svgAvatar}

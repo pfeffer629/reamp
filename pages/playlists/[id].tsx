@@ -27,10 +27,6 @@ export default function Playlist() {
             <span className="text-white text-[30px]">
               {selectedPlaylist?.name}
             </span>
-            <img
-              src="/icons/SmallHeart.svg"
-              className="inline-block cursor-pointer ml-[15px]"
-            />
           </div>
           <div className="flex flex-row items-center space-x-[9px]">
             <img
