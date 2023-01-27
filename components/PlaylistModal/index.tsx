@@ -138,7 +138,7 @@ export default function PlaylistModal() {
                   </div>
                   <div className="flex flex-row items-center space-x-[9px]">
                     <img
-                      src={ensAvatar || ""}
+                      src={ensAvatar || svgAvatar}
                       alt="user"
                       className="w-[21px] aspect-square rounded-[10px]"
                     />

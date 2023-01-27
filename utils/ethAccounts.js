@@ -1,21 +1,15 @@
 const ethAccounts = {
   "0x81005FfFd676b1422674fC763ADe81a63b4787C9": {
     ens: "mpfeffer.eth",
-    avatar: `pfp/Reamp_pfp_${
-      ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-    }.svg`,
+    avatar: `pfp/Reamp_pfp_blue.svg`,
   },
   "0x2961617a37F0405F70BFc33D93c4418c088EDfa3": {
     ens: "slytex.eth",
-    avatar: `pfp/Reamp_pfp_${
-      ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-    }.svg`,
+    avatar: `pfp/Reamp_pfp_green.svg`,
   },
   "0x0774658ca78aff2b7c1a50AAe32011FFb959EE02": {
     ens: "xaine.eth",
-    avatar: `pfp/Reamp_pfp_${
-      ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-    }.svg`,
+    avatar: `pfp/Reamp_pfp_orange.svg`,
   },
   "0x4449b8e2B2068D71EA27735115aa11B4870cCA38": {
     ens: "javipark.eth",
@@ -39,9 +33,7 @@ const ethAccounts = {
   },
   "0x667Ea5905afDd6320607751F159bB742E8EA2126": {
     ens: "nelsonjordan.eth",
-    avatar: `pfp/Reamp_pfp_${
-      ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-    }.svg`,
+    avatar: `pfp/Reamp_pfp_yellowpink.svg`,
   },
   "0x0000ce08fa224696a819877070bf378e8b131acf": {
     ens: "0000ce0.eth",
@@ -60,9 +52,7 @@ const ethAccounts = {
   },
   "0x5507dbd48a5A5bAcE8a6030e878cC4E0af147C33": {
     ens: "nis.eth",
-    avatar: `pfp/Reamp_pfp_${
-      ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-    }.svg`,
+    avatar: `pfp/Reamp_pfp_blue.svg`,
   },
   "0x01b7baA7baA864fEF3CD1C7bc118Cc97cEdCB33f": {
     ens: "gaby.eth",
@@ -71,21 +61,15 @@ const ethAccounts = {
   },
   "0xB2D6AAF0bca136C252Ec94F0f06c2489F734675f": {
     ens: "Raynharr.eth",
-    avatar: `pfp/Reamp_pfp_${
-      ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-    }.svg`,
+    avatar: `pfp/Reamp_pfp_green.svg`,
   },
   "0xAA0dd4544Fb4aC8C706011BFa8F16638fB6409F3": {
     ens: "mattmurrs.eth",
-    avatar: `pfp/Reamp_pfp_${
-      ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-    }.svg`,
+    avatar: `pfp/Reamp_pfp_orange.svg`,
   },
   "0xDb10943768BFE537628e16B241720682F23EA242": {
     ens: "pgold.eth",
-    avatar: `pfp/Reamp_pfp_${
-      ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-    }.svg`,
+    avatar: `pfp/Reamp_pfp_yellowpink.svg`,
   },
   "0x23ce90550C260DBEAd7508072590311CE4Ee96A4": {
     ens: "0x23ce90550C260DBEAd7508072590311CE4Ee96A4",
@@ -104,9 +88,7 @@ const ethAccounts = {
   },
   "0xAd31e2466BD456fE1e7160Bcb303588dA5F54345": {
     ens: "0xAd31e2466BD456fE1e7160Bcb303588dA5F54345",
-    avatar: `pfp/Reamp_pfp_${
-      ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-    }.svg`,
+    avatar: `pfp/Reamp_pfp_orange.svg`,
   },
   "0x6C7c3806B3CaE601b1D99c017E4592753ba8D41e": {
     ens: "ananth.eth",
@@ -125,9 +107,7 @@ const ethAccounts = {
   },
   "0xC8F7e7436F7f967dE67825a25286A04244CBE066": {
     ens: "matiasz.eth",
-    avatar: `pfp/Reamp_pfp_${
-      ["blue", "green", "orange", "yellowpink"][Math.floor(Math.random() * 4)]
-    }.svg`,
+    avatar: `pfp/Reamp_pfp_green.svg`,
   },
   "0x4E33Db6008A82Ef0ab4FFd4124dD9B2d3579A523": {
     ens: "saevon.eth",
