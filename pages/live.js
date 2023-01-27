@@ -70,19 +70,19 @@ export default function Live() {
         </div>
         <div className="flex flex-wrap space-x-3 pb-[10px] tracking-wide">
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">789</div>
+            <div className="">1,414</div>
             <div className="text-searchBarText">Artists</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">10,667</div>
+            <div className="">15,933</div>
             <div className="text-searchBarText">Collectors</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">50,282</div>
+            <div className="">52,655</div>
             <div className="text-searchBarText">Tracks</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">$12,625,304</div>
+            <div className="">$12,709,488</div>
             <div className="text-searchBarText">Total Volume (USD)</div>
           </div>
         </div>
