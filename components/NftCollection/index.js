@@ -38,7 +38,7 @@ export default function NftCollection({ address }) {
         data.map((track) => (
           <div
             key={track.id}
-            className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
+            className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px]"
           >
             <div className="relative inline">
               <img
@@ -50,16 +50,17 @@ export default function NftCollection({ address }) {
                 className="w-[204px] h-[210px] rounded-[10px]"
               />
               <PlayButton
-                className="absolute top-0 bottom-0 left-0 right-0 m-auto"
+                className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
                 height={25}
                 width={20}
                 onClick={() => handleSelectTrack(track)}
               />
             </div>
             <div className="pt-2">
-              <div className="text-whiteDisabled text-[11px]">TRACK</div>
+              <div className="text-whiteDisabled text-[12px]">Track</div>
             </div>
-            <div className="text-white text-[20px]">{track.artist.name}</div>
+            <div className="text-white truncate text-[16px]">{track.title}</div>
+            <div className="truncate w-full text-whiteDisabled text-[14px] pb-1" >{track.artist.name}</div>
             <div className="flex flex-row items-center space-x-[9px]">
               <img
                 src={ensAvatar || svgAvatar}
