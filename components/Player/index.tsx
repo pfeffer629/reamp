@@ -306,11 +306,12 @@ export default function Player() {
             className="mr-[12px] cursor-pointer"
             onClick={shareTrack}
           />
+          {/* 
           <img
             alt="Add to Queue"
             src="/icons/Add_to_Queue.svg"
             className="mr-[12px] cursor-pointer"
-          />
+            />*/}
           <img
             alt="Volume"
             src="/icons/Volume.svg"

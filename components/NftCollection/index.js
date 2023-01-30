@@ -51,7 +51,7 @@ export default function NftCollection({ address }) {
                 className="w-[204px] h-[210px] rounded-[10px]"
               />
               <PlayButton
-                className="absolute top-0 bottom-0 left-0 right-0 m-auto"
+                className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
                 height={25}
                 width={20}
                 onClick={() => handleSelectTrack(track)}
