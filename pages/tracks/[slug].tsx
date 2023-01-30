@@ -76,8 +76,8 @@ export default function Track() {
             src={data?.lossyArtworkUrl}
           />
           <PlayButton
-            className="cursor-pointer absolute top-0 bottom-0 left-0 right-0 m-auto"
-            height={50}
+            className="cursor-pointer  hover:scale-125 duration-300 ease-in-out absolute top-0 bottom-0 left-0 right-0 m-auto"
+            height={40}
             width={80}
             onClick={() => handleSelectTrack(data as ITrack)}
           />
