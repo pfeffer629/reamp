@@ -63,10 +63,10 @@ export default function Live() {
               <path d="M256 56C145.72 56 56 145.72 56 256s89.72 200 200 200 200-89.72 200-200S366.28 56 256 56zm0 82a26 26 0 11-26 26 26 26 0 0126-26zm64 226H200v-32h44v-88h-32v-32h64v120h44z"></path>
             </svg>
           </div>
-          <img className="mx-[44px]" src="/icons/Catalog.svg" />
-          <img className="mr-[44px]" src="/icons/Sound.svg" />
-          <img className="mr-[44px]" src="/icons/Zora.svg" />
-          <img className="mr-[44px]" src="/icons/Nina.svg" />
+          <img className="mx-[34px] ml-5" src="/icons/logos/catalog.svg" />
+          <img className="mr-[34px]" src="/icons/logos/Sound.svg" />
+          <img className="mr-[34px]" src="/icons/logos/Zora.svg" />
+          <img className="mr-[34px]" src="/icons/logos/Nina.svg" />
         </div>
         <div className="flex flex-wrap space-x-3 pb-[10px] tracking-wide">
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
@@ -74,7 +74,7 @@ export default function Live() {
             <div className="text-searchBarText">Artists</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">15,998</div>
+            <div className="">15,414</div>
             <div className="text-searchBarText">Collectors</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
