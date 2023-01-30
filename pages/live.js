@@ -70,19 +70,19 @@ export default function Live() {
         </div>
         <div className="flex flex-wrap space-x-3 pb-[10px] tracking-wide">
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">1,414</div>
+            <div className="">1,423</div>
             <div className="text-searchBarText">Artists</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">15,933</div>
+            <div className="">15,998</div>
             <div className="text-searchBarText">Collectors</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">52,655</div>
+            <div className="">52,910</div>
             <div className="text-searchBarText">Tracks</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">$12,709,488</div>
+            <div className="">$12,720,876</div>
             <div className="text-searchBarText">Total Volume (USD)</div>
           </div>
         </div>
@@ -132,15 +132,16 @@ export default function Live() {
                       />
                     )}
                   </div>
-                  <div className="pt-3 pb-.5">
-                    <div className="text-whiteDisabled text-[11px]">
-                      PLAYLIST • {playlist.tracks.length} TRACKS
+                  <div className="pt-2">
+                    <div className="text-whiteDisabled text-xs font-normal">
+                    Playlist • {playlist.tracks.length}{" "}
+                    {playlist.tracks.length === 1 ? "Track" : "Tracks"}
                     </div>
                   </div>
-                  <div className="text-white text-[18px] pb-1">
+                  <div className="text-white text-[20px] text-base">
                     {playlist.name}
                   </div>
-                  <div className="flex flex-row items-center space-x-[9px] truncate">
+                  <div className="flex flex-row items-center pt-1 text-sm space-x-[9px]">
                     <img
                       src={ethAccounts[playlist.user_id]["avatar"]}
                       alt="user"
@@ -149,7 +150,7 @@ export default function Live() {
                     &nbsp;{ethAccounts[playlist.user_id]["ens"]}
                   </div>
                   <div className="pt-2">
-                    <div className="text-whiteDisabled text-[14px]">
+                    <div className="text-whiteDisabled text-[15px] text-xs">
                       {timeAgo.format(new Date(playlist.created_at || 0))}
                     </div>
                   </div>
