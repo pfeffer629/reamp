@@ -13,9 +13,7 @@ export default function Header() {
   const { disconnect } = useDisconnect()
 
   useEffect(() => {
-    if (address && Object.keys(ethAccounts).includes(address)) {
-      return
-    } else {
+    if (address && !Object.keys(ethAccounts).includes(address)) {
       window.open("https://form.typeform.com/to/i5cEbCte");
       disconnect()
     }
