@@ -39,7 +39,7 @@ export default function NftCollection({ address }) {
         data.map((track) => (
           <div
             key={track.id}
-            className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
+            className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px]"
           >
             <div className="relative inline">
               <img
@@ -58,9 +58,10 @@ export default function NftCollection({ address }) {
               />
             </div>
             <div className="pt-2">
-              <div className="text-whiteDisabled text-[11px]">TRACK</div>
+              <div className="text-whiteDisabled text-[12px]">Track</div>
             </div>
-            <div className="text-white text-[20px]">{track.artist.name}</div>
+            <div className="text-white truncate text-[16px]">{track.title}</div>
+            <div className="truncate w-full text-whiteDisabled text-[14px] pb-1" >{track.artist.name}</div>
             <div className="flex flex-row items-center space-x-[9px]">
               <img
                 src={ensAvatar || svgAvatar}
