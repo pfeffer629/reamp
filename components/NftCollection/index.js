@@ -1,8 +1,7 @@
-import { useEffect, useState, useContext, useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { useEnsName, useEnsAvatar } from "wagmi";
 import { useCollectionQuery } from "@spinamp/spinamp-hooks";
 import PlayButton from "../Icons/PlayButton";
-import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../../contexts/TrackContext";
 
 export default function NftCollection({ address }) {

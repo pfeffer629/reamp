@@ -9,11 +9,11 @@ import { useDisconnect } from 'wagmi'
 export default function Header() {
   const router = useRouter();
   const currentRoute = router.pathname;
-  const { address, isConnecting, isDisconnected } = useAccount()
+  const { address } = useAccount()
   const { disconnect } = useDisconnect()
 
   useEffect(() => {
-    if (Object.keys(ethAccounts).includes(address)) {
+    if (address && Object.keys(ethAccounts).includes(address)) {
       return
     } else {
       window.open("https://form.typeform.com/to/i5cEbCte");
