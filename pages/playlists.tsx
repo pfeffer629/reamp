@@ -85,7 +85,7 @@ export default function Playlists() {
                 <div className="text-white text-[20px] text-base">
                   {playlist.name}
                 </div>
-                <div className="flex flex-row items-center pt-1 text-sm space-x-[9px] hover:underline">
+                <div className="flex flex-row items-center pt-1 text-sm space-x-[9px]">
                   <img
                     src={ensAvatar || svgAvatar}
                     alt="user"
