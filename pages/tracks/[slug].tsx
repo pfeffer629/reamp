@@ -7,7 +7,7 @@ import svgAvatar from "../../utils/svgAvatar";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import { useAccount } from "wagmi";
-import Head from "next/head";
+import HeadSeo from "../../components/HeadSeo";
 import Link from "next/link";
 
 export default function Track() {
@@ -31,26 +31,18 @@ export default function Track() {
 
   return (
     <>
-    <Head>
-      <title>{data?.title}</title>
-      <meta
-        name="description"
-        content={data?.artist.name}
-        key="description"
-      />
-      <meta property="og:description" content={data?.artist.name} />
-      <meta
-        property="og:image"
-        content={
-          data?.artist
-            ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
-                "ipfs://",
-                "https://ipfs.io/ipfs/"
-              )
-            : svgAvatar
-        }
-      />
-    </Head>
+    <HeadSeo 
+      title={data?.title}
+      description={data?.artist.name}
+      ogImageUrl={
+        data?.artist
+          ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
+              "ipfs://",
+              "https://ipfs.io/ipfs/"
+            )
+          : svgAvatar
+      }
+    />
     <div className="w-[895px] mx-auto">
       <div className="py-4 border-t-[0.5px] border-white/30 mt-8">
         <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled pt-2 pb-2">
