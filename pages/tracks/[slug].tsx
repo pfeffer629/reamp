@@ -8,6 +8,7 @@ import { ITrack } from "@spinamp/spinamp-sdk";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import { useAccount } from "wagmi";
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Track() {
   const router = useRouter();
@@ -26,6 +27,7 @@ export default function Track() {
   if (isLoading || error) {
     return <div></div>;
   }
+  console.log(data)
 
   return (
     <div className="w-[895px] mx-auto">
@@ -61,7 +63,11 @@ export default function Track() {
             }
             className="w-[21px] aspect-square rounded-[10px]"
           />
+          <Link
+            href={`/artists/${data?.artist.slug}`}
+          >
           &nbsp;{data?.artist.name}
+          </Link>
         </div>
 
         <div className="text-3xl font-bold">
