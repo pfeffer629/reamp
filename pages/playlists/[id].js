@@ -31,11 +31,16 @@ export default function Playlist() {
           </div>
           <div className="flex flex-row items-center space-x-[9px]">
             <img
-              src={ethAccounts[selectedPlaylist.user_id] && ethAccounts[selectedPlaylist.user_id]["avatar"]}
+              src={
+                ethAccounts[selectedPlaylist.user_id] &&
+                ethAccounts[selectedPlaylist.user_id]["avatar"]
+              }
               alt="user"
               className="w-[21px] rounded-xl"
             />
-            &nbsp;{ethAccounts[selectedPlaylist.user_id] && ethAccounts[selectedPlaylist.user_id]["ens"]}
+            &nbsp;
+            {ethAccounts[selectedPlaylist.user_id] &&
+              ethAccounts[selectedPlaylist.user_id]["ens"]}
           </div>
         </div>
       </div>

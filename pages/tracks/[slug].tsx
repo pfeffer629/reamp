@@ -7,6 +7,7 @@ import svgAvatar from "../../utils/svgAvatar";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import { useAccount } from "wagmi";
+import Head from "next/head";
 
 export default function Track() {
   const router = useRouter();
@@ -28,6 +29,25 @@ export default function Track() {
 
   return (
     <div className="w-[895px] mx-auto">
+      <Head>
+        <title>{data?.title}</title>
+        <meta
+          name="description"
+          content="Reamp.xyz | Discover, listen, and collect music nfts (cool, but optional)"
+        />
+        <meta property="og:description" content={data?.artist.name} />
+        <meta
+          property="og:image"
+          content={
+            data?.artist
+              ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
+                  "ipfs://",
+                  "https://ipfs.io/ipfs/"
+                )
+              : svgAvatar
+          }
+        />
+      </Head>
       <div className="py-4 border-t-[0.5px] border-white/30 mt-8">
         <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled pt-2 pb-2">
           <img
