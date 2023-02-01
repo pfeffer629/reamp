@@ -7,7 +7,6 @@ import svgAvatar from "../../utils/svgAvatar";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import { useAccount } from "wagmi";
-import HeadSeo from "../../components/HeadSeo";
 import Link from "next/link";
 
 export default function Track() {
@@ -27,22 +26,8 @@ export default function Track() {
   if (isLoading || error) {
     return <div></div>;
   }
-  console.log(data)
 
   return (
-    <>
-    <HeadSeo 
-      title={data?.title}
-      description={data?.artist.name}
-      ogImageUrl={
-        data?.artist
-          ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
-              "ipfs://",
-              "https://ipfs.io/ipfs/"
-            )
-          : svgAvatar
-      }
-    />
     <div className="w-[895px] mx-auto">
       <div className="py-4 border-t-[0.5px] border-white/30 mt-8">
         <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled pt-2 pb-2">
@@ -57,10 +42,8 @@ export default function Track() {
             }
             className="w-[21px] aspect-square rounded-[10px]"
           />
-          <Link
-            href={`/artists/${data?.artist.slug}`}
-          >
-          &nbsp;{data?.artist.name}
+          <Link href={`/artists/${data?.artist.slug}`}>
+            &nbsp;{data?.artist.name}
           </Link>
         </div>
 
@@ -131,6 +114,5 @@ export default function Track() {
         </div>
       </div>
     </div>
-    </>
   );
 }
