@@ -33,7 +33,7 @@ export default function Track() {
         <title>{data?.title}</title>
         <meta
           name="description"
-          content="Reamp.xyz | Discover, listen, and collect music nfts (cool, but optional)"
+          content={data?.artist.name}
         />
         <meta property="og:description" content={data?.artist.name} />
         <meta
