@@ -1,5 +1,4 @@
 import Head from "next/head"
-import siteMetadata from "@data/siteMetadata"
 
 const HeadSeo = ({
     title,
