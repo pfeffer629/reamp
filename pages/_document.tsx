@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <meta
           name="description"
-          content="Reamp.xyz | Discover, Listen, and Collect Music NFTs"
+          content="test"
           key="description"
         />
         <link rel="icon" href="/favicon.ico" />
