@@ -36,6 +36,7 @@ export default function Track() {
         <meta
           name="description"
           content={data?.artist.name}
+          key="description"
         />
         <meta property="og:description" content={data?.artist.name} />
         <meta
