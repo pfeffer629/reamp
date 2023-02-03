@@ -23,6 +23,7 @@ import {
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { mainnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
+import { Analytics } from '@vercel/analytics/react';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [mainnet],
@@ -79,6 +80,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   <PlaylistModal />
                 </div>
                 <Player />
+                <Analytics />
               </PlaylistProvider>
             </FavoritesProvider>
           </RainbowKitProvider>
