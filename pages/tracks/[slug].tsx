@@ -30,7 +30,7 @@ export default function Track() {
   return (
     <div className="w-[895px] mx-auto">
       <div className="py-4 border-t-[0.5px] border-white/30 mt-8">
-        <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled pt-2 pb-2">
+        <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled  hover:underline pt-2 pb-2">
           <img
             src={
               data?.artist
@@ -43,7 +43,7 @@ export default function Track() {
             className="w-[21px] aspect-square rounded-[10px]"
           />
           <Link href={`/artists/${data?.artist.slug}`}>
-            &nbsp;{data?.artist.name}
+            {data?.artist.name}
           </Link>
         </div>
 
