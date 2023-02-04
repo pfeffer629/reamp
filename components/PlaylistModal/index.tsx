@@ -21,6 +21,10 @@ export default function PlaylistModal() {
   const { data: ensAvatar } = useEnsAvatar({
     address: address,
   });
+
+  if (!address) {
+    return <div></div>;
+  }
   const { currentTrack } = useContext(TrackContext);
   const { data: ensName } = useEnsName({ address });
   const ref = useRef(null);

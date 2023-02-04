@@ -60,7 +60,9 @@ export default function NftCollection({ address }) {
               <div className="text-whiteDisabled text-[12px]">Track</div>
             </div>
             <div className="text-white truncate text-[16px]">{track.title}</div>
-            <div className="truncate w-full text-whiteDisabled text-[14px] pb-1" >{track.artist.name}</div>
+            <div className="truncate w-full text-whiteDisabled text-[14px] pb-1">
+              {track.artist.name}
+            </div>
             <div className="flex flex-row items-center space-x-[9px]">
               <img
                 src={ensAvatar || svgAvatar}

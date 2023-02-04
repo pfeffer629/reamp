@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import { useEffect } from "react";
 import type { AppProps } from "next/app";
 import { SpinampProvider } from "@spinamp/spinamp-hooks";
 import { TrackProvider } from "../contexts/TrackContext";
@@ -23,7 +24,8 @@ import {
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { mainnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
+import mixpanel from "mixpanel-browser";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [mainnet],
@@ -58,6 +60,14 @@ const wagmiClient = createClient({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    mixpanel.init("e27b3a18d1177ae9e6b66e8ea292cf5e", {
+      debug: true,
+      ignore_dnt: true,
+    });
+    mixpanel.track("page_view");
+  }, []);
+
   return (
     <WagmiConfig client={wagmiClient}>
       <SpinampProvider>

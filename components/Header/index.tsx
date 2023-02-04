@@ -2,20 +2,20 @@ import { useEffect } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useAccount } from 'wagmi'
+import { useAccount } from "wagmi";
 import ethAccounts from "../../utils/ethAccounts";
-import { useDisconnect } from 'wagmi'
+import { useDisconnect } from "wagmi";
 
 export default function Header() {
   const router = useRouter();
   const currentRoute = router.pathname;
-  const { address } = useAccount()
-  const { disconnect } = useDisconnect()
+  const { address } = useAccount();
+  const { disconnect } = useDisconnect();
 
   useEffect(() => {
     if (address && !Object.keys(ethAccounts).includes(address)) {
       window.open("https://form.typeform.com/to/i5cEbCte");
-      disconnect()
+      disconnect();
     }
   }, [address]);
 

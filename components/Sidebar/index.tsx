@@ -185,7 +185,7 @@ export default function Sidebar() {
             )}
           </div>
           <div className="pb-[65px]">
-            {address ? 
+            {address ? (
               <div
                 className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
                 onClick={() => setShowFeedbackModal(true)}
@@ -197,7 +197,8 @@ export default function Sidebar() {
                 <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
                   Submit Feedback
                 </div>
-              </div> :
+              </div>
+            ) : (
               <a
                 className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
                 href="https://form.typeform.com/to/i5cEbCte"
@@ -211,7 +212,7 @@ export default function Sidebar() {
                   Request Access
                 </div>
               </a>
-            }
+            )}
             <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
               <a href="https://form.typeform.com/to/vtVCzPtc" target="_blank">
                 <div
