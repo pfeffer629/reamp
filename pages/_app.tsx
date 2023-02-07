@@ -89,7 +89,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   </div>
                   <PlaylistModal />
                 </div>
-                {/*<Player />*/}
+                <Player />
                 <Analytics />
               </PlaylistProvider>
             </FavoritesProvider>
