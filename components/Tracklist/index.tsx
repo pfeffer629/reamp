@@ -135,7 +135,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       />
                     </div>
                   </div>
-                  <div className="flex items-center max-sm:w-1/2 w-[190px] ">
+                  <div className="flex items-center max-sm:w-2/5 w-[190px] ">
                     <div className="flex flex-col justify-center w-full ml-2 ">
                       {address ? (
                         <Link href={`/tracks/${track.slug}`}>

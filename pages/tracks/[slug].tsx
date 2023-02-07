@@ -8,6 +8,7 @@ import { ITrack } from "@spinamp/spinamp-sdk";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import { useAccount } from "wagmi";
 import Link from "next/link";
+import { Interweave } from 'interweave';
 
 export default function Track() {
   const router = useRouter();
@@ -86,7 +87,9 @@ export default function Track() {
           />
         </div>
         <div className="w-[56%]">
-          <div className="text-whiteDisabled">{data?.description}</div>
+          <span className="text-whiteDisabled">
+            <Interweave content={data?.description} />
+          </span>
           <div>
             <div>
               <div className="shadow-md py-1">
