@@ -44,7 +44,17 @@ export default function Live() {
 
   return (
     <div>
-      <div className="flex flex-col space-y-4">
+      <div className="max-sm:flex min-h-[calc(100vh-300px)] flex-col items-center justify-center hidden">
+        <img alt="Globe" src="/icons/Globe.svg" className="h-[21px] w-[21px]" />
+        <div className="text-whiteDisabled text-center text-[20px] my-[21px]">
+          Visit Reamp.xyz on desktop <br />
+          to see your collection
+        </div>
+        <div className="cursor-pointer bg-white group-hover:bg-selectedTab text-[14px] px-[24px] py-[8px] flex justify-center items-center text-[10px] rounded-lg text-black transition-all duration-500 mt-[6px] select-none">
+          Request Access
+        </div>
+      </div>
+      <div className="max-sm:hidden flex flex-col space-y-4">
         <div className="flex items-center">
           <div>Ecosystem Highlights</div>
           <div className="p-2 mb-1 text-sm cursor-pointer transition-all hover:bg-gray-700/40 bg-transparent rounded-md">

@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     /*search */
-    <div className="max-sm:hidden block mx-auto py-4">
+    <div className="mx-auto py-4">
       <div className="flex items-center justify-between">
         <div className="relative text-searchBarText">
           <input

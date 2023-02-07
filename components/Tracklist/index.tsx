@@ -55,7 +55,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
   };
 
   return (
-    <div className="max-sm:w-full w-[895px] mx-auto">
+    <div className="max-sm:w-full max-sm:mb-[140px] mb-0 w-[895px] mx-auto">
       {copyToClipbard && <CopiedToClipboard />}
       <div className="flex flex-col space-y-4 min-h-[calc(100vh-160px)]">
         <div className="w-full">
@@ -203,7 +203,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                         className="w-[16px]"
                       />
                     </div>
-                  </div>  
+                  </div>
                 </div>
               </div>
             ))}
