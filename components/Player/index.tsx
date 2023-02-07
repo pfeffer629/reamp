@@ -167,7 +167,7 @@ export default function Player() {
   return (
     <>
       {copyToClipbard && <CopiedToClipboard />}
-      <div className="fixed min-w-[1280px] bg-sidebarBg h-[80px] w-full bottom-0 flex justify-center items-center px-[22px] font-Gilroy border-t border-darkLine">
+      <div className="max-sm:hidden block fixed max-sm:min-w-auto min-w-[1280px] bg-sidebarBg h-[80px] w-full bottom-0 flex justify-center items-center px-[22px] font-Gilroy border-t border-darkLine">
         <div className="flex w-[360px] items-center">
           {currentTrack?.lossyArtworkUrl && (
             <Image

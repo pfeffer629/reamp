@@ -63,7 +63,7 @@ export default function Sidebar() {
   }, []);
 
   return (
-    <div className="w-[230px] bg-sidebarBg border-r border-darkLine relative">
+    <div className="max-sm:hidden block w-[230px] bg-sidebarBg border-r border-darkLine relative">
       <div className="fixed bg-sidebarBg border-r border-darkLine">
         <div className="pb-0 p-[27px] h-[100vh] flex flex-col w-[230px] justify-between">
           <div>

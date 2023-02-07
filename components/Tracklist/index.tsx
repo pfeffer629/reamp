@@ -55,11 +55,11 @@ export default function Tracklist({ tracks }: TracklistProps) {
   };
 
   return (
-    <div className="w-[895px] mx-auto">
+    <div className="max-sm:w-full w-[895px] mx-auto">
       {copyToClipbard && <CopiedToClipboard />}
       <div className="flex flex-col space-y-4 min-h-[calc(100vh-160px)]">
         <div className="w-full">
-          <div className="flex items-center">
+          <div className="flex items-center max-sm:hidden block">
             <div className="w-[46px]"></div>
             <div className="p-[9px]">
               <div className="w-[52px]">Cover</div>
@@ -160,10 +160,10 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       </div>
                     </div>
                   </div>
-                  <div className="w-[140px] flex items-center justify-left pl-6 h-[72px]">
+                  <div className="max-sm:hidden block w-[140px] flex items-center justify-left pl-6 h-[72px]">
                     {timeAgo.format(new Date(track.createdAtTime || 0))}
                   </div>
-                  <div className="w-[200px] flex items-center justify-center h-[70px] capitalize">
+                  <div className="max-sm:hidden block w-[200px] flex items-center justify-center h-[70px] capitalize">
                     {track.platformId}
                   </div>
                   <div className="w-[60px] flex items-center pr-3 justify-center h-[70px]">
@@ -185,7 +185,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       )}
                     </div>
                   </div>
-                  <div className="w-[130px] flex items-center justify-center h-[70px]">
+                  <div className="max-sm:hidden block w-[130px] flex items-center justify-center h-[70px]">
                     {/*<div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 pt-[2px] select-none">
                       collect
                     </div>*/}

@@ -81,15 +81,15 @@ export default function App({ Component, pageProps }: AppProps) {
                 <title>
                   Reamp.xyz | Discover, listen, and collect Music NFTs
                 </title>
-                <div className="flex w-[1280px] font-Gilroy overflow-hidden">
+                <div className="flex max-sm:w-[100vw] w-[1280px] font-Gilroy overflow-hidden">
                   <Sidebar />
-                  <div className="mx-auto w-[895px]">
+                  <div className="mx-auto max-sm:m-0 max-sm:w-[100vw] w-[895px]">
                     <Header />
                     <Component {...pageProps} />
                   </div>
                   <PlaylistModal />
                 </div>
-                <Player />
+                {/*<Player />*/}
                 <Analytics />
               </PlaylistProvider>
             </FavoritesProvider>
