@@ -74,7 +74,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
             tracks.map((track) => (
               <div className="flex flex-col space-y-4" key={track.id}>
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
-                  <div className="w-[46px]">
+                  <div className="w-[46px] max-sm:ml-[12px]">
                     <div className="flex items-center h-full justify-center">
                       {currentTrack.id === track.id && isPlaying ? (
                         <div className="flex justify-center items-center w-[38px] h-[38px]">
@@ -135,7 +135,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       />
                     </div>
                   </div>
-                  <div className="flex items-center w-[190px] ">
+                  <div className="flex items-center max-sm:w-1/2 w-[190px] ">
                     <div className="flex flex-col justify-center w-full ml-2 ">
                       {address ? (
                         <Link href={`/tracks/${track.slug}`}>
@@ -166,7 +166,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                   <div className="max-sm:hidden block w-[200px] flex items-center justify-center h-[70px] capitalize">
                     {track.platformId}
                   </div>
-                  <div className="w-[60px] flex items-center pr-3 justify-center h-[70px]">
+                  <div className="max-sm:w-auto max-sm:ml-auto w-[60px] flex items-center pr-3 justify-center h-[70px]">
                     <div className="cursor-pointer hover:scale-125 transition-all select-none">
                       {favorites.includes(track.id) ? (
                         <img
@@ -186,9 +186,6 @@ export default function Tracklist({ tracks }: TracklistProps) {
                     </div>
                   </div>
                   <div className="max-sm:hidden block w-[130px] flex items-center justify-center h-[70px]">
-                    {/*<div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 pt-[2px] select-none">
-                      collect
-                    </div>*/}
                     <div className="cursor-pointer hover:scale-125 transition-all p-2 select-none">
                       <img
                         alt="Small Share"
@@ -198,7 +195,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       />
                     </div>
                   </div>
-                  <div className="w-[60px] flex items-center justify-center h-[70px]">
+                  <div className="max-sm:w-auto max-sm:pr-[24px] w-[60px] flex items-center justify-center h-[70px]">
                     <div className="bg-transparent p-2 hover:scale-125 transition-all cursor-pointer duration-300">
                       <img
                         src="/icons/SmallThreeDots.svg"
@@ -206,7 +203,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                         className="w-[16px]"
                       />
                     </div>
-                  </div>
+                  </div>  
                 </div>
               </div>
             ))}

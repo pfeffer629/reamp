@@ -89,7 +89,9 @@ export default function App({ Component, pageProps }: AppProps) {
                   </div>
                   <PlaylistModal />
                 </div>
-                <Player />
+                <span className="max-sm:hidden block">
+                  <Player />
+                </span>
                 <Analytics />
               </PlaylistProvider>
             </FavoritesProvider>
