@@ -66,7 +66,7 @@ export default function PlaylistModal() {
                   type="text"
                   className="w-[380px] pt-[4px] flex items-center bg-transparent relative outline-none ring-0 text-[16px] text-searchbarText"
                   placeholder="Create New Playlist"
-                  maxLength="24"
+                  maxLength={24}
                   onChange={(e) => setPlaylistName(e.target.value)}
                 />
                 <img
