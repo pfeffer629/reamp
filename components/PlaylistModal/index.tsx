@@ -132,10 +132,12 @@ export default function PlaylistModal() {
                 ))
               ) : (
                 <div className="text-left px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]">
-                  <img
+                  <Image
                     src={currentTrack.lossyArtworkUrl}
                     alt="playlist"
                     className="w-[204px] h-[210px] rounded-[10px]"
+                    width={204}
+                    height={210}
                   />
                   <div className="pt-2">
                     <div className="text-whiteDisabled text-[11px]">
