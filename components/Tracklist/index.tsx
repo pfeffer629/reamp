@@ -164,7 +164,12 @@ export default function Tracklist({ tracks }: TracklistProps) {
                     {timeAgo.format(new Date(track.createdAtTime || 0))}
                   </div>
                   <div className="max-sm:hidden block w-[200px] flex items-center justify-center h-[70px] capitalize">
-                    <span className="text-center truncate">{track.platformId.replace("0x8427e46826a520b1264b55f31fcb5ddfdc31e349", "Chaos")}</span>
+                    <span className="text-center truncate">
+                      {track.platformId.replace(
+                        "0x8427e46826a520b1264b55f31fcb5ddfdc31e349",
+                        "Chaos"
+                      )}
+                    </span>
                   </div>
                   <div className="max-sm:w-auto max-sm:ml-auto w-[60px] flex items-center pr-3 justify-center h-[70px]">
                     <div className="cursor-pointer hover:scale-125 transition-all select-none">

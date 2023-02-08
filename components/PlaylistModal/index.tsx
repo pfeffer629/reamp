@@ -17,20 +17,27 @@ export default function PlaylistModal() {
     userPlaylists,
     addToPlaylist,
   } = useContext(PlaylistContext);
-  const { address } = useAccount();
+
+  let { address } = useAccount();
+
+  if (!address) {
+    address = "";
+  }
+
   const { data: ensAvatar } = useEnsAvatar({
     address: address,
   });
 
-  if (!address) {
-    return <div></div>;
-  }
   const { currentTrack } = useContext(TrackContext);
   const { data: ensName } = useEnsName({ address });
   const ref = useRef(null);
   useDragScroll({
     sliderRef: ref,
   });
+
+  if (!address) {
+    return <div ref={ref}></div>;
+  }
 
   const timeAgo = new TimeAgo("en-US");
 
