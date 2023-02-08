@@ -35,9 +35,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
 
   const shareTrack = (slug) => {
     setCopyToClipbard(true);
-    navigator.clipboard.writeText(
-      `https://beta.reamp.xyz/tracks/${slug}`
-    );
+    navigator.clipboard.writeText(`https://beta.reamp.xyz/tracks/${slug}`);
     setTimeout(() => {
       setCopyToClipbard(false);
     }, 4000);
