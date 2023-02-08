@@ -20,7 +20,7 @@ export default function Track() {
     useContext(FavoritesContext);
   const { address } = useAccount();
 
-  const handleSelectTrack = (track: ITrack) => {
+  const handleSelectTrack = (track) => {
     setCurrentTrack(track);
     setIsPlaying(true);
   };
@@ -54,7 +54,7 @@ export default function Track() {
 
         <div className="text-3xl font-bold">
           <span>{data?.title}</span>
-          {favorites.includes(data?.id as string) ? (
+          {favorites.includes(data?.id) ? (
             <img
               src="/icons/SmallHeartFilled.svg"
               alt="Heart Filled"
@@ -87,7 +87,7 @@ export default function Track() {
             className="cursor-pointer  hover:scale-125 duration-300 ease-in-out absolute top-0 bottom-0 left-0 right-0 m-auto"
             height={40}
             width={80}
-            onClick={() => handleSelectTrack(data as ITrack)}
+            onClick={() => handleSelectTrack(data)}
           />
         </div>
         <div className="w-[56%]">
