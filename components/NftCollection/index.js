@@ -2,6 +2,7 @@ import { useContext, useMemo } from "react";
 import { useEnsName, useEnsAvatar } from "wagmi";
 import { useCollectionQuery } from "@spinamp/spinamp-hooks";
 import PlayButton from "../Icons/PlayButton";
+import Image from "next/image";
 import TrackContext from "../../contexts/TrackContext";
 
 export default function NftCollection({ address }) {
@@ -41,13 +42,15 @@ export default function NftCollection({ address }) {
             className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px]"
           >
             <div className="relative inline">
-              <img
+              <Image
                 src={track.lossyArtworkUrl.replace(
                   "ipfs://",
                   "https://ipfs.io/ipfs/"
                 )}
                 alt="playlist"
-                className="w-[204px] h-[210px] rounded-[10px]"
+                className="rounded-[10px]"
+                height={210}
+                width={204}
               />
               <PlayButton
                 className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"

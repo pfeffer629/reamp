@@ -8,6 +8,7 @@ import shuffleArray from "../utils/shuffleArray";
 import ethAccounts from "../utils/ethAccounts";
 import Link from "next/link";
 import { useAccount } from "wagmi";
+import Image from "next/image";
 
 export default function Live() {
   const { recentPlaylists } = useContext(PlaylistContext);
@@ -123,10 +124,12 @@ export default function Live() {
                   className="px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px]"
                 >
                   <div className="relative inline">
-                    <img
+                    <Image
                       src={playlist.cover}
                       alt="playlist"
-                      className="w-[204px] h-[210px] rounded-[10px]"
+                      className="rounded-[10px]"
+                      height={210}
+                      width={204}
                     />
                     {address && (
                       <PlayButton
@@ -149,10 +152,12 @@ export default function Live() {
                     {playlist.name}
                   </div>
                   <div className="flex flex-row items-center pt-1 text-sm space-x-[9px]">
-                    <img
+                    <Image
                       src={ethAccounts[playlist.user_id]["avatar"]}
                       alt="user"
-                      className="w-[21px] rounded-xl"
+                      className="rounded-xl"
+                      height={21}
+                      width={21}
                     />
                     &nbsp;{ethAccounts[playlist.user_id]["ens"]}
                   </div>
@@ -172,10 +177,12 @@ export default function Live() {
                 className="px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px]"
               >
                 <div className="relative inline">
-                  <img
+                  <Image
                     src={playlist.cover}
                     alt="playlist"
-                    className="w-[204px] h-[210px] rounded-[10px]"
+                    className="rounded-[10px]"
+                    height={210}
+                    width={204}
                   />
                   {address && (
                     <PlayButton
@@ -195,10 +202,12 @@ export default function Live() {
                   {playlist.name}
                 </div>
                 <div className="flex flex-row items-center space-x-[9px] truncate">
-                  <img
+                  <Image
                     src={ethAccounts[playlist.user_id]["avatar"]}
                     alt="user"
-                    className="w-[21px] rounded-xl"
+                    className="rounded-xl"
+                    height={21}
+                    width={21}
                   />
                   &nbsp;{ethAccounts[playlist.user_id]["ens"]}
                 </div>

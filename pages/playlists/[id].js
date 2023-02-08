@@ -2,6 +2,7 @@ import { useContext } from "react";
 import PlaylistContext from "../../contexts/PlaylistContext";
 import Tracklist from "../../components/Tracklist";
 import ethAccounts from "../../utils/ethAccounts";
+import Image from "next/image";
 
 export default function Playlist() {
   const { selectedPlaylist } = useContext(PlaylistContext);
@@ -11,10 +12,12 @@ export default function Playlist() {
       <div className="flex">
         <div key={selectedPlaylist?.id} className="inline-block mr-[32px]">
           <div className="relative inline">
-            <img
+            <Image
               src={selectedPlaylist?.cover}
               alt="playlist"
-              className="w-[204px] h-[210px] rounded-[10px]"
+              className="rounded-[10px]"
+              height={210}
+              width={204}
             />
           </div>
         </div>
@@ -30,13 +33,15 @@ export default function Playlist() {
             </span>
           </div>
           <div className="flex flex-row items-center space-x-[9px]">
-            <img
+            <Image
               src={
                 ethAccounts[selectedPlaylist.user_id] &&
                 ethAccounts[selectedPlaylist.user_id]["avatar"]
               }
               alt="user"
-              className="w-[21px] rounded-xl"
+              className="rounded-xl"
+              height={21}
+              width={21}
             />
             &nbsp;
             {ethAccounts[selectedPlaylist.user_id] &&

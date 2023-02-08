@@ -2,6 +2,7 @@ import Tracklist from "../../components/Tracklist";
 import { useRouter } from "next/router";
 import { useArtistQuery } from "@spinamp/spinamp-hooks";
 import svgAvatar from "../../utils/svgAvatar";
+import Image from "next/image";
 
 export default function Artists() {
   const router = useRouter();
@@ -21,19 +22,23 @@ export default function Artists() {
           {data?.artist &&
           Object.keys(data.artist?.profiles).length > 0 &&
           Object.values(data.artist?.profiles)[0].avatarUrl ? (
-            <img
+            <Image
               src={Object.values(data.artist?.profiles)[0].avatarUrl?.replace(
                 "ipfs://",
                 "https://ipfs.io/ipfs/"
               )}
               alt="artist avatar"
-              className="w-[120px] h-[120px] rounded-[100px] object-cover"
+              className="h-[120px] w-[120px] rounded-[100px] object-cover"
+              height={120}
+              width={120}
             />
           ) : (
-            <img
+            <Image
               src={svgAvatar}
               alt="artist avatar"
-              className="w-[120px] h-[120px] rounded-[100px] object-cover"
+              className="h-[120px] w-[120px] rounded-[100px] object-cover"
+              height={120}
+              width={120}
             />
           )}
         </div>

@@ -9,6 +9,7 @@ import FavoritesContext from "../../contexts/FavoritesContext";
 import { useAccount } from "wagmi";
 import Link from "next/link";
 import { Interweave } from 'interweave';
+import Image from "next/image";
 
 export default function Track() {
   const router = useRouter();
@@ -32,7 +33,7 @@ export default function Track() {
     <div className="w-[895px] mx-auto">
       <div className="py-4 border-t-[0.5px] border-white/30 mt-8">
         <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled  hover:underline pt-2 pb-2">
-          <img
+          <Image
             src={
               data?.artist?.profiles.length > 0
                 ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
@@ -41,7 +42,10 @@ export default function Track() {
                   )
                 : svgAvatar
             }
-            className="w-[21px] aspect-square rounded-[10px]"
+            className="aspect-square rounded-[10px]"
+            alt={data?.artist?.name}
+            height={21}
+            width={21}
           />
           <Link href={`/artists/${data?.artist.slug}`}>
             {data?.artist.name}
