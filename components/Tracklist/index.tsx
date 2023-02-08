@@ -33,10 +33,10 @@ export default function Tracklist({ tracks }: TracklistProps) {
     useContext(FavoritesContext);
   const { address } = useAccount();
 
-  const shareTrack = () => {
+  const shareTrack = (slug) => {
     setCopyToClipbard(true);
     navigator.clipboard.writeText(
-      `reamp.vercel.app/tracks/${currentTrack.slug}`
+      `https://beta.reamp.xyz/tracks/${slug}`
     );
     setTimeout(() => {
       setCopyToClipbard(false);
@@ -196,7 +196,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                         alt="Small Share"
                         src="/icons/SmallShare.svg"
                         className="w-[14px]"
-                        onClick={shareTrack}
+                        onClick={() => shareTrack(track.slug)}
                       />
                     </div>
                   </div>

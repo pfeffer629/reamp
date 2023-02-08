@@ -101,7 +101,7 @@ export default function Player() {
   const shareTrack = () => {
     setCopyToClipbard(true);
     navigator.clipboard.writeText(
-      `reamp.vercel.app/tracks/${currentTrack.slug}`
+      `https://beta.reamp.xyz/tracks/${currentTrack.slug}`
     );
 
     setTimeout(() => {

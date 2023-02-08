@@ -34,7 +34,7 @@ export default function Track() {
         <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled  hover:underline pt-2 pb-2">
           <img
             src={
-              data?.artist
+              data?.artist?.profiles.length > 0
                 ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
                     "ipfs://",
                     "https://ipfs.io/ipfs/"
