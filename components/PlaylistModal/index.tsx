@@ -21,7 +21,7 @@ export default function PlaylistModal() {
   let { address } = useAccount();
 
   if (!address) {
-    address = "";
+    address = "0x12345";
   }
 
   const { data: ensAvatar } = useEnsAvatar({
