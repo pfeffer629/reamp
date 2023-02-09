@@ -51,13 +51,15 @@ export default function MobileFooter() {
       {(currentRoute === "/favorites" ||
         currentRoute === "/playlists" ||
         currentRoute === "/collection") && (
-        <div className="relative flex justify-center py-6 text-sm bg-black">
+        <div className="relative flex justify-center px-2 py-6 text-sm bg-black">
           <div className="flex items-center space-x-14 z-10">
             <span className="text-whiteDisabled">
               <img
                 src="/icons/SmallHeart.svg"
                 alt="Small Heart Filled"
                 className="inline-block"
+                height={12}
+                width={12}
               />
               &nbsp; My Favorites
             </span>
