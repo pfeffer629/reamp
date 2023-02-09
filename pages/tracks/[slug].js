@@ -8,7 +8,7 @@ import { ITrack } from "@spinamp/spinamp-sdk";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import { useAccount } from "wagmi";
 import Link from "next/link";
-import { Interweave } from 'interweave';
+import { Interweave } from "interweave";
 import Image from "next/image";
 
 export default function Track() {
@@ -31,7 +31,7 @@ export default function Track() {
 
   return (
     <div className="w-[895px] mx-auto">
-      <div className="py-4 border-t-[0.5px] border-white/30 mt-8">
+      <div className="sm-max:border-0 py-4 border-t-[0.5px] border-white/30 mt-8">
         <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled  hover:underline pt-2 pb-2">
           <Image
             src={

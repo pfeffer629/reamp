@@ -27,6 +27,7 @@ import { mainnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { Analytics } from "@vercel/analytics/react";
 import mixpanel from "mixpanel-browser";
+import { useRouter } from "next/router";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [mainnet],
@@ -61,6 +62,9 @@ const wagmiClient = createClient({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const currentRoute = router.pathname;
+
   useEffect(() => {
     mixpanel.init("e27b3a18d1177ae9e6b66e8ea292cf5e", {
       debug: true,
@@ -99,7 +103,11 @@ export default function App({ Component, pageProps }: AppProps) {
                   </div>
                   <PlaylistModal />
                 </div>
-                <span className="max-sm:hidden block">
+                <span
+                  className={`${
+                    currentRoute === "/playing" ? "" : "max-sm:hidden block"
+                  }`}
+                >
                   <Player />
                 </span>
                 <span className="max-sm:block hidden">

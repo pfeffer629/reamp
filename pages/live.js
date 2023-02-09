@@ -51,9 +51,15 @@ export default function Live() {
           Visit Reamp.xyz on desktop <br />
           to see your collection
         </div>
-        <div className="cursor-pointer bg-white group-hover:bg-selectedTab text-[14px] px-[24px] py-[8px] flex justify-center items-center text-[10px] rounded-lg text-black transition-all duration-500 mt-[6px] select-none">
-          Request Access
-        </div>
+        <a
+          className="rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+          href="https://form.typeform.com/to/i5cEbCte"
+          target="_blank"
+        >
+          <div className="cursor-pointer bg-white group-hover:bg-selectedTab text-[14px] px-[24px] py-[8px] flex justify-center items-center text-[10px] rounded-lg text-black transition-all duration-500 mt-[6px] select-none">
+            Request Access
+          </div>
+        </a>
       </div>
       <div className="max-sm:hidden flex flex-col space-y-4">
         <div className="flex items-center">
