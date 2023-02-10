@@ -162,10 +162,13 @@ export default function Tracklist({ tracks }: TracklistProps) {
                     {timeAgo.format(new Date(track.createdAtTime || 0))}
                   </div>
                   <div className="max-sm:hidden block w-[200px] flex items-center justify-center h-[70px] capitalize">
-                    <span className="text-center truncate">
+                    <span className="text-center">
                       {track.platformId.replace(
                         "0x8427e46826a520b1264b55f31fcb5ddfdc31e349",
                         "Chaos"
+                      ).replace(
+                        "0xe80c7fee3d41e311e0351244231919e04e699e56",
+                        "Jagwar Twin"
                       )}
                     </span>
                   </div>
