@@ -169,6 +169,9 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       ).replace(
                         "0xe80c7fee3d41e311e0351244231919e04e699e56",
                         "Jagwar Twin"
+                      ).replace(
+                        "0x719C6d392fc659f4fe9b0576cBC46E18939687a7",
+                        "Daniel Allan"
                       )}
                     </span>
                   </div>
