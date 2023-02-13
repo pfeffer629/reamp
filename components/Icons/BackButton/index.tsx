@@ -10,7 +10,7 @@ function BackButton({
   width = 14,
   height = 13,
   onClick,
-}: NextButtonProps) {
+}: BackButtonProps) {
   return (
     <svg
       width={width}
