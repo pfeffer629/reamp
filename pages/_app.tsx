@@ -105,7 +105,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 </div>
                 <div
                   className={`${
-                    currentRoute === "/playing" ? "overflow-hidden" : "max-sm:hidden block"
+                    currentRoute === "/playing" ? "overflow-x-hidden" : "max-sm:hidden block"
                   }`}
                 >
                   <Player />
