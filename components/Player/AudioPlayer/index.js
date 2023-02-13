@@ -18,6 +18,8 @@ function AudioPlayer({
       volume={volume}
       onEnded={onEnded}
       loop={loop}
+      width={0}
+      height={0}
     />
   );
 }

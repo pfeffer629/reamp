@@ -331,7 +331,7 @@ export default function Player() {
           </div>
         </div>
       </div>
-      <div className="max-sm:block hidden w-full text-center">
+      <div className="max-sm:block hidden w-full text-center mb-[98px]">
         {currentTrack?.lossyArtworkUrl && (
           <img
             alt={currentTrack?.title || ""}
