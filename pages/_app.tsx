@@ -103,13 +103,13 @@ export default function App({ Component, pageProps }: AppProps) {
                   </div>
                   <PlaylistModal />
                 </div>
-                <span
+                <div
                   className={`${
-                    currentRoute === "/playing" ? "" : "max-sm:hidden block"
+                    currentRoute === "/playing" ? "overflow-hidden" : "max-sm:hidden block"
                   }`}
                 >
                   <Player />
-                </span>
+                </div>
                 <span className="max-sm:block hidden">
                   <MobileFooter />
                 </span>

@@ -344,7 +344,7 @@ export default function Player() {
           {currentTrack?.artist?.name}
         </p>
         <div className="p-[34px] pb-[12px]">
-          <div className="flex justify-center items-center p-[34px] w-full">
+          <div className="flex justify-center items-center py-[34px] w-full">
             {favorites.includes(currentTrack.id) ? (
               <img
                 src="/icons/HeartFilled2.svg"
