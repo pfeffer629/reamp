@@ -92,7 +92,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     <div className="max-sm:hidden block">
                       <Header />
                     </div>
-                    <div className="max-sm:flex hidden justify-center my-[18px]">
+                    <div className="max-sm:flex hidden justify-center my-[18px] pb-[80px]">
                       <img
                         src="/images/Reamp_WHT.svg"
                         alt="reamp logo"
@@ -105,7 +105,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 </div>
                 <div
                   className={`${
-                    currentRoute === "/playing" ? "overflow-x-hidden" : "max-sm:hidden block"
+                    currentRoute === "/playing" ? "overflow-x-hidden" : "max-sm:hidden block pt-[80px]"
                   }`}
                 >
                   <Player />
