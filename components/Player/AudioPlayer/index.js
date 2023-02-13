@@ -20,6 +20,11 @@ function AudioPlayer({
       loop={loop}
       width={0}
       height={0}
+      config={{
+        file: {
+          forceAudio: true,
+        },
+      }}
     />
   );
 }
