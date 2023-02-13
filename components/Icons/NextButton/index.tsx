@@ -1,13 +1,20 @@
 type NextButtonProps = {
   className?: string;
+  width?: number;
+  height?: number;
   onClick?: React.MouseEventHandler<SVGSVGElement>;
 };
 
-function NextButton({ className, onClick }: NextButtonProps) {
+function NextButton({
+  className,
+  width = 14,
+  height = 13,
+  onClick,
+}: NextButtonProps) {
   return (
     <svg
-      width={14}
-      height={13}
+      width={width}
+      height={height}
       viewBox="0 0 14 13"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

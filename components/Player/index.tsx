@@ -167,7 +167,7 @@ export default function Player() {
   return (
     <>
       {copyToClipbard && <CopiedToClipboard />}
-      <div className="fixed min-w-[1280px] bg-sidebarBg h-[80px] w-full bottom-0 flex justify-center items-center px-[22px] font-Gilroy border-t border-darkLine">
+      <div className="max-sm:hidden fixed max-sm:w-0 min-w-[1280px] bg-sidebarBg h-[80px] w-full bottom-0 flex justify-center items-center px-[22px] font-Gilroy border-t border-darkLine">
         <div className="flex w-[360px] items-center">
           {currentTrack?.lossyArtworkUrl && (
             <Image
@@ -329,6 +329,140 @@ export default function Player() {
           <div className="mr-[12px] bg-transparent hover:bg-gray-500/30 p-2 transition-all transform rounded-lg cursor-pointer duration-300">
             <img alt="Small Three Dots" src="/icons/SmallThreeDots.svg" />
           </div>
+        </div>
+      </div>
+      <div className="max-sm:block hidden w-full text-center">
+        {currentTrack?.lossyArtworkUrl && (
+          <img
+            alt={currentTrack?.title || ""}
+            src={currentTrack?.lossyArtworkUrl || ""}
+            className="w-full mr-[18px] rounded-[5px] p-[24px]"
+          />
+        )}
+        <p className="font-extrabold text-[26px]">{currentTrack?.title}</p>
+        <p className="text-[16px] text-whiteDisabled">
+          {currentTrack?.artist?.name}
+        </p>
+        <div className="p-[34px] pb-[12px]">
+          <div className="flex justify-center items-center p-[34px] w-full">
+            {favorites.includes(currentTrack.id) ? (
+              <img
+                src="/icons/HeartFilled2.svg"
+                alt="Heart Filled"
+                className={`${
+                  !address && "cursor-default"
+                } cursor-pointer mr-auto`}
+                onClick={() => removeFavorite(currentTrack.id)}
+              />
+            ) : (
+              <img
+                src="/icons/HeartControls.svg"
+                alt="Heart Empty"
+                className={`${
+                  !address && "cursor-default"
+                } cursor-pointer mr-auto`}
+                onClick={() => addFavorite(currentTrack.id)}
+              />
+            )}
+            <BackButton
+              className="cursor-pointer"
+              height={24}
+              width={28}
+              onClick={handleBack}
+            />
+            <div className="mx-[30px] cursor-pointer" onClick={handlePlayPause}>
+              {!isPlaying ? (
+                <PlayButton width={32} height={40} />
+              ) : (
+                <PauseButton width={32} height={40} />
+              )}
+            </div>
+            <NextButton
+              className="cursor-pointer"
+              height={24}
+              width={28}
+              onClick={handleNext}
+            />
+            <div className="ml-auto cursor-pointer">
+              <img alt="Small Three Dots" src="/icons/SmallThreeDots.svg" />
+            </div>
+          </div>
+          <input
+            type="range"
+            className="w-full h-[8px] border-radius-0 border-white-500"
+            step={1}
+            min={0}
+            max={duration || 0}
+            value={elapsed || 0}
+            onMouseDown={() => null}
+            onMouseUp={() => null}
+            onChange={(e) => {
+              seekTo(parseFloat(e.target.value) || 0);
+            }}
+          />
+        </div>
+        <div className="flex justify-between px-[34px]">
+          <span className="font-extrabold text-xs">
+            {convertToMinutes(elapsed)}
+          </span>
+          <span className="font-extrabold text-xs">
+            {convertToMinutes(duration)}
+          </span>
+        </div>
+        <div className="flex w-full justify-around mt-[34px]">
+          {shuffle ? (
+            <img
+              src="/icons/ShuffleFilled.svg"
+              alt="Shuffle"
+              className="cursor-pointer h-[20px]"
+              onClick={unshuffleTracks}
+            />
+          ) : (
+            <img
+              src="/icons/Shuffle.svg"
+              alt="Shuffle"
+              className="cursor-pointer h-[20px]"
+              onClick={shuffleTracks}
+            />
+          )}
+          {repeat ? (
+            <img
+              src="/icons/RepeatOnce.svg"
+              alt="Repeat Once"
+              className="cursor-pointer h-[20px]"
+              onClick={() => setRepeat(false)}
+            />
+          ) : (
+            <img
+              src="/icons/Repeat.svg"
+              alt="Repeat"
+              className="cursor-pointer h-[20px]"
+              onClick={() => setRepeat(true)}
+            />
+          )}
+          <img
+            alt="Playlists"
+            src="/icons/Playlists.svg"
+            className="cursor-pointer h-[20px]"
+          />
+          <img
+            src="/icons/Playlist.svg"
+            alt="Add To Playlist"
+            className="cursor-pointer h-[20px]"
+            onClick={() => toggleModal(currentTrack)}
+          />
+          <img
+            alt="Small Share"
+            src="/icons/SmallShare.svg"
+            className="cursor-pointer h-[20px]"
+            onClick={shareTrack}
+          />
+          {/* 
+          <img
+            alt="Add to Queue"
+            src="/icons/Add_to_Queue.svg"
+            className="mr-[12px] cursor-pointer"
+            />*/}
         </div>
       </div>
       <div className="invisible h-0 w-0">

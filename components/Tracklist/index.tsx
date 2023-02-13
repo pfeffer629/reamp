@@ -163,16 +163,19 @@ export default function Tracklist({ tracks }: TracklistProps) {
                   </div>
                   <div className="max-sm:hidden block w-[200px] flex items-center justify-center h-[70px] capitalize">
                     <span className="text-center">
-                      {track.platformId.replace(
-                        "0x8427e46826a520b1264b55f31fcb5ddfdc31e349",
-                        "Chaos"
-                      ).replace(
-                        "0xe80c7fee3d41e311e0351244231919e04e699e56",
-                        "Jagwar Twin"
-                      ).replace(
-                        "0x719C6d392fc659f4fe9b0576cBC46E18939687a7",
-                        "Daniel Allan"
-                      )}
+                      {track.platformId
+                        .replace(
+                          "0x8427e46826a520b1264b55f31fcb5ddfdc31e349",
+                          "Chaos"
+                        )
+                        .replace(
+                          "0xe80c7fee3d41e311e0351244231919e04e699e56",
+                          "Jagwar Twin"
+                        )
+                        .replace(
+                          "0x719C6d392fc659f4fe9b0576cBC46E18939687a7",
+                          "Daniel Allan"
+                        )}
                     </span>
                   </div>
                   <div className="max-sm:w-auto max-sm:ml-auto w-[60px] flex items-center pr-3 justify-center h-[70px]">
