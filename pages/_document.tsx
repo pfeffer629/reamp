@@ -13,8 +13,8 @@ export default function Document() {
         <link rel="manifest" href="/manifest.json" />
         <meta property="og:image" content="/images/Reamp_Cover_BG.png" />
         <meta property="twitter:image" content="/images/Reamp_Cover_BG.png" />
-        <meta name="theme-color" content="#131313" />
-        <meta name="apple-mobile-web-app-status-bar" content="#131313" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="apple-mobile-web-app-status-bar" content="#000000" />
       </Head>
       <body>
         <Main />
