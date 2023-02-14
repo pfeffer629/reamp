@@ -8,7 +8,7 @@ export default function Playlist() {
   const { selectedPlaylist } = useContext(PlaylistContext);
 
   return (
-    <div className="w-[895px] mx-auto">
+    <div className="max-sm:px-[24px] max-sm:w-full w-[895px] mx-auto">
       <div className="flex">
         <div key={selectedPlaylist?.id} className="inline-block mr-[32px]">
           <div className="relative inline">

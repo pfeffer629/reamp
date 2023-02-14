@@ -30,8 +30,8 @@ export default function Track() {
   }
 
   return (
-    <div className="w-[895px] mx-auto">
-      <div className="sm-max:border-0 py-4 border-t-[0.5px] border-white/30 mt-8">
+    <div className="max-sm:w-full max-sm:flex max-sm:flex-col max-sm:px-[24px] w-[895px] mx-auto">
+      <div className="max-sm:border-0 max-sm:p-0 max-sm:m-0 py-4 border-t-[0.5px] border-white/30 mt-8">
         <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled  hover:underline pt-2 pb-2">
           <Image
             src={
@@ -73,9 +73,9 @@ export default function Track() {
           )}
         </div>
       </div>
-      <div className="flex justify-between w-full">
+      <div className="flex max-sm:flex-col justify-between w-full">
         <div
-          className="w-[40%] h-[40%] rounded-lg overflow-hidden shadow-md shadow-white/20 transform transition-all duration-[3s] active:rotate-[1800deg] active:scale-75"
+          className="max-sm:w-full max-sm:h-full max-sm:my-[24px] w-[40%] h-[40%] rounded-lg overflow-hidden shadow-md shadow-white/20 transform transition-all duration-[3s] active:rotate-[1800deg] active:scale-75"
           draggable="false"
         >
           <img
@@ -84,7 +84,7 @@ export default function Track() {
             src={data?.lossyArtworkUrl}
           />
           <PlayButton
-            className="cursor-pointer  hover:scale-125 duration-300 ease-in-out absolute top-0 bottom-0 left-0 right-0 m-auto"
+            className="cursor-pointer hover:scale-125 duration-300 ease-in-out absolute top-0 bottom-0 left-0 right-0 m-auto"
             height={40}
             width={80}
             onClick={() => handleSelectTrack(data)}
