@@ -10,6 +10,9 @@ export default function Document() {
           key="description"
         />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#34F3FF" />
+        <meta name="apple-mobile-web-app-status-bar" content="#34F3FF" />
       </Head>
       <body>
         <Main />
