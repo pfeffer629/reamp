@@ -134,7 +134,7 @@ export default function Live() {
                       src={playlist.cover}
                       alt="playlist"
                       className="rounded-[10px]"
-                      height={210}
+                      height={204}
                       width={204}
                     />
                     {address && (
@@ -187,7 +187,7 @@ export default function Live() {
                     src={playlist.cover}
                     alt="playlist"
                     className="rounded-[10px]"
-                    height={210}
+                    height={204}
                     width={204}
                   />
                   {address && (

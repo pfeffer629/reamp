@@ -16,7 +16,7 @@ export default function Playlist() {
               src={selectedPlaylist?.cover}
               alt="playlist"
               className="rounded-[10px]"
-              height={210}
+              height={204}
               width={204}
             />
           </div>

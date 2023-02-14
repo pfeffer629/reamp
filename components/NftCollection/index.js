@@ -49,7 +49,7 @@ export default function NftCollection({ address }) {
                 )}
                 alt="playlist"
                 className="rounded-[10px]"
-                height={210}
+                height={204}
                 width={204}
               />
               <PlayButton

@@ -84,7 +84,7 @@ export default function Playlists() {
                     <img
                       src={playlist.cover}
                       alt="playlist"
-                      className="w-[204px] h-[210px] rounded-[10px]"
+                      className="w-[204px] h-[204px] rounded-[10px]"
                     />
                     <PlayButton
                       className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"

@@ -97,9 +97,9 @@ export default function PlaylistModal() {
                     <Image
                       src={playlist.cover}
                       alt="playlist"
-                      className="w-[204px] h-[210px] rounded-[10px]"
+                      className="w-[204px] h-[204px] rounded-[10px]"
                       width={204}
-                      height={210}
+                      height={204}
                     />
                     <div className="pt-2">
                       <div className="text-whiteDisabled text-[11px]">
@@ -135,9 +135,9 @@ export default function PlaylistModal() {
                   <Image
                     src={currentTrack?.lossyArtworkUrl || ""}
                     alt="playlist"
-                    className="w-[204px] h-[210px] rounded-[10px]"
+                    className="w-[204px] h-[204px] rounded-[10px]"
                     width={204}
-                    height={210}
+                    height={204}
                   />
                   <div className="pt-2">
                     <div className="text-whiteDisabled text-[11px]">
