@@ -7,6 +7,7 @@ import { useAccount } from "wagmi";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import shuffleArray from "../../utils/shuffleArray";
 import CopiedToClipboard from "../../components/CopiedToClipboard";
+import { useRouter } from 'next/navigation';
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
@@ -32,6 +33,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { address } = useAccount();
+  const router = useRouter();
 
   const shareTrack = (slug) => {
     setCopyToClipbard(true);
@@ -41,7 +43,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
     }, 4000);
   };
 
-  const handleSelectTrack = (track: ITrack) => {
+  const handleSelectTrack = (track: ITrack, mobile=false) => {
     if (tracks !== tracklist) {
       const shuffledTracks = shuffleArray([...tracks]);
       setTracklist(tracks);
@@ -50,6 +52,10 @@ export default function Tracklist({ tracks }: TracklistProps) {
     setCurrentTrack(track);
     setCurrentTrackIndex(tracks.indexOf(track));
     setIsPlaying(true);
+
+    if (mobile) {
+      router.push('/playing')
+    }
   };
 
   return (
@@ -115,8 +121,15 @@ export default function Tracklist({ tracks }: TracklistProps) {
                             loading="lazy"
                             alt="Play Button"
                             src="/icons/Play_Controls.svg"
-                            className="w-[14px] translate-x-[1px]"
+                            className="max-sm:hidden block w-[14px] translate-x-[1px]"
                             onClick={() => handleSelectTrack(track)}
+                          />  
+                          <img
+                            loading="lazy"
+                            alt="Play Button"
+                            src="/icons/Play_Controls.svg"
+                            className="max-sm:block hidden w-[14px] translate-x-[1px]"
+                            onClick={() => handleSelectTrack(track, true)}
                           />
                         </div>
                       )}
