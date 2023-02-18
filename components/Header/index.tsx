@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useAccount } from "wagmi";
 import ethAccounts from "../../utils/ethAccounts";
 import { useDisconnect } from "wagmi";
+import { supabase } from "../../utils/supabase";
 
 export default function Header() {
   const router = useRouter();
@@ -17,7 +18,24 @@ export default function Header() {
       window.open("https://form.typeform.com/to/i5cEbCte");
       disconnect();
     }
+    if (address) {
+      logWallet(address)
+    }
   }, [address]);
+
+  async function logWallet(address: string) {
+    const { data, error } = await supabase
+      .from("wallets")
+      .upsert(
+        { address: address },
+      );
+
+    if (error) {
+      throw error;
+    }
+
+    console.log(data)
+  }
 
   return (
     /*search */
