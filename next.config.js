@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
-import withPWA from 'next-pwa';
-import runtimeCaching from 'next-pwa/cache.js';
+const withPWA = require('next-pwa')({
+  dest: 'public'
+})
+const runtimeCaching = require('next-pwa/cache.js');
 const isProduction = process.env.NODE_ENV === 'production';
 
 const config = {
