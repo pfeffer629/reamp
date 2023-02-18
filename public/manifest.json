@@ -9,7 +9,7 @@
   "icons": [
     {
       "src": "/icons/logosReamp_xyz_512.svg",
-      "type": "image/svg",
+      "type": "image/svg+xml",
       "sizes": "any",
       "purpose": "any"
     }
