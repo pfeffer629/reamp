@@ -8,8 +8,8 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icons/logosReamp_xyz_512.svg",
-      "type": "image/svg+xml",
+      "src": "/images/Reamp_512_Icon.png",
+      "type": "image/png",
       "sizes": "any",
       "purpose": "any"
     }
