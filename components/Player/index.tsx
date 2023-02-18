@@ -46,7 +46,19 @@ export default function Player() {
     //     setIsPlaying(!isPlaying);
     //   }
     // });
-    if ("mediaSession" in navigator) {
+    if (Object.keys(currentTrack).length > 0 && "mediaSession" in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: currentTrack.title,
+        artist: currentTrack.artist?.name,
+        artwork: [
+          { src: currentTrack.lossyArtworkUrl,   sizes: '96x96',   type: 'image/png' },
+          { src: currentTrack.lossyArtworkUrl, sizes: '128x128', type: 'image/png' },
+          { src: currentTrack.lossyArtworkUrl, sizes: '192x192', type: 'image/png' },
+          { src: currentTrack.lossyArtworkUrl, sizes: '256x256', type: 'image/png' },
+          { src: currentTrack.lossyArtworkUrl, sizes: '384x384', type: 'image/png' },
+          { src: currentTrack.lossyArtworkUrl, sizes: '512x512', type: 'image/png' },
+        ]
+      });
       navigator.mediaSession.setActionHandler("play", () => {
         setIsPlaying(true);
       });
