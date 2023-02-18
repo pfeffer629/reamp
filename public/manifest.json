@@ -5,5 +5,12 @@
   "display": "standalone",
   "background_color": "#131313",
   "theme_color": "#131313",
-  "orientation": "portrait-primary"
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/logosReamp_xyz_512.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
+  ]
 }
