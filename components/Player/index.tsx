@@ -46,7 +46,7 @@ export default function Player() {
     //     setIsPlaying(!isPlaying);
     //   }
     // });
-    if (Object.keys(currentTrack).length > 0 && "mediaSession" in navigator) {
+    if (Object.keys(currentTrack).length > 0) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: currentTrack.title,
         artist: currentTrack.artist?.name,
@@ -59,6 +59,8 @@ export default function Player() {
           { src: currentTrack.lossyArtworkUrl, sizes: '512x512', type: 'image/png' },
         ]
       });
+    }
+    if ("mediaSession" in navigator) {
       navigator.mediaSession.setActionHandler("play", () => {
         setIsPlaying(true);
       });
