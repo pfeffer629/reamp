@@ -8,7 +8,7 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/images/Reamp_512_Icon.png",
+      "src": "/images/Reamp_512px_Icon.png",
       "type": "image/png",
       "sizes": "any",
       "purpose": "any"
