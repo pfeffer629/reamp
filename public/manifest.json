@@ -11,7 +11,7 @@
       "src": "/images/Reamp_512px_Icon.png",
       "type": "image/png",
       "sizes": "any",
-      "purpose": "any"
+      "purpose": "any maskable"
     }
   ]
 }

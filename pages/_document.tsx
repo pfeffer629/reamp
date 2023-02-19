@@ -11,6 +11,7 @@ export default function Document() {
         />
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/images/Reamp_512px_Icon.png">
         <meta property="og:image" content="/images/Reamp_Cover_BG.png" />
         <meta property="twitter:image" content="/images/Reamp_Cover_BG.png" />
         <meta name="theme-color" content="#000000" />
