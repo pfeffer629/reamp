@@ -137,7 +137,7 @@ const ethAccounts = {
   "0xeb54D707252Ee9E26E6a4073680Bf71154Ce7Ab5": {
     ens: "jzs.eth",
     avatar:
-      "https://i.seadn.io/gae/uZ8aKJ0XZ1X_PCfYwKQ0_W-RQ4B6m7IMN-P70cZyPuhIT4Pr_ZcbswH-sVeqsLGqSftkVWvNm15dJr1jOTJqXX1sXyinrCnuyccHyQ?auto=format&w=384",
+      "https://i.seadn.io/gae/eU6QyD_6oY3a_vwxyn_RdtjcYCVMCOk0HU5pGdsWBQxNM90N4Z2VAhNjmAXswu_2mcbluqSesuZPiufD1RXGOGoy9_vorvFL_o6c?w=500&auto=format",
   },
 };
 
