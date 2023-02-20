@@ -9,7 +9,7 @@ const ethAccounts = {
   },
   "0x0774658ca78aff2b7c1a50AAe32011FFb959EE02": {
     ens: "xaine.eth",
-    avatar: "https://i.seadn.io/gcs/files/4068ca2a947b6b19e2d3cfd049bb0ec6.jpg?auto=format&w=1000",
+    avatar: "https://i.seadn.io/gcs/files/dddfd659ae4f5a75f186a109a83a8d02.png?auto=format&w=1000",
   },
   "0x4449b8e2B2068D71EA27735115aa11B4870cCA38": {
     ens: "javipark.eth",
