@@ -96,7 +96,7 @@ export default function App({ Component, pageProps }: AppProps) {
                       <img
                         src="/images/Reamp_WHT.svg"
                         alt="reamp logo"
-                        className="w-[115px] group-hover:opacity-0 transition-all"
+                        className="w-[100px] group-hover:opacity-0 transition-all"
                       />
                     </div>
                     <Component {...pageProps} />
