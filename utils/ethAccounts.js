@@ -139,6 +139,11 @@ const ethAccounts = {
     avatar:
       "https://i.seadn.io/gae/eU6QyD_6oY3a_vwxyn_RdtjcYCVMCOk0HU5pGdsWBQxNM90N4Z2VAhNjmAXswu_2mcbluqSesuZPiufD1RXGOGoy9_vorvFL_o6c?w=500&auto=format",
   },
+  "0x3A51A9f5C5c703802609c429EFc1f7fc78FeC0a3": {
+    ens: "zarlino.eth",
+    avatar:
+      "https://i.seadn.io/gcs/files/ef9320ede7f0f1670e3c07f99cdbda33.png?auto=format&w=1000",
+  },
 };
 
 export default ethAccounts;
