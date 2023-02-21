@@ -52,7 +52,7 @@ export default function Track() {
           </Link>
         </div>
 
-        <div className="text-3xl font-bold">
+        <div className="text-xl font-bold">
           <span>{data?.title}</span>
           {favorites.includes(data?.id) ? (
             <img
@@ -90,7 +90,7 @@ export default function Track() {
             onClick={() => handleSelectTrack(data)}
           />
         </div>
-        <div className="w-[56%]">
+        <div className="w-[56%] max-sm:w-[100%]">
           <span className="text-whiteDisabled">
             <Interweave content={data?.description} />
           </span>
