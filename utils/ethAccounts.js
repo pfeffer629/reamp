@@ -61,7 +61,7 @@ const ethAccounts = {
   },
   "0xB2D6AAF0bca136C252Ec94F0f06c2489F734675f": {
     ens: "Raynharr.eth",
-    avatar: "/pfp/Reamp_pfp_green.svg",
+    avatar: "/pfp/Reamp_pfp_blue.svg",
   },
   "0xAA0dd4544Fb4aC8C706011BFa8F16638fB6409F3": {
     ens: "mattmurrs.eth",
@@ -107,7 +107,7 @@ const ethAccounts = {
   },
   "0xC8F7e7436F7f967dE67825a25286A04244CBE066": {
     ens: "matiasz.eth",
-    avatar: "/pfp/Reamp_pfp_green.svg",
+    avatar: "/pfp/Reamp_pfp_blue.svg",
   },
   "0x4E33Db6008A82Ef0ab4FFd4124dD9B2d3579A523": {
     ens: "saevon.eth",
@@ -144,6 +144,22 @@ const ethAccounts = {
     avatar:
       "https://i.seadn.io/gcs/files/ef9320ede7f0f1670e3c07f99cdbda33.png?auto=format&w=1000",
   },
+  "0x2d9c9c342E892191B6c0DEFC0C85b1f00E2763a7": {
+    ens: "tulengua.eth",
+    avatar:
+      "https://arweave.net/h1m-4KPSBbsMr8MTu9JEFxHBdrO-u5ZgKS154vUk60c",
+  },
+  "0x679Bb0B9643f5C85a3663e37bD5C89B97F3ef7c8": {
+    ens: "alanlili.eth",
+    avatar:
+      "https://arweave.net/h1m-4KPSBbsMr8MTu9JEFxHBdrO-u5ZgKS154vUk60c",
+  },
+  "0x87C59E0b19e358190c5Fd576E61fE82e0b64141A": {
+    ens: "remcycles.eth",
+    avatar:
+      "https://rainbow.mypinata.cloud/ipfs/QmV4WVkQmMCtuoh1ahhQ3ACGL7e2x3sKJbEZy7kKBj9pBZ",
+  },
+  
 };
 
 export default ethAccounts;
