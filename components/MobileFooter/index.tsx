@@ -61,7 +61,7 @@ export default function MobileFooter() {
                 height={12}
                 width={12}
               />
-              &nbsp; My Favorites
+              &nbsp; My Favs
             </span>
             <span className="text-whiteDisabled">✦ My Playlists</span>
             <span className="text-whiteDisabled">❏ My Collection</span>

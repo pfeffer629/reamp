@@ -351,7 +351,7 @@ export default function Player() {
           <img
             alt={currentTrack?.title || ""}
             src={currentTrack?.lossyArtworkUrl || ""}
-            className="w-full mr-[18px] rounded-[5px] p-[24px]"
+            className="w-full mr-[18px] rounded-lg p-[24px]"
           />
         )}
         <p className="font-extrabold text-[20px]">{currentTrack?.title}</p>
@@ -416,7 +416,7 @@ export default function Player() {
             }}
           />
         </div>
-        <div className="flex justify-between px-[34px] py-[4px]">
+        <div className="flex justify-between px-[34px] py-[2px]">
           <span className="font-extrabold text-xs">
             {convertToMinutes(elapsed)}
           </span>
