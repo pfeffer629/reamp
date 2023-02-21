@@ -78,7 +78,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
             tracks.map((track) => (
               <div className="flex flex-col space-y-4" key={track.id}>
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
-                  <div className="w-[46px] max-sm:ml-[12px]">
+                  <div className="w-[46px] max-sm:ml-[8px]">
                     <div className="flex items-center h-full justify-center">
                       {currentTrack.id === track.id && isPlaying ? (
                         <div className="flex justify-center items-center w-[38px] h-[38px]">
@@ -135,7 +135,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       )}
                     </div>
                   </div>
-                  <div className="p-[9px]">
+                  <div className="p-[6px]">
                     <div className="w-[52px] aspect-square overflow-hidden h-full flex items-center">
                       <Image
                         alt={track.title}
@@ -146,7 +146,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       />
                     </div>
                   </div>
-                  <div className="flex items-center max-sm:w-2/5 w-[190px] ">
+                  <div className="flex items-center text-sm max-sm:w-2/5 w-[190px] ">
                     <div className="flex flex-col justify-center w-full ml-2 ">
                       {address ? (
                         <Link href={`/tracks/${track.slug}`}>
