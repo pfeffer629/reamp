@@ -55,7 +55,7 @@ export default function MobileFooter() {
           <div className="flex items-center space-x-14 z-10">
             <span className="text-whiteDisabled">
               <img
-                src="/icons/SmallHeart.svg"
+                src="/icons/Heart_Icon.svg"
                 alt="Small Heart Filled"
                 className="inline-block"
                 height={12}

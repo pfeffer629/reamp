@@ -264,7 +264,7 @@ export default function Player() {
               />
             ) : (
               <img
-                src="/icons/HeartControls.svg"
+                src="/icons/Heart_Icon.svg"
                 alt="Heart Empty"
                 className={`${
                   !address && "cursor-default"
