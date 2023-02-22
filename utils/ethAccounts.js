@@ -159,6 +159,11 @@ const ethAccounts = {
     avatar:
       "https://rainbow.mypinata.cloud/ipfs/QmV4WVkQmMCtuoh1ahhQ3ACGL7e2x3sKJbEZy7kKBj9pBZ",
   },
+  "0x089036a0835C6cF82e7fC42e9e95DfE05e110c81": {
+    ens: "xcelencia.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
   
 };
 
