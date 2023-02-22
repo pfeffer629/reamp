@@ -164,6 +164,21 @@ const ethAccounts = {
     avatar:
       "/pfp/Reamp_pfp_blue.svg",
   },
+  "0x4Aca3d058D45f851CB0cb55537438daA404405F7": {
+    ens: "cahen.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0xbEd53356e0fE059A9E9808EA4309CfaF4A1Be9B2": {
+    ens: "fabialonso.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0xE99c3Ecbc68868602CF558325BC6ab6A9807dFa9": {
+    ens: "betapetra.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
   
 };
 
