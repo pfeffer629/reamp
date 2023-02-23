@@ -6,7 +6,7 @@ export default function Collection() {
 
   return (
     <div className="flex flex-col space-y-4">
-      <div className="py-4 flex flex-wrap">
+      <div className="py-4 flex flex-wrap max-sm:grid max-sm:grid-flow-dense max-sm:grid-cols-2 justify-items-center">
         {address && <NftCollection address={address} />}
       </div>
     </div>
