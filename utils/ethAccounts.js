@@ -9,7 +9,7 @@ const ethAccounts = {
   },
   "0x0774658ca78aff2b7c1a50AAe32011FFb959EE02": {
     ens: "xaine.eth",
-    avatar: "https://i.seadn.io/gcs/files/4068ca2a947b6b19e2d3cfd049bb0ec6.jpg?auto=format&w=1000",
+    avatar: "https://i.seadn.io/gcs/files/dddfd659ae4f5a75f186a109a83a8d02.png?auto=format&w=1000",
   },
   "0x4449b8e2B2068D71EA27735115aa11B4870cCA38": {
     ens: "javipark.eth",
@@ -61,7 +61,7 @@ const ethAccounts = {
   },
   "0xB2D6AAF0bca136C252Ec94F0f06c2489F734675f": {
     ens: "Raynharr.eth",
-    avatar: "/pfp/Reamp_pfp_green.svg",
+    avatar: "/pfp/Reamp_pfp_blue.svg",
   },
   "0xAA0dd4544Fb4aC8C706011BFa8F16638fB6409F3": {
     ens: "mattmurrs.eth",
@@ -107,7 +107,7 @@ const ethAccounts = {
   },
   "0xC8F7e7436F7f967dE67825a25286A04244CBE066": {
     ens: "matiasz.eth",
-    avatar: "/pfp/Reamp_pfp_green.svg",
+    avatar: "/pfp/Reamp_pfp_blue.svg",
   },
   "0x4E33Db6008A82Ef0ab4FFd4124dD9B2d3579A523": {
     ens: "saevon.eth",
@@ -137,8 +137,49 @@ const ethAccounts = {
   "0xeb54D707252Ee9E26E6a4073680Bf71154Ce7Ab5": {
     ens: "jzs.eth",
     avatar:
-      "https://i.seadn.io/gae/uZ8aKJ0XZ1X_PCfYwKQ0_W-RQ4B6m7IMN-P70cZyPuhIT4Pr_ZcbswH-sVeqsLGqSftkVWvNm15dJr1jOTJqXX1sXyinrCnuyccHyQ?auto=format&w=384",
+      "https://i.seadn.io/gae/eU6QyD_6oY3a_vwxyn_RdtjcYCVMCOk0HU5pGdsWBQxNM90N4Z2VAhNjmAXswu_2mcbluqSesuZPiufD1RXGOGoy9_vorvFL_o6c?w=500&auto=format",
   },
+  "0x3A51A9f5C5c703802609c429EFc1f7fc78FeC0a3": {
+    ens: "zarlino.eth",
+    avatar:
+      "https://i.seadn.io/gcs/files/ef9320ede7f0f1670e3c07f99cdbda33.png?auto=format&w=1000",
+  },
+  "0x2d9c9c342E892191B6c0DEFC0C85b1f00E2763a7": {
+    ens: "tulengua.eth",
+    avatar:
+      "https://arweave.net/h1m-4KPSBbsMr8MTu9JEFxHBdrO-u5ZgKS154vUk60c",
+  },
+  "0x679Bb0B9643f5C85a3663e37bD5C89B97F3ef7c8": {
+    ens: "alanlili.eth",
+    avatar:
+      "https://arweave.net/h1m-4KPSBbsMr8MTu9JEFxHBdrO-u5ZgKS154vUk60c",
+  },
+  "0x87C59E0b19e358190c5Fd576E61fE82e0b64141A": {
+    ens: "remcycles.eth",
+    avatar:
+      "https://rainbow.mypinata.cloud/ipfs/QmV4WVkQmMCtuoh1ahhQ3ACGL7e2x3sKJbEZy7kKBj9pBZ",
+  },
+  "0x089036a0835C6cF82e7fC42e9e95DfE05e110c81": {
+    ens: "xcelencia.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x4Aca3d058D45f851CB0cb55537438daA404405F7": {
+    ens: "cahen.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0xbEd53356e0fE059A9E9808EA4309CfaF4A1Be9B2": {
+    ens: "fabialonso.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0xE99c3Ecbc68868602CF558325BC6ab6A9807dFa9": {
+    ens: "betapetra.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  
 };
 
 export default ethAccounts;

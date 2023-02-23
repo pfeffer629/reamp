@@ -377,14 +377,14 @@ export default function Player() {
           <img
             alt={currentTrack?.title || ""}
             src={currentTrack?.lossyArtworkUrl || ""}
-            className="w-full mr-[18px] rounded-[5px] p-[24px]"
+            className="w-full mr-[18px] rounded-lg p-[24px]"
           />
         )}
-        <p className="font-extrabold text-[26px]">{currentTrack?.title}</p>
+        <p className="font-extrabold text-[20px]">{currentTrack?.title}</p>
         <p className="text-[16px] text-whiteDisabled">
           {currentTrack?.artist?.name}
         </p>
-        <div className="p-[34px] pb-[12px]">
+        <div className="px-[34px] pt-[18] pb-[22px]">
           <div className="flex justify-center items-center py-[34px] w-full">
             {favorites.includes(currentTrack.id) ? (
               <img
@@ -413,9 +413,9 @@ export default function Player() {
             />
             <div className="mx-[30px] cursor-pointer" onClick={handlePlayPause}>
               {!isPlaying ? (
-                <PlayButton width={32} height={40} />
+                <PlayButton width={32} height={32} />
               ) : (
-                <PauseButton width={32} height={40} />
+                <PauseButton width={32} height={32} />
               )}
             </div>
             <NextButton
@@ -442,7 +442,7 @@ export default function Player() {
             }}
           />
         </div>
-        <div className="flex justify-between px-[34px]">
+        <div className="flex justify-between px-[34px] py-[2px]">
           <span className="font-extrabold text-xs">
             {convertToMinutes(elapsed)}
           </span>
@@ -455,14 +455,14 @@ export default function Player() {
             <img
               src="/icons/ShuffleFilled.svg"
               alt="Shuffle"
-              className="cursor-pointer h-[20px]"
+              className="cursor-pointer h-[16px]"
               onClick={unshuffleTracks}
             />
           ) : (
             <img
               src="/icons/Shuffle.svg"
               alt="Shuffle"
-              className="cursor-pointer h-[20px]"
+              className="cursor-pointer h-[16px]"
               onClick={shuffleTracks}
             />
           )}
@@ -470,14 +470,14 @@ export default function Player() {
             <img
               src="/icons/RepeatOnce.svg"
               alt="Repeat Once"
-              className="cursor-pointer h-[20px]"
+              className="cursor-pointer h-[18px]"
               onClick={() => setRepeat(false)}
             />
           ) : (
             <img
               src="/icons/Repeat.svg"
               alt="Repeat"
-              className="cursor-pointer h-[20px]"
+              className="cursor-pointer h-[18px]"
               onClick={() => setRepeat(true)}
             />
           )}

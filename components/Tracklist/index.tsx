@@ -78,7 +78,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
             tracks.map((track) => (
               <div className="flex flex-col space-y-4" key={track.id}>
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
-                  <div className="w-[46px] max-sm:ml-[12px]">
+                  <div className="w-[46px] max-sm:ml-[8px]">
                     <div className="flex items-center h-full justify-center">
                       {currentTrack.id === track.id && isPlaying ? (
                         <div className="flex justify-center items-center w-[38px] h-[38px]">

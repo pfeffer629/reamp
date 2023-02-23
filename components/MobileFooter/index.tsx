@@ -66,7 +66,7 @@ export default function MobileFooter() {
                 alt="Small Heart Filled"
                 className="inline-block"
               />
-              &nbsp; My Favorites
+              &nbsp; My Favs
             </Link>
             <Link
               className={`${
@@ -100,7 +100,7 @@ export default function MobileFooter() {
             ></div>
         </div>
       )}
-      <div className="flex h-[64px] items-center justify-around bg-sidebarBg">
+      <div className="flex h-[64px] pb-[10px] items-center justify-around bg-sidebarBg">
         {currentRoute === "/" || currentRoute === "live" ? (
           <img
             alt="Blue Globe"
