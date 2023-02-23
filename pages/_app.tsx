@@ -89,16 +89,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="flex max-sm:w-[100vw] w-[1280px] font-Gilroy overflow-hidden">
                   <Sidebar />
                   <div className="mx-auto max-sm:m-0 max-sm:w-[100vw] w-[895px]">
-                    <div className="max-sm:hidden block">
-                      <Header />
-                    </div>
-                    <div className="max-sm:flex hidden justify-center my-[18px] max-sm:pb-0 pb-[80px]">
-                      <img
-                        src="/images/Reamp_WHT.svg"
-                        alt="reamp logo"
-                        className="w-[115px] group-hover:opacity-0 transition-all"
-                      />
-                    </div>
+                    <Header />
                     <Component {...pageProps} />
                   </div>
                   <PlaylistModal />
