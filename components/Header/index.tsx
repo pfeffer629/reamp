@@ -54,7 +54,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="max-sm:hidden block mx-auto py-4">
+      <div className="block mx-auto py-4">
         <div className="flex items-center justify-between">
           <div></div>
           <div className="hidden relative text-searchBarText">
