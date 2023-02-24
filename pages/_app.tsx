@@ -7,6 +7,7 @@ import { FavoritesProvider } from "../contexts/FavoritesContext";
 import { PlaylistProvider } from "../contexts/PlaylistContext";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
+import MobileSidebar from "../components/MobileSidebar";
 import Player from "../components/Player";
 import MobileFooter from "../components/MobileFooter";
 import PlaylistModal from "../components/PlaylistModal";
@@ -88,8 +89,23 @@ export default function App({ Component, pageProps }: AppProps) {
                 </title>
                 <div className="flex max-sm:w-[100vw] w-[1280px] font-Gilroy overflow-hidden">
                   <Sidebar />
+                  <MobileSidebar />
                   <div className="mx-auto max-sm:m-0 max-sm:w-[100vw] w-[895px]">
-                    <Header />
+                    <div className="max-sm:hidden block">
+                      <Header />
+                    </div>
+                    <div className="max-sm:flex justify-center hidden">
+                      <img
+                        src="/icons/Hamburger.svg"
+                        alt="Hamburger"
+                        className="absolute top-0 left-0 m-[24px] cursor-pointer"
+                      />
+                      <img
+                        src="/images/Reamp_WHT.svg"
+                        alt="reamp logo"
+                        className="w-[115px] group-hover:opacity-0 transition-all my-[18px] max-sm:pb-0 pb-[80px]"
+                      />
+                    </div>
                     <Component {...pageProps} />
                   </div>
                   <PlaylistModal />

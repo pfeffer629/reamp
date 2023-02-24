@@ -163,16 +163,6 @@ export default function Header() {
           </div>
         )}
       </div>
-      <div className="max-sm:flex justify-center hidden">
-        <img
-          src="/images/Reamp_WHT.svg"
-          alt="reamp logo"
-          className="w-[115px] group-hover:opacity-0 transition-all my-[18px] max-sm:pb-0 pb-[80px]"
-        />
-      </div>
-      <div className="hidden absolute mr-[20px] mt-[12px] top-0 right-0">
-        <ConnectButton showBalance={false} accountStatus="avatar" />
-      </div>
     </>
   );
 }
