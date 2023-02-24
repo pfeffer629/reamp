@@ -9,7 +9,7 @@ export default function MobileSidebar() {
   const { address } = useAccount();
 
   return (
-    <div className="max-sm:block hidden z-10 w-[230px] bg-sidebarBg border-r border-darkLine relative">
+    <div className="max-sm:block hidden w-[230px] bg-sidebarBg border-r border-darkLine relative">
       <div className="fixed bg-sidebarBg border-r border-darkLine">
         <div className="pb-0 p-[27px] h-[100vh] flex flex-col w-[230px] justify-between">
           <div>
@@ -36,7 +36,7 @@ export default function MobileSidebar() {
               <ConnectButton showBalance={false} />
             </div>
           </div>
-          <div className="pb-[65px]">
+          <div>
             {address ? (
               <div
                 className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"

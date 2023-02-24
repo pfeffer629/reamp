@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { AppProps } from "next/app";
 import { SpinampProvider } from "@spinamp/spinamp-hooks";
 import { TrackProvider } from "../contexts/TrackContext";
@@ -63,6 +63,7 @@ const wagmiClient = createClient({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [showMobileSidebar, setShowMobileSidebar] = useState(false);
   const router = useRouter();
   const currentRoute = router.pathname;
 
@@ -88,8 +89,12 @@ export default function App({ Component, pageProps }: AppProps) {
                   Reamp.xyz | Discover, listen, and collect Music NFTs
                 </title>
                 <div className="flex max-sm:w-[100vw] w-[1280px] font-Gilroy overflow-hidden">
+                  {showMobileSidebar && 
+                    <div className={`z-10 ease-in-out duration-300 ${showMobileSidebar ? "translate-x-0 " : "translate-x-full"}`}>
+                      <MobileSidebar />
+                    </div>
+                  }
                   <Sidebar />
-                  <MobileSidebar />
                   <div className="mx-auto max-sm:m-0 max-sm:w-[100vw] w-[895px]">
                     <div className="max-sm:hidden block">
                       <Header />
@@ -99,6 +104,7 @@ export default function App({ Component, pageProps }: AppProps) {
                         src="/icons/Hamburger.svg"
                         alt="Hamburger"
                         className="absolute top-0 left-0 m-[24px] cursor-pointer"
+                        onClick={() => setShowMobileSidebar(true)}
                       />
                       <img
                         src="/images/Reamp_WHT.svg"
@@ -106,7 +112,7 @@ export default function App({ Component, pageProps }: AppProps) {
                         className="w-[115px] group-hover:opacity-0 transition-all my-[18px] max-sm:pb-0 pb-[80px]"
                       />
                     </div>
-                    <Component {...pageProps} />
+                    <Component {...pageProps} onClick={() => setShowMobileSidebar(false)} />
                   </div>
                   <PlaylistModal />
                 </div>
