@@ -179,7 +179,41 @@ const ethAccounts = {
     avatar:
       "/pfp/Reamp_pfp_yellowpink.svg",
   },
-  
+  "0xaE8b5F6638a8F3C76E2F4656cfd2B0b523307302": {
+    ens: "hingokirani.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0xC8Bf177D6F4D13090f6593953633a604E69076EF": {
+    ens: "worldli.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x3024b3BC94F63E058D57C9Bd89aD3289c69401dd": {
+    ens: "fblauer.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x5438d25a004117fB8cd8594514e5A80706a1137C": {
+    ens: "5868.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x033b83d255d5BBa6E82a14Fe48135634c85e2069": {
+    ens: "evand.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x0a17A9EC3d10B3209d8f7dF2e094043cC4Ff9916": {
+    ens: "1Universe.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0xDB95FB67fD66f91Fcc268EF0Db381721aF6e33A5": {
+    ens: "badsociety.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
 };
 
 export default ethAccounts;
