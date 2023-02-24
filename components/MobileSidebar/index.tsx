@@ -28,7 +28,7 @@ export default function MobileSidebar() {
                   />
                 </div>
               </Link>
-              <div className="text-[13px] pt-2 text-whiteDisabled">
+              <div className="text-[13px] my-2 text-whiteDisabled">
                 Private Beta
               </div>
             </div>
