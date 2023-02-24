@@ -38,7 +38,6 @@ export default function Header() {
   }
 
   return (
-    /*search */
     <div className="mx-auto py-4">
       <div className="flex items-center justify-between">
         <div className="relative text-searchBarText">
