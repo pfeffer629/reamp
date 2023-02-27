@@ -2,9 +2,8 @@ import { useEffect } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
+import { useAccount, useEnsName, useEnsAvatar, useDisconnect } from "wagmi";
 import ethAccounts from "../../utils/ethAccounts";
-import { useDisconnect } from "wagmi";
 import { supabase } from "../../utils/supabase";
 import svgAvatar from "../../utils/svgAvatar";
 
@@ -145,7 +144,7 @@ export default function Header() {
                     ? "text-selectedTab"
                     : "text-whiteDisabled"
                 } cursor-pointer relative z-10 pb-2`}
-                href="/playlists"
+                href="/collection"
               >
                 ❏ My Collection
               </Link>

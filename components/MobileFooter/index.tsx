@@ -2,10 +2,12 @@ import { useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import TrackContext from "../../contexts/TrackContext";
+import { useAccount } from "wagmi";
 
 export default function MobileFooter() {
   const router = useRouter();
   const currentRoute = router.pathname;
+  const { address } = useAccount();
   const { currentTrack } = useContext(TrackContext);
 
   return (
@@ -138,7 +140,7 @@ export default function MobileFooter() {
             className="h-[21px] w-[21px] cursor-pointer"
           />
         ) : (
-          <Link href={`/playlists`}>
+          <Link href={address ? `/playlists` : "#"}>
             <img
               alt="Playlists"
               src="/icons/Playlists.svg"
