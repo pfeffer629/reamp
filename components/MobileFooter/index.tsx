@@ -54,7 +54,7 @@ export default function MobileFooter() {
         currentRoute === "/playlists" ||
         currentRoute === "/collection") && (
         <div className="relative flex justify-center px-2 py-6 text-sm bg-black">
-          <div className="flex items-center space-x-14 z-10">
+          <div className="flex items-center space-x-6 z-10">
             <Link
               className={`${
                 currentRoute === "/favorites"
