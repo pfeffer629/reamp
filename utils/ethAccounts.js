@@ -214,6 +214,56 @@ const ethAccounts = {
     avatar:
       "/pfp/Reamp_pfp_blue.svg",
   },
+  "0x0000ce08fa224696a819877070bf378e8b131acf": {
+    ens: "0x..1acf",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x23ce90550C260DBEAd7508072590311CE4Ee96A4": {
+    ens: "0x..96a4",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0xAd31e2466BD456fE1e7160Bcb303588dA5F54345": {
+    ens: "0x..4345",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x445bD40e08D6E5cb88AdAc5B705acA38df5a4F46": {
+    ens: "0x..4F46.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x84a88408fD791a4a09a474eaf59e8aC310D536AF": {
+    ens: "0x..36AF",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0xff88c9c03Bf819c9D3090DdB55727486cC70b832": {
+    ens: "0x..b832",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0xC7Ba43efF6484a69Bcf2d03509b7Eb1584b27020": {
+    ens: "0x..7020",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x7933231775dEc3f3c80039DEbd7E3afD8A81f674": {
+    ens: "0x..f674.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x2Aa1666138898073a7fA5220D300E05Ef8D11292": {
+    ens: "raptographer.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0xD77611f584622337142f7b77d0eD9978EEA929B6": {
+    ens: "0x..29B6",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
 };
 
 export default ethAccounts;
