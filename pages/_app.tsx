@@ -90,11 +90,17 @@ export default function App({ Component, pageProps }: AppProps) {
                 </title>
                 <div className="flex max-sm:w-[100vw] w-[1280px] font-Gilroy overflow-hidden">
                   {showMobileSidebar && 
-                    <div className={`z-10 ease-in-out duration-300 ${showMobileSidebar ? "translate-x-0 " : "translate-x-full"}`}>
+                    <>
+                    <div className={`h-[calc(100vh-64px)] z-10 ease-in-out duration-300 ${showMobileSidebar ? "translate-x-0 " : "translate-x-full"}`}>
                       <MobileSidebar />
                     </div>
+                    <div
+                      className="w-[100vw] h-[calc(100vh-64px)] absolute bg-black/[0.6] transition-opacity z-9"
+                      onClick={() => setShowMobileSidebar(false)}
+                    ></div>
+                    </>
                   }
-                  <Sidebar handleClose={() => setShowMobileSidebar(false)} />
+                  <Sidebar />
                   <div className="mx-auto max-sm:m-0 max-sm:w-[100vw] w-[895px]">
                     <div className="max-sm:hidden block">
                       <Header />
