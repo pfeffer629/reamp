@@ -72,7 +72,7 @@ const ethAccounts = {
     avatar: "/pfp/Reamp_pfp_yellowpink.svg",
   },
   "0x23ce90550C260DBEAd7508072590311CE4Ee96A4": {
-    ens: "0x23ce90550C260DBEAd7508072590311CE4Ee96A4",
+    ens: "0x..e96A4",
     avatar:
       "https://i.seadn.io/gcs/files/d264b7a1be61c5f78190c91e99abdcd3.png?auto=format&w=384",
   },
@@ -87,7 +87,7 @@ const ethAccounts = {
       "https://i.seadn.io/gcs/files/2a9beceb51fe8a5879e526cd85d43015.png?auto=format&w=384",
   },
   "0xAd31e2466BD456fE1e7160Bcb303588dA5F54345": {
-    ens: "0xAd31e2466BD456fE1e7160Bcb303588dA5F54345",
+    ens: "0x..4345",
     avatar: "/pfp/Reamp_pfp_orange.svg",
   },
   "0x6C7c3806B3CaE601b1D99c017E4592753ba8D41e": {

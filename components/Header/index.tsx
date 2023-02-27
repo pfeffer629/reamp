@@ -127,7 +127,7 @@ export default function Header() {
                   ? "text-selectedTab"
                   : "text-whiteDisabled"
               } cursor-pointer relative z-10 pb-2`}
-              href="/playlists"
+              href="/collection"
             >
               ❏ My Collection
             </Link>
