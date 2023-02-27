@@ -6,7 +6,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const config = {
   reactStrictMode: false,
   images: {
-    domains: ["spinamp.mypinata.cloud", "ipfs.io", "i.seadn.io", "arweave.net"],
+    domains: ["spinamp.mypinata.cloud", "ipfs.io", "i.seadn.io", "arweave.net", "storageapi.fleek.co"],
   },
 }
 
