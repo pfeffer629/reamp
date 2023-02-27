@@ -88,18 +88,28 @@ export default function App({ Component, pageProps }: AppProps) {
                 <title>
                   Reamp.xyz | Discover, listen, and collect Music NFTs
                 </title>
-                <div className="flex max-sm:w-[100vw] w-[1280px] font-Gilroy overflow-hidden">
-                  {showMobileSidebar && 
+                <div
+                  className={`flex max-sm:w-[100vw] w-[1280px] font-Gilroy overflow-hidden ${
+                    showMobileSidebar ? "h-[100vh]" : ""
+                  }`}
+                >
+                  {showMobileSidebar && (
                     <>
-                    <div className={`h-[calc(100vh-64px)] z-10 ease-in-out duration-300 ${showMobileSidebar ? "translate-x-0 " : "translate-x-full"}`}>
-                      <MobileSidebar />
-                    </div>
-                    <div
-                      className="w-[100vw] h-[calc(100vh-64px)] absolute bg-black/[0.6] transition-opacity z-9"
-                      onClick={() => setShowMobileSidebar(false)}
-                    ></div>
+                      <div
+                        className={`h-[calc(100vh-64px)] z-10 ease-in-out duration-300 ${
+                          showMobileSidebar
+                            ? "translate-x-0 "
+                            : "translate-x-full"
+                        }`}
+                      >
+                        <MobileSidebar />
+                      </div>
+                      <div
+                        className="w-[100vw] h-[calc(100vh-64px)] absolute bg-black/[0.6] transition-opacity z-9"
+                        onClick={() => setShowMobileSidebar(false)}
+                      ></div>
                     </>
-                  }
+                  )}
                   <Sidebar />
                   <div className="mx-auto max-sm:m-0 max-sm:w-[100vw] w-[895px]">
                     <div className="max-sm:hidden block">
@@ -118,7 +128,10 @@ export default function App({ Component, pageProps }: AppProps) {
                         className="w-[115px] group-hover:opacity-0 transition-all my-[18px] max-sm:pb-0 pb-[80px]"
                       />
                     </div>
-                    <Component {...pageProps} onClick={() => setShowMobileSidebar(false)} />
+                    <Component
+                      {...pageProps}
+                      onClick={() => setShowMobileSidebar(false)}
+                    />
                   </div>
                   <PlaylistModal />
                 </div>
@@ -131,7 +144,10 @@ export default function App({ Component, pageProps }: AppProps) {
                 >
                   <Player />
                 </div>
-                <span className="max-sm:block hidden">
+                <span
+                  className="max-sm:block hidden"
+                  onClick={() => setShowMobileSidebar(false)}
+                >
                   <MobileFooter />
                 </span>
                 <Analytics />

@@ -91,13 +91,13 @@ export default function MobileFooter() {
           </div>
           <div className="absolute top-0 w-full h-[2px] bg-whiteDisabled z-0"></div>
           <div
-              className={`${currentRoute === "/favorites" && "left-0"} 
+            className={`${currentRoute === "/favorites" && "left-0"} 
               ${currentRoute === "/playlists" && "left-1/3"} 
               ${currentRoute === "/collection" && "left-2/3"} cursor-pointer
               top-0 w-1/3 h-[2px] bg-white z-10 opacity-100
                transform transition-all duration-500 absolute
                `}
-            ></div>
+          ></div>
         </div>
       )}
       <div className="flex h-[64px] pb-[10px] items-center justify-around bg-sidebarBg">

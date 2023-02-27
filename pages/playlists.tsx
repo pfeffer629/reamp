@@ -51,8 +51,8 @@ export default function Playlists() {
   };
 
   return (
-    <div className="flex flex-col space-y-4">
-      <div className="py-4 flex flex-wrap max-sm:grid max-sm:grid-flow-dense max-sm:grid-cols-2 justify-items-center">
+    <div className="flex flex-col space-y-4 max-sm:mb-[140px]">
+      <div className="py-4 flex flex-wrap max-sm:grid max-sm:grid-flow-dense max-sm:grid-cols-2 justify-items-center gap-y-0">
         {userPlaylists.length > 0 &&
           userPlaylists.map((playlist) => (
             <Link

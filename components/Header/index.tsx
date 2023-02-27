@@ -38,13 +38,11 @@ export default function Header() {
   }
 
   async function registerOrLogin(address: string) {
-    const res = await supabase
-      .from("users")
-      .upsert({
-        address: address,
-        ens: ensName,
-        avatar: ensAvatar || svgAvatar,
-      });
+    const res = await supabase.from("users").upsert({
+      address: address,
+      ens: ensName,
+      avatar: ensAvatar || svgAvatar,
+    });
 
     if (res.error) {
       throw res.error;
