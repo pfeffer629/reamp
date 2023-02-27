@@ -94,7 +94,7 @@ export default function App({ Component, pageProps }: AppProps) {
                       <MobileSidebar />
                     </div>
                   }
-                  <Sidebar />
+                  <Sidebar handleClose={() => setShowMobileSidebar(false)} />
                   <div className="mx-auto max-sm:m-0 max-sm:w-[100vw] w-[895px]">
                     <div className="max-sm:hidden block">
                       <Header />
