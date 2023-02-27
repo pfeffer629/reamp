@@ -22,8 +22,8 @@ export default function Header() {
       disconnect();
     }
     if (address) {
-      // logWallet(address)
-      registerOrLogin(address);
+      logWallet(address)
+      // registerOrLogin(address);
     }
   }, [address]);
 
@@ -37,25 +37,26 @@ export default function Header() {
     }
   }
 
-  async function registerOrLogin(address: string) {
-    const res = await supabase.from("users").upsert({
-      address: address,
-      ens: ensName,
-      avatar: ensAvatar || svgAvatar,
-    });
+  // async function registerOrLogin(address: string) {
+  //   const res = await supabase
+  //     .from("users")
+  //     .upsert({
+  //       address: address,
+  //       ens: ensName,
+  //       avatar: ensAvatar || svgAvatar,
+  //     });
 
-    if (res.error) {
-      throw res.error;
-    }
-    console.log(res);
-  }
+  //   if (res.error) {
+  //     throw res.error;
+  //   }
+  //   console.log(res);
+  // }
 
   return (
     <>
       <div className="max-sm:hidden block mx-auto py-4">
         <div className="flex items-center justify-between">
-          <div></div>
-          <div className="hidden relative text-searchBarText">
+          <div className="relative text-searchBarText">
             <input
               type="text"
               className="px-[14px] pl-[34px] rounded-lg w-[380px] h-[41px] pt-[4px] flex items-center bg-blackSecondary relative outline-none ring-0 text-[12px]"

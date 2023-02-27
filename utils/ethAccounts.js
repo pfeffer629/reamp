@@ -72,7 +72,7 @@ const ethAccounts = {
     avatar: "/pfp/Reamp_pfp_yellowpink.svg",
   },
   "0x23ce90550C260DBEAd7508072590311CE4Ee96A4": {
-    ens: "0x23ce90550C260DBEAd7508072590311CE4Ee96A4",
+    ens: "0x..e96A4",
     avatar:
       "https://i.seadn.io/gcs/files/d264b7a1be61c5f78190c91e99abdcd3.png?auto=format&w=384",
   },
@@ -87,7 +87,7 @@ const ethAccounts = {
       "https://i.seadn.io/gcs/files/2a9beceb51fe8a5879e526cd85d43015.png?auto=format&w=384",
   },
   "0xAd31e2466BD456fE1e7160Bcb303588dA5F54345": {
-    ens: "0xAd31e2466BD456fE1e7160Bcb303588dA5F54345",
+    ens: "0x..4345",
     avatar: "/pfp/Reamp_pfp_orange.svg",
   },
   "0x6C7c3806B3CaE601b1D99c017E4592753ba8D41e": {
@@ -179,7 +179,41 @@ const ethAccounts = {
     avatar:
       "/pfp/Reamp_pfp_yellowpink.svg",
   },
-  
+  "0xaE8b5F6638a8F3C76E2F4656cfd2B0b523307302": {
+    ens: "hingokirani.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0xC8Bf177D6F4D13090f6593953633a604E69076EF": {
+    ens: "worldli.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x3024b3BC94F63E058D57C9Bd89aD3289c69401dd": {
+    ens: "fblauer.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x5438d25a004117fB8cd8594514e5A80706a1137C": {
+    ens: "5868.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x033b83d255d5BBa6E82a14Fe48135634c85e2069": {
+    ens: "evand.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x0a17A9EC3d10B3209d8f7dF2e094043cC4Ff9916": {
+    ens: "1Universe.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0xDB95FB67fD66f91Fcc268EF0Db381721aF6e33A5": {
+    ens: "badsociety.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
 };
 
 export default ethAccounts;

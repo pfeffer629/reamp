@@ -101,7 +101,7 @@ export default function MobileFooter() {
         </div>
       )}
       <div className="flex h-[64px] pb-[10px] items-center justify-around bg-sidebarBg">
-        {currentRoute === "/" || currentRoute === "live" ? (
+        {currentRoute === "/" || currentRoute === "/live" ? (
           <img
             alt="Blue Globe"
             src="/icons/GlobeBlue.svg"
