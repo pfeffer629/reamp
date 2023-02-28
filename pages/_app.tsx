@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import type { AppProps } from "next/app";
 import { SpinampProvider } from "@spinamp/spinamp-hooks";
 import { TrackProvider } from "../contexts/TrackContext";
+import { TrackActionProvider } from "../contexts/TrackActionContext";
 import { FavoritesProvider } from "../contexts/FavoritesContext";
 import { PlaylistProvider } from "../contexts/PlaylistContext";
 import Header from "../components/Header";
@@ -86,73 +87,77 @@ export default function App({ Component, pageProps }: AppProps) {
           >
             <FavoritesProvider>
               <PlaylistProvider>
-                <title>
-                  Reamp.xyz | Discover, listen, and collect Music NFTs
-                </title>
-                <div
-                  className={`flex max-sm:w-[100vw] w-[1280px] font-Gilroy overflow-hidden ${
-                    showMobileSidebar ? "h-[100vh]" : ""
-                  }`}
-                >
-                  {showMobileSidebar && (
-                    <>
-                      <div
-                        className={`h-[calc(100vh-64px)] z-10 ease-in-out duration-300 ${
-                          showMobileSidebar
-                            ? "translate-x-0 "
-                            : "translate-x-full"
-                        }`}
-                      >
-                        <MobileSidebar />
+                <TrackActionProvider>
+                  <title>
+                    Reamp.xyz | Discover, listen, and collect Music NFTs
+                  </title>
+                  <div
+                    className={`flex max-sm:w-[100vw] w-[1280px] font-Gilroy overflow-hidden ${
+                      showMobileSidebar ? "h-[100vh]" : ""
+                    }`}
+                  >
+                    {showMobileSidebar && (
+                      <>
+                        <div
+                          className={`h-[calc(100vh-64px)] z-10 ease-in-out duration-300 ${
+                            showMobileSidebar
+                              ? "translate-x-0 "
+                              : "translate-x-full"
+                          }`}
+                        >
+                          <MobileSidebar />
+                        </div>
+                        <div
+                          className="w-[100vw] h-[calc(100vh-64px)] absolute bg-black/[0.6] transition-opacity z-9"
+                          onClick={() => setShowMobileSidebar(false)}
+                        ></div>
+                      </>
+                    )}
+                    <Sidebar />
+                    <div className="mx-auto max-sm:m-0 max-sm:w-[100vw] w-[895px]">
+                      <div className="max-sm:hidden block">
+                        <Header />
                       </div>
-                      <div
-                        className="w-[100vw] h-[calc(100vh-64px)] absolute bg-black/[0.6] transition-opacity z-9"
+                      <div className="max-sm:flex justify-center hidden">
+                        <img
+                          src="/icons/Hamburger.svg"
+                          alt="Hamburger"
+                          className="absolute top-0 left-0 m-[24px] cursor-pointer"
+                          onClick={() => setShowMobileSidebar(true)}
+                        />
+                        <img
+                          src="/images/Reamp_WHT.svg"
+                          alt="reamp logo"
+                          className="w-[115px] group-hover:opacity-0 transition-all my-[18px] max-sm:pb-0 pb-[80px]"
+                        />
+                      </div>
+                      <Component
+                        {...pageProps}
                         onClick={() => setShowMobileSidebar(false)}
-                      ></div>
-                    </>
-                  )}
-                  <Sidebar />
-                  <div className="mx-auto max-sm:m-0 max-sm:w-[100vw] w-[895px]">
-                    <div className="max-sm:hidden block">
-                      <Header />
-                    </div>
-                    <div className="max-sm:flex justify-center hidden">
-                      <img
-                        src="/icons/Hamburger.svg"
-                        alt="Hamburger"
-                        className="absolute top-0 left-0 m-[24px] cursor-pointer"
-                        onClick={() => setShowMobileSidebar(true)}
-                      />
-                      <img
-                        src="/images/Reamp_WHT.svg"
-                        alt="reamp logo"
-                        className="w-[115px] group-hover:opacity-0 transition-all my-[18px] max-sm:pb-0 pb-[80px]"
                       />
                     </div>
-                    <Component
-                      {...pageProps}
-                      onClick={() => setShowMobileSidebar(false)}
-                    />
+                    <PlaylistModal />
                   </div>
-                  <PlaylistModal />
-                </div>
-                <div
-                  className={`${
-                    currentRoute === "/playing"
-                      ? "overflow-x-hidden"
-                      : "max-sm:hidden block pt-[80px]"
-                  }`}
-                >
-                  <Player />
-                </div>
-                <TrackActions />
-                <span
-                  className="max-sm:block hidden"
-                  onClick={() => setShowMobileSidebar(false)}
-                >
-                  <MobileFooter />
-                </span>
-                <Analytics />
+                  <div
+                    className={`${
+                      currentRoute === "/playing"
+                        ? "overflow-x-hidden"
+                        : "max-sm:hidden block pt-[80px]"
+                    }`}
+                  >
+                    <Player />
+                  </div>
+                  <div className="max-sm:block hidden">
+                    <TrackActions />
+                  </div>
+                  <span
+                    className="max-sm:block hidden"
+                    onClick={() => setShowMobileSidebar(false)}
+                  >
+                    <MobileFooter />
+                  </span>
+                  <Analytics />
+                </TrackActionProvider>
               </PlaylistProvider>
             </FavoritesProvider>
           </RainbowKitProvider>

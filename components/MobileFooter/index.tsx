@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import TrackContext from "../../contexts/TrackContext";
 import { useAccount } from "wagmi";
 
 export default function MobileFooter() {

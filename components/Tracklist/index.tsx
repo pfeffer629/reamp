@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import Image from "next/image";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../../contexts/TrackContext";
+import TrackActionContext from "../../contexts/TrackActionContext";
 import Link from "next/link";
 import { useAccount } from "wagmi";
 import FavoritesContext from "../../contexts/FavoritesContext";
@@ -30,6 +31,9 @@ export default function Tracklist({ tracks }: TracklistProps) {
     tracklist,
     setShuffledTracklist,
   } = useContext(TrackContext);
+
+  const { setSelectedTrack } = useContext(TrackActionContext);
+
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { address } = useAccount();
@@ -226,6 +230,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                         src="/icons/SmallThreeDots.svg"
                         alt="Three Dots"
                         className="w-[16px]"
+                        onClick={() => setSelectedTrack(track)}
                       />
                     </div>
                   </div>

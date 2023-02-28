@@ -60,7 +60,9 @@ export default function NftCollection({ address }) {
               />
             </div>
             <div className="pt-2">
-              <div className="text-whiteDisabled text-[12px]">Track</div>
+              <div className="text-whiteDisabled text-[12px] uppercase">
+                Track
+              </div>
             </div>
             <div className="text-white truncate text-[16px]">{track.title}</div>
             <div className="truncate w-full text-whiteDisabled text-[14px] pb-1">

@@ -10,6 +10,7 @@ import ReactPlayer from "react-player/lazy";
 import TrackContext from "../../contexts/TrackContext";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import PlaylistContext from "../../contexts/PlaylistContext";
+import TrackActionContext from "../../contexts/TrackActionContext";
 import { useAccount } from "wagmi";
 import Link from "next/link";
 
@@ -34,6 +35,9 @@ export default function Player() {
     tracklist,
     shuffledTracklist,
   } = useContext(TrackContext);
+
+  const { setSelectedTrack } = useContext(TrackActionContext);
+
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { toggleModal } = useContext(PlaylistContext);
@@ -425,7 +429,11 @@ export default function Player() {
               onClick={handleNext}
             />
             <div className="ml-auto cursor-pointer">
-              <img alt="Small Three Dots" src="/icons/SmallThreeDots.svg" />
+              <img
+                alt="Small Three Dots"
+                src="/icons/SmallThreeDots.svg"
+                onClick={() => setSelectedTrack(currentTrack)}
+              />
             </div>
           </div>
           <input
