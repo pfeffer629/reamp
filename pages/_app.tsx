@@ -11,6 +11,7 @@ import MobileSidebar from "../components/MobileSidebar";
 import Player from "../components/Player";
 import MobileFooter from "../components/MobileFooter";
 import PlaylistModal from "../components/PlaylistModal";
+import TrackActions from "../components/TrackActions";
 import "@rainbow-me/rainbowkit/styles.css";
 import {
   RainbowKitProvider,
@@ -144,6 +145,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 >
                   <Player />
                 </div>
+                <TrackActions />
                 <span
                   className="max-sm:block hidden"
                   onClick={() => setShowMobileSidebar(false)}
