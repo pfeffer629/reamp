@@ -125,11 +125,13 @@ export default function App({ Component, pageProps }: AppProps) {
                           className="absolute top-0 left-0 m-[24px] cursor-pointer"
                           onClick={() => setShowMobileSidebar(true)}
                         />
-                        <img
-                          src="/images/Reamp_WHT.svg"
-                          alt="reamp logo"
-                          className="w-[115px] group-hover:opacity-0 transition-all my-[18px] max-sm:pb-0 pb-[80px]"
-                        />
+                        <Link href="/" as="/">
+                          <img
+                            src="/images/Reamp_WHT.svg"
+                            alt="reamp logo"
+                            className="w-[115px] group-hover:opacity-0 transition-all my-[18px] max-sm:pb-0 pb-[80px]"
+                          />
+                        </Link>
                       </div>
                       <Component
                         {...pageProps}
