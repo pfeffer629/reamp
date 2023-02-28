@@ -4,7 +4,6 @@ import { useTrackQuery } from "@spinamp/spinamp-hooks";
 import PlayButton from "../../components/Icons/PlayButton";
 import TrackContext from "../../contexts/TrackContext";
 import svgAvatar from "../../utils/svgAvatar";
-import { ITrack } from "@spinamp/spinamp-sdk";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import { useAccount } from "wagmi";
 import Link from "next/link";

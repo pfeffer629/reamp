@@ -5,15 +5,14 @@ import { useRouter } from "next/router";
 import { useAccount, useEnsName, useEnsAvatar, useDisconnect } from "wagmi";
 import ethAccounts from "../../utils/ethAccounts";
 import { supabase } from "../../utils/supabase";
-import svgAvatar from "../../utils/svgAvatar";
 
 export default function Header() {
   const router = useRouter();
   const currentRoute = router.pathname;
   const { address } = useAccount();
   const { disconnect } = useDisconnect();
-  const { data: ensAvatar } = useEnsAvatar({ address: address });
-  const { data: ensName } = useEnsName({ address });
+  // const { data: ensAvatar } = useEnsAvatar({ address: address });
+  // const { data: ensName } = useEnsName({ address });
 
   useEffect(() => {
     if (address && !Object.keys(ethAccounts).includes(address)) {
@@ -27,7 +26,7 @@ export default function Header() {
   }, [address]);
 
   async function logWallet(address: string) {
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("wallets")
       .upsert({ address: address });
 

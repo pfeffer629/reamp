@@ -8,7 +8,6 @@ export default function MobileFooter() {
   const router = useRouter();
   const currentRoute = router.pathname;
   const { address } = useAccount();
-  const { currentTrack } = useContext(TrackContext);
 
   return (
     <div className="fixed w-full bottom-0">

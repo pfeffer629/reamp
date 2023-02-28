@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useAccount } from "wagmi";
 import FeedbackModal from "../FeedbackModal";
