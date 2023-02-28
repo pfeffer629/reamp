@@ -230,7 +230,7 @@ const ethAccounts = {
       "/pfp/Reamp_pfp_yellowpink.svg",
   },
   "0x445bD40e08D6E5cb88AdAc5B705acA38df5a4F46": {
-    ens: "0x..4F46.eth",
+    ens: "0x..4F46",
     avatar:
       "/pfp/Reamp_pfp_blue.svg",
   },
@@ -250,7 +250,7 @@ const ethAccounts = {
       "/pfp/Reamp_pfp_yellowpink.svg",
   },
   "0x7933231775dEc3f3c80039DEbd7E3afD8A81f674": {
-    ens: "0x..f674.eth",
+    ens: "0x..f674",
     avatar:
       "/pfp/Reamp_pfp_blue.svg",
   },
@@ -261,6 +261,26 @@ const ethAccounts = {
   },
   "0xD77611f584622337142f7b77d0eD9978EEA929B6": {
     ens: "0x..29B6",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x705A42EcC5dF243BF9298f1D091b89761522a796": {
+    ens: "0xjim.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x024d644b055aDa775Bb20A53C5d90A70698dff99": {
+    ens: "drojkind.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x24a0e4EE348f33252e83fE1e824499381dd21aa9": {
+    ens: "0x..1aa9",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0xE1a87C087227Af0855F7dA73e7472Bd7A7b187A6": {
+    ens: "0x..87A6",
     avatar:
       "/pfp/Reamp_pfp_blue.svg",
   },
