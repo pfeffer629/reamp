@@ -21,7 +21,7 @@ export default function Header() {
       disconnect();
     }
     if (address) {
-      logWallet(address)
+      logWallet(address);
       // registerOrLogin(address);
     }
   }, [address]);

@@ -39,7 +39,7 @@ export default function NftCollection({ address }) {
         data.map((track) => (
           <div
             key={track.id}
-            className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto"
+            className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full"
           >
             <div className="relative inline max-sm:w-auto">
               <Image
@@ -47,8 +47,8 @@ export default function NftCollection({ address }) {
                   "ipfs://",
                   "https://ipfs.io/ipfs/"
                 )}
-                alt="playlist"
-                className="rounded-[10px]"
+                alt="nft"
+                className="w-[204px] h-[204px] max-sm:h-auto rounded-[10px]"
                 height={204}
                 width={204}
               />
