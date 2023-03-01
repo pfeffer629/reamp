@@ -3,12 +3,14 @@ import Link from "next/link";
 import CopiedToClipboard from "../../components/CopiedToClipboard";
 import TrackActionContext from "../../contexts/TrackActionContext";
 import PlaylistContext from "../../contexts/PlaylistContext";
+import { useAccount } from "wagmi";
 
 function TrackActions() {
   const [copyToClipbard, setCopyToClipbard] = useState(false);
 
   const { selectedTrack, setSelectedTrack } = useContext(TrackActionContext);
   const { toggleModal } = useContext(PlaylistContext);
+  const { address } = useAccount();
 
   const shareTrack = () => {
     setSelectedTrack({});
@@ -22,8 +24,10 @@ function TrackActions() {
   };
 
   const addToPlaylist = () => {
-    setSelectedTrack({});
-    toggleModal(selectedTrack);
+    if (address) {
+      setSelectedTrack({});
+      toggleModal(selectedTrack);
+    }
   };
 
   return (
@@ -51,7 +55,7 @@ function TrackActions() {
           <span>Track Details</span>
         </Link>
         <div
-          className="mb-[48px] flex justify-center items-center"
+          className="mb-[48px] flex justify-center items-center cursor-pointer"
           onClick={() => addToPlaylist()}
         >
           <img
