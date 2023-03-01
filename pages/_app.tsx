@@ -31,6 +31,7 @@ import { publicProvider } from "wagmi/providers/public";
 import { Analytics } from "@vercel/analytics/react";
 import mixpanel from "mixpanel-browser";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [mainnet],
