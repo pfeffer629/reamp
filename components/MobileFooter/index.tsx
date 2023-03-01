@@ -1,14 +1,17 @@
+import { useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useAccount } from "wagmi";
+import TrackActionContext from "../../contexts/TrackActionContext";
 
 export default function MobileFooter() {
   const router = useRouter();
   const currentRoute = router.pathname;
   const { address } = useAccount();
+  const { setSelectedTrack } = useContext(TrackActionContext);
 
   return (
-    <div className="fixed w-full bottom-0">
+    <div className="fixed w-full bottom-0" onClick={() => setSelectedTrack({})}>
       <div
         className={
           currentRoute === "/" || currentRoute === "/live"
