@@ -9,7 +9,7 @@ export default function MobileSidebar() {
   const { address } = useAccount();
 
   return (
-    <div className="max-sm:block hidden w-[230px] bg-sidebarBg border-r border-darkLine relative">
+    <div className="max-sm:block hidden w-[230px] bg-sidebarBg border-r border-darkLine relative z-11">
       <div className="fixed bg-sidebarBg border-r border-darkLine">
         <div className="pb-0 p-[27px] h-[calc(100vh-64px)] flex flex-col w-[230px] justify-between">
           <div>

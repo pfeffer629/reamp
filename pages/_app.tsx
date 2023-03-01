@@ -109,7 +109,7 @@ export default function App({ Component, pageProps }: AppProps) {
                           <MobileSidebar />
                         </div>
                         <div
-                          className="w-[100vw] h-[calc(100vh-64px)] absolute bg-black/[0.6] transition-opacity z-9"
+                          className="w-[100vw] h-[calc(100vh-64px)] absolute bg-black/[0.6] transition-opacity backdrop-blur-sm z-[9]"
                           onClick={() => setShowMobileSidebar(false)}
                         ></div>
                       </>

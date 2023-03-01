@@ -36,7 +36,7 @@ function TrackActions() {
         className="h-[100vh] w-[100vw] absolute top-0 z-9"
         onClick={() => setSelectedTrack({})}
       ></div>
-      <div className="w-full border-[2px] border-[#272727] rounded-t-[30px] bg-sidebarBg opacity-80 fixed bottom-0 mb-[64px] z-10 flex flex-col justify-center align-center">
+      <div className="w-full border-[2px] border-[#272727] rounded-t-[30px] bg-sidebarBg/[0.8] backdrop-blur-sm fixed bottom-0 mb-[64px] z-10 flex flex-col justify-center align-center">
         {copyToClipbard && <CopiedToClipboard />}
         <Link
           href={`/tracks/${selectedTrack.slug}`}
