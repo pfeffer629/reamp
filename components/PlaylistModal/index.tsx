@@ -94,13 +94,15 @@ export default function PlaylistModal() {
                     key={playlist.id}
                     className="shrink-0 text-left px-[8px] py-[10px] transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full"
                   >
-                    <Image
-                      src={playlist.cover}
-                      alt="playlist"
-                      className="w-[204px] h-[204px] rounded-[10px]"
-                      width={204}
-                      height={204}
-                    />
+                    <div className="relative inline">
+                      <Image
+                        src={playlist.cover}
+                        alt="playlist"
+                        className="rounded-[10px]"
+                        width={204}
+                        height={204}
+                      />
+                    </div>
                     <div className="pt-2">
                       <div className="text-whiteDisabled text-[11px]">
                         PLAYLIST • {playlist.tracks.length} TRACKS
