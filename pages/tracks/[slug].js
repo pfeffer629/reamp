@@ -29,7 +29,7 @@ export default function Track() {
   }
 
   return (
-    <div className="max-sm:w-full max-sm:flex max-sm:flex-col max-sm:px-[24px] w-[895px] mx-auto">
+    <div className="max-sm:w-full max-sm:flex max-sm:flex-col max-sm:px-[24px] max-sm:pb-[64px] w-[895px] mx-auto">
       <div className="max-sm:border-0 max-sm:p-0 max-sm:m-0 py-4 border-t-[0.5px] border-white/30 mt-8">
         <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled  hover:underline pt-2 pb-2">
           <Image
