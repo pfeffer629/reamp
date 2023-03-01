@@ -2,11 +2,13 @@ import { useState, useContext } from "react";
 import Link from "next/link";
 import CopiedToClipboard from "../../components/CopiedToClipboard";
 import TrackActionContext from "../../contexts/TrackActionContext";
+import PlaylistContext from "../../contexts/PlaylistContext";
 
 function TrackActions() {
   const [copyToClipbard, setCopyToClipbard] = useState(false);
 
   const { selectedTrack, setSelectedTrack } = useContext(TrackActionContext);
+  const { toggleModal } = useContext(PlaylistContext);
 
   const shareTrack = () => {
     setSelectedTrack({});
@@ -17,6 +19,11 @@ function TrackActions() {
     setTimeout(() => {
       setCopyToClipbard(false);
     }, 4000);
+  };
+
+  const addToPlaylist = () => {
+    setSelectedTrack({});
+    toggleModal(selectedTrack);
   };
 
   return (
@@ -43,7 +50,10 @@ function TrackActions() {
           />
           <span>Track Details</span>
         </Link>
-        <div className="mb-[48px] flex justify-center items-center">
+        <div
+          className="mb-[48px] flex justify-center items-center"
+          onClick={() => addToPlaylist()}
+        >
           <img
             alt="Playlists"
             src="/icons/Playlists.svg"
