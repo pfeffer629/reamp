@@ -378,11 +378,13 @@ export default function Player() {
       </div>
       <div className="max-sm:block hidden w-full text-center mb-[98px]">
         {currentTrack?.lossyArtworkUrl && (
-          <img
-            alt={currentTrack?.title || ""}
-            src={currentTrack?.lossyArtworkUrl || ""}
-            className="w-full mr-[18px] rounded-lg p-[24px]"
-          />
+          <div className="rounded-lg p-[24px]">
+            <img
+              alt={currentTrack?.title || ""}
+              src={currentTrack?.lossyArtworkUrl || ""}
+              className="w-full rounded-lg"
+            />
+          </div>
         )}
         <p className="font-extrabold text-[20px]">{currentTrack?.title}</p>
         <p className="text-[16px] text-whiteDisabled">

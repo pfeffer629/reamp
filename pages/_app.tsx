@@ -100,11 +100,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     {showMobileSidebar && (
                       <>
                         <div
-                          className={`h-[calc(100vh-64px)] z-10 ease-in-out duration-300 ${
-                            showMobileSidebar
-                              ? "translate-x-0 "
-                              : "translate-x-full"
-                          }`}
+                          className="h-[calc(100vh-64px)] z-10 ease-in-out duration-300 translate-x-0"
                         >
                           <MobileSidebar />
                         </div>
