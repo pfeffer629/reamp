@@ -84,7 +84,7 @@ export default function Playlists() {
                     onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
                   />  
                   <PlayButton
-                    className="max-sm:block hidden absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                    // className="max-sm:block hidden absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
                     height={25}
                     width={20}
                     onClick={(e) => handleSelectPlaylist(e, playlist.tracks, true)}
