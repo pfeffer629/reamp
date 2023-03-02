@@ -32,20 +32,28 @@ export default function Track() {
     <div className="max-sm:w-full max-sm:flex max-sm:flex-col max-sm:px-[24px] max-sm:pb-[64px] w-[895px] mx-auto">
       <div className="max-sm:border-0 max-sm:p-0 max-sm:m-0 py-4 border-t-[0.5px] border-white/30 mt-8">
         <div className="flex flex-row items-center space-x-[9px] text-base text-whiteDisabled  hover:underline pt-2 pb-2">
-          <Image
-            src={
-              data?.artist?.profiles.length > 0
-                ? Object.values(data.artist.profiles)[0].avatarUrl?.replace(
-                    "ipfs://",
-                    "https://ipfs.io/ipfs/"
-                  )
-                : svgAvatar
-            }
-            className="aspect-square rounded-[10px]"
-            alt={data?.artist?.name}
-            height={21}
-            width={21}
-          />
+          {data?.artist &&
+          Object.keys(data.artist?.profiles).length > 0 &&
+          Object.values(data.artist?.profiles)[0].avatarUrl ? (
+            <Image
+              src={Object.values(data.artist?.profiles)[0].avatarUrl?.replace(
+                "ipfs://",
+                "https://ipfs.io/ipfs/"
+              )}
+              alt="artist avatar"
+              className="rounded-[10px] object-cover h-[21px] w-[21px]"
+              height={21}
+              width={21}
+            />
+          ) : (
+            <Image
+              src={svgAvatar}
+              alt="artist avatar"
+              className="rounded-[10px] object-cover h-[21px] w-[21px]"
+              height={21}
+              width={21}
+            />
+          )}
           <Link href={`/artists/${data?.artist.slug}`}>
             {data?.artist.name}
           </Link>
