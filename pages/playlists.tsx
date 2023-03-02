@@ -77,17 +77,19 @@ export default function Playlists() {
                     alt="playlist"
                     className="w-[204px] h-[204px] max-sm:h-auto rounded-[10px]"
                   />
-                  <PlayButton
-                    className="max-sm:hidden block absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
-                    height={25}
-                    width={20}
-                    onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
-                  />  
-                  <PlayButton
-                    className="max-sm:block hidden absolute top-0 bottom-0 left-0 right-0 m-auto"
-                    height={25}
-                    width={20}
-                    onClick={(e) => handleSelectPlaylist(e, playlist.tracks, true)}
+                  <img
+                    loading="lazy"
+                    alt="Play Button"
+                    src="/icons/Play_Controls.svg"
+                    className="max-sm:hidden block w-[20px] h-[25px] absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                    onClick={() => handleSelectPlaylist(e, playlist.tracks)}
+                  />
+                  <img
+                    loading="lazy"
+                    alt="Play Button"
+                    src="/icons/Play_Controls.svg"
+                    className="max-sm:block hidden w-[20px] h-[25px] absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                    onClick={() => handleSelectPlaylist(e, playlist.tracks, true)}
                   />
                 </div>
                 <div className="pt-2">
