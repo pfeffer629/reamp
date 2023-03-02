@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
-import PlayButton from "../components/Icons/PlayButton";
 import shuffleArray from "../utils/shuffleArray";
 import svgAvatar from "../utils/svgAvatar";
 import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
@@ -31,7 +30,7 @@ export default function Playlists() {
   const router = useRouter();
 
   const handleSelectPlaylist = (
-    e: React.MouseEvent<SVGSVGElement>,
+    e: React.MouseEvent<HTMLElement>,
     playlistTracks: string[],
     mobile=false,
   ) => {
