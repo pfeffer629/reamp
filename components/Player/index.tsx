@@ -386,10 +386,18 @@ export default function Player() {
             />
           </div>
         )}
-        <p className="font-extrabold text-[20px]">{currentTrack?.title}</p>
-        <p className="text-[16px] text-whiteDisabled">
+        <Link
+          className="font-extrabold text-[20px] hover:underline"
+          href={`/artists/${currentTrack.artist?.slug}`}
+        >
+          {currentTrack?.title}
+        </Link>
+        <Link
+          className="text-[16px] block text-whiteDisabled hover:underline"
+          href={`/artists/${currentTrack.artist?.slug}`}
+        >
           {currentTrack?.artist?.name}
-        </p>
+        </Link>
         <div className="px-[34px] pt-[18] pb-[22px]">
           <div className="flex justify-center items-center py-[34px] w-full">
             {favorites.includes(currentTrack.id) ? (
