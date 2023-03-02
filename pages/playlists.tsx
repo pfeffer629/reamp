@@ -33,7 +33,7 @@ export default function Playlists() {
   const handleSelectPlaylist = (
     e: React.MouseEvent<SVGSVGElement>,
     playlistTracks: string[],
-    mobile: boolean=false,
+    mobile=false,
   ) => {
     e.preventDefault();
     e.stopPropagation();
@@ -51,7 +51,7 @@ export default function Playlists() {
       }
       setIsPlaying(true);
     });
-    
+
     if (mobile) {
       router.push("/playing");
     }
