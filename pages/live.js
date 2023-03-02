@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useRouter } from "next/navigation";
 import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
 import PlayButton from "../components/Icons/PlayButton";
@@ -21,10 +22,11 @@ export default function Live() {
     shuffle,
   } = useContext(TrackContext);
   const { address } = useAccount();
+  const router = useRouter();
 
   const timeAgo = new TimeAgo("en-US");
 
-  const handleSelectPlaylist = (e, playlistTracks) => {
+  const handleSelectPlaylist = (e, playlistTracks, mobile = false) => {
     e.preventDefault();
     e.stopPropagation();
     fetchTracksByIds(playlistTracks).then((tracks) => {
@@ -41,6 +43,10 @@ export default function Live() {
       }
       setIsPlaying(true);
     });
+
+    if (mobile) {
+      router.push("/playing");
+    }
   };
 
   return (
@@ -124,14 +130,24 @@ export default function Live() {
                       width={204}
                     />
                     {address && (
-                      <PlayButton
-                        className="absolute top-0 bottom-0 left-0 right-0 m-auto"
-                        height={25}
-                        width={20}
-                        onClick={(e) =>
-                          handleSelectPlaylist(e, playlist.tracks)
-                        }
-                      />
+                      <>
+                        <PlayButton
+                          className="max-sm:hidden block absolute top-0 bottom-0 left-0 right-0 m-auto"
+                          height={25}
+                          width={20}
+                          onClick={(e) =>
+                            handleSelectPlaylist(e, playlist.tracks)
+                          }
+                        />
+                        <PlayButton
+                          className="max-sm:block hidden absolute top-0 bottom-0 left-0 right-0 m-auto"
+                          height={25}
+                          width={20}
+                          onClick={(e) =>
+                            handleSelectPlaylist(e, playlist.tracks)
+                          }
+                        />
+                      </>
                     )}
                   </div>
                   <div className="pt-2">

@@ -1,5 +1,6 @@
-import Link from "next/link";
 import { useContext } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
@@ -27,10 +28,12 @@ export default function Playlists() {
   });
   const { data: ensName } = useEnsName({ address });
   const timeAgo = new TimeAgo("en-US");
+  const router = useRouter();
 
   const handleSelectPlaylist = (
     e: React.MouseEvent<SVGSVGElement>,
-    playlistTracks: string[]
+    playlistTracks: string[],
+    mobile: boolean=false,
   ) => {
     e.preventDefault();
     e.stopPropagation();
@@ -48,6 +51,10 @@ export default function Playlists() {
       }
       setIsPlaying(true);
     });
+    
+    if (mobile) {
+      router.push("/playing");
+    }
   };
 
   return (
@@ -71,10 +78,16 @@ export default function Playlists() {
                     className="w-[204px] h-[204px] max-sm:h-auto rounded-[10px]"
                   />
                   <PlayButton
-                    className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                    className="max-sm:hidden block absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
                     height={25}
                     width={20}
                     onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
+                  />  
+                  <PlayButton
+                    className="max-sm:block hidden absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                    height={25}
+                    width={20}
+                    onClick={(e) => handleSelectPlaylist(e, playlist.tracks, true)}
                   />
                 </div>
                 <div className="pt-2">

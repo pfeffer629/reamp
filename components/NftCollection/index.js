@@ -1,4 +1,5 @@
 import { useContext, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import { useEnsName, useEnsAvatar } from "wagmi";
 import { useCollectionQuery } from "@spinamp/spinamp-hooks";
 import PlayButton from "../Icons/PlayButton";
@@ -8,6 +9,7 @@ import TrackContext from "../../contexts/TrackContext";
 export default function NftCollection({ address }) {
   const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
     useContext(TrackContext);
+  const router = useRouter();
 
   const { data: ensAvatar } = useEnsAvatar({
     address: address,
@@ -26,11 +28,15 @@ export default function NftCollection({ address }) {
     return <div></div>;
   }
 
-  const handleSelectTrack = (track) => {
+  const handleSelectTrack = (track, mobile = false) => {
     setCurrentTrack(track);
     setTracklist([track]);
     setCurrentTrackIndex(0);
     setIsPlaying(true);
+
+    if (mobile) {
+      router.push("/playing");
+    }
   };
 
   return (
@@ -53,10 +59,16 @@ export default function NftCollection({ address }) {
                 width={204}
               />
               <PlayButton
-                className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                className="max-sm:hidden block absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
                 height={25}
                 width={20}
                 onClick={() => handleSelectTrack(track)}
+              />
+              <PlayButton
+                className="max-sm:block hidden absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                height={25}
+                width={20}
+                onClick={() => handleSelectTrack(track, true)}
               />
             </div>
             <div className="pt-2">
