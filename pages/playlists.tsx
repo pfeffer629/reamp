@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
+import PlayButton from "../components/Icons/PlayButton";
 import shuffleArray from "../utils/shuffleArray";
 import svgAvatar from "../utils/svgAvatar";
 import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
@@ -30,7 +31,7 @@ export default function Playlists() {
   const router = useRouter();
 
   const handleSelectPlaylist = (
-    e: React.MouseEvent<HTMLElement>,
+    e: React.MouseEvent<SVGSVGElement>,
     playlistTracks: string[],
     mobile=false,
   ) => {
@@ -76,20 +77,22 @@ export default function Playlists() {
                     alt="playlist"
                     className="w-[204px] h-[204px] max-sm:h-auto rounded-[10px]"
                   />
-                  <img
-                    loading="lazy"
-                    alt="Play Button"
-                    src="/icons/Play_Controls.svg"
-                    className="max-sm:hidden block w-[20px] h-[25px] absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
-                    onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
-                  />
-                  <img
-                    loading="lazy"
-                    alt="Play Button"
-                    src="/icons/Play_Controls.svg"
-                    className="max-sm:block hidden w-[20px] h-[25px] absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
-                    onClick={(e) => handleSelectPlaylist(e, playlist.tracks, true)}
-                  />
+                  <div className="max-sm:hidden block">
+                    <PlayButton
+                      className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                      height={25}
+                      width={20}
+                      onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
+                    />  
+                  </div>
+                  <div className="max-sm:block hidden">
+                    <PlayButton
+                      className="max-sm:block hidden absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                      height={25}
+                      width={20}
+                      onClick={(e) => handleSelectPlaylist(e, playlist.tracks, true)}
+                    />
+                  </div>
                 </div>
                 <div className="pt-2">
                   <div className="text-whiteDisabled text-xs font-normal">
