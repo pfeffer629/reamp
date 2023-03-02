@@ -64,9 +64,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
 
   return (
     <div className="max-sm:w-full max-sm:mb-[140px] mb-0 w-[895px] mx-auto">
-      <div className="w-[100vw] top-0 left-0 fixed">
-        {copyToClipbard && <CopiedToClipboard />}
-      </div>
+      {copyToClipbard && <CopiedToClipboard />}
       <div className="flex flex-col space-y-4 min-h-[calc(100vh-160px)]">
         <div className="w-full">
           <div className="flex items-center max-sm:hidden block">

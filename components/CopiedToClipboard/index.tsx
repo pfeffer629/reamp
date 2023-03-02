@@ -15,7 +15,7 @@ function CopiedToClipboard() {
 
   return (
     <div
-      className={`opacity-${opacity} transition-opacity ease-in duration-200`}
+      className={`opacity-${opacity} w-[100vw] top-0 left-0 fixed transition-opacity ease-in duration-200`}
     >
       <div className="w-[200px] h-[50px] mt-[20px] mx-auto bg-sidebarBg border border-darkLine rounded-[10px] flex items-center justify-center">
         <span className="text-selectedTab flex items-center">
