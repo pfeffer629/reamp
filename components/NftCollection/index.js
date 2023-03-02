@@ -58,18 +58,22 @@ export default function NftCollection({ address }) {
                 height={204}
                 width={204}
               />
-              <PlayButton
-                className="max-sm:hidden block absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
-                height={25}
-                width={20}
-                onClick={() => handleSelectTrack(track)}
-              />
-              <PlayButton
-                className="max-sm:block hidden absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
-                height={25}
-                width={20}
-                onClick={() => handleSelectTrack(track, true)}
-              />
+              <div className="max-sm:hidden block">
+                <PlayButton
+                  className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                  height={25}
+                  width={20}
+                  onClick={(e) => handleSelectTrack(e, playlist.tracks)}
+                />
+              </div>
+              <div className="max-sm:block hidden">
+                <PlayButton
+                  className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                  height={25}
+                  width={20}
+                  onClick={(e) => handleSelectTrack(e, playlist.tracks, true)}
+                />
+              </div>
             </div>
             <div className="pt-2">
               <div className="text-whiteDisabled text-[12px] uppercase">
