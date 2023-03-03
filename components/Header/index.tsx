@@ -39,7 +39,7 @@ export default function Header() {
 
     if (data && data.length === 1) {
       mixpanel.alias(address)
-    } else if (error.code === '23505') {
+    } else if (error && error.code === '23505') {
       const {data, error} = await supabase
         .from("users")
         .update(
