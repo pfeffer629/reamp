@@ -12,8 +12,8 @@ export default function NftCollection({ address }) {
   const { data: ensAvatar } = useEnsAvatar({
     address: address,
   });
-  const { data, error, isLoading } = useCollectionQuery(address);
   const { data: ensName } = useEnsName({ address });
+  const { data, error, isLoading } = useCollectionQuery(address);
   const svgAvatar = useMemo(
     () =>
       `pfp/Reamp_pfp_${
@@ -47,7 +47,7 @@ export default function NftCollection({ address }) {
                   "ipfs://",
                   "https://ipfs.io/ipfs/"
                 )}
-                alt="playlist"
+                alt="nft"
                 className="rounded-[10px]"
                 height={204}
                 width={204}

@@ -28,6 +28,7 @@ import { publicProvider } from "wagmi/providers/public";
 import { Analytics } from "@vercel/analytics/react";
 import mixpanel from "mixpanel-browser";
 import { useRouter } from "next/router";
+import { useAccount } from "wagmi";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [mainnet],
@@ -64,12 +65,14 @@ const wagmiClient = createClient({
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const currentRoute = router.pathname;
+  const { address } = useAccount();
 
   useEffect(() => {
     mixpanel.init("e27b3a18d1177ae9e6b66e8ea292cf5e", {
       debug: true,
       ignore_dnt: true,
     });
+    mixpanel.identify(address)
     mixpanel.track("page_view");
   }, []);
 
@@ -101,7 +104,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     </div>
                     <Component {...pageProps} />
                   </div>
-                  <PlaylistModal />
+                  {address && <PlaylistModal />}
                 </div>
                 <div
                   className={`${

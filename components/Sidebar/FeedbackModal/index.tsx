@@ -13,7 +13,6 @@ export default function FeedbackModal({ show, close }: FeedbackModalProps) {
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     if (feedback.length > 0) {
-      console.log(feedback, email);
       await supabase.from("feedback").insert([{ feedback, email }]);
     }
     setFeedback("");

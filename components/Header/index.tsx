@@ -2,16 +2,21 @@ import { useEffect } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useAccount } from "wagmi";
 import ethAccounts from "../../utils/ethAccounts";
+import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 import { useDisconnect } from "wagmi";
 import { supabase } from "../../utils/supabase";
+import mixpanel from "mixpanel-browser";
 
 export default function Header() {
   const router = useRouter();
   const currentRoute = router.pathname;
-  const { address } = useAccount();
   const { disconnect } = useDisconnect();
+  const { address } = useAccount();
+  const { data: ensAvatar } = useEnsAvatar({
+    address: address,
+  });
+  const { data: ensName } = useEnsName({ address });
 
   useEffect(() => {
     if (address && !Object.keys(ethAccounts).includes(address)) {
@@ -24,17 +29,30 @@ export default function Header() {
   }, [address]);
 
   async function logWallet(address: string) {
-    const { data, error } = await supabase
-      .from("wallets")
-      .upsert(
-        { address: address },
-      );
+    const {data, error} = await supabase
+      .from("users")
+      .insert(
+        { address: address, ens: ensName, avatar: ensAvatar },
+      )
+      .match({ address: address })
+      .select();
 
-    if (error) {
-      throw error;
+    if (data && data.length === 1) {
+      mixpanel.alias(address)
+    } else if (error && error.code === '23505') {
+      const {data, error} = await supabase
+        .from("users")
+        .update(
+          { address: address, ens: ensName, avatar: ensAvatar },
+        )
+        .match({ address: address })
+        .select();
+
+      if (error) {
+        throw error;
+      }
     }
 
-    console.log(data)
   }
 
   return (
