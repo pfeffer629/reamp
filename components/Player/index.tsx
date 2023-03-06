@@ -51,10 +51,7 @@ export default function Player() {
     //   }
     // });
     if ("mediaSession" in navigator) {
-      if (
-        Object.keys(currentTrack).length > 0 &&
-        currentTrack.lossyArtworkUrl
-      ) {
+      if (Object.keys(currentTrack).length > 0 && currentTrack.lossyArtworkUrl) {
         navigator.mediaSession.metadata = new MediaMetadata({
           title: currentTrack?.title,
           artist: currentTrack?.artist?.name,

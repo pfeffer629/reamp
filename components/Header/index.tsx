@@ -5,14 +5,17 @@ import { useRouter } from "next/router";
 import { useAccount, useEnsName, useEnsAvatar, useDisconnect } from "wagmi";
 import ethAccounts from "../../utils/ethAccounts";
 import { supabase } from "../../utils/supabase";
+import mixpanel from "mixpanel-browser";
 
 export default function Header() {
   const router = useRouter();
   const currentRoute = router.pathname;
-  const { address } = useAccount();
   const { disconnect } = useDisconnect();
-  // const { data: ensAvatar } = useEnsAvatar({ address: address });
-  // const { data: ensName } = useEnsName({ address });
+  const { address } = useAccount();
+  const { data: ensAvatar } = useEnsAvatar({
+    address: address,
+  });
+  const { data: ensName } = useEnsName({ address });
 
   useEffect(() => {
     if (address && !Object.keys(ethAccounts).includes(address)) {
@@ -20,36 +23,36 @@ export default function Header() {
       disconnect();
     }
     if (address) {
-      logWallet(address);
-      // registerOrLogin(address);
+      logWallet(address)
     }
   }, [address]);
 
   async function logWallet(address: string) {
-    const { error } = await supabase
-      .from("wallets")
-      .upsert({ address: address });
+    const {data, error} = await supabase
+      .from("users")
+      .insert(
+        { address: address, ens: ensName, avatar: ensAvatar },
+      )
+      .match({ address: address })
+      .select();
 
-    if (error) {
-      throw error;
+    if (data && data.length === 1) {
+      mixpanel.alias(address)
+    } else if (error && error.code === '23505') {
+      const {data, error} = await supabase
+        .from("users")
+        .update(
+          { address: address, ens: ensName, avatar: ensAvatar },
+        )
+        .match({ address: address })
+        .select();
+
+      if (error) {
+        throw error;
+      }
     }
+
   }
-
-  // async function registerOrLogin(address: string) {
-  //   const res = await supabase
-  //     .from("users")
-  //     .upsert({
-  //       address: address,
-  //       ens: ensName,
-  //       avatar: ensAvatar || svgAvatar,
-  //     });
-
-  //   if (res.error) {
-  //     throw res.error;
-  //   }
-  //   console.log(res);
-  // }
-
   return (
     <>
       <div className="max-sm:hidden block mx-auto py-4">

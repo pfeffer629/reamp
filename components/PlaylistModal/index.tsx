@@ -39,7 +39,7 @@ export default function PlaylistModal() {
   if (!address) {
     return <div ref={ref}></div>;
   }
-
+  
   const timeAgo = new TimeAgo("en-US");
 
   const handleClose = () => {

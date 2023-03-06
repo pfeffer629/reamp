@@ -14,8 +14,8 @@ export default function NftCollection({ address }) {
   const { data: ensAvatar } = useEnsAvatar({
     address: address,
   });
-  const { data, error, isLoading } = useCollectionQuery(address);
   const { data: ensName } = useEnsName({ address });
+  const { data, error, isLoading } = useCollectionQuery(address);
   const svgAvatar = useMemo(
     () =>
       `pfp/Reamp_pfp_${
