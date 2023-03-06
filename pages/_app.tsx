@@ -25,17 +25,13 @@ import {
   trustWallet,
   ledgerWallet,
 } from "@rainbow-me/rainbowkit/wallets";
-import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { configureChains, createClient, WagmiConfig, useAccount } from "wagmi";
 import { mainnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { Analytics } from "@vercel/analytics/react";
 import mixpanel from "mixpanel-browser";
 import { useRouter } from "next/router";
-<<<<<<< HEAD
 import Link from "next/link";
-=======
-import { useAccount } from "wagmi";
->>>>>>> 12717fa867232267e505053dc9a7e3d21dd685d8
 
 const { chains, provider, webSocketProvider } = configureChains(
   [mainnet],
