@@ -1,4 +1,5 @@
 import { useContext, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import { useEnsName, useEnsAvatar } from "wagmi";
 import { useCollectionQuery } from "@spinamp/spinamp-hooks";
 import PlayButton from "../Icons/PlayButton";
@@ -8,6 +9,7 @@ import TrackContext from "../../contexts/TrackContext";
 export default function NftCollection({ address }) {
   const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
     useContext(TrackContext);
+  const router = useRouter();
 
   const { data: ensAvatar } = useEnsAvatar({
     address: address,
@@ -26,11 +28,15 @@ export default function NftCollection({ address }) {
     return <div></div>;
   }
 
-  const handleSelectTrack = (track) => {
+  const handleSelectTrack = (track, mobile = false) => {
     setCurrentTrack(track);
     setTracklist([track]);
     setCurrentTrackIndex(0);
     setIsPlaying(true);
+
+    if (mobile) {
+      router.push("/playing");
+    }
   };
 
   return (
@@ -39,28 +45,40 @@ export default function NftCollection({ address }) {
         data.map((track) => (
           <div
             key={track.id}
-            className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px]"
+            className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full"
           >
-            <div className="relative inline">
+            <div className="relative inline max-sm:w-auto">
               <Image
                 src={track.lossyArtworkUrl.replace(
                   "ipfs://",
                   "https://ipfs.io/ipfs/"
                 )}
                 alt="nft"
-                className="rounded-[10px]"
+                className="w-[204px] h-[204px] max-sm:h-auto rounded-[10px]"
                 height={204}
                 width={204}
               />
-              <PlayButton
-                className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
-                height={25}
-                width={20}
-                onClick={() => handleSelectTrack(track)}
-              />
+              <div className="max-sm:hidden block">
+                <PlayButton
+                  className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                  height={25}
+                  width={20}
+                  onClick={() => handleSelectTrack(track)}
+                />
+              </div>
+              <div className="max-sm:block hidden">
+                <PlayButton
+                  className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                  height={25}
+                  width={20}
+                  onClick={() => handleSelectTrack(track, true)}
+                />
+              </div>
             </div>
             <div className="pt-2">
-              <div className="text-whiteDisabled text-[12px]">Track</div>
+              <div className="text-whiteDisabled text-[12px] uppercase">
+                Track
+              </div>
             </div>
             <div className="text-white truncate text-[16px]">{track.title}</div>
             <div className="truncate w-full text-whiteDisabled text-[14px] pb-1">

@@ -10,6 +10,7 @@ import ReactPlayer from "react-player/lazy";
 import TrackContext from "../../contexts/TrackContext";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import PlaylistContext from "../../contexts/PlaylistContext";
+import TrackActionContext from "../../contexts/TrackActionContext";
 import { useAccount } from "wagmi";
 import Link from "next/link";
 
@@ -34,6 +35,9 @@ export default function Player() {
     tracklist,
     shuffledTracklist,
   } = useContext(TrackContext);
+
+  const { setSelectedTrack } = useContext(TrackActionContext);
+
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { toggleModal } = useContext(PlaylistContext);
@@ -52,13 +56,37 @@ export default function Player() {
           title: currentTrack?.title,
           artist: currentTrack?.artist?.name,
           artwork: [
-            { src: currentTrack.lossyArtworkUrl,   sizes: '96x96',   type: 'image/png' },
-            { src: currentTrack.lossyArtworkUrl, sizes: '128x128', type: 'image/png' },
-            { src: currentTrack.lossyArtworkUrl, sizes: '192x192', type: 'image/png' },
-            { src: currentTrack.lossyArtworkUrl, sizes: '256x256', type: 'image/png' },
-            { src: currentTrack.lossyArtworkUrl, sizes: '384x384', type: 'image/png' },
-            { src: currentTrack.lossyArtworkUrl, sizes: '512x512', type: 'image/png' },
-          ]
+            {
+              src: currentTrack.lossyArtworkUrl,
+              sizes: "96x96",
+              type: "image/png",
+            },
+            {
+              src: currentTrack.lossyArtworkUrl,
+              sizes: "128x128",
+              type: "image/png",
+            },
+            {
+              src: currentTrack.lossyArtworkUrl,
+              sizes: "192x192",
+              type: "image/png",
+            },
+            {
+              src: currentTrack.lossyArtworkUrl,
+              sizes: "256x256",
+              type: "image/png",
+            },
+            {
+              src: currentTrack.lossyArtworkUrl,
+              sizes: "384x384",
+              type: "image/png",
+            },
+            {
+              src: currentTrack.lossyArtworkUrl,
+              sizes: "512x512",
+              type: "image/png",
+            },
+          ],
         });
       }
       navigator.mediaSession.setActionHandler("play", () => {
@@ -347,16 +375,26 @@ export default function Player() {
       </div>
       <div className="max-sm:block hidden w-full text-center mb-[98px]">
         {currentTrack?.lossyArtworkUrl && (
-          <img
-            alt={currentTrack?.title || ""}
-            src={currentTrack?.lossyArtworkUrl || ""}
-            className="w-full mr-[18px] rounded-lg p-[24px]"
-          />
+          <div className="rounded-lg p-[24px]">
+            <img
+              alt={currentTrack?.title || ""}
+              src={currentTrack?.lossyArtworkUrl || ""}
+              className="w-full rounded-lg"
+            />
+          </div>
         )}
-        <p className="font-extrabold text-[20px]">{currentTrack?.title}</p>
-        <p className="text-[16px] text-whiteDisabled">
+        <Link
+          className="font-extrabold text-[20px] hover:underline"
+          href={`/artists/${currentTrack.artist?.slug}`}
+        >
+          {currentTrack?.title}
+        </Link>
+        <Link
+          className="text-[16px] block text-whiteDisabled hover:underline"
+          href={`/artists/${currentTrack.artist?.slug}`}
+        >
           {currentTrack?.artist?.name}
-        </p>
+        </Link>
         <div className="px-[34px] pt-[18] pb-[22px]">
           <div className="flex justify-center items-center py-[34px] w-full">
             {favorites.includes(currentTrack.id) ? (
@@ -398,7 +436,11 @@ export default function Player() {
               onClick={handleNext}
             />
             <div className="ml-auto cursor-pointer">
-              <img alt="Small Three Dots" src="/icons/SmallThreeDots.svg" />
+              <img
+                alt="Small Three Dots"
+                src="/icons/SmallThreeDots.svg"
+                onClick={() => setSelectedTrack(currentTrack)}
+              />
             </div>
           </div>
           <input

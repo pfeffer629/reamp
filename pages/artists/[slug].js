@@ -16,7 +16,7 @@ export default function Artists() {
   }
 
   return (
-    <div>
+    <div className="max-sm:px-[24px]">
       <div className="flex">
         <div className="inline-block mr-[32px]">
           {data?.artist &&

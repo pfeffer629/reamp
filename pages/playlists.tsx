@@ -1,5 +1,6 @@
-import Link from "next/link";
 import { useContext } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
@@ -27,10 +28,12 @@ export default function Playlists() {
   });
   const { data: ensName } = useEnsName({ address });
   const timeAgo = new TimeAgo("en-US");
+  const router = useRouter();
 
   const handleSelectPlaylist = (
     e: React.MouseEvent<SVGSVGElement>,
-    playlistTracks: string[]
+    playlistTracks: string[],
+    mobile = false
   ) => {
     e.preventDefault();
     e.stopPropagation();
@@ -48,44 +51,33 @@ export default function Playlists() {
       }
       setIsPlaying(true);
     });
+
+    if (mobile) {
+      router.push("/playing");
+    }
   };
 
   return (
-    <>
-      <div className="max-sm:flex min-h-[calc(100vh-300px)] flex-col items-center justify-center hidden">
-        <img alt="Globe" src="/icons/Globe.svg" className="h-[21px] w-[21px]" />
-        <div className="text-whiteDisabled text-center text-[20px] my-[21px]">
-          Visit Reamp.xyz on desktop <br />
-          to see your collection
-        </div>
-        <a
-          className="rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
-          href="https://form.typeform.com/to/i5cEbCte"
-          target="_blank"
-        >
-          <div className="cursor-pointer bg-white group-hover:bg-selectedTab text-[14px] px-[24px] py-[8px] flex justify-center items-center text-[10px] rounded-lg text-black transition-all duration-500 mt-[6px] select-none">
-            Request Access
-          </div>
-        </a>
-      </div>
-      <div className="max-sm:hidden flex flex-col space-y-4">
-        <div className="py-4 flex flex-wrap">
-          {userPlaylists.length > 0 &&
-            userPlaylists.map((playlist) => (
-              <Link
-                href={`/playlists/${playlist.id}`}
-                as={`/playlists/${playlist.id}`}
+    <div className="max-sm:px-[21px] max-sm:justify-center flex items-center max-sm:mb-[140px]">
+      <div className="py-4 flex flex-wrap max-sm:grid max-sm:grid-flow-dense max-sm:grid-cols-2 justify-items-center gap-y-0">
+        {userPlaylists.length > 0 &&
+          userPlaylists.map((playlist) => (
+            <Link
+              href={`/playlists/${playlist.id}`}
+              as={`/playlists/${playlist.id}`}
+              key={playlist.id}
+            >
+              <div
+                key={playlist.id}
+                className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full"
               >
-                <div
-                  key={playlist.id}
-                  className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px]"
-                >
-                  <div className="relative inline">
-                    <img
-                      src={playlist.cover}
-                      alt="playlist"
-                      className="w-[204px] h-[204px] rounded-[10px]"
-                    />
+                <div className="relative inline">
+                  <img
+                    src={playlist.cover}
+                    alt="playlist"
+                    className="w-[204px] h-[204px] max-sm:h-auto rounded-[10px]"
+                  />
+                  <div className="max-sm:hidden block">
                     <PlayButton
                       className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
                       height={25}
@@ -93,33 +85,43 @@ export default function Playlists() {
                       onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
                     />
                   </div>
-                  <div className="pt-2">
-                    <div className="text-whiteDisabled text-xs font-normal">
-                      Playlist • {playlist.tracks.length}{" "}
-                      {playlist.tracks.length === 1 ? "Track" : "Tracks"}
-                    </div>
-                  </div>
-                  <div className="text-white text-[20px] text-base">
-                    {playlist.name}
-                  </div>
-                  <div className="flex flex-row items-center pt-1 text-sm space-x-[9px]">
-                    <img
-                      src={ensAvatar || svgAvatar}
-                      alt="user"
-                      className="w-[21px] aspect-square rounded-[10px] "
+                  <div className="max-sm:block hidden">
+                    <PlayButton
+                      className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
+                      height={25}
+                      width={20}
+                      onClick={(e) =>
+                        handleSelectPlaylist(e, playlist.tracks, true)
+                      }
                     />
-                    &nbsp;{ensName}
-                  </div>
-                  <div className="pt-2">
-                    <div className="text-whiteDisabled text-[15px] text-xs">
-                      {timeAgo.format(new Date(playlist.created_at || 0))}
-                    </div>
                   </div>
                 </div>
-              </Link>
-            ))}
-        </div>
+                <div className="pt-2">
+                  <div className="text-whiteDisabled text-xs font-normal">
+                    Playlist • {playlist.tracks.length}{" "}
+                    {playlist.tracks.length === 1 ? "Track" : "Tracks"}
+                  </div>
+                </div>
+                <div className="text-white text-[20px] text-base">
+                  {playlist.name}
+                </div>
+                <div className="flex flex-row items-center pt-1 text-sm space-x-[9px]">
+                  <img
+                    src={ensAvatar || svgAvatar}
+                    alt="user"
+                    className="w-[21px] aspect-square rounded-[10px] "
+                  />
+                  &nbsp;{ensName}
+                </div>
+                <div className="pt-2">
+                  <div className="text-whiteDisabled text-[15px] text-xs">
+                    {timeAgo.format(new Date(playlist.created_at || 0))}
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
       </div>
-    </>
+    </div>
   );
 }

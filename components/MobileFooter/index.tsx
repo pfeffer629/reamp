@@ -1,15 +1,17 @@
 import { useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import TrackContext from "../../contexts/TrackContext";
+import { useAccount } from "wagmi";
+import TrackActionContext from "../../contexts/TrackActionContext";
 
 export default function MobileFooter() {
   const router = useRouter();
   const currentRoute = router.pathname;
-  const { currentTrack } = useContext(TrackContext);
+  const { address } = useAccount();
+  const { setSelectedTrack } = useContext(TrackActionContext);
 
   return (
-    <div className="fixed w-full bottom-0">
+    <div className="fixed w-full bottom-0" onClick={() => setSelectedTrack({})}>
       <div
         className={
           currentRoute === "/" || currentRoute === "/live"
@@ -17,7 +19,7 @@ export default function MobileFooter() {
             : "hidden"
         }
       >
-        <div className="flex items-center space-x-14 z-10">
+        <div className="flex items-center justify-around w-full z-10">
           <Link
             className={`${
               currentRoute === "/" ? "text-selectedTab" : "text-whiteDisabled"
@@ -52,30 +54,56 @@ export default function MobileFooter() {
         currentRoute === "/playlists" ||
         currentRoute === "/collection") && (
         <div className="relative flex justify-center px-2 py-6 text-sm bg-black">
-          <div className="flex items-center space-x-14 z-10">
-            <span className="text-whiteDisabled">
+          <div className="flex items-center justify-around w-full z-10">
+            <Link
+              className={`${
+                currentRoute === "/favorites"
+                  ? "text-selectedTab"
+                  : "text-whiteDisabled"
+              } cursor-pointer relative z-10 pb-2`}
+              href="/favorites"
+            >
               <img
-                src="/icons/SmallHeart.svg"
+                src="/icons/SmallHeartFilled.svg"
                 alt="Small Heart Filled"
                 className="inline-block"
-                height={12}
-                width={12}
               />
               &nbsp; My Favs
-            </span>
-            <span className="text-whiteDisabled">✦ My Playlists</span>
-            <span className="text-whiteDisabled">❏ My Collection</span>
+            </Link>
+            <Link
+              className={`${
+                currentRoute === "/playlists"
+                  ? "text-selectedTab"
+                  : "text-whiteDisabled"
+              } cursor-pointer relative z-10 pb-2`}
+              href="/playlists"
+            >
+              ✦ My Playlists
+            </Link>
+            <Link
+              className={`${
+                currentRoute === "/collection"
+                  ? "text-selectedTab"
+                  : "text-whiteDisabled"
+              } cursor-pointer relative z-10 pb-2`}
+              href="/collection"
+            >
+              ❏ My Collection
+            </Link>
           </div>
           <div className="absolute top-0 w-full h-[2px] bg-whiteDisabled z-0"></div>
           <div
-            className="left-50%
-            top-0 h-[2px] bg-white z-10 opacity-100
-             transform transition-all duration-500 absolute w-1/3"
+            className={`${currentRoute === "/favorites" && "left-0"} 
+              ${currentRoute === "/playlists" && "left-1/3"} 
+              ${currentRoute === "/collection" && "left-2/3"} cursor-pointer
+              top-0 w-1/3 h-[2px] bg-white z-10 opacity-100
+               transform transition-all duration-500 absolute
+               `}
           ></div>
         </div>
       )}
-      <div className="flex h-[64px] pb-[10px] items-center justify-around bg-sidebarBg">
-        {currentRoute === "/" || currentRoute === "live" ? (
+      <div className="flex h-[64px] pb-[22px] items-center justify-around bg-sidebarBg">
+        {currentRoute === "/" || currentRoute === "/live" ? (
           <img
             alt="Blue Globe"
             src="/icons/GlobeBlue.svg"
@@ -112,7 +140,7 @@ export default function MobileFooter() {
             className="h-[21px] w-[21px] cursor-pointer"
           />
         ) : (
-          <Link href={`/playlists`}>
+          <Link href={address ? `/playlists` : "#"}>
             <img
               alt="Playlists"
               src="/icons/Playlists.svg"

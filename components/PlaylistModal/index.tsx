@@ -55,17 +55,17 @@ export default function PlaylistModal() {
       aria-modal="true"
     >
       <div className="fixed inset-0">
-        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+        <div className="flex min-h-full items-end justify-center max-sm:p-0 p-4 text-center sm:items-center sm:p-0">
           <div
             className="fixed inset-0 bg-black/[0.6] transition-opacity z-5"
             onClick={handleClose}
           ></div>
-          <div className="z-10 w-[830px] bg-black/[0.6] p-[30px] border-darkLine border-[1px] rounded-2xl">
-            <div className="sm:flex sm:items-center justify-between">
-              <div className="px-[12px] rounded-lg w-[380px] h-[41px] flex items-center bg-transparent relative outline-none border-darkLine border-[1px]">
+          <div className="z-10 max-sm:w-full w-[830px] max-sm:h-[100vh] overflow-scroll bg-black/[0.6] p-[30px] border-darkLine border-[1px] rounded-2xl">
+            <div className="max-sm:mb-[12px] flex items-center justify-between">
+              <div className="px-[12px] rounded-lg max-sm:w-full w-[380px] h-[41px] flex items-center bg-transparent relative outline-none border-darkLine border-[1px]">
                 <input
                   type="text"
-                  className="w-[380px] pt-[4px] flex items-center bg-transparent relative outline-none ring-0 text-[16px] text-searchbarText"
+                  className="max-sm:w-full w-[380px] pt-[4px] flex items-center bg-transparent relative outline-none ring-0 text-[16px] text-searchbarText"
                   placeholder="Create New Playlist"
                   maxLength={24}
                   onChange={(e) => setPlaylistName(e.target.value)}
@@ -80,27 +80,29 @@ export default function PlaylistModal() {
               <img
                 alt="Close"
                 src="/icons/Close.svg"
-                className="cursor-pointer"
+                className="cursor-pointer max-sm:ml-[10px]"
                 onClick={handleClose}
               />
             </div>
             <div
-              className="flex flex-start overflow-auto scrollbar-hide cursor-pointer"
+              className="flex flex-start overflow-auto scrollbar-hide cursor-pointer max-sm:grid max-sm:grid-flow-dense max-sm:grid-cols-2 justify-items-center gap-y-0"
               ref={ref}
             >
               {userPlaylists.length > 0 ? (
                 userPlaylists.map((playlist) => (
                   <div
                     key={playlist.id}
-                    className="shrink-0 text-left px-[8px] py-[10px] transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]"
+                    className="shrink-0 text-left px-[8px] py-[10px] transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full"
                   >
-                    <Image
-                      src={playlist.cover}
-                      alt="playlist"
-                      className="w-[204px] h-[204px] rounded-[10px]"
-                      width={204}
-                      height={204}
-                    />
+                    <div className="relative inline">
+                      <Image
+                        src={playlist.cover}
+                        alt="playlist"
+                        className="rounded-[10px]"
+                        width={204}
+                        height={204}
+                      />
+                    </div>
                     <div className="pt-2">
                       <div className="text-whiteDisabled text-[11px]">
                         PLAYLIST • {playlist.tracks.length} TRACKS

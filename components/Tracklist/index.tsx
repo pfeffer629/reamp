@@ -2,12 +2,13 @@ import { useContext, useState } from "react";
 import Image from "next/image";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../../contexts/TrackContext";
+import TrackActionContext from "../../contexts/TrackActionContext";
 import Link from "next/link";
 import { useAccount } from "wagmi";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import shuffleArray from "../../utils/shuffleArray";
 import CopiedToClipboard from "../../components/CopiedToClipboard";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
@@ -30,6 +31,9 @@ export default function Tracklist({ tracks }: TracklistProps) {
     tracklist,
     setShuffledTracklist,
   } = useContext(TrackContext);
+
+  const { setSelectedTrack } = useContext(TrackActionContext);
+
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { address } = useAccount();
@@ -43,7 +47,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
     }, 4000);
   };
 
-  const handleSelectTrack = (track: ITrack, mobile=false) => {
+  const handleSelectTrack = (track: ITrack, mobile = false) => {
     if (tracks !== tracklist) {
       const shuffledTracks = shuffleArray([...tracks]);
       setTracklist(tracks);
@@ -54,7 +58,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
     setIsPlaying(true);
 
     if (mobile) {
-      router.push('/playing')
+      router.push("/playing");
     }
   };
 
@@ -123,7 +127,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                             src="/icons/Play_Controls.svg"
                             className="max-sm:hidden block w-[14px] translate-x-[1px]"
                             onClick={() => handleSelectTrack(track)}
-                          />  
+                          />
                           <img
                             loading="lazy"
                             alt="Play Button"
@@ -226,6 +230,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                         src="/icons/SmallThreeDots.svg"
                         alt="Three Dots"
                         className="w-[16px]"
+                        onClick={() => setSelectedTrack(track)}
                       />
                     </div>
                   </div>
