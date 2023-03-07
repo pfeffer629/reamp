@@ -76,7 +76,7 @@ export default function App({ Component, pageProps }: AppProps) {
       debug: true,
       ignore_dnt: true,
     });
-    mixpanel.identify(address)
+    mixpanel.identify(address);
     mixpanel.track("page_view");
   }, []);
 

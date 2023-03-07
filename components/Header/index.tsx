@@ -23,27 +23,23 @@ export default function Header() {
       disconnect();
     }
     if (address) {
-      logWallet(address)
+      logWallet(address);
     }
   }, [address]);
 
   async function logWallet(address: string) {
-    const {data, error} = await supabase
+    const { data, error } = await supabase
       .from("users")
-      .insert(
-        { address: address, ens: ensName, avatar: ensAvatar },
-      )
+      .insert({ address: address, ens: ensName, avatar: ensAvatar })
       .match({ address: address })
       .select();
 
     if (data && data.length === 1) {
-      mixpanel.alias(address)
-    } else if (error && error.code === '23505') {
-      const {data, error} = await supabase
+      mixpanel.alias(address);
+    } else if (error && error.code === "23505") {
+      const { data, error } = await supabase
         .from("users")
-        .update(
-          { address: address, ens: ensName, avatar: ensAvatar },
-        )
+        .update({ address: address, ens: ensName, avatar: ensAvatar })
         .match({ address: address })
         .select();
 
@@ -51,10 +47,47 @@ export default function Header() {
         throw error;
       }
     }
-
   }
   return (
     <>
+      {!address && (
+        <div className="animate-marquee-infinite whitespace-nowrap py-[16px]">
+          Reamp.xyz is the ultimate destination to discover and listen to music
+          NFTs&nbsp;&nbsp;&nbsp;&nbsp;
+•&nbsp;&nbsp;&nbsp;&nbsp;
+          <a
+            className="text-selectedTab underline"
+            href="https://form.typeform.com/to/i5cEbCte"
+            target="_blank"
+          >
+            Request access
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is the ultimate destination to discover and listen to music
+          NFTs&nbsp;&nbsp;&nbsp;&nbsp;
+•&nbsp;&nbsp;&nbsp;&nbsp;
+          <a
+            className="text-selectedTab underline"
+            href="https://form.typeform.com/to/i5cEbCte"
+            target="_blank"
+          >
+            Request access
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;
+          Reamp.xyz is the ultimate destination to discover and listen to music
+          NFTs&nbsp;&nbsp;&nbsp;&nbsp;
+•&nbsp;&nbsp;&nbsp;&nbsp;
+          <a
+            className="text-selectedTab underline"
+            href="https://form.typeform.com/to/i5cEbCte"
+            target="_blank"
+          >
+            Request access
+          </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+      )}
+      {!address && (
+        <div className="border-darkLine border-[1px] w-[1280px] absolute left-0"></div>
+      )}
       <div className="max-sm:hidden block mx-auto py-4">
         <div className="flex items-center justify-between">
           <div className="relative text-searchBarText">
