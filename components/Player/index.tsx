@@ -13,6 +13,7 @@ import PlaylistContext from "../../contexts/PlaylistContext";
 import TrackActionContext from "../../contexts/TrackActionContext";
 import { useAccount } from "wagmi";
 import Link from "next/link";
+import Marquee from "react-fast-marquee";
 
 const AudioPlayer = dynamic(() => import("./AudioPlayer"), { ssr: false });
 
@@ -223,17 +224,27 @@ export default function Player() {
               className="mr-[18px] rounded-[5px] max-h-16"
             />
           )}
-          <div>
+          <div className="pr-[18px]">
             {currentTrack.slug && address ? (
-              <Link
-                className="text-sm font-extrabold hover:underline"
-                href={`/tracks/${currentTrack.slug}`}
-              >
-                {currentTrack?.title}
-              </Link>
+                <Link
+                  className="text-sm font-extrabold hover:underline"
+                  href={`/tracks/${currentTrack.slug}`}
+                >
+                  {currentTrack?.title?.length > 30 ?
+                    <Marquee gradient={false}>
+                      {currentTrack?.title}&nbsp;&nbsp;&nbsp;&nbsp;
+                    </Marquee> :
+                    <span>{currentTrack?.title}</span>
+                  }
+                </Link>
             ) : (
               <span className="text-sm font-extrabold">
-                {currentTrack?.title}
+                {currentTrack?.title?.length > 30 ?
+                  <Marquee gradient={false}>
+                    {currentTrack?.title}&nbsp;&nbsp;&nbsp;&nbsp;
+                  </Marquee> :
+                  <span>{currentTrack?.title}</span>
+                }
               </span>
             )}
             {currentTrack.artist?.slug && address ? (
