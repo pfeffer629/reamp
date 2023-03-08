@@ -51,8 +51,8 @@ export default function Header() {
   return (
     <>
       {!address && (
-        <div className="animate-marquee-infinite whitespace-nowrap py-[16px]">
-          Reamp.xyz is the ultimate destination to discover and listen to music
+        <div className="animate-marquee-infinite whitespace-nowrap py-[10px] text-[12px]">
+          Reamp.xyz is the homebase to discover, listen, and collect music
           NFTs&nbsp;&nbsp;&nbsp;&nbsp;
 •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
@@ -62,7 +62,7 @@ export default function Header() {
           >
             Request access
           </a>
-          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is the ultimate destination to discover and listen to music
+          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is the homebase to discover, listen, and collect music
           NFTs&nbsp;&nbsp;&nbsp;&nbsp;
 •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
@@ -73,7 +73,7 @@ export default function Header() {
             Request access
           </a>
           &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;
-          Reamp.xyz is the ultimate destination to discover and listen to music
+          Reamp.xyz is the homebase to discover, listen, and collect music
           NFTs&nbsp;&nbsp;&nbsp;&nbsp;
 •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
