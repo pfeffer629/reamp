@@ -5,6 +5,7 @@ import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
 import PlayButton from "../components/Icons/PlayButton";
+import PlaylistCard from "../components/PlaylistCard";
 import shuffleArray from "../utils/shuffleArray";
 import svgAvatar from "../utils/svgAvatar";
 import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
@@ -67,58 +68,14 @@ export default function Playlists() {
               as={`/playlists/${playlist.id}`}
               key={playlist.id}
             >
-              <div
-                key={playlist.id}
-                className="px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full"
-              >
-                <div className="relative inline">
-                  <img
-                    src={playlist.cover}
-                    alt="playlist"
-                    className="w-[204px] h-[204px] max-sm:h-auto rounded-[10px]"
-                  />
-                  <div className="max-sm:hidden block">
-                    <PlayButton
-                      className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
-                      height={25}
-                      width={20}
-                      onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
-                    />
-                  </div>
-                  <div className="max-sm:block hidden">
-                    <PlayButton
-                      className="absolute hover:scale-125 duration-300 ease-in-out top-0 bottom-0 left-0 right-0 m-auto"
-                      height={25}
-                      width={20}
-                      onClick={(e) =>
-                        handleSelectPlaylist(e, playlist.tracks, true)
-                      }
-                    />
-                  </div>
-                </div>
-                <div className="pt-2">
-                  <div className="text-whiteDisabled text-xs font-normal">
-                    Playlist • {playlist.tracks.length}{" "}
-                    {playlist.tracks.length === 1 ? "Track" : "Tracks"}
-                  </div>
-                </div>
-                <div className="text-white text-[20px] text-base">
-                  {playlist.name}
-                </div>
-                <div className="flex flex-row items-center pt-1 text-sm space-x-[9px]">
-                  <img
-                    src={ensAvatar || svgAvatar}
-                    alt="user"
-                    className="w-[21px] aspect-square rounded-[10px] "
-                  />
-                  &nbsp;{ensName}
-                </div>
-                <div className="pt-2">
-                  <div className="text-whiteDisabled text-[15px] text-xs">
-                    {timeAgo.format(new Date(playlist.created_at || 0))}
-                  </div>
-                </div>
-              </div>
+              <PlaylistCard
+                address={address}
+                playlist={playlist}
+                onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
+                mobileOnClick={(e) =>
+                  handleSelectPlaylist(e, playlist.tracks, true)
+                }
+              />
             </Link>
           ))}
       </div>
