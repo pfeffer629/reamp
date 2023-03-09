@@ -284,6 +284,30 @@ const ethAccounts = {
     avatar:
       "/pfp/Reamp_pfp_blue.svg",
   },
+  "0xa479C39D509A0965b53B961758932a0C2c975104": {
+    ens: "lolsure.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x73d9B8C8A2601Fac9BE5b388A665cAe5DCD6ED18": {
+    ens: "andrewcolabella.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0xdBAf6F4434a3b60B7461A0ae50c2083fE19d5CDb": {
+    ens: "dadabots.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x01B4FAe0b350aF95D1bD8FB1341D9dcE1a87A453": {
+    ens: "sebas.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x1b90cC907694E8DBb920a7E12231677aFfF786Ed": {
+    ens: "ibeemelissae.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
 };
-
 export default ethAccounts;
