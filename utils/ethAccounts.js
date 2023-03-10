@@ -309,5 +309,25 @@ const ethAccounts = {
     avatar:
       "/pfp/Reamp_pfp_blue.svg",
   },
+  "0x0a032cd1433dd23616b94f925cb6c86db6b7f073": {
+    ens: "0x..f0f3",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x46642e15d77BbE0bDfcfbf348C38b06153D16049": {
+    ens: "glbkst.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x086cE37549fee88e10A217E3C2478163177A8273": {
+    ens: "VoxClub.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x770d0A50f87298459C13D570011fFae3C045C05E": {
+    ens: "braceish.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
 };
 export default ethAccounts;
