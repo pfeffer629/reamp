@@ -1,13 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useAccount } from "wagmi";
+import { useAccount, useEnsName, useEnsAvatar,  } from "wagmi";
 import FeedbackModal from "../FeedbackModal";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { supabase } from "../../utils/supabase";
+import mixpanel from "mixpanel-browser";
 
 export default function MobileSidebar() {
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const { address } = useAccount();
+  const { data: ensAvatar } = useEnsAvatar({
+    address: address,
+  });
+  const { data: ensName } = useEnsName({ address });
 
+  useEffect(() => {
+    if (address) {
+      logWallet(address);
+    }
+  }, [address]);
+
+  async function logWallet(address: string) {
+    const { data, error } = await supabase
+      .from("users")
+      .insert({ address: address, ens: ensName, avatar: ensAvatar })
+      .match({ address: address })
+      .select();
+
+    if (data && data.length === 1) {
+      mixpanel.alias(address);
+    } else if (error && error.code === "23505") {
+      const { data, error } = await supabase
+        .from("users")
+        .update({ address: address, ens: ensName, avatar: ensAvatar })
+        .match({ address: address })
+        .select();
+
+      if (error) {
+        throw error;
+      }
+    }
+  }
   return (
     <div className="max-sm:block hidden w-[230px] bg-sidebarBg border-r border-darkLine relative z-11">
       <div className="fixed bg-sidebarBg border-r border-darkLine">
