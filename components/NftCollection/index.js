@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { useCollectionQuery } from "@spinamp/spinamp-hooks";
 import TrackContext from "../../contexts/TrackContext";
-import PlaylistCard from "../../components/PlaylistCard";
+import InfoCard from "../../components/InfoCard";
 
 export default function NftCollection({ address }) {
   const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
@@ -30,7 +30,7 @@ export default function NftCollection({ address }) {
     <>
       {data.length > 0 &&
         data.map((track) => (
-          <PlaylistCard
+          <InfoCard
             address={address}
             track={track}
             onClick={() => handleSelectTrack(track)}

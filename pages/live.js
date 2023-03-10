@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
-import PlaylistCard from "../components/PlaylistCard";
+import InfoCard from "../components/InfoCard";
+import CardLayout from "../components/CardLayout";
 import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import shuffleArray from "../utils/shuffleArray";
 import Link from "next/link";
@@ -103,7 +104,7 @@ export default function Live() {
             </svg>
           </div>
         </div>
-        <div className="py-4 flex flex-wrap max-sm:grid max-sm:grid-flow-dense max-sm:grid-cols-2 justify-items-center gap-y-0">
+        <CardLayout>
           {recentPlaylists.length > 0 &&
             address &&
             recentPlaylists.map((playlist) => (
@@ -112,7 +113,7 @@ export default function Live() {
                 as={`/playlists/${playlist.id}`}
                 key={playlist.id}
               >
-                <PlaylistCard
+                <InfoCard
                   address={address}
                   playlist={playlist}
                   onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
@@ -125,7 +126,7 @@ export default function Live() {
           {recentPlaylists.length > 0 &&
             !address &&
             recentPlaylists.map((playlist) => (
-              <PlaylistCard
+              <InfoCard
                 address={address}
                 playlist={playlist}
                 onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
@@ -134,7 +135,7 @@ export default function Live() {
                 }
               />
             ))}
-        </div>
+        </CardLayout>
       </div>
     </div>
   );

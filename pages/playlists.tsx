@@ -4,7 +4,8 @@ import { useRouter } from "next/navigation";
 import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
-import PlaylistCard from "../components/PlaylistCard";
+import InfoCard from "../components/InfoCard";
+import CardLayout from "../components/CardLayout";
 import shuffleArray from "../utils/shuffleArray";
 import { useAccount } from "wagmi";
 
@@ -50,26 +51,24 @@ export default function Playlists() {
   };
 
   return (
-    <div className="max-sm:px-[21px] max-sm:justify-center flex items-center max-sm:mb-[140px]">
-      <div className="py-4 flex flex-wrap max-sm:grid max-sm:grid-flow-dense max-sm:grid-cols-2 justify-items-center gap-y-0">
-        {userPlaylists.length > 0 &&
-          userPlaylists.map((playlist) => (
-            <Link
-              href={`/playlists/${playlist.id}`}
-              as={`/playlists/${playlist.id}`}
-              key={playlist.id}
-            >
-              <PlaylistCard
-                address={address}
-                playlist={playlist}
-                onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
-                mobileOnClick={(e) =>
-                  handleSelectPlaylist(e, playlist.tracks, true)
-                }
-              />
-            </Link>
-          ))}
-      </div>
-    </div>
+    <CardLayout>
+      {userPlaylists.length > 0 &&
+        userPlaylists.map((playlist) => (
+          <Link
+            href={`/playlists/${playlist.id}`}
+            as={`/playlists/${playlist.id}`}
+            key={playlist.id}
+          >
+            <InfoCard
+              address={address}
+              playlist={playlist}
+              onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
+              mobileOnClick={(e) =>
+                handleSelectPlaylist(e, playlist.tracks, true)
+              }
+            />
+          </Link>
+        ))}
+    </CardLayout>
   );
 }

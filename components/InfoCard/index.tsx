@@ -3,7 +3,7 @@ import PlayButton from "../../components/Icons/PlayButton";
 import TimeAgo from "javascript-time-ago";
 import Image from "next/image";
 
-function PlaylistCard({
+function InfoCard({
   address,
   playlist={cover: "", tracks: [], user_id: "", name: "", created_at: ""},
   track={lossyArtworkUrl: "", title: ""},
@@ -12,7 +12,7 @@ function PlaylistCard({
   collection = false,
 }) {
   const timeAgo = new TimeAgo("en-US");
-
+  console.log(playlist)
   return (
     <div className="px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full">
       <div className="relative inline">
@@ -89,4 +89,4 @@ function PlaylistCard({
   );
 }
 
-export default PlaylistCard;
+export default InfoCard;
