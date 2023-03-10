@@ -78,7 +78,7 @@ export default function App({ Component, pageProps }: AppProps) {
     });
     mixpanel.identify(address);
     mixpanel.track("page_view");
-  }, []);
+  }, [address]);
 
   return (
     <WagmiConfig client={wagmiClient}>
