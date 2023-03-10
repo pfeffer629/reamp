@@ -226,25 +226,27 @@ export default function Player() {
           )}
           <div className="pr-[18px]">
             {currentTrack.slug && address ? (
-                <Link
-                  className="text-sm font-extrabold hover:underline"
-                  href={`/tracks/${currentTrack.slug}`}
-                >
-                  {currentTrack?.title?.length > 30 ?
-                    <Marquee gradient={false}>
-                      {currentTrack?.title}&nbsp;&nbsp;&nbsp;&nbsp;
-                    </Marquee> :
-                    <span>{currentTrack?.title}</span>
-                  }
-                </Link>
-            ) : (
-              <span className="text-sm font-extrabold">
-                {currentTrack?.title?.length > 30 ?
+              <Link
+                className="text-sm font-extrabold hover:underline"
+                href={`/tracks/${currentTrack.slug}`}
+              >
+                {currentTrack?.title?.length > 30 ? (
                   <Marquee gradient={false}>
                     {currentTrack?.title}&nbsp;&nbsp;&nbsp;&nbsp;
-                  </Marquee> :
+                  </Marquee>
+                ) : (
                   <span>{currentTrack?.title}</span>
-                }
+                )}
+              </Link>
+            ) : (
+              <span className="text-sm font-extrabold">
+                {currentTrack?.title?.length > 30 ? (
+                  <Marquee gradient={false}>
+                    {currentTrack?.title}&nbsp;&nbsp;&nbsp;&nbsp;
+                  </Marquee>
+                ) : (
+                  <span>{currentTrack?.title}</span>
+                )}
               </span>
             )}
             {currentTrack.artist?.slug && address ? (

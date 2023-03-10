@@ -37,7 +37,7 @@ export default function Header() {
     if (data && data.length === 1) {
       mixpanel.alias(address);
     } else if (error && error.code === "23505") {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from("users")
         .update({ address: address, ens: ensName, avatar: ensAvatar })
         .match({ address: address })
@@ -54,8 +54,7 @@ export default function Header() {
       {!address && (
         <div className="animate-marquee-infinite whitespace-nowrap py-[10px] text-[12px]">
           Reamp.xyz is the homebase to discover, listen, and collect music
-          NFTs&nbsp;&nbsp;&nbsp;&nbsp;
-•&nbsp;&nbsp;&nbsp;&nbsp;
+          NFTs&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             className="text-selectedTab underline"
             href="https://form.typeform.com/to/i5cEbCte"
@@ -63,9 +62,9 @@ export default function Header() {
           >
             Request access
           </a>
-          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is the homebase to discover, listen, and collect music
-          NFTs&nbsp;&nbsp;&nbsp;&nbsp;
-•&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is the
+          homebase to discover, listen, and collect music
+          NFTs&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             className="text-selectedTab underline"
             href="https://form.typeform.com/to/i5cEbCte"
@@ -73,17 +72,17 @@ export default function Header() {
           >
             Request access
           </a>
-          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;
-          Reamp.xyz is the homebase to discover, listen, and collect music
-          NFTs&nbsp;&nbsp;&nbsp;&nbsp;
-•&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp; Reamp.xyz is the
+          homebase to discover, listen, and collect music
+          NFTs&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             className="text-selectedTab underline"
             href="https://form.typeform.com/to/i5cEbCte"
             target="_blank"
           >
             Request access
-          </a>&nbsp;&nbsp;&nbsp;&nbsp;
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
         </div>
       )}
       {!address && (
