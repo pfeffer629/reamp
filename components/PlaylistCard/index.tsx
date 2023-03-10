@@ -5,8 +5,8 @@ import Image from "next/image";
 
 function PlaylistCard({
   address,
-  playlist = {},
-  track = {},
+  playlist={cover: "", tracks: [], user_id: "", name: "", created_at: ""},
+  track={lossyArtworkUrl: "", title: ""},
   onClick,
   mobileOnClick,
   collection = false,

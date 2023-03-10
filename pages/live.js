@@ -2,15 +2,11 @@ import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
-import PlayButton from "../components/Icons/PlayButton";
 import PlaylistCard from "../components/PlaylistCard";
-import TimeAgo from "javascript-time-ago";
 import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import shuffleArray from "../utils/shuffleArray";
-import ethAccounts from "../utils/ethAccounts";
 import Link from "next/link";
 import { useAccount } from "wagmi";
-import Image from "next/image";
 
 export default function Live() {
   const { recentPlaylists } = useContext(PlaylistContext);
@@ -24,8 +20,6 @@ export default function Live() {
   } = useContext(TrackContext);
   const { address } = useAccount();
   const router = useRouter();
-
-  const timeAgo = new TimeAgo("en-US");
 
   const handleSelectPlaylist = (e, playlistTracks, mobile = false) => {
     e.preventDefault();

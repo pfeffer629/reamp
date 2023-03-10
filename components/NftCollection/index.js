@@ -1,9 +1,6 @@
-import { useContext, useMemo } from "react";
+import { useContext } from "react";
 import { useRouter } from "next/navigation";
-import { useEnsName, useEnsAvatar } from "wagmi";
 import { useCollectionQuery } from "@spinamp/spinamp-hooks";
-import PlayButton from "../Icons/PlayButton";
-import Image from "next/image";
 import TrackContext from "../../contexts/TrackContext";
 import PlaylistCard from "../../components/PlaylistCard";
 

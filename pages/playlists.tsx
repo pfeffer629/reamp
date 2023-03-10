@@ -4,14 +4,9 @@ import { useRouter } from "next/navigation";
 import { fetchTracksByIds } from "@spinamp/spinamp-sdk";
 import PlaylistContext from "../contexts/PlaylistContext";
 import TrackContext from "../contexts/TrackContext";
-import PlayButton from "../components/Icons/PlayButton";
 import PlaylistCard from "../components/PlaylistCard";
 import shuffleArray from "../utils/shuffleArray";
-import svgAvatar from "../utils/svgAvatar";
-import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
-TimeAgo.addDefaultLocale(en);
+import { useAccount } from "wagmi";
 
 export default function Playlists() {
   const { userPlaylists } = useContext(PlaylistContext);
@@ -24,11 +19,7 @@ export default function Playlists() {
     shuffle,
   } = useContext(TrackContext);
   const { address } = useAccount();
-  const { data: ensAvatar } = useEnsAvatar({
-    address: address,
-  });
-  const { data: ensName } = useEnsName({ address });
-  const timeAgo = new TimeAgo("en-US");
+
   const router = useRouter();
 
   const handleSelectPlaylist = (
