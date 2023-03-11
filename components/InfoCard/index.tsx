@@ -52,7 +52,7 @@ function InfoCard({
         )}
       </div>
       <div className="pt-2">
-        <div className="text-whiteDisabled text-xs font-normal uppercase">
+        <div className="text-whiteDisabled text-xs font-normal">
           {!collection && <span>Playlist • {playlist.tracks.length} </span>}
           {!collection && playlist.tracks.length === 1 ? "Track" : "Tracks"}
           {collection && "Track"}
