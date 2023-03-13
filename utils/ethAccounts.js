@@ -329,5 +329,30 @@ const ethAccounts = {
     avatar:
       "/pfp/Reamp_pfp_blue.svg",
   },
+  "0x039E84E7041A029c854B7760B26A5A93A3Aa9c94": {
+    ens: "abelow.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x03b4016f7E58f78E52329d410486C4c5aE5dfc8C": {
+    ens: "darrenli.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x9E7E7E54e43b1E5f00a5f350B16C37346438872b": {
+    ens: "y0han.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0xBDf83EB46c6a52AF8b67bAa2F72AFFE71c751e5c": {
+    ens: "cssis.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x9F098B02634D846E4f466Ae084Af549b9c9ecF49": {
+    ens: "Blockshane.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
 };
 export default ethAccounts;
