@@ -309,7 +309,7 @@ const ethAccounts = {
     avatar:
       "/pfp/Reamp_pfp_blue.svg",
   },
-  "0x0a032cd1433dd23616b94f925cb6c86db6b7f073": {
+  "0x0A032Cd1433DD23616B94F925CB6c86db6b7f073": {
     ens: "0x..f0f3",
     avatar:
       "/pfp/Reamp_pfp_yellowpink.svg",
