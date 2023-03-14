@@ -4,6 +4,8 @@ import { useAccount, useEnsName, useEnsAvatar,  } from "wagmi";
 import FeedbackModal from "../FeedbackModal";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { supabase } from "../../utils/supabase";
+import svgAvatar from "../../utils/svgAvatar";
+
 import mixpanel from "mixpanel-browser";
 
 export default function MobileSidebar() {
@@ -23,24 +25,37 @@ export default function MobileSidebar() {
   async function logWallet(address: string) {
     const { data, error } = await supabase
       .from("users")
-      .insert({ address: address, ens: ensName, avatar: ensAvatar })
+      .insert({ address: address, ens: ensName || `0x..${address.slice(-4)}`, avatar: ensAvatar || svgAvatar})
       .match({ address: address })
       .select();
 
     if (data && data.length === 1) {
       mixpanel.alias(address);
     } else if (error && error.code === "23505") {
-      const { data, error } = await supabase
-        .from("users")
-        .update({ address: address, ens: ensName, avatar: ensAvatar })
-        .match({ address: address })
-        .select();
+      if (ensAvatar){
+        const { data, error } = await supabase
+          .from("users")
+          .update({ address: address, ens: ensName || `0x..${address.slice(-4)}`, avatar: ensAvatar })
+          .match({ address: address })
+          .select();
 
-      if (error) {
-        throw error;
+        if (error) {
+          throw error;
+        }
+      } else {
+        const { data, error } = await supabase
+          .from("users")
+          .update({ address: address, ens: ensName || `0x..${address.slice(-4)}` })
+          .match({ address: address })
+          .select();
+
+        if (error) {
+          throw error;
+        }
       }
     }
   }
+  
   return (
     <div className="max-sm:block hidden w-[230px] bg-sidebarBg border-r border-darkLine relative z-11">
       <div className="fixed bg-sidebarBg border-r border-darkLine">

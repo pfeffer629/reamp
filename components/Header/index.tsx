@@ -6,6 +6,7 @@ import { useAccount, useEnsName, useEnsAvatar, useDisconnect } from "wagmi";
 import ethAccounts from "../../utils/ethAccounts";
 import { supabase } from "../../utils/supabase";
 import mixpanel from "mixpanel-browser";
+import svgAvatar from "../../utils/svgAvatar";
 
 export default function Header() {
   const router = useRouter();
@@ -30,21 +31,33 @@ export default function Header() {
   async function logWallet(address: string) {
     const { data, error } = await supabase
       .from("users")
-      .insert({ address: address, ens: ensName, avatar: ensAvatar })
+      .insert({ address: address, ens: ensName || `0x..${address.slice(-4)}`, avatar: ensAvatar || svgAvatar})
       .match({ address: address })
       .select();
 
     if (data && data.length === 1) {
       mixpanel.alias(address);
     } else if (error && error.code === "23505") {
-      const { error } = await supabase
-        .from("users")
-        .update({ address: address, ens: ensName, avatar: ensAvatar })
-        .match({ address: address })
-        .select();
+      if (ensAvatar){
+        const { data, error } = await supabase
+          .from("users")
+          .update({ address: address, ens: ensName || `0x..${address.slice(-4)}`, avatar: ensAvatar })
+          .match({ address: address })
+          .select();
 
-      if (error) {
-        throw error;
+        if (error) {
+          throw error;
+        }
+      } else {
+        const { data, error } = await supabase
+          .from("users")
+          .update({ address: address, ens: ensName || `0x..${address.slice(-4)}` })
+          .match({ address: address })
+          .select();
+
+        if (error) {
+          throw error;
+        }
       }
     }
   }
