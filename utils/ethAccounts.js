@@ -1,4 +1,4 @@
-const ethAccounts = {
+const ethAccounts = [
   "0x81005FfFd676b1422674fC763ADe81a63b4787C9",
   "0x2961617a37F0405F70BFc33D93c4418c088EDfa3",
   "0x0774658ca78aff2b7c1a50AAe32011FFb959EE02",
@@ -75,5 +75,5 @@ const ethAccounts = {
   "0x35224C95aa3E53a30cc3F6f64540618892a568D7",
   "0xbf46D2161045251cB97D0B41929bc1D36044E1a0",
   "0x80E451777dCD4E4a589a038A61b1dca72d718045",
-};
+];
 export default ethAccounts;
