@@ -6,6 +6,7 @@ import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import Image from "next/image";
+import UserContext from "../../contexts/UserContext";
 import svgAvatar from "../../utils/svgAvatar";
 TimeAgo.addDefaultLocale(en);
 
@@ -18,6 +19,8 @@ export default function PlaylistModal() {
     userPlaylists,
     addToPlaylist,
   } = useContext(PlaylistContext);
+  const { user } = useContext(UserContext);
+  const { currentTrack } = useContext(TrackContext);
 
   let { address } = useAccount();
 
@@ -25,12 +28,6 @@ export default function PlaylistModal() {
     address = "0x12345";
   }
 
-  const { data: ensAvatar } = useEnsAvatar({
-    address: address,
-  });
-
-  const { currentTrack } = useContext(TrackContext);
-  const { data: ensName } = useEnsName({ address });
   const ref = useRef(null);
   useDragScroll({
     sliderRef: ref,
@@ -119,11 +116,11 @@ export default function PlaylistModal() {
                     </div>
                     <div className="flex flex-row items-center space-x-[9px]">
                       <img
-                        src={ensAvatar || svgAvatar}
+                        src={user.avatar}
                         alt="user"
                         className="w-[21px] aspect-square rounded-[10px]"
                       />
-                      &nbsp;{ensName}
+                      &nbsp;{user.ens}
                     </div>
                     <div className="pt-2">
                       <div className="text-white text-[15px]">
@@ -157,11 +154,11 @@ export default function PlaylistModal() {
                   </div>
                   <div className="flex flex-row items-center space-x-[9px]">
                     <img
-                      src={ensAvatar || svgAvatar}
+                      src={user.avatar}
                       alt="user"
                       className="w-[21px] aspect-square rounded-[10px]"
                     />
-                    &nbsp;{ensName}
+                    &nbsp;{user.ens}
                   </div>
                 </div>
               )}

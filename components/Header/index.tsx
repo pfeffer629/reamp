@@ -19,7 +19,7 @@ export default function Header() {
   const { data: ensName } = useEnsName({ address });
 
   useEffect(() => {
-    if (address && ethAccounts.includes(address)) {
+    if (address && !ethAccounts.includes(address)) {
       window.open("https://form.typeform.com/to/i5cEbCte");
       disconnect();
     }
