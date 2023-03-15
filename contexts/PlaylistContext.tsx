@@ -61,7 +61,7 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
     try {
       const { data: playlists, error } = await supabase
         .from("playlists")
-        .select("*")
+        .select("*, users(*)")
         .order("created_at", { ascending: false })
         .limit(40);
 
@@ -76,7 +76,7 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
       try {
         const { data: playlist, error } = await supabase
           .from("playlists")
-          .select("*")
+          .select("*, users(*)")
           .eq("id", id)
           .single();
 
@@ -97,7 +97,7 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
       try {
         const { data: playlists, error } = await supabase
           .from("playlists")
-          .select("*")
+          .select("*, users(*)")
           .order("created_at", { ascending: false })
           .eq("user_id", address);
 
@@ -115,14 +115,12 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
       return;
     }
     try {
-      const { error } = await supabase
-        .from("playlists")
-        .insert({
-          user_id: address,
-          name: name,
-          tracks: [trackToAdd.id],
-          cover: trackToAdd.lossyArtworkUrl,
-        });
+      const { error } = await supabase.from("playlists").insert({
+        user_id: address,
+        name: name,
+        tracks: [trackToAdd.id],
+        cover: trackToAdd.lossyArtworkUrl,
+      });
     } catch (error) {
       throw error;
     } finally {

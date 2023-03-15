@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import PlaylistContext from "../../contexts/PlaylistContext";
 import Tracklist from "../../components/Tracklist";
-import ethAccounts from "../../utils/ethAccounts";
 import Image from "next/image";
 
 export default function Playlist() {
@@ -34,18 +33,14 @@ export default function Playlist() {
           </div>
           <div className="flex flex-row items-center space-x-[9px]">
             <Image
-              src={
-                ethAccounts[selectedPlaylist.user_id] &&
-                ethAccounts[selectedPlaylist.user_id]["avatar"]
-              }
+              src={selectedPlaylist.users.avatar}
               alt="user"
               className="rounded-xl"
               height={21}
               width={21}
             />
             &nbsp;
-            {ethAccounts[selectedPlaylist.user_id] &&
-              ethAccounts[selectedPlaylist.user_id]["ens"]}
+            {selectedPlaylist.users.ens}
           </div>
         </div>
       </div>

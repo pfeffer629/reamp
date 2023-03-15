@@ -2,11 +2,13 @@ import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { useCollectionQuery } from "@spinamp/spinamp-hooks";
 import TrackContext from "../../contexts/TrackContext";
+import UserContext from "../../contexts/UserContext";
 import InfoCard from "../../components/InfoCard";
 
 export default function NftCollection({ address }) {
   const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
     useContext(TrackContext);
+  const { user } = useContext(UserContext);
   const router = useRouter();
 
   const { data, error, isLoading } = useCollectionQuery(address);
@@ -36,6 +38,7 @@ export default function NftCollection({ address }) {
             onClick={() => handleSelectTrack(track)}
             mobileOnClick={() => handleSelectTrack(track, true)}
             collection={true}
+            user={user}
           />
         ))}
     </>

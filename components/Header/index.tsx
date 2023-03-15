@@ -31,17 +31,25 @@ export default function Header() {
   async function logWallet(address: string) {
     const { data, error } = await supabase
       .from("users")
-      .insert({ address: address, ens: ensName || `0x..${address.slice(-4)}`, avatar: ensAvatar || svgAvatar})
+      .insert({
+        address: address,
+        ens: ensName || `0x..${address.slice(-4)}`,
+        avatar: ensAvatar || svgAvatar,
+      })
       .match({ address: address })
       .select();
 
     if (data && data.length === 1) {
       mixpanel.alias(address);
     } else if (error && error.code === "23505") {
-      if (ensAvatar){
+      if (ensAvatar) {
         const { data, error } = await supabase
           .from("users")
-          .update({ address: address, ens: ensName || `0x..${address.slice(-4)}`, avatar: ensAvatar })
+          .update({
+            address: address,
+            ens: ensName || `0x..${address.slice(-4)}`,
+            avatar: ensAvatar,
+          })
           .match({ address: address })
           .select();
 
@@ -51,7 +59,10 @@ export default function Header() {
       } else {
         const { data, error } = await supabase
           .from("users")
-          .update({ address: address, ens: ensName || `0x..${address.slice(-4)}` })
+          .update({
+            address: address,
+            ens: ensName || `0x..${address.slice(-4)}`,
+          })
           .match({ address: address })
           .select();
 
@@ -61,7 +72,7 @@ export default function Header() {
       }
     }
   }
-  
+
   return (
     <>
       {!address && (

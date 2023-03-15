@@ -5,14 +5,14 @@ import Image from "next/image";
 
 function InfoCard({
   address,
-  playlist={cover: "", tracks: [], user_id: "", name: "", created_at: ""},
-  track={lossyArtworkUrl: "", title: ""},
+  playlist = { cover: "", tracks: [], user_id: "", name: "", created_at: "" },
+  track = { lossyArtworkUrl: "", title: "" },
   onClick,
   mobileOnClick,
+  user,
   collection = false,
 }) {
   const timeAgo = new TimeAgo("en-US");
-  console.log(playlist)
   return (
     <div className="px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full">
       <div className="relative inline">
@@ -63,20 +63,14 @@ function InfoCard({
       </div>
       <div className="flex flex-row items-center pt-1 text-sm space-x-[9px]">
         <Image
-          src={
-            !collection
-              ? ethAccounts[playlist.user_id]["avatar"]
-              : ethAccounts[address]["avatar"]
-          }
+          src={!collection ? playlist.users.avatar : user.avatar}
           alt="user"
           className="rounded-xl"
           height={21}
           width={21}
         />
         &nbsp;
-        {!collection
-          ? ethAccounts[playlist.user_id]["ens"]
-          : ethAccounts[address]["ens"]}
+        {!collection ? playlist.users.ens : user.ens}
       </div>
       {!collection && (
         <div className="pt-2">

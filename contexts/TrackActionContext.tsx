@@ -10,15 +10,19 @@ export const TrackActionContext = createContext<ITrackActionContextData>(
   {} as ITrackActionContextData
 );
 
-export function TrackActionProvider({ children }: { children: React.ReactNode }) {
+export function TrackActionProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [selectedTrack, setSelectedTrack] = useState({});
 
   return (
     <TrackActionContext.Provider
       value={
         {
-					selectedTrack, 
-					setSelectedTrack
+          selectedTrack,
+          setSelectedTrack,
         } as ITrackActionContextData
       }
     >
