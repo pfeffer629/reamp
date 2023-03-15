@@ -40,7 +40,7 @@ export default function Playlist() {
               width={21}
             />
             &nbsp;
-            {selectedPlaylist.users.ens}
+            {selectedPlaylist?.users?.ens}
           </div>
         </div>
       </div>
