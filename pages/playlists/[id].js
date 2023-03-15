@@ -33,7 +33,7 @@ export default function Playlist() {
           </div>
           <div className="flex flex-row items-center space-x-[9px]">
             <Image
-              src={selectedPlaylist.users.avatar}
+              src={selectedPlaylist?.users?.avatar}
               alt="user"
               className="rounded-xl"
               height={21}
