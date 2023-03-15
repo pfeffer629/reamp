@@ -1,22 +1,28 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
+import { useAccount, useEnsName, useEnsAvatar, useDisconnect } from "wagmi";
 import FeedbackModal from "../FeedbackModal";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { supabase } from "../../utils/supabase";
 import svgAvatar from "../../utils/svgAvatar";
+import ethAccounts from "../../utils/ethAccounts";
 
 import mixpanel from "mixpanel-browser";
 
 export default function MobileSidebar() {
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const { address } = useAccount();
+  const { disconnect } = useDisconnect();
   const { data: ensAvatar } = useEnsAvatar({
     address: address,
   });
   const { data: ensName } = useEnsName({ address });
 
   useEffect(() => {
+    if (address && ethAccounts.includes(address)) {
+      window.open("https://form.typeform.com/to/i5cEbCte");
+      disconnect();
+    }
     if (address) {
       logWallet(address);
     }
@@ -37,7 +43,7 @@ export default function MobileSidebar() {
       mixpanel.alias(address);
     } else if (error && error.code === "23505") {
       if (ensAvatar) {
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from("users")
           .update({
             address: address,
@@ -51,7 +57,7 @@ export default function MobileSidebar() {
           throw error;
         }
       } else {
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from("users")
           .update({
             address: address,

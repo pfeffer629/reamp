@@ -19,7 +19,7 @@ export default function Header() {
   const { data: ensName } = useEnsName({ address });
 
   useEffect(() => {
-    if (address && !Object.keys(ethAccounts).includes(address)) {
+    if (address && ethAccounts.includes(address)) {
       window.open("https://form.typeform.com/to/i5cEbCte");
       disconnect();
     }
@@ -43,7 +43,7 @@ export default function Header() {
       mixpanel.alias(address);
     } else if (error && error.code === "23505") {
       if (ensAvatar) {
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from("users")
           .update({
             address: address,
@@ -57,7 +57,7 @@ export default function Header() {
           throw error;
         }
       } else {
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from("users")
           .update({
             address: address,

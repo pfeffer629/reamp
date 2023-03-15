@@ -1,15 +1,21 @@
-import ethAccounts from "../../utils/ethAccounts";
 import PlayButton from "../../components/Icons/PlayButton";
 import TimeAgo from "javascript-time-ago";
 import Image from "next/image";
 
 function InfoCard({
   address,
-  playlist = { cover: "", tracks: [], user_id: "", name: "", created_at: "" },
+  playlist = {
+    cover: "",
+    tracks: [],
+    user_id: "",
+    name: "",
+    created_at: "",
+    users: { avatar: "", ens: "" },
+  },
   track = { lossyArtworkUrl: "", title: "" },
   onClick,
   mobileOnClick,
-  user,
+  user = { avatar: "", ens: "" },
   collection = false,
 }) {
   const timeAgo = new TimeAgo("en-US");
