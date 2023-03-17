@@ -24,7 +24,7 @@ export default function Playlist() {
         <div className="flex flex-col justify-center">
           <div className="pt-2">
             <div className="text-whiteDisabled text-[11px]">
-              PUBLIC PLAYLIST • {selectedPlaylist?.tracks?.length} TRACKS
+              PUBLIC PLAYLIST • {selectedPlaylist?.tracks?.length} {selectedPlaylist?.tracks?.length === 1 ? 'TRACK' : 'TRACKS'}
             </div>
           </div>
           <div>
