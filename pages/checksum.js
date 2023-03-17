@@ -13,9 +13,7 @@ export default function Playing() {
       
       convertedAddresses.push(`${parsedAddress[0]}/${web3.utils.toChecksumAddress(parsedAddress[1])}/${parsedAddress[2]}`)
     })
-    console.log(convertedAddresses)
     setChecksum(convertedAddresses)
-    console.log(checksum)
   };
 
   return (
