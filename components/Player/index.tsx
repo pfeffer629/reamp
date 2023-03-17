@@ -563,7 +563,11 @@ export default function Player() {
           volume={volume}
           onEnded={handleNext}
           loop={repeat}
+          title={`${currentTrack?.title} - ${currentTrack?.artist?.name} - ${currentTrack?.album}`}
         />
+
+        <img src={currentTrack?.coverArt} alt="Cover Art" style={{ display: 'none' }} />
+        
       </div>
     </>
   );
