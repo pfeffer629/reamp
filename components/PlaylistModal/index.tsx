@@ -92,7 +92,7 @@ export default function PlaylistModal() {
                 userPlaylists.map((playlist) => (
                   <div
                     key={playlist.id}
-                    className="shrink-0 text-left px-[8px] py-[10px] transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full"
+                    className="shrink-0 text-left px-[10px] py-[10px] transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full"
                   >
                     <div className="relative inline">
                       <Image
@@ -133,11 +133,11 @@ export default function PlaylistModal() {
                   </div>
                 ))
               ) : (
-                <div className="text-left px-[8px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]">
+                <div className="text-left px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[219px]">
                   <Image
                     src={currentTrack?.lossyArtworkUrl || ""}
                     alt="playlist"
-                    className="w-[204px] h-[204px] rounded-[10px]"
+                    className="rounded-[10px]"
                     width={204}
                     height={204}
                   />
