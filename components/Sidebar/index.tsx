@@ -82,10 +82,10 @@ export default function Sidebar() {
                   />
                 </div>
               </Link>
-              <div className="text-[13px] pt-2 text-whiteDisabled">
+              <div className="text-[13px] pt-1 text-whiteDisabled">
                 {currentDate}
                 <br />
-                {location} • {currentTime}
+                {/*{location} */} Beta • {currentTime}
               </div>
             </div>
             <div className="my-[18px] border-b border-darkLine w-full h-1"></div>
