@@ -47,7 +47,7 @@ export default function Live() {
 
   return (
     <div>
-      <div className="flex flex-col space-y-4 max-sm:px-[21px]">
+      <div className="flex flex-col space-y-4 max-sm:px-[3px]">
         <div className="flex items-center">
           <div>Ecosystem Highlights</div>
           <div className="p-2 mb-1 text-sm cursor-pointer transition-all hover:bg-gray-700/40 bg-transparent rounded-md">
