@@ -394,5 +394,10 @@ const ethAccounts = {
     avatar:
       "/pfp/Reamp_pfp_yellowpink.svg",
   },
+  "0x32ec773ed7B5a54D1f0ac77944caF76ED30E6b86": {
+    ens: "musicben.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
 };
 export default ethAccounts;
