@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useAccount, useEnsName, useEnsAvatar,  } from "wagmi";
+import { useAccount, useEnsName, useEnsAvatar, useDisconnect } from "wagmi";
 import FeedbackModal from "../FeedbackModal";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { supabase } from "../../utils/supabase";
@@ -10,6 +10,7 @@ import mixpanel from "mixpanel-browser";
 
 export default function MobileSidebar() {
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const { disconnect } = useDisconnect();
   const { address } = useAccount();
   const { data: ensAvatar } = useEnsAvatar({
     address: address,
@@ -17,6 +18,10 @@ export default function MobileSidebar() {
   const { data: ensName } = useEnsName({ address });
 
   useEffect(() => {
+    if (address && !Object.keys(ethAccounts).includes(address)) {
+      window.open("https://form.typeform.com/to/i5cEbCte");
+      disconnect();
+    }
     if (address) {
       logWallet(address);
     }
