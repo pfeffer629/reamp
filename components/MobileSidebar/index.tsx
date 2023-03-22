@@ -5,6 +5,7 @@ import FeedbackModal from "../FeedbackModal";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { supabase } from "../../utils/supabase";
 import svgAvatar from "../../utils/svgAvatar";
+import ethAccounts from "../../utils/ethAccounts";
 
 import mixpanel from "mixpanel-browser";
 
