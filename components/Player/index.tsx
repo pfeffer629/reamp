@@ -17,6 +17,21 @@ import Marquee from "react-fast-marquee";
 
 const AudioPlayer = dynamic(() => import("./AudioPlayer"), { ssr: false });
 
+function getImageType(url) {
+  const extension = url.split('.').pop().toLowerCase();
+  switch (extension) {
+    case 'png':
+      return 'image/png';
+    case 'jpg':
+    case 'jpeg':
+      return 'image/jpeg';
+    case 'gif':
+      return 'image/gif';
+    default:
+      return 'image/png'; // Fallback to PNG if the extension is not recognized
+  }
+}
+
 export default function Player() {
   const [copyToClipbard, setCopyToClipbard] = useState(false);
   const [elapsed, setElapsed] = useState(0);
@@ -51,44 +66,46 @@ export default function Player() {
     //     setIsPlaying(!isPlaying);
     //   }
     // });
-    if ("mediaSession" in navigator) {
-      if (
-        Object.keys(currentTrack).length > 0 &&
-        currentTrack.lossyArtworkUrl
-      ) {
-        navigator.mediaSession.metadata = new MediaMetadata({
-          title: currentTrack?.title,
-          artist: currentTrack?.artist?.name,
-          artwork: [
-            {
-              src: currentTrack.lossyArtworkUrl,
-              sizes: "96x96",
-              type: "image/png",
-            },
-            {
-              src: currentTrack.lossyArtworkUrl,
-              sizes: "128x128",
-              type: "image/png",
-            },
-            {
-              src: currentTrack.lossyArtworkUrl,
-              sizes: "192x192",
-              type: "image/png",
-            },
-            {
-              src: currentTrack.lossyArtworkUrl,
-              sizes: "256x256",
-              type: "image/png",
-            },
-            {
-              src: currentTrack.lossyArtworkUrl,
-              sizes: "384x384",
-              type: "image/png",
-            },
-            {
-              src: currentTrack.lossyArtworkUrl,
-              sizes: "512x512",
-              type: "image/png",
+    if ('mediaSession' in navigator) {
+  if (
+    Object.keys(currentTrack).length > 0 &&
+    currentTrack.lossyArtworkUrl
+  ) {
+    const imageType = getImageType(currentTrack.lossyArtworkUrl);
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: currentTrack?.title,
+      artist: currentTrack?.artist?.name,
+      artwork: [
+        {
+          src: currentTrack.lossyArtworkUrl,
+          sizes: '96x96',
+          type: imageType,
+        },
+        {
+          src: currentTrack.lossyArtworkUrl,
+          sizes: '128x128',
+          type: imageType,
+        },
+        {
+          src: currentTrack.lossyArtworkUrl,
+          sizes: '192x192',
+          type: imageType,
+        },
+        {
+          src: currentTrack.lossyArtworkUrl,
+          sizes: '256x256',
+          type: imageType,
+        },
+        {
+          src: currentTrack.lossyArtworkUrl,
+          sizes: '384x384',
+          type: imageType,
+        },
+        {
+          src: currentTrack.lossyArtworkUrl,
+          sizes: '512x512',
+          type: imageType,
             },
           ],
         });

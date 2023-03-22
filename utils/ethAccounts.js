@@ -369,5 +369,35 @@ const ethAccounts = {
     avatar:
       "/pfp/Reamp_pfp_blue.svg",
   },
+  "0x1A1c37C145a1EaB58C43F003EBB55C18083b5987": {
+    ens: "davidtphung.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x29185eB8cfD22Aa719529217bFbadE61677e0Ad2": {
+    ens: "joseacabrerav.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x48D6aaeFc242078FF5f5Fea63E71B98Dd5068818": {
+    ens: "househead.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  "0x7De19fF74dBb2F208Fb3D8a19eBE7995Cef8345c": {
+    ens: "aaronsvilla.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0xd35D60B1746cAEc2289c892EAC7351D66d63455B": {
+    ens: "crittie.eth",
+    avatar:
+      "/pfp/Reamp_pfp_yellowpink.svg",
+  },
+  "0x32ec773ed7B5a54D1f0ac77944caF76ED30E6b86": {
+    ens: "musicben.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
 };
 export default ethAccounts;

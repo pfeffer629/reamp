@@ -7,7 +7,7 @@ export default function Collection() {
 
   return (
     <CardLayout>
-        {address && <NftCollection address={address} />}
+      {address && <NftCollection address={address} />}
     </CardLayout>
   );
 }
