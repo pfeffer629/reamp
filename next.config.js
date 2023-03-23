@@ -9,6 +9,7 @@ const config = {
     domains: [
       "spinamp.mypinata.cloud", 
       "web3-music-pipeline.mypinata.cloud", 
+      "media.spinamp.xyz",
       "cf-prod.noizd.com", 
       "ipfs.io", 
       "i.seadn.io", 
