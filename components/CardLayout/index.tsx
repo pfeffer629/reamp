@@ -1,4 +1,4 @@
-function CardLayout({children}) {
+function CardLayout({ children }) {
   return (
     <div className="max-sm:px-[3px] max-sm:justify-center flex items-center max-sm:mb-[140px]">
       <div className="flex flex-wrap max-sm:grid max-sm:grid-flow-dense max-sm:grid-cols-2 justify-items-center gap-y-0">
