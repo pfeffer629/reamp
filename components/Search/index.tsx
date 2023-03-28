@@ -6,6 +6,8 @@ import { useAccount } from "wagmi";
 import PlayingIcon from "../Icons/PlayingIcon";
 import TrackContext from "../../contexts/TrackContext";
 import { ITrack } from "@spinamp/spinamp-sdk";
+import svgAvatar from "../../utils/svgAvatar";
+import Link from "next/link";
 
 function Search({}) {
   const [searchParams, setSearchParams] = useState("");
@@ -23,9 +25,11 @@ function Search({}) {
     setShuffledTracklist,
   } = useContext(TrackContext);
 
-  const handleSelectTrack = (track: ITrack, mobile = false) => {
+  const handleSelectTrack = (track: ITrack) => {
     setCurrentTrack(track);
     setIsPlaying(true);
+    setTracklist(tracks);
+    setCurrentTrackIndex(tracks.indexOf(track));
   };
 
   useEffect(() => {
@@ -63,7 +67,10 @@ function Search({}) {
             <span className="text-[#767676]">Tracks</span>
             <div className="my-[18px] border-b border-darkLine h-1 w-[352px]"></div>
             {tracks.map((track) => (
-              <div className="p-[9px] flex" key={track.id}>
+              <div
+                className="p-[9px] flex hover:bg-blackSecondary transition-all "
+                key={track.id}
+              >
                 {currentTrack.id === track.id && isPlaying ? (
                   <div className="flex justify-center items-center w-[38px] h-[38px]">
                     <PlayingIcon />
@@ -123,15 +130,39 @@ function Search({}) {
               </div>
             ))}
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col ml-[35px]">
             <span className="text-[#767676]">Artists</span>
             <div className="my-[18px] border-b border-darkLine h-1 w-[352px]"></div>
             {artists.map((artist) => (
-              <div className="p-[9px] flex" key={artist.id}>
-                <div className="w-[52px] aspect-square overflow-hidden h-full flex items-center">
-                  {artist.name}
-                </div>
-              </div>
+              <Link
+                href={`/artists/${artist.slug}`}
+                className="p-[9px] flex"
+                key={artist.id}
+              >
+                {artist &&
+                Object.keys(artist.profiles).length > 0 &&
+                Object.values(artist.profiles)[0].avatarUrl ? (
+                  <Image
+                    src={Object.values(artist.profiles)[0].avatarUrl?.replace(
+                      "ipfs://",
+                      "https://ipfs.io/ipfs/"
+                    )}
+                    alt="artist avatar"
+                    className="rounded-full object-cover w-[60px] h-[60px]"
+                    height={60}
+                    width={60}
+                  />
+                ) : (
+                  <Image
+                    src={svgAvatar}
+                    alt="artist avatar"
+                    className="rounded-full object-cover w-[60px] h-[60px]"
+                    height={60}
+                    width={60}
+                  />
+                )}
+                <div className="flex ml-[14px] ">{artist.name}</div>
+              </Link>
             ))}
           </div>
         </div>
