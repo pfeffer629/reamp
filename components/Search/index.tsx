@@ -65,10 +65,10 @@ function Search({}) {
         <div className="absolute bg-sidebarBg rounded-lg mt-[57px] z-20 p-[22px] color-white flex">
           <div className="flex flex-col">
             <span className="text-[#767676]">Tracks</span>
-            <div className="my-[18px] border-b border-darkLine h-1 w-[352px]"></div>
+            <div className="my-[8px] border-b border-darkLine h-1 w-[352px]"></div>
             {tracks.map((track) => (
               <div
-                className="p-[9px] flex hover:bg-blackSecondary transition-all "
+                className="p-[9px] flex hover:bg-sidebarMenuHoverBg rounded-lg transition-all"
                 key={track.id}
               >
                 {currentTrack.id === track.id && isPlaying ? (
@@ -132,11 +132,11 @@ function Search({}) {
           </div>
           <div className="flex flex-col ml-[35px]">
             <span className="text-[#767676]">Artists</span>
-            <div className="my-[18px] border-b border-darkLine h-1 w-[352px]"></div>
+            <div className="my-[8px] border-b border-darkLine h-1 w-[352px]"></div>
             {artists.map((artist) => (
               <Link
                 href={`/artists/${artist.slug}`}
-                className="p-[9px] flex"
+                className="p-[9px] flex hover:bg-sidebarMenuHoverBg rounded-lg transition-all"
                 key={artist.id}
               >
                 {artist &&
