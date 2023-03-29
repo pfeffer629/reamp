@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useAccount } from "wagmi";
 import PlayingIcon from "../Icons/PlayingIcon";
 import TrackContext from "../../contexts/TrackContext";
-import { ITrack } from "@spinamp/spinamp-sdk";
 import svgAvatar from "../../utils/svgAvatar";
 import Link from "next/link";
 
