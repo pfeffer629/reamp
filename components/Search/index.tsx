@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { fetchAllTracks, fetchAllArtists, ITrack } from "@spinamp/spinamp-sdk";
+import { fetchAllTracks, fetchAllArtists, ITrack, IArtist } from "@spinamp/spinamp-sdk";
 import Image from "next/image";
 import { useAccount } from "wagmi";
 import PlayingIcon from "../Icons/PlayingIcon";
@@ -9,8 +9,8 @@ import Link from "next/link";
 
 function Search() {
   const [searchParams, setSearchParams] = useState("");
-  const [tracks, setTracks] = useState([]);
-  const [artists, setArtists] = useState([]);
+  const [tracks, setTracks] = useState<ITrack[]>([]);
+  const [artists, setArtists] = useState<IArtist[]>([]);
   const [showResults, toggleResults] = useState(true);
   const { address } = useAccount();
   const {
@@ -83,15 +83,8 @@ function Search() {
                       loading="lazy"
                       alt="Play Button"
                       src="/icons/Play_Controls.svg"
-                      className="max-sm:hidden block w-[14px] translate-x-[1px]"
+                      className="w-[14px] translate-x-[1px]"
                       onClick={() => handleSelectTrack(track)}
-                    />
-                    <img
-                      loading="lazy"
-                      alt="Play Button"
-                      src="/icons/Play_Controls.svg"
-                      className="max-sm:block hidden w-[14px] translate-x-[1px]"
-                      onClick={() => handleSelectTrack(track, true)}
                     />
                   </div>
                 )}
@@ -148,7 +141,7 @@ function Search() {
                     src={Object.values(artist.profiles)[0].avatarUrl?.replace(
                       "ipfs://",
                       "https://ipfs.io/ipfs/"
-                    )}
+                    ) as string}
                     alt="artist avatar"
                     className="rounded-full object-cover w-[52px] h-[52px]"
                     height={52}
