@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import { useAllArtistsQuery } from "@spinamp/spinamp-hooks";
 import { fetchAllTracks, fetchAllArtists, ITrack } from "@spinamp/spinamp-sdk";
 import Image from "next/image";
 import { useAccount } from "wagmi";
@@ -9,7 +8,7 @@ import { ITrack } from "@spinamp/spinamp-sdk";
 import svgAvatar from "../../utils/svgAvatar";
 import Link from "next/link";
 
-function Search({}) {
+function Search() {
   const [searchParams, setSearchParams] = useState("");
   const [tracks, setTracks] = useState([]);
   const [artists, setArtists] = useState([]);
@@ -21,8 +20,6 @@ function Search({}) {
     setCurrentTrackIndex,
     setIsPlaying,
     setTracklist,
-    tracklist,
-    setShuffledTracklist,
   } = useContext(TrackContext);
 
   const handleSelectTrack = (track: ITrack) => {
@@ -45,6 +42,9 @@ function Search({}) {
         setArtists(artists.items);
         console.log(artists.items);
       });
+    } else {
+      setTracks([])
+      setArtists([])
     }
   }, [searchParams]);
 
@@ -136,7 +136,7 @@ function Search({}) {
             {artists.map((artist) => (
               <Link
                 href={`/artists/${artist.slug}`}
-                className="p-[9px] flex hover:bg-sidebarMenuHoverBg rounded-lg transition-all"
+                className="p-[9px] flex hover:bg-sidebarMenuHoverBg items-center rounded-lg transition-all"
                 key={artist.id}
               >
                 {artist &&
@@ -148,17 +148,17 @@ function Search({}) {
                       "https://ipfs.io/ipfs/"
                     )}
                     alt="artist avatar"
-                    className="rounded-full object-cover w-[60px] h-[60px]"
-                    height={60}
-                    width={60}
+                    className="rounded-full object-cover w-[52px] h-[52px]"
+                    height={52}
+                    width={52}
                   />
                 ) : (
                   <Image
                     src={svgAvatar}
                     alt="artist avatar"
-                    className="rounded-full object-cover w-[60px] h-[60px]"
-                    height={60}
-                    width={60}
+                    className="rounded-full object-cover w-[52px] h-[52px]"
+                    height={52}
+                    width={52}
                   />
                 )}
                 <div className="flex ml-[14px] ">{artist.name}</div>

@@ -1,4 +1,4 @@
-function PlayingIcon({}) {
+function PlayingIcon() {
   return (
     <svg
       fill="#fff"
