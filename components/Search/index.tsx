@@ -12,6 +12,7 @@ function Search() {
   const [searchParams, setSearchParams] = useState("");
   const [tracks, setTracks] = useState([]);
   const [artists, setArtists] = useState([]);
+  const [showResults, toggleResults] = useState(true);
   const { address } = useAccount();
   const {
     isPlaying,
@@ -40,7 +41,6 @@ function Search() {
         filter: { name: { includesInsensitive: searchParams } },
       }).then((artists) => {
         setArtists(artists.items);
-        console.log(artists.items);
       });
     } else {
       setTracks([])
@@ -53,15 +53,18 @@ function Search() {
       <div className="relative text-searchBarText">
         <input
           type="text"
-          className="px-[14px] pl-[34px] rounded-lg w-[380px] h-[41px] pt-[4px] flex items-center bg-blackSecondary relative outline-none ring-0 text-[12px]"
+          className="z-10 px-[14px] pl-[34px] rounded-lg w-[380px] h-[41px] pt-[4px] flex items-center bg-blackSecondary relative outline-none ring-0 text-[12px]"
           placeholder="Search web3 music, artists, and collectors"
           onChange={(e) => setSearchParams(e.target.value)}
+          onFocus={() => toggleResults(true)}
         />
-        <div className="absolute pl-[14px] top-0 pt-[4px] flex items-center justify-center h-[41px]">
+        <div className="z-10 absolute pl-[14px] top-0 pt-[4px] flex items-center justify-center h-[41px]">
           •
         </div>
       </div>
-      {(tracks.length > 0 || artists.length > 0) && (
+      {(showResults && (tracks.length > 0 || artists.length > 0)) && (
+        <>
+        <div className="fixed inset-0 bg-black/[0.6] transition-opacity" onClick={() => toggleResults(false)}></div>  
         <div className="absolute bg-sidebarBg rounded-lg mt-[57px] z-20 p-[22px] color-white flex">
           <div className="flex flex-col">
             <span className="text-[#767676]">Tracks</span>
@@ -166,6 +169,7 @@ function Search() {
             ))}
           </div>
         </div>
+              </>
       )}
     </div>
   );
