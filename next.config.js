@@ -18,6 +18,7 @@ const config = {
       "catalog-dev.s3.filebase.com",
       "d2i9ybouka0ieh.cloudfront.net",
       "catalog-prod.s3.filebase.com",
+      "lh3.googleusercontent.com",
     ],
   },
 }
