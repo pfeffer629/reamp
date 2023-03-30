@@ -399,5 +399,11 @@ const ethAccounts = {
     avatar:
       "/pfp/Reamp_pfp_blue.svg",
   },
+  "0x847dBDEF6B03AAc8be266598928Ca0d994aaA400": {
+    ens: "markredito.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },
+  
 };
 export default ethAccounts;
