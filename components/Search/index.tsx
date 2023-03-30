@@ -1,5 +1,10 @@
 import { useState, useEffect, useContext } from "react";
-import { fetchAllTracks, fetchAllArtists, ITrack, IArtist } from "@spinamp/spinamp-sdk";
+import {
+  fetchAllTracks,
+  fetchAllArtists,
+  ITrack,
+  IArtist,
+} from "@spinamp/spinamp-sdk";
 import Image from "next/image";
 import { useAccount } from "wagmi";
 import PlayingIcon from "../Icons/PlayingIcon";
@@ -30,7 +35,7 @@ function Search() {
   };
 
   useEffect(() => {
-    if (searchParams.length > 3) {
+    if (searchParams.length > 2) {
       fetchAllTracks({
         filter: { title: { includesInsensitive: searchParams } },
       }).then((tracks) => {
@@ -42,8 +47,8 @@ function Search() {
         setArtists(artists.items);
       });
     } else {
-      setTracks([])
-      setArtists([])
+      setTracks([]);
+      setArtists([]);
     }
   }, [searchParams]);
 
@@ -61,107 +66,115 @@ function Search() {
           •
         </div>
       </div>
-      {(showResults && (tracks.length > 0 || artists.length > 0)) && (
+      {showResults && (tracks.length > 0 || artists.length > 0) && (
         <>
-        <div className="fixed inset-0 bg-black/[0.6] transition-opacity" onClick={() => toggleResults(false)}></div>  
-        <div className="absolute bg-sidebarBg rounded-lg mt-[57px] z-20 p-[22px] color-white flex">
-          <div className="flex flex-col">
-            <span className="text-[#767676]">Tracks</span>
-            <div className="my-[8px] border-b border-darkLine h-1 w-[352px]"></div>
-            {tracks.map((track) => (
-              <div
-                className="p-[9px] flex hover:bg-sidebarMenuHoverBg rounded-lg transition-all"
-                key={track.id}
-              >
-                {currentTrack.id === track.id && isPlaying ? (
-                  <div className="flex justify-center items-center w-[38px] h-[38px]">
-                    <PlayingIcon />
-                  </div>
-                ) : (
-                  <div className="cursor-pointer hover:scale-125 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px]">
-                    <img
-                      loading="lazy"
-                      alt="Play Button"
-                      src="/icons/Play_Controls.svg"
-                      className="w-[14px] translate-x-[1px]"
-                      onClick={() => handleSelectTrack(track)}
-                    />
-                  </div>
-                )}
-                <div className="w-[52px] aspect-square overflow-hidden h-full flex items-center">
-                  <Image
-                    alt={track.title}
-                    height={52}
-                    width={52}
-                    src={track.lossyArtworkUrl || ""}
-                    className="rounded-[5px]"
-                  />
-                </div>
-                <div className="flex items-center max-sm:w-2/5 w-[190px] ">
-                  <div className="flex flex-col justify-center w-full ml-2 ">
-                    {address ? (
-                      <Link href={`/tracks/${track.slug}`}>
-                        <div className="truncate w-full hover:underline">
-                          {track.title}
-                        </div>
-                      </Link>
+          <div
+            className="fixed inset-0 bg-black/[0.6] transition-opacity"
+            onClick={() => toggleResults(false)}
+          ></div>
+          <div className="max-h-[554px] overflow-scroll absolute bg-sidebarBg rounded-lg mt-[57px] z-20 p-[22px] color-white flex">
+            {tracks.length > 0 && (
+              <div className="flex flex-col">
+                <span className="text-[#767676]">Tracks</span>
+                <div className="my-[8px] border-b border-darkLine h-1 w-[352px]"></div>
+                {tracks.map((track) => (
+                  <Link
+                    className="p-[9px] flex hover:bg-sidebarMenuHoverBg rounded-lg transition-all"
+                    key={track.id}
+                    onClick={() => toggleResults(false)}
+                    href={`/tracks/${track.slug}`}
+                  >
+                    {currentTrack.id === track.id && isPlaying ? (
+                      <div className="flex justify-center items-center w-[38px] h-[38px]">
+                        <PlayingIcon />
+                      </div>
                     ) : (
-                      <div className="truncate w-full">{track.title}</div>
+                      <div className="cursor-pointer hover:scale-125 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px]">
+                        <img
+                          loading="lazy"
+                          alt="Play Button"
+                          src="/icons/Play_Controls.svg"
+                          className="w-[14px] translate-x-[1px]"
+                          onClick={() => handleSelectTrack(track)}
+                        />
+                      </div>
                     )}
-                    <div className="text-whiteDisabled truncate w-full">
-                      {address ? (
-                        <Link
-                          href={`/artists/${track.artist?.slug}`}
-                          className="hover:underline"
-                        >
-                          {track.artist.name}
-                        </Link>
-                      ) : (
-                        <span>{track.artist.name}</span>
-                      )}
+                    <div className="w-[52px] aspect-square overflow-hidden h-full flex items-center">
+                      <Image
+                        alt={track.title}
+                        height={52}
+                        width={52}
+                        src={track.lossyArtworkUrl || ""}
+                        className="rounded-[5px]"
+                      />
                     </div>
-                  </div>
-                </div>
+                    <div className="flex items-center max-sm:w-2/5 w-[190px] ">
+                      <div className="flex flex-col justify-center w-full ml-2 ">
+                        <div className="truncate w-full">{track.title}</div>
+                        <div className="text-whiteDisabled truncate w-full">
+                          {address ? (
+                            <Link
+                              href={`/artists/${track.artist?.slug}`}
+                              className="hover:underline"
+                            >
+                              {track.artist.name}
+                            </Link>
+                          ) : (
+                            <span>{track.artist.name}</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
-            ))}
-          </div>
-          <div className="flex flex-col ml-[35px]">
-            <span className="text-[#767676]">Artists</span>
-            <div className="my-[8px] border-b border-darkLine h-1 w-[352px]"></div>
-            {artists.map((artist) => (
-              <Link
-                href={`/artists/${artist.slug}`}
-                className="p-[9px] flex hover:bg-sidebarMenuHoverBg items-center rounded-lg transition-all"
-                key={artist.id}
+            )}
+            {artists.length > 0 && (
+              <div
+                className={`flex flex-col ${
+                  tracks.length > 0 ? "ml-[35px]" : ""
+                }`}
               >
-                {artist &&
-                Object.keys(artist.profiles).length > 0 &&
-                Object.values(artist.profiles)[0].avatarUrl ? (
-                  <Image
-                    src={Object.values(artist.profiles)[0].avatarUrl?.replace(
-                      "ipfs://",
-                      "https://ipfs.io/ipfs/"
-                    ) as string}
-                    alt="artist avatar"
-                    className="rounded-full object-cover w-[52px] h-[52px]"
-                    height={52}
-                    width={52}
-                  />
-                ) : (
-                  <Image
-                    src={svgAvatar}
-                    alt="artist avatar"
-                    className="rounded-full object-cover w-[52px] h-[52px]"
-                    height={52}
-                    width={52}
-                  />
-                )}
-                <div className="flex ml-[14px] ">{artist.name}</div>
-              </Link>
-            ))}
+                <span className="text-[#767676]">Artists</span>
+                <div className="my-[8px] border-b border-darkLine h-1 w-[352px]"></div>
+                {artists.map((artist) => (
+                  <Link
+                    href={`/artists/${artist.slug}`}
+                    className="p-[9px] flex hover:bg-sidebarMenuHoverBg items-center rounded-lg transition-all"
+                    key={artist.id}
+                    onClick={() => toggleResults(false)}
+                  >
+                    {artist &&
+                    Object.keys(artist.profiles).length > 0 &&
+                    Object.values(artist.profiles)[0].avatarUrl ? (
+                      <Image
+                        src={
+                          Object.values(artist.profiles)[0].avatarUrl?.replace(
+                            "ipfs://",
+                            "https://ipfs.io/ipfs/"
+                          ) as string
+                        }
+                        alt="artist avatar"
+                        className="rounded-full object-cover w-[52px] h-[52px]"
+                        height={52}
+                        width={52}
+                      />
+                    ) : (
+                      <Image
+                        src={svgAvatar}
+                        alt="artist avatar"
+                        className="rounded-full object-cover w-[52px] h-[52px]"
+                        height={52}
+                        width={52}
+                      />
+                    )}
+                    <div className="flex ml-[14px] ">{artist.name}</div>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
-              </>
+        </>
       )}
     </div>
   );
