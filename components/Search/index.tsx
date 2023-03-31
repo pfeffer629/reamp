@@ -57,7 +57,7 @@ function Search() {
       <div className="relative text-searchBarText">
         <input
           type="text"
-          className="z-10 px-[14px] pl-[34px] rounded-lg w-[380px] h-[41px] pt-[4px] flex items-center bg-blackSecondary relative outline-none ring-0 text-[12px]"
+          className="z-10 px-[14px] pl-[34px] rounded-lg w-[380px] h-[41px] pt-[4px] flex items-center bg-blackSecondary relative outline-none ring-0 text-[12px] hover:ring-1 hover:ring-[#2f2f2f] transition-all duration-300"
           placeholder="Search web3 music and artists"
           onChange={(e) => setSearchParams(e.target.value)}
           onFocus={() => toggleResults(true)}
