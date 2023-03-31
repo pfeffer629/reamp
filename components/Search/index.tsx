@@ -58,11 +58,11 @@ function Search() {
         <input
           type="text"
           className="z-10 px-[14px] pl-[34px] rounded-lg w-[380px] h-[41px] pt-[4px] flex items-center bg-blackSecondary relative outline-none ring-0 text-[12px]"
-          placeholder="Search web3 artists and tracks"
+          placeholder="Search web3 music and artists"
           onChange={(e) => setSearchParams(e.target.value)}
           onFocus={() => toggleResults(true)}
         />
-        <div className="z-10 absolute pl-[14px] top-0 pt-[4px] flex items-center justify-center h-[41px]">
+        <div className="z-10 absolute pl-[14px] text-[aqua] top-0 pt-[4px] flex items-center justify-center h-[41px]">
           •
         </div>
       </div>
@@ -89,7 +89,7 @@ function Search() {
                         <PlayingIcon />
                       </div>
                     ) : (
-                      <div className="cursor-pointer hover:scale-125 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px]">
+                      <div className="cursor-pointer hover:scale-125 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px] pt-3 pr-1">
                         <img
                           loading="lazy"
                           alt="Play Button"
