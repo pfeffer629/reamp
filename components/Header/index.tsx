@@ -7,6 +7,7 @@ import ethAccounts from "../../utils/ethAccounts";
 import { supabase } from "../../utils/supabase";
 import mixpanel from "mixpanel-browser";
 import svgAvatar from "../../utils/svgAvatar";
+import Search from "../../components/Search";
 
 export default function Header() {
   const router = useRouter();
@@ -31,17 +32,25 @@ export default function Header() {
   async function logWallet(address: string) {
     const { data, error } = await supabase
       .from("users")
-      .insert({ address: address, ens: ensName || `0x..${address.slice(-4)}`, avatar: ensAvatar || svgAvatar})
+      .insert({
+        address: address,
+        ens: ensName || `0x..${address.slice(-4)}`,
+        avatar: ensAvatar || svgAvatar,
+      })
       .match({ address: address })
       .select();
 
     if (data && data.length === 1) {
       mixpanel.alias(address);
     } else if (error && error.code === "23505") {
-      if (ensAvatar){
+      if (ensAvatar) {
         const { data, error } = await supabase
           .from("users")
-          .update({ address: address, ens: ensName || `0x..${address.slice(-4)}`, avatar: ensAvatar })
+          .update({
+            address: address,
+            ens: ensName || `0x..${address.slice(-4)}`,
+            avatar: ensAvatar,
+          })
           .match({ address: address })
           .select();
 
@@ -51,7 +60,10 @@ export default function Header() {
       } else {
         const { data, error } = await supabase
           .from("users")
-          .update({ address: address, ens: ensName || `0x..${address.slice(-4)}` })
+          .update({
+            address: address,
+            ens: ensName || `0x..${address.slice(-4)}`,
+          })
           .match({ address: address })
           .select();
 
@@ -61,7 +73,7 @@ export default function Header() {
       }
     }
   }
-  
+
   return (
     <>
       {!address && (
@@ -102,16 +114,7 @@ export default function Header() {
       )}
       <div className="max-sm:hidden block mx-auto py-4">
         <div className="flex items-center justify-between">
-          <div className="relative text-searchBarText">
-            <input
-              type="text"
-              className="px-[14px] pl-[34px] rounded-lg w-[380px] h-[41px] pt-[4px] flex items-center bg-blackSecondary relative outline-none ring-0 text-[12px]"
-              placeholder="Search web3 music, artists, and collectors"
-            />
-            <div className="absolute pl-[14px] top-0 pt-[4px] flex items-center justify-center h-[41px]">
-              •
-            </div>
-          </div>
+          <Search />
           <div className="min-w-[330px]">
             <div className="flex justify-end">
               <ConnectButton showBalance={false} />

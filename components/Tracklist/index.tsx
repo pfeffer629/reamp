@@ -8,6 +8,7 @@ import { useAccount } from "wagmi";
 import FavoritesContext from "../../contexts/FavoritesContext";
 import shuffleArray from "../../utils/shuffleArray";
 import CopiedToClipboard from "../../components/CopiedToClipboard";
+import PlayingIcon from "../../components/Icons/PlayingIcon";
 import { useRouter } from "next/navigation";
 
 import TimeAgo from "javascript-time-ago";
@@ -86,38 +87,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                     <div className="flex items-center h-full justify-center">
                       {currentTrack.id === track.id && isPlaying ? (
                         <div className="flex justify-center items-center w-[38px] h-[38px]">
-                          <svg
-                            fill="#fff"
-                            id="loading-bar"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="22"
-                            viewBox="0 0 16 22"
-                          >
-                            <g>
-                              <rect
-                                className="loading-bar"
-                                width="2.5"
-                                height="19"
-                                rx="2"
-                                x="3"
-                              />
-                              <rect
-                                className="loading-bar-middle"
-                                width="2.5"
-                                height="19"
-                                rx="2"
-                                x="8"
-                              />
-                              <rect
-                                className="loading-bar"
-                                width="2.5"
-                                height="19"
-                                rx="2"
-                                x="13"
-                              />
-                            </g>
-                          </svg>
+                          <PlayingIcon />
                         </div>
                       ) : (
                         <div className="cursor-pointer hover:scale-125 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px]">
