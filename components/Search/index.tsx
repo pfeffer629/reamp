@@ -72,7 +72,7 @@ function Search() {
             className="fixed inset-0 bg-black/[0.6] transition-opacity"
             onClick={() => toggleResults(false)}
           ></div>
-          <div className="max-h-[554px] overflow-scroll absolute bg-sidebarBg rounded-lg mt-[57px] z-20 p-[22px] color-white flex">
+          <div className="max-h-[407px] overflow-scroll absolute bg-sidebarBg rounded-lg mt-[57px] z-20 p-[22px] color-white flex">
             {tracks.length > 0 && (
               <div className="flex flex-col">
                 <span className="text-[#767676]">Tracks</span>
