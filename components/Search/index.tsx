@@ -58,7 +58,7 @@ function Search() {
         <input
           type="text"
           className="z-10 px-[14px] pl-[34px] rounded-lg w-[380px] h-[41px] pt-[4px] flex items-center bg-blackSecondary relative outline-none ring-0 text-[12px]"
-          placeholder="Search web3 music, artists, and collectors"
+          placeholder="Search web3 artists and tracks"
           onChange={(e) => setSearchParams(e.target.value)}
           onFocus={() => toggleResults(true)}
         />
