@@ -57,7 +57,7 @@ function Search() {
       <div className="relative text-searchBarText">
         <input
           type="text"
-          className="z-10 px-[14px] pl-[34px] rounded-lg w-[380px] h-[41px] pt-[4px] flex items-center bg-blackSecondary relative outline-none ring-0 text-[12px] hover:ring-1 hover:ring-[#2f2f2f] transition-all duration-300"
+          className="z-10 px-[14px] pl-[34px] rounded-lg w-[380px] h-[41px] pt-[4px] flex items-center bg-blackSecondary relative outline-none ring-0 text-[13px] hover:ring-1 hover:ring-[#2f2f2f] transition-all duration-300 focus:text-white"
           placeholder="Search web3 music and artists"
           onChange={(e) => setSearchParams(e.target.value)}
           onFocus={() => toggleResults(true)}
@@ -85,11 +85,11 @@ function Search() {
                     href={`/tracks/${track.slug}`}
                   >
                     {currentTrack.id === track.id && isPlaying ? (
-                      <div className="flex justify-center items-center w-[38px] h-[38px]">
+                      <div className="flex justify-center items-center w-[38px] h-[38px] pt-3 pr-2">
                         <PlayingIcon />
                       </div>
                     ) : (
-                      <div className="cursor-pointer hover:scale-125 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px] pt-3 pr-1">
+                      <div className="cursor-pointer hover:scale-125 flex justify-center items-center transition-all duration-300 transform rounded-full w-[38px] h-[38px] pt-3 pr-2">
                         <img
                           loading="lazy"
                           alt="Play Button"
