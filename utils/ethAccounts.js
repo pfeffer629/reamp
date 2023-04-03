@@ -404,6 +404,11 @@ const ethAccounts = {
     avatar:
       "/pfp/Reamp_pfp_blue.svg",
   },
+  "0xcbFFa910Ee7546AF659B82E4E7ed54cF8524Aab6": {
+    ens: "polarzero.eth",
+    avatar:
+      "/pfp/Reamp_pfp_blue.svg",
+  },  
   
 };
 export default ethAccounts;
