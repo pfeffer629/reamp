@@ -78,8 +78,9 @@ export default function Header() {
     <>
       {!address && (
         <div className="animate-marquee-infinite whitespace-nowrap py-[10px] text-[12px]">
-          Reamp.xyz is a web3 music platform that makes it easy to discover, listen, and collect music
-          NFTs&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
+          Reamp.xyz is a web3 music platform that makes it easy to discover,
+          listen, and collect music NFTs&nbsp;&nbsp;&nbsp;&nbsp;
+          •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             className="text-selectedTab underline"
             href="https://form.typeform.com/to/i5cEbCte"
@@ -87,8 +88,9 @@ export default function Header() {
           >
             Request access
           </a>
-          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is a web3 music platform that makes it easy to  discover, listen, and 
-          collect music NFTs&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is a web3
+          music platform that makes it easy to discover, listen, and collect
+          music NFTs&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             className="text-selectedTab underline"
             href="https://form.typeform.com/to/i5cEbCte"
@@ -96,9 +98,9 @@ export default function Header() {
           >
             Request access
           </a>
-          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp; Reamp.xyz is a web3 music platform that makes it easy to 
-          discover, listen, and collect music
-          NFTs&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp; Reamp.xyz is a web3
+          music platform that makes it easy to discover, listen, and collect
+          music NFTs&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             className="text-selectedTab underline"
             href="https://form.typeform.com/to/i5cEbCte"
