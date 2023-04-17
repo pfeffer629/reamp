@@ -49,6 +49,17 @@ function TrackPopUp() {
                         <span>Track Details</span>
                     </Link>
                     <div
+                        className="cursor-pointer pb-6 flex hover:text-white"
+                        onClick={() => shareTrack()}
+                    >
+                        <img
+                        alt="Small Share"
+                        src="/icons/SmallShare.svg"
+                        className="h-[21px] w-[21px] mr-[16px]"
+                        />
+                        <span>Share</span>
+                    </div>
+                    <div
                         className="cursor-pointer mb-6 flex hover:text-white"
                         onClick={() => addToPlaylist()}
                     >
@@ -58,17 +69,6 @@ function TrackPopUp() {
                         className="h-[21px] w-[21px] mr-[16px]"
                         />
                         <span>Add to Playlist</span>
-                    </div>
-                    <div
-                        className="cursor-pointer pb-6 flex hover:text-white"
-                        onClick={() => shareTrack()}
-                    >
-                        <img
-                        alt="Small Share"
-                        src="/icons/SmallShare.svg"
-                        className="h-[21px] w-[21px] mr-[16px]"
-                        />
-                        <span>Share Track</span>
                     </div>
                 </div>
             </div>

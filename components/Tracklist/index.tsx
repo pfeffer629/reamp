@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../../contexts/TrackContext";
@@ -24,6 +24,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
   const timeAgo = new TimeAgo("en-US");
   const [copyToClipbard, setCopyToClipbard] = useState(false);
   const [trackPopUp, setTrackPopUp] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState();
+  const trackPopUpRef = useRef<HTMLDivElement>(null);
   const {
     isPlaying,
     currentTrack,
@@ -65,19 +67,37 @@ export default function Tracklist({ tracks }: TracklistProps) {
     }
   };
 
-  const handleThreeDots = (track) => {
-    if (track != selectedTrack) {
+  const handleThreeDots = (track, index) => {
+    if (track != selectedTrack || index != selectedIndex) {
       setSelectedTrack(track);
+      setSelectedIndex(index);
       setTrackPopUp(true);
     } else {
       setTrackPopUp(!trackPopUp);
     } 
   }
 
-  const handleRightClick = (event, track) => {
+  const handleRightClick = (event, track, index) => {
     event.preventDefault();
-    handleThreeDots(track);
+    handleThreeDots(track, index);
   }
+
+  
+  const handleClickOutside = (event) => {
+    if (trackPopUpRef.current && !trackPopUpRef.current.contains(event.target)) {
+      setTrackPopUp(false);
+    }
+  }
+  
+  useEffect(() => {
+    // add event listener when the component mounts
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // remove event listener when the component unmounts
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="max-sm:w-full max-sm:mb-[140px] mb-0 w-[895px] mx-auto">
@@ -96,8 +116,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
             <div className="w-[138px] text-center">Share</div>
           </div>
           {tracks &&
-            tracks.map((track) => (
-              <div className="flex flex-col space-y-4" key={track.id} onContextMenu={(event) => handleRightClick(event, track)}>
+            tracks.map((track, index) => (
+              <div className="flex flex-col space-y-4" key={index} onContextMenu={(event) => handleRightClick(event, track, index)} ref={trackPopUpRef}>
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
                   <div className="w-[46px] max-sm:ml-[8px]">
                     <div className="flex items-center h-full justify-center">
@@ -211,7 +231,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                     </div>
                   </div>
                   <div className="max-sm:w-auto max-sm:pr-[24px] w-[60px] flex items-center justify-center h-[70px]"
-                  onClick={() => handleThreeDots(track)}
+                  onClick={() => handleThreeDots(track, index)}
                   >
                     <div className="relative bg-transparent p-2 transition-all cursor-pointer duration-300">
                       <img 
@@ -219,7 +239,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                         alt="Three Dots"
                         className="w-[16px] hover:scale-125"
                       />
-                      {trackPopUp && (track === selectedTrack) && <TrackPopUp/>}
+                      {trackPopUp && (index === selectedIndex) && <TrackPopUp/>}
                     </div>
                   </div>
                 </div>
