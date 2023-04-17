@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
+import TrackPopUp from "../TrackPopUp";
 TimeAgo.addDefaultLocale(en);
 
 type TracklistProps = {
@@ -22,6 +23,7 @@ type TracklistProps = {
 export default function Tracklist({ tracks }: TracklistProps) {
   const timeAgo = new TimeAgo("en-US");
   const [copyToClipbard, setCopyToClipbard] = useState(false);
+  const [trackPopUp, setTrackPopUp] = useState(false);
   const {
     isPlaying,
     currentTrack,
@@ -33,7 +35,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
     setShuffledTracklist,
   } = useContext(TrackContext);
 
-  const { setSelectedTrack } = useContext(TrackActionContext);
+  const { selectedTrack, setSelectedTrack } = useContext(TrackActionContext);
 
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
@@ -63,6 +65,20 @@ export default function Tracklist({ tracks }: TracklistProps) {
     }
   };
 
+  const handleThreeDots = (track) => {
+    if (track != selectedTrack) {
+      setSelectedTrack(track);
+      setTrackPopUp(true);
+    } else {
+      setTrackPopUp(!trackPopUp);
+    } 
+  }
+
+  const handleRightClick = (event, track) => {
+    event.preventDefault();
+    handleThreeDots(track);
+  }
+
   return (
     <div className="max-sm:w-full max-sm:mb-[140px] mb-0 w-[895px] mx-auto">
       {copyToClipbard && <CopiedToClipboard />}
@@ -81,7 +97,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
           </div>
           {tracks &&
             tracks.map((track) => (
-              <div className="flex flex-col space-y-4" key={track.id}>
+              <div className="flex flex-col space-y-4" key={track.id} onContextMenu={(event) => handleRightClick(event, track)}>
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
                   <div className="w-[46px] max-sm:ml-[8px]">
                     <div className="flex items-center h-full justify-center">
@@ -194,14 +210,16 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       />
                     </div>
                   </div>
-                  <div className="max-sm:w-auto max-sm:pr-[24px] w-[60px] flex items-center justify-center h-[70px]">
-                    <div className="bg-transparent p-2 hover:scale-125 transition-all cursor-pointer duration-300">
-                      <img
+                  <div className="max-sm:w-auto max-sm:pr-[24px] w-[60px] flex items-center justify-center h-[70px]"
+                  onClick={() => handleThreeDots(track)}
+                  >
+                    <div className="relative bg-transparent p-2 transition-all cursor-pointer duration-300">
+                      <img 
                         src="/icons/SmallThreeDots.svg"
                         alt="Three Dots"
-                        className="w-[16px]"
-                        onClick={() => setSelectedTrack(track)}
+                        className="w-[16px] hover:scale-125"
                       />
+                      {trackPopUp && (track === selectedTrack) && <TrackPopUp/>}
                     </div>
                   </div>
                 </div>
