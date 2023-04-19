@@ -3,24 +3,11 @@ import Link from "next/link";
 import TrackActionContext from "../../contexts/TrackActionContext";
 import PlaylistContext from "../../contexts/PlaylistContext";
 import { useAccount } from "wagmi";
-import CopiedToClipboard from "../CopiedToClipboard";
 
-function TrackPopUp() {
-    const [copyToClipboard, setCopyToClipboard] = useState(false);
+function TrackPopUp({shareTrack}) {
     const { selectedTrack, setSelectedTrack } = useContext(TrackActionContext);
     const { toggleModal } = useContext(PlaylistContext);
     const { address } = useAccount();
-
-    const shareTrack = () => {
-        setSelectedTrack({});
-        setCopyToClipboard(true);
-        navigator.clipboard.writeText(
-            `https://beta.reamp.xyz/tracks/${selectedTrack.slug}`
-        );
-        setTimeout(() => {
-            setCopyToClipboard(false);
-        }, 4000);
-    };
 
     const addToPlaylist = () => {
         if (address) {
@@ -31,7 +18,6 @@ function TrackPopUp() {
 
     return (
         <>
-            {copyToClipboard && <CopiedToClipboard/>}
             <div
                 className={"w-[204px] z-50 absolute top-0 right-11 border border-whiteDisabled rounded-2xl backdrop-blur-sm text-silver"}
             >
@@ -50,7 +36,7 @@ function TrackPopUp() {
                     </Link>
                     <div
                         className="cursor-pointer pb-6 flex hover:text-white"
-                        onClick={() => shareTrack()}
+                        onClick={shareTrack}
                     >
                         <img
                         alt="Small Share"

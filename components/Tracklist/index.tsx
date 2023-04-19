@@ -26,6 +26,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
   const [trackPopUp, setTrackPopUp] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState();
   const trackPopUpRef = useRef<HTMLDivElement>(null);
+  const threeDotsRef = useRef<HTMLDivElement>(null);
+
   const {
     isPlaying,
     currentTrack,
@@ -68,13 +70,10 @@ export default function Tracklist({ tracks }: TracklistProps) {
   };
 
   const handleThreeDots = (track, index) => {
-    if (track != selectedTrack || index != selectedIndex) {
-      setSelectedTrack(track);
-      setSelectedIndex(index);
-      setTrackPopUp(true);
-    } else {
-      setTrackPopUp(!trackPopUp);
-    } 
+   setSelectedTrack(track);
+   setSelectedIndex(index);
+   setTrackPopUp(!trackPopUp);
+   console.log("showe");
   }
 
   const handleRightClick = (event, track, index) => {
@@ -84,10 +83,15 @@ export default function Tracklist({ tracks }: TracklistProps) {
 
   
   const handleClickOutside = (event) => {
-    if (trackPopUpRef.current && !trackPopUpRef.current.contains(event.target)) {
+    if (trackPopUpRef.current 
+      && !trackPopUpRef.current.contains(event.target)
+      && threeDotsRef.current
+      && !threeDotsRef.current.contains(event.target)) {
       setTrackPopUp(false);
+      console.log("outside");
     }
   }
+  
   
   useEffect(() => {
     // add event listener when the component mounts
@@ -98,6 +102,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+  
 
   return (
     <div className="max-sm:w-full max-sm:mb-[140px] mb-0 w-[895px] mx-auto">
@@ -117,7 +122,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
           </div>
           {tracks &&
             tracks.map((track, index) => (
-              <div className="flex flex-col space-y-4" key={index} onContextMenu={(event) => handleRightClick(event, track, index)} ref={trackPopUpRef}>
+              <div className="flex flex-col space-y-4" key={index} onContextMenu={(event) => handleRightClick(event, track, index)}>
                 <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
                   <div className="w-[46px] max-sm:ml-[8px]">
                     <div className="flex items-center h-full justify-center">
@@ -231,15 +236,15 @@ export default function Tracklist({ tracks }: TracklistProps) {
                     </div>
                   </div>
                   <div className="max-sm:w-auto max-sm:pr-[24px] w-[60px] flex items-center justify-center h-[70px]"
-                  onClick={() => handleThreeDots(track, index)}
                   >
-                    <div className="relative bg-transparent p-2 transition-all cursor-pointer duration-300">
+                    <div className="relative bg-transparent p-2 transition-all cursor-pointer duration-300" 
+                    onClick={() => handleThreeDots(track, index)} ref={threeDotsRef}>
                       <img 
                         src="/icons/SmallThreeDots.svg"
                         alt="Three Dots"
                         className="w-[16px] hover:scale-125"
                       />
-                      {trackPopUp && (index === selectedIndex) && <TrackPopUp/>}
+                      {trackPopUp && (index === selectedIndex) && <div ref={trackPopUpRef}><TrackPopUp shareTrack={()=>shareTrack(track.slug)}/></div>}
                     </div>
                   </div>
                 </div>
