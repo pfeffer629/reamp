@@ -92,6 +92,7 @@ export default function App({ Component, pageProps }: AppProps) {
             apiKey: process.env.RESERVOIR_API_KEY,
           },
         ],
+        source: "beta.reamp.xyz"
       }}
     >
       <WagmiConfig client={wagmiClient}>
