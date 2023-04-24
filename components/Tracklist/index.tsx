@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ITrack } from "@spinamp/spinamp-sdk";
 import TrackContext from "../../contexts/TrackContext";
@@ -33,12 +33,13 @@ export default function Tracklist({ tracks }: TracklistProps) {
     setShuffledTracklist,
   } = useContext(TrackContext);
 
-  const { setSelectedTrack } = useContext(TrackActionContext);
+  const { selectedTrack, setSelectedTrack } = useContext(TrackActionContext);
 
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { address } = useAccount();
   const router = useRouter();
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const shareTrack = (slug) => {
     setCopyToClipbard(true);
@@ -63,6 +64,24 @@ export default function Tracklist({ tracks }: TracklistProps) {
     }
   };
 
+  const handleTrackClick = (event, track: ITrack, mobile = false) => {
+    (event.detail == 2 || mobile) ? handleSelectTrack(track, mobile) : setSelectedTrack(track);
+  }
+
+  const handleClickOutside = (event) => {
+    trackRef.current && !trackRef.current.contains(event.target) && setSelectedTrack(currentTrack);
+  }
+
+  useEffect(() => {
+    // add event listener when the component mounts
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // remove event listener when the component unmounts
+    return () => {
+    document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="max-sm:w-full max-sm:mb-[140px] mb-0 w-[895px] mx-auto">
       {copyToClipbard && <CopiedToClipboard />}
@@ -81,8 +100,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
           </div>
           {tracks &&
             tracks.map((track) => (
-              <div className="flex flex-col space-y-4" key={track.id}>
-                <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
+              <div className="flex flex-col space-y-4" key={track.id} ref={trackRef} onClick={(e) => handleTrackClick(e, track)}>
+                <div className={`flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg ${selectedTrack == track ? 'bg-blackSecondary' : ''}`}>
                   <div className="w-[46px] max-sm:ml-[8px]">
                     <div className="flex items-center h-full justify-center">
                       {currentTrack.id === track.id && isPlaying ? (
