@@ -26,7 +26,6 @@ export default function Tracklist({ tracks }: TracklistProps) {
   const [trackPopUp, setTrackPopUp] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState();
   const trackPopUpRef = useRef<HTMLDivElement>(null);
-  const threeDotsRef = useRef<HTMLDivElement>(null);
 
   const {
     isPlaying,
@@ -73,7 +72,6 @@ export default function Tracklist({ tracks }: TracklistProps) {
    setSelectedTrack(track);
    setSelectedIndex(index);
    setTrackPopUp(!trackPopUp);
-   console.log("showe");
   }
 
   const handleRightClick = (event, track, index) => {
@@ -84,11 +82,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
   
   const handleClickOutside = (event) => {
     if (trackPopUpRef.current 
-      && !trackPopUpRef.current.contains(event.target)
-      && threeDotsRef.current
-      && !threeDotsRef.current.contains(event.target)) {
+      && !trackPopUpRef.current.contains(event.target)) {
       setTrackPopUp(false);
-      console.log("outside");
     }
   }
   
@@ -238,7 +233,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                   <div className="max-sm:w-auto max-sm:pr-[24px] w-[60px] flex items-center justify-center h-[70px]"
                   >
                     <div className="relative bg-transparent p-2 transition-all cursor-pointer duration-300" 
-                    onClick={() => handleThreeDots(track, index)} ref={threeDotsRef}>
+                    onClick={() => handleThreeDots(track, index)}>
                       <img 
                         src="/icons/SmallThreeDots.svg"
                         alt="Three Dots"
