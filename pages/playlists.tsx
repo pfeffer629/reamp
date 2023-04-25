@@ -24,6 +24,12 @@ export default function Playlists() {
 
   const router = useRouter();
 
+  const playListIcon = <img
+    alt="Playlist"
+    src="/icons/Playlist.svg"
+    className="w-[28px]"
+  />
+
   const handleSelectPlaylist = (
     e: React.MouseEvent<SVGSVGElement>,
     playlistTracks: string[],
@@ -73,6 +79,6 @@ export default function Playlists() {
         ))}
     </CardLayout>
     :
-    <Onboarding icon={"playlist-icon"} text={"Looks like you haven’t created any playlists yet"}/>
+    <Onboarding icon={playListIcon} text={"Looks like you haven’t created any playlists yet"} cta={"Create your first playlist"} ctaLink={"/live"}/>
   );
 }
