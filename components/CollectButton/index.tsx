@@ -24,8 +24,8 @@ function CollectButton({ track }) {
       }
       collectionId={collectionId}
       tokenId={tokenId}
-      onPurchaseComplete={(data) => console.log("Purchase Complete")}
-      onPurchaseError={(error, data) =>
+      onBidComplete={(data) => console.log("Bid Complete")}
+      onBidError={(error, data) =>
         console.log("Transaction Error", error, data)
       }
       onClose={(data, stepData, currentStep) => console.log("Modal Closed")}
