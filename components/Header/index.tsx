@@ -86,7 +86,7 @@ export default function Header() {
             href="https://form.typeform.com/to/i5cEbCte"
             target="_blank"
           >
-            Request access
+            Sign up for free
           </a>
           &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is a web3
           music platform that makes it easy to discover, listen, and collect
@@ -96,7 +96,7 @@ export default function Header() {
             href="https://form.typeform.com/to/i5cEbCte"
             target="_blank"
           >
-            Request access
+            Sign up for free
           </a>
           &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp; Reamp.xyz is a web3
           music platform that makes it easy to discover, listen, and collect
@@ -106,7 +106,7 @@ export default function Header() {
             href="https://form.typeform.com/to/i5cEbCte"
             target="_blank"
           >
-            Request access
+            Sign up for free
           </a>
           &nbsp;&nbsp;&nbsp;&nbsp;
         </div>

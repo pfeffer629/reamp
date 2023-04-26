@@ -48,10 +48,10 @@ export default function Artists() {
           </div>
           <div className="flex">
             <span className="text-white text-[30px]">{data.artist?.name}</span>
-            <img
+            {/* <img
               src="/icons/SmallHeart.svg"
               className="inline-block cursor-pointer ml-[15px]"
-            />
+            /> */}
           </div>
         </div>
       </div>

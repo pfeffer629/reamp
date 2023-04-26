@@ -72,19 +72,19 @@ export default function Live() {
         </div>
         <div className="flex flex-wrap max-sm:flex-nowrap max-sm:overflow-x-scroll space-x-3 pb-[10px] tracking-wide whitespace-nowrap">
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">1,694</div>
+            <div className="">1,743</div>
             <div className="text-searchBarText">Artists</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">15,795</div>
+            <div className="">16,790</div>
             <div className="text-searchBarText">Collectors</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">86,058</div>
+            <div className="">101,604</div>
             <div className="text-searchBarText">Total Tracks</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">$13,389,726</div>
+            <div className="">$13,455,491</div>
             <div className="text-searchBarText">Total Volume (USD)</div>
           </div>
         </div>

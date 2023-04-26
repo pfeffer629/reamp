@@ -94,7 +94,7 @@ export default function MobileSidebar() {
                 </div>
               </Link>
               <div className="text-[13px] my-2 text-whiteDisabled">
-                Private Beta
+                Not optimized for mobile. Connect on desktop for optimal performance.
               </div>
             </div>
             <div className="flex flex-col w-full">

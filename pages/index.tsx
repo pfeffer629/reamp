@@ -3,7 +3,8 @@ import Tracklist from "../components/Tracklist";
 import { initialize } from "@spinamp/spinamp-sdk";
 
 initialize({
-  IPFS_GATEWAY_URL_IMAGE: "https://media.spinamp.xyz/v1",
+    IPFS_GATEWAY_URL_IMAGE: 'https://media.spinamp.xyz/v1',
+    IPFS_GATEWAY_URL_AUDIO: 'https://media.spinamp.xyz/v1'
 });
 
 export default function Home() {
