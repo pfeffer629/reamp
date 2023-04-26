@@ -34,7 +34,6 @@ export default function Tracklist({ tracks }: TracklistProps) {
   } = useContext(TrackContext);
 
   const { setSelectedTrack } = useContext(TrackActionContext);
-console.log(currentTrack)
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { address } = useAccount();
