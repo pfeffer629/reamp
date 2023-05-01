@@ -209,7 +209,7 @@ export default function Sidebar() {
                   style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
                 ></div>
                 <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
-                  Sign up for free
+                  Join Waitlist
                 </div>
               </a>
             )}
