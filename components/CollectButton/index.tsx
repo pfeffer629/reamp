@@ -18,8 +18,8 @@ function CollectButton({ track }) {
   return (
     <BidModal
       trigger={
-        <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 mt-[6px] select-none">
-          collect
+        <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] flex justify-center items-center text-[12px] rounded-[3px] text-black transition-all duration-500 mt-[6px] select-none">
+          Collect
         </div>
       }
       collectionId={collectionId}
