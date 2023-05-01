@@ -6,8 +6,6 @@ export default function Collection() {
   const { address } = useAccount();
 
   return (
-    <CardLayout>
-      {address && <NftCollection address={address} />}
-    </CardLayout>
+    <CardLayout>{address && <NftCollection address={address} />}</CardLayout>
   );
 }
