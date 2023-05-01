@@ -85,7 +85,7 @@ export default function Header() {
             href="https://form.typeform.com/to/i5cEbCte"
             target="_blank"
           >
-            Sign up for free
+            Join Waitlist
           </a>
           &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is a music culture marketplace that makes it easy to 
           discover, listen, and collect music onchain&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
@@ -94,7 +94,7 @@ export default function Header() {
             href="https://form.typeform.com/to/i5cEbCte"
             target="_blank"
           >
-            Sign up for free
+            Join Waitlist
           </a>
           &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp; Reamp.xyz is a music culture marketplace that makes it easy to 
           discover, listen, and collect music onchain
@@ -104,7 +104,7 @@ export default function Header() {
             href="https://form.typeform.com/to/i5cEbCte"
             target="_blank"
           >
-            Sign up for free
+            Join Waitlist
           </a>
           &nbsp;&nbsp;&nbsp;&nbsp;
         </div>
