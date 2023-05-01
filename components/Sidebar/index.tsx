@@ -209,18 +209,18 @@ export default function Sidebar() {
                   style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
                 ></div>
                 <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
-                  Sign up for free
+                  Join Waitlist
                 </div>
               </a>
             )}
             <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
-              <a href="https://form.typeform.com/to/vtVCzPtc" target="_blank">
+              <a href="https://discord.gg/gxDV392tD8" target="_blank">
                 <div
                   className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
                   style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
                 ></div>
                 <div className="ml-[14px] transform transition-all group-hover:ml-[24px] select-none duration-300 py-[8px]">
-                  Join the Team
+                  Join Community
                 </div>
               </a>
             </div>
