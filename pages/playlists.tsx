@@ -27,7 +27,7 @@ export default function Playlists() {
   const playListIcon = <img
     alt="Playlist"
     src="/icons/Playlist.svg"
-    className="w-[28px]"
+    className="w-[37px]"
   />
 
   const handleSelectPlaylist = (
