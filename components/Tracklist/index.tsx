@@ -21,6 +21,7 @@ type TracklistProps = {
 
 export default function Tracklist({ tracks }: TracklistProps) {
   const timeAgo = new TimeAgo("en-US");
+  const mobileSize = 640;
   const [copyToClipbard, setCopyToClipbard] = useState(false);
   const {
     isPlaying,
@@ -69,7 +70,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
   }
 
   const handleClickOutside = (event) => {
-    trackRef.current && !trackRef.current.contains(event.target) && setSelectedTrack(currentTrack);
+    trackRef.current && !trackRef.current.contains(event.target) && setSelectedTrack({});
   }
 
   useEffect(() => {
@@ -86,7 +87,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
     <div className="max-sm:w-full max-sm:mb-[140px] mb-0 w-[895px] mx-auto">
       {copyToClipbard && <CopiedToClipboard />}
       <div className="flex flex-col space-y-4 min-h-[calc(100vh-160px)]">
-        <div className="w-full">
+        <div className="w-full" ref={trackRef}>
           <div className="flex items-center max-sm:hidden block">
             <div className="w-[46px]"></div>
             <div className="p-[9px]">
@@ -100,7 +101,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
           </div>
           {tracks &&
             tracks.map((track) => (
-              <div className="flex flex-col space-y-4" key={track.id} ref={trackRef} onClick={(e) => handleTrackClick(e, track)}>
+              <div className="flex flex-col space-y-4" key={track.id} onClick={(e) => handleTrackClick(e, track, window.innerWidth <= mobileSize)}>
                 <div className={`flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg ${selectedTrack == track ? 'bg-blackSecondary' : ''}`}>
                   <div className="w-[46px] max-sm:ml-[8px]">
                     <div className="flex items-center h-full justify-center">
