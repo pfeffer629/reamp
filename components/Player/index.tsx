@@ -278,7 +278,7 @@ export default function Player() {
                 <p>{currentTrack?.artist?.name}</p>
               </span>
             )}
-            {(currentTrack.platformId !== "nina" || currentTrack.platformId !== "noizd") && (
+            {currentTrack.platformId === "catalog" && (
               <CollectButton track={currentTrack} />
             )}
           </div>
