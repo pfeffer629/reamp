@@ -57,13 +57,14 @@ function CollectButton({ track }) {
       // How many tokens to be estimated for Buy
       quantity: 1,
     })
+    console.log(buyPrice)
     console.log(buyPrice.total.toNumber())
-    // const purchaseTransaction = await samEdition.contract.buy({
+    const purchaseTransaction = await samEdition.contract.buy({
     //   // How many to be purchased
-    //   quantity: 1,
+      quantity: 1,
      
     //   // Price to be attempted
-    //   price: '...',
+      price: buyPrice.total,
      
     //   // Optional attribution identifier
     //   //   attributonId?: BigNumberish
@@ -77,7 +78,7 @@ function CollectButton({ track }) {
     //   //   gasLimit: BigNumberish
     //   //   maxFeePerGas: BigNumberish
     //   //   maxPriorityFeePerGas: BigNumberish
-    // })
+    })
   }
 
   return (
