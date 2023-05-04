@@ -22,9 +22,11 @@ type TracklistProps = {
 
 export default function Tracklist({ tracks }: TracklistProps) {
   const timeAgo = new TimeAgo("en-US");
+  const mobileSize = 640;
   const [copyToClipbard, setCopyToClipbard] = useState(false);
   const [trackPopUp, setTrackPopUp] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState();
+  const [optionsPosition, setOptionsPosition] = useState({});
   const trackPopUpRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -68,15 +70,24 @@ export default function Tracklist({ tracks }: TracklistProps) {
     }
   };
 
-  const handleThreeDots = (track, index) => {
+  const handleThreeDots = (track, index, mobile = false, rightClick = false) => {
    setSelectedTrack(track);
    setSelectedIndex(index);
-   setTrackPopUp(!trackPopUp);
+
+   if (!rightClick) {
+    setOptionsPosition({});
+   }
+
+   if (!mobile) {
+    setTrackPopUp(!trackPopUp);
+   } 
   }
 
   const handleRightClick = (event, track, index) => {
     event.preventDefault();
-    handleThreeDots(track, index);
+    console.log(event.pageX, event.pageY);
+    setOptionsPosition({x: event.pageX, y: event.pageY});
+    handleThreeDots(track, index, false, true);
   }
 
   
@@ -233,13 +244,13 @@ export default function Tracklist({ tracks }: TracklistProps) {
                   <div className="max-sm:w-auto max-sm:pr-[24px] w-[60px] flex items-center justify-center h-[70px]"
                   >
                     <div className="relative bg-transparent p-2 transition-all cursor-pointer duration-300" 
-                    onClick={() => handleThreeDots(track, index)}>
+                    onClick={() => handleThreeDots(track, index, window.innerWidth <= mobileSize)}>
                       <img 
                         src="/icons/SmallThreeDots.svg"
                         alt="Three Dots"
                         className="w-[16px] hover:scale-125"
                       />
-                      {trackPopUp && (index === selectedIndex) && <div ref={trackPopUpRef}><TrackPopUp shareTrack={()=>shareTrack(track.slug)}/></div>}
+                      {trackPopUp && (index === selectedIndex) && <div ref={trackPopUpRef}><TrackPopUp position={optionsPosition} shareTrack={()=>shareTrack(track.slug)}/></div>}
                     </div>
                   </div>
                 </div>

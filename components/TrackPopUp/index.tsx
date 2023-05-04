@@ -4,7 +4,7 @@ import TrackActionContext from "../../contexts/TrackActionContext";
 import PlaylistContext from "../../contexts/PlaylistContext";
 import { useAccount } from "wagmi";
 
-function TrackPopUp({shareTrack}) {
+function TrackPopUp({shareTrack, position}) {
     const { selectedTrack, setSelectedTrack } = useContext(TrackActionContext);
     const { toggleModal } = useContext(PlaylistContext);
     const { address } = useAccount();
@@ -15,11 +15,13 @@ function TrackPopUp({shareTrack}) {
             toggleModal(selectedTrack);
         }
     };
+    const rightClickStyle = `fixed top-[${position.y}px] left-[${position.x}px]`
+    const defaultStyle = "absolute top-0 right-11";
 
     return (
         <>
             <div
-                className={"w-[204px] z-50 absolute top-0 right-11 border border-whiteDisabled rounded-2xl backdrop-blur-sm text-silver"}
+                className={`${position.x && position.y ? rightClickStyle : defaultStyle} w-[204px] z-50 border border-whiteDisabled rounded-2xl backdrop-blur-sm text-silver`}
             >
                 <div className="pt-6 pl-6">
                     <Link
