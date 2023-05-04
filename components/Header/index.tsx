@@ -78,8 +78,9 @@ export default function Header() {
     <>
       {!address && (
         <div className="animate-marquee-infinite whitespace-nowrap py-[10px] text-[12px]">
-          Reamp.xyz is a music culture marketplace that makes it easy to 
-          discover, listen, and collect music onchain&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
+          Reamp.xyz is a music culture marketplace that makes it easy to
+          discover, listen, and collect music onchain&nbsp;&nbsp;&nbsp;&nbsp;
+          •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             className="text-selectedTab underline"
             href="https://form.typeform.com/to/i5cEbCte"
@@ -87,8 +88,10 @@ export default function Header() {
           >
             Join Waitlist
           </a>
-          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is a music culture marketplace that makes it easy to 
-          discover, listen, and collect music onchain&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is a music
+          culture marketplace that makes it easy to discover, listen, and
+          collect music onchain&nbsp;&nbsp;&nbsp;&nbsp;
+          •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             className="text-selectedTab underline"
             href="https://form.typeform.com/to/i5cEbCte"
@@ -96,9 +99,10 @@ export default function Header() {
           >
             Join Waitlist
           </a>
-          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp; Reamp.xyz is a music culture marketplace that makes it easy to 
-          discover, listen, and collect music onchain
-          NFTs&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp; Reamp.xyz is a music
+          culture marketplace that makes it easy to discover, listen, and
+          collect music onchain NFTs&nbsp;&nbsp;&nbsp;&nbsp;
+          •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             className="text-selectedTab underline"
             href="https://form.typeform.com/to/i5cEbCte"
