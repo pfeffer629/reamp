@@ -11,6 +11,7 @@ function CollectButton({ track }) {
   const [tokenId, setTokenId] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [samEdition, setSamEdition] = useState({});
+  const [buyPrice, setBuyPrice] = useState(0);
   const account = useAccount();
 
   const client = SoundClient({
@@ -41,11 +42,20 @@ function CollectButton({ track }) {
     setSamEdition(samEdition)
     const samAddress = await samEdition.contract.samAddress;
     const samInfo = await samEdition.contract.info;
+    const buyPrice = await samEdition.contract.totalBuyPrice({
+      // Offset used as buffer for handling concurrent sales
+      // and reducing the possibility of failed transactions
+      offset: 0,
+     
+      // How many tokens to be estimated for Buy
+      quantity: 1,
+    })
+    setBuyPrice(Math.floor(buyPrice.total.toNumber() / 1000000000000000) / 1000)
 
-    console.log(client);
-    console.log(samEdition);
-    console.log(samAddress);
-    console.log(samInfo);
+    // console.log(client);
+    // console.log(samEdition);
+    // console.log(samAddress);
+    // console.log(samInfo);
   }
 
   async function buyTrack() {
@@ -64,7 +74,7 @@ function CollectButton({ track }) {
       quantity: 1,
      
     //   // Price to be attempted
-      price: buyPrice.total,
+      price: buyPrice,
      
     //   // Optional attribution identifier
     //   //   attributonId?: BigNumberish
@@ -128,14 +138,14 @@ function CollectButton({ track }) {
                     </div>
                   </div>
                   <div className="my-[18px] border-b border-darkLine w-full h-1"></div>
-                  <div>
+                  <div className="flex items-center justify-between">
                     <p className="flex items-center text-[12px] text-[#B1B1B1] text-left">
                       Contract Address:{" "}
                       <p className="border-darkLine border-[1px] rounded-lg h-[24px] w-[83px] inline-block text-center leading-[24px] ml-[12px]">{`0x..${collectionId.slice(
                         -4
                       )}`}</p>
                     </p>
-                    <p>Total: </p>
+                    <p>Total: {buyPrice} ETH</p>
                   </div>
                   <button
                     className="bg-white border-darkLine border-[1px] rounded-lg w-full h-[40px] mt-[40px] text-sidebarBg"
