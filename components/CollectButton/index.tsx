@@ -57,7 +57,7 @@ function CollectButton({ track }) {
       // How many tokens to be estimated for Buy
       quantity: 1,
     })
-    console.log(buyPrice.toHexString())
+    console.log(buyPrice.total.toNumber())
     // const purchaseTransaction = await samEdition.contract.buy({
     //   // How many to be purchased
     //   quantity: 1,
