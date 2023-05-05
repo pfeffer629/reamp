@@ -2,11 +2,12 @@ import ethAccounts from "../../utils/ethAccounts";
 import PlayButton from "../../components/Icons/PlayButton";
 import TimeAgo from "javascript-time-ago";
 import Image from "next/image";
+import Link from "next/link";
 
 function InfoCard({
   address,
   playlist = { cover: "", tracks: [], user_id: "", name: "", created_at: "" },
-  track = { lossyArtworkUrl: "", title: "" },
+  track = { lossyArtworkUrl: "", title: "", quantity: 0, artist: {name: "", slug: ""} },
   onClick,
   mobileOnClick,
   collection = false,
@@ -55,11 +56,19 @@ function InfoCard({
         <div className="text-whiteDisabled text-xs font-normal">
           {!collection && <span>Playlist • {playlist.tracks.length} </span>}
           {!collection && playlist.tracks.length > 1 && "Tracks"}
-          {(collection || playlist.tracks.length === 1) && "Track"}
+          {(collection || playlist.tracks.length === 1) 
+          && <span>Track {track.quantity > 1 && `${track.quantity}- Editions`}</span>}
         </div>
       </div>
       <div className="text-white text-[20px] text-base">
         {!collection ? playlist.name : track.title}
+      </div>
+      <div className="text-whiteDisabled text-xs font-normal hover:underline">
+        <Link
+            href={`/artists/${track.artist?.slug}`}
+          >
+          {collection && track.artist.name}
+        </Link>
       </div>
       <div className="flex flex-row items-center pt-1 text-sm space-x-[9px]">
         <Image
