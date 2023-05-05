@@ -15,14 +15,12 @@ function TrackPopUp({shareTrack, position}) {
             toggleModal(selectedTrack);
         }
     };
-    const rightClickStyle = `fixed top-[${position.y}px] left-[${position.x}px]`
-    const defaultStyle = "absolute top-0 right-11";
 
     return (
         <>
             <div
-                className={`${position.x && position.y ? rightClickStyle : defaultStyle} w-[204px] z-50 border border-whiteDisabled rounded-2xl backdrop-blur-sm text-silver`}
-            >
+                className={`${position.x && position.y ? "fixed" : "absolute top-0 right-11"} w-[204px] z-50 border border-whiteDisabled rounded-2xl backdrop-blur-sm text-silver`}
+                style={position.x && position.y && {top:`${position.y}px`, left: `${position.x}px`}}>
                 <div className="pt-6 pl-6">
                     <Link
                         href={`/tracks/${selectedTrack.slug}`}
