@@ -16,11 +16,13 @@ function CollectButton({ track }) {
 
   const client = SoundClient({
     async signer() {
-      const signer = await account.connector.getSigner();
-      // You need to validate that this situation doesn't really happen on a normal flow
-      if (!signer) throw Error("Missing signer");
+      if (account.connector ) {
+        const signer = await account.connector.getSigner();
+        // You need to validate that this situation doesn't really happen on a normal flow
+        if (!signer) throw Error("Missing signer");
 
-      return signer;
+        return signer;
+      }
     },
   });
 
@@ -40,8 +42,6 @@ function CollectButton({ track }) {
       editionAddress: collectionId,
     });
     setSamEdition(samEdition)
-    const samAddress = await samEdition.contract.samAddress;
-    const samInfo = await samEdition.contract.info;
     const buyPrice = await samEdition.contract.totalBuyPrice({
       // Offset used as buffer for handling concurrent sales
       // and reducing the possibility of failed transactions
@@ -51,11 +51,6 @@ function CollectButton({ track }) {
       quantity: 1,
     })
     setBuyPrice(Math.floor(buyPrice.total.toNumber() / 1000000000000000) / 1000)
-
-    // console.log(client);
-    // console.log(samEdition);
-    // console.log(samAddress);
-    // console.log(samInfo);
   }
 
   async function buyTrack() {
@@ -74,7 +69,7 @@ function CollectButton({ track }) {
       quantity: 1,
      
     //   // Price to be attempted
-      price: buyPrice,
+      price: buyPrice.total,
      
     //   // Optional attribution identifier
     //   //   attributonId?: BigNumberish
@@ -102,7 +97,7 @@ function CollectButton({ track }) {
             Collect
           </div>
           <div
-            className={showModal ? "relative z-10 mb-[80px]" : "hidden"}
+            className={showModal ? "absolute z-10 mb-[80px]" : "hidden"}
             aria-labelledby="modal-title"
             role="dialog"
             aria-modal="true"
