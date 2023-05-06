@@ -50,7 +50,7 @@ function CollectButton({ track }) {
       // How many tokens to be estimated for Buy
       quantity: 1,
     })
-    setBuyPrice(Math.floor(buyPrice.total.toNumber() / 1000000000000000) / 1000)
+    buyPrice > 0 && setBuyPrice(Math.floor(buyPrice.total.toNumber() / 1000000000000000) / 1000)
   }
 
   async function buyTrack() {
