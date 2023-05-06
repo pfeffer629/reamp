@@ -50,7 +50,7 @@ function CollectButton({ track }) {
       // How many tokens to be estimated for Buy
       quantity: 1,
     })
-    
+
     if (buyPrice) {
       setBuyPrice(Math.floor(buyPrice.total.toNumber() / 1000000000000000) / 1000)
     }
@@ -65,8 +65,6 @@ function CollectButton({ track }) {
       // How many tokens to be estimated for Buy
       quantity: 1,
     })
-    console.log(buyPrice)
-    console.log(buyPrice.total.toNumber())
     const purchaseTransaction = await samEdition.contract.buy({
     //   // How many to be purchased
       quantity: 1,
@@ -168,11 +166,12 @@ function CollectButton({ track }) {
           }
           collectionId={collectionId}
           tokenId={tokenId}
-          onBidComplete={(data) => console.log("Bid Complete")}
-          onBidError={(error, data) =>
-            console.log("Transaction Error", error, data)
-          }
-          onClose={(data, stepData, currentStep) => console.log("Modal Closed")}
+          // onBidComplete={
+          //   (data) => console.log("Bid Complete")}
+          // onBidError={(error, data) =>
+          //   console.log("Transaction Error", error, data)
+          // }
+          // onClose={(data, stepData, currentStep) => console.log("Modal Closed")}
         />
       )}
     </>
