@@ -137,9 +137,9 @@ function CollectButton({ track }) {
                   <div className="flex items-center justify-between">
                     <p className="flex items-center text-[12px] text-[#B1B1B1] text-left">
                       Contract Address:{" "}
-                      <p className="border-darkLine border-[1px] rounded-lg h-[24px] w-[83px] inline-block text-center leading-[24px] ml-[12px]">{`0x..${collectionId.slice(
+                      <span className="border-darkLine border-[1px] rounded-lg h-[24px] w-[83px] inline-block text-center leading-[24px] ml-[12px]">{`0x..${collectionId.slice(
                         -4
-                      )}`}</p>
+                      )}`}</span>
                     </p>
                     <p>Total: {buyPrice} ETH</p>
                   </div>
