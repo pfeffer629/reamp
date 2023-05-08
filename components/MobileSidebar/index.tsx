@@ -5,8 +5,6 @@ import FeedbackModal from "../FeedbackModal";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { supabase } from "../../utils/supabase";
 import svgAvatar from "../../utils/svgAvatar";
-import ethAccounts from "../../utils/ethAccounts";
-
 import mixpanel from "mixpanel-browser";
 
 export default function MobileSidebar() {
@@ -19,10 +17,6 @@ export default function MobileSidebar() {
   const { data: ensName } = useEnsName({ address });
 
   useEffect(() => {
-    if (address && !Object.keys(ethAccounts).includes(address)) {
-      window.open("https://form.typeform.com/to/i5cEbCte");
-      disconnect();
-    }
     if (address) {
       logWallet(address);
     }

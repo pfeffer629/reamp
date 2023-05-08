@@ -3,7 +3,6 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAccount, useEnsName, useEnsAvatar, useDisconnect } from "wagmi";
-import ethAccounts from "../../utils/ethAccounts";
 import { supabase } from "../../utils/supabase";
 import mixpanel from "mixpanel-browser";
 import svgAvatar from "../../utils/svgAvatar";
@@ -20,10 +19,6 @@ export default function Header() {
   const { data: ensName } = useEnsName({ address });
 
   useEffect(() => {
-    if (address && !Object.keys(ethAccounts).includes(address)) {
-      window.open("https://form.typeform.com/to/i5cEbCte");
-      disconnect();
-    }
     if (address) {
       logWallet(address);
     }
