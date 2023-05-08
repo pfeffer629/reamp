@@ -72,15 +72,15 @@ export default function Live() {
         </div>
         <div className="flex flex-wrap max-sm:flex-nowrap max-sm:overflow-x-scroll space-x-3 pb-[10px] tracking-wide whitespace-nowrap">
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">1,749</div>
+            <div className="">1,751</div>
             <div className="text-searchBarText">Artists</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">17,741</div>
+            <div className="">17,783</div>
             <div className="text-searchBarText">Collectors</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
-            <div className="">111,205</div>
+            <div className="">115,332</div>
             <div className="text-searchBarText">Total Tracks</div>
           </div>
           <div className="rounded-[7px] items-center space-x-[11px] text-[14px] p-2 px-[19px] bg-sidebarBg inline-flex border border-darkLine hover:border-whiteDisabled">
