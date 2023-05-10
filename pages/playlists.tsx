@@ -8,6 +8,7 @@ import InfoCard from "../components/InfoCard";
 import CardLayout from "../components/CardLayout";
 import shuffleArray from "../utils/shuffleArray";
 import { useAccount } from "wagmi";
+import Onboarding from "../components/Onboarding";
 
 export default function Playlists() {
   const { userPlaylists } = useContext(PlaylistContext);
@@ -22,6 +23,12 @@ export default function Playlists() {
   const { address } = useAccount();
 
   const router = useRouter();
+
+  const playListIcon = <img
+    alt="Playlist"
+    src="/icons/Playlist.svg"
+    className="w-[37px]"
+  />
 
   const handleSelectPlaylist = (
     e: React.MouseEvent<SVGSVGElement>,
@@ -51,6 +58,7 @@ export default function Playlists() {
   };
 
   return (
+    userPlaylists.length ? 
     <CardLayout>
       {userPlaylists.length > 0 &&
         userPlaylists.map((playlist) => (
@@ -70,5 +78,7 @@ export default function Playlists() {
           </Link>
         ))}
     </CardLayout>
+    :
+    <Onboarding icon={playListIcon} text={"Looks like you haven’t created any playlists yet"} cta={"Create your first playlist"} ctaLink={"/live"}/>
   );
 }

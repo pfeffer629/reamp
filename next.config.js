@@ -5,6 +5,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const config = {
   reactStrictMode: false,
+  experimental: {
+    transpilePackages: ['@reservoir0x/reservoir-kit-ui'],
+  },
   images: {
     domains: [
       "spinamp.mypinata.cloud", 
