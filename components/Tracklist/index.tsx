@@ -41,7 +41,6 @@ export default function Tracklist({ tracks }: TracklistProps) {
   } = useContext(TrackContext);
 
   const { selectedTrack, setSelectedTrack } = useContext(TrackActionContext);
-
   const { favorites, addFavorite, removeFavorite } =
     useContext(FavoritesContext);
   const { address } = useAccount();
