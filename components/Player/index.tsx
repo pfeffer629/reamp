@@ -14,6 +14,7 @@ import TrackActionContext from "../../contexts/TrackActionContext";
 import { useAccount } from "wagmi";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
+import CollectButton from "../CollectButton";
 
 const AudioPlayer = dynamic(() => import("./AudioPlayer"), { ssr: false });
 
@@ -240,7 +241,7 @@ export default function Player() {
               className="mr-[18px] rounded-[5px] max-h-16"
             />
           )}
-          <div className="pr-[18px]">
+          <div className="pr-[18px] leading-3">
             {currentTrack.slug && address ? (
               <Link
                 className="text-sm font-extrabold hover:underline"
@@ -277,11 +278,9 @@ export default function Player() {
                 <p>{currentTrack?.artist?.name}</p>
               </span>
             )}
-            {/*            
-            <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 mt-[6px] select-none">
-              collect
-            </div>
-            */}
+            {currentTrack.platformId === "catalog" && (
+              <CollectButton track={currentTrack} />
+            )}
           </div>
         </div>
         <div className="flex flex-col items-center w-[720px] my-[18px]">
