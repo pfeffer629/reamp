@@ -4,7 +4,6 @@ import TimeAgo from "javascript-time-ago";
 import Image from "next/image";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
-import { useState } from "react";
 
 function InfoCard({
   address,
