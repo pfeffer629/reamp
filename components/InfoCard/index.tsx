@@ -3,6 +3,8 @@ import PlayButton from "../../components/Icons/PlayButton";
 import TimeAgo from "javascript-time-ago";
 import Image from "next/image";
 import Link from "next/link";
+import Marquee from "react-fast-marquee";
+import { useState } from "react";
 
 function InfoCard({
   address,
@@ -62,12 +64,25 @@ function InfoCard({
           </div>
         </div>
         <div className="text-white text-[20px] text-base">
-          {!collection ? playlist.name : track.title}
+          {!collection ? (playlist.name.length > 22 ? (
+            <Marquee gradient={false}>
+              {playlist.name}&nbsp;&nbsp;&nbsp;&nbsp;
+            </Marquee>
+          ) : (
+            <span>{playlist.name}</span>
+          ))
+          : (track.title.length > 22 ? (
+            <Marquee gradient={false}>
+              {track.title}&nbsp;&nbsp;&nbsp;&nbsp;
+            </Marquee>
+          ) : (
+            <span>{track.title}</span>
+          ))}
         </div>
-        <div className="text-whiteDisabled text-xs font-normal hover:underline">
+        <div className="text-whiteDisabled text-xs font-normal">
           <Link
-              href={`/artists/${track.artist?.slug}`}
-            >
+            href={`/artists/${track.artist?.slug}`}
+            className="hover:underline">
             {collection && track.artist.name}
           </Link>
         </div>
