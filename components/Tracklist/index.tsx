@@ -45,6 +45,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
     useContext(FavoritesContext);
   const { address } = useAccount();
   const router = useRouter();
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const shareTrack = (slug) => {
     setCopyToClipbard(true);
@@ -95,25 +96,29 @@ export default function Tracklist({ tracks }: TracklistProps) {
       && !trackPopUpRef.current.contains(event.target)) {
       setTrackPopUp(false);
     }
+    
+    trackRef.current && !trackRef.current.contains(event.target) && setSelectedTrack({});
   }
   
-  
+  const handleTrackClick = (event, track: ITrack, mobile = false) => {
+    (event.detail == 2 || mobile) ? handleSelectTrack(track, mobile) : setSelectedTrack(track);
+  }
+
   useEffect(() => {
     // add event listener when the component mounts
     document.addEventListener('mousedown', handleClickOutside);
 
     // remove event listener when the component unmounts
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+    document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-  
-
+    
   return (
     <div className="max-sm:w-full max-sm:mb-[140px] mb-0 w-[895px] mx-auto">
       {copyToClipbard && <CopiedToClipboard />}
       <div className="flex flex-col space-y-4 min-h-[calc(100vh-160px)]">
-        <div className="w-full">
+        <div className="w-full" ref={trackRef}>
           <div className="flex items-center max-sm:hidden block">
             <div className="w-[46px]"></div>
             <div className="p-[9px]">
@@ -127,8 +132,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
           </div>
           {tracks &&
             tracks.map((track, index) => (
-              <div className="flex flex-col space-y-4" key={index} onContextMenu={(event) => handleRightClick(event, track, index)}>
-                <div className="flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg">
+              <div className="flex flex-col space-y-4" key={index} onClick={(e) => handleTrackClick(e, track, window.innerWidth <= mobileSize)} onContextMenu={(event) => handleRightClick(event, track, index)}>
+                <div className={`flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg ${selectedTrack == track ? 'bg-blackSecondary' : ''}`}>
                   <div className="w-[46px] max-sm:ml-[8px]">
                     <div className="flex items-center h-full justify-center">
                       {currentTrack.id === track.id && isPlaying ? (
