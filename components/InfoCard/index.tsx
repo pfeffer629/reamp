@@ -59,7 +59,7 @@ function InfoCard({
             {!collection && <span>Playlist • {playlist.tracks.length} </span>}
             {!collection && playlist.tracks.length > 1 && "Tracks"}
             {(collection || playlist.tracks.length === 1) 
-            && <span>Track {track.quantity > 1 && `- ${track.quantity} Editions`}</span>}
+            && <span>Track {track.quantity > 1 && `• ${track.quantity} Editions`}</span>}
           </div>
         </div>
         <div className="text-white text-[20px] text-base">
