@@ -46,6 +46,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
   const { address } = useAccount();
   const router = useRouter();
   const trackRef = useRef<HTMLDivElement>(null);
+  const threeDotsRef = useRef<HTMLDivElement>(null);
 
   const shareTrack = (slug) => {
     setCopyToClipbard(true);
@@ -85,8 +86,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
 
   const handleRightClick = (event, track, index) => {
     event.preventDefault();
-    console.log(event.pageX, event.pageY);
-    setOptionsPosition({x: event.pageX, y: event.pageY});
+    const { right, top } = event.currentTarget.getBoundingClientRect();
+    setOptionsPosition({x: right - event.clientX - 214, y: -top + event.clientY - 35});
     handleThreeDots(track, index, false, true);
   }
 
