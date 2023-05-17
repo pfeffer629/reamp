@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
+import TrackPopUp from "../TrackPopUp";
 TimeAgo.addDefaultLocale(en);
 
 type TracklistProps = {
@@ -23,6 +24,11 @@ export default function Tracklist({ tracks }: TracklistProps) {
   const timeAgo = new TimeAgo("en-US");
   const mobileSize = 640;
   const [copyToClipbard, setCopyToClipbard] = useState(false);
+  const [trackPopUp, setTrackPopUp] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState();
+  const [optionsPosition, setOptionsPosition] = useState({});
+  const trackPopUpRef = useRef<HTMLDivElement>(null);
+
   const {
     isPlaying,
     currentTrack,
@@ -40,6 +46,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
   const { address } = useAccount();
   const router = useRouter();
   const trackRef = useRef<HTMLDivElement>(null);
+  const threeDotsRef = useRef<HTMLDivElement>(null);
 
   const shareTrack = (slug) => {
     setCopyToClipbard(true);
@@ -64,12 +71,38 @@ export default function Tracklist({ tracks }: TracklistProps) {
     }
   };
 
-  const handleTrackClick = (event, track: ITrack, mobile = false) => {
-    (event.detail == 2 || mobile) ? handleSelectTrack(track, mobile) : setSelectedTrack(track);
+  const handleThreeDots = (track, index, mobile = false, rightClick = false) => {
+   setSelectedTrack(track);
+   setSelectedIndex(index);
+
+   if (!rightClick) {
+    setOptionsPosition({});
+   }
+
+   if (!mobile) {
+    setTrackPopUp(!trackPopUp);
+   } 
   }
 
+  const handleRightClick = (event, track, index) => {
+    event.preventDefault();
+    const { right, top } = event.currentTarget.getBoundingClientRect();
+    setOptionsPosition({x: right - event.clientX - 214, y: -top + event.clientY - 35});
+    handleThreeDots(track, index, false, true);
+  }
+
+  
   const handleClickOutside = (event) => {
+    if (trackPopUpRef.current 
+      && !trackPopUpRef.current.contains(event.target)) {
+      setTrackPopUp(false);
+    }
+    
     trackRef.current && !trackRef.current.contains(event.target) && setSelectedTrack({});
+  }
+  
+  const handleTrackClick = (event, track: ITrack, mobile = false) => {
+    (event.detail == 2 || mobile) ? handleSelectTrack(track, mobile) : setSelectedTrack(track);
   }
 
   useEffect(() => {
@@ -81,7 +114,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
     document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
+    
   return (
     <div className="max-sm:w-full max-sm:mb-[140px] mb-0 w-[895px] mx-auto">
       {copyToClipbard && <CopiedToClipboard />}
@@ -99,8 +132,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
             <div className="w-[138px] text-center">Share</div>
           </div>
           {tracks &&
-            tracks.map((track) => (
-              <div className="flex flex-col space-y-4" key={track.id} onClick={(e) => handleTrackClick(e, track, window.innerWidth <= mobileSize)}>
+            tracks.map((track, index) => (
+              <div className="flex flex-col space-y-4" key={index} onClick={(e) => handleTrackClick(e, track, window.innerWidth <= mobileSize)} onContextMenu={(event) => handleRightClick(event, track, index)}>
                 <div className={`flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg ${selectedTrack == track ? 'bg-blackSecondary' : ''}`}>
                   <div className="w-[46px] max-sm:ml-[8px]">
                     <div className="flex items-center h-full justify-center">
@@ -213,14 +246,16 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       />
                     </div>
                   </div>
-                  <div className="max-sm:w-auto max-sm:pr-[24px] w-[60px] flex items-center justify-center h-[70px]">
-                    <div className="bg-transparent p-2 hover:scale-125 transition-all cursor-pointer duration-300">
-                      <img
+                  <div className="max-sm:w-auto max-sm:pr-[24px] w-[60px] flex items-center justify-center h-[70px]"
+                  >
+                    <div className="relative bg-transparent p-2 transition-all cursor-pointer duration-300" 
+                    onClick={() => handleThreeDots(track, index, window.innerWidth <= mobileSize)}>
+                      <img 
                         src="/icons/SmallThreeDots.svg"
                         alt="Three Dots"
-                        className="w-[16px]"
-                        onClick={() => setSelectedTrack(track)}
+                        className="w-[16px] hover:scale-125"
                       />
+                      {trackPopUp && (index === selectedIndex) && <div ref={trackPopUpRef}><TrackPopUp position={optionsPosition} shareTrack={()=>shareTrack(track.slug)}/></div>}
                     </div>
                   </div>
                 </div>
