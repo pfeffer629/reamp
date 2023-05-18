@@ -7,7 +7,7 @@ import Marquee from "react-fast-marquee";
 
 function InfoCard({
   address,
-  playlist = { cover: "", tracks: [], user_id: "", name: "", created_at: "" },
+  playlist = { id: "", cover: "", tracks: [], user_id: "", name: "", created_at: "" },
   track = { slug: "", lossyArtworkUrl: "", title: "", quantity: 0, artist: {name: "", slug: ""} },
   onClick,
   mobileOnClick,
@@ -16,7 +16,7 @@ function InfoCard({
   const timeAgo = new TimeAgo("en-US");
 
   return (
-    <Link href={`/tracks/${track.slug}`}>
+    <Link href={collection ? `/tracks/${track.slug}` : `/playlists/${playlist.id}`}>
       <div className="px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full">
         <div className="relative inline">
           <Image
