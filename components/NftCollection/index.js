@@ -5,7 +5,7 @@ import TrackContext from "../../contexts/TrackContext";
 import InfoCard from "../../components/InfoCard";
 
 export default function NftCollection({ address }) {
-  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist } =
+  const { setCurrentTrack, setCurrentTrackIndex, setIsPlaying, setTracklist, tracklist } =
     useContext(TrackContext);
   const router = useRouter();
 
@@ -15,10 +15,12 @@ export default function NftCollection({ address }) {
     return <div></div>;
   }
 
-  const handleSelectTrack = (track, mobile = false) => {
+  const handleSelectTrack = (index, track, mobile = false) => {
     setCurrentTrack(track);
-    setTracklist([track]);
-    setCurrentTrackIndex(0);
+    if (data !== tracklist) {
+      setTracklist(data);
+    }
+    setCurrentTrackIndex(index);
     setIsPlaying(true);
 
     if (mobile) {
@@ -29,11 +31,11 @@ export default function NftCollection({ address }) {
   return (
     <>
       {data.length > 0 &&
-        data.map((track) => (
+        data.map((track, index) => (
           <InfoCard
             address={address}
             track={track}
-            onClick={() => handleSelectTrack(track)}
+            onClick={() => handleSelectTrack(index, track)}
             mobileOnClick={() => handleSelectTrack(track, true)}
             collection={true}
           />
