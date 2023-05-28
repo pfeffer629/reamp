@@ -12,6 +12,10 @@ interface IPlaylistContextData {
   createPlaylist: any;
   addToPlaylist: any;
   selectedPlaylist: any;
+  editPlaylist: any;
+  deletePlaylist: any;
+  getPlaylist: any;
+  getPlaylists: any;
 }
 
 export const PlaylistContext = createContext<IPlaylistContextData>(
@@ -149,6 +153,36 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
+  async function editPlaylist(playlistId: string, newName: string) {
+    if (!address || !newName) {
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+      .from("playlists")
+      .update({ name: newName })
+      .eq('id', playlistId);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async function deletePlaylist(playlistId: string) {
+    if (!address) {
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+      .from("playlists")
+      .delete()
+      .eq('id', playlistId);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   return (
     <PlaylistContext.Provider
       value={
@@ -160,6 +194,10 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
           recentPlaylists,
           addToPlaylist,
           selectedPlaylist,
+          editPlaylist,
+          deletePlaylist,
+          getPlaylist,
+          getPlaylists
         } as IPlaylistContextData
       }
     >

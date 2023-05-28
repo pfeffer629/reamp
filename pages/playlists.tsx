@@ -31,13 +31,10 @@ export default function Playlists() {
   />
 
   const handleSelectPlaylist = (
-    e: React.MouseEvent<SVGSVGElement>,
-    playlistTracks: string[],
+    playlist: any,
     mobile = false
   ) => {
-    e.preventDefault();
-    e.stopPropagation();
-    fetchTracksByIds(playlistTracks).then((tracks) => {
+    fetchTracksByIds(playlist.tracks).then((tracks) => {
       if (shuffle) {
         setTracklist(tracks);
         const shuffledTracks = shuffleArray([...tracks]);
@@ -70,9 +67,9 @@ export default function Playlists() {
             <InfoCard
               address={address}
               playlist={playlist}
-              onClick={(e) => handleSelectPlaylist(e, playlist.tracks)}
-              mobileOnClick={(e) =>
-                handleSelectPlaylist(e, playlist.tracks, true)
+              onClick={() => handleSelectPlaylist(playlist)}
+              mobileOnClick={() =>
+                handleSelectPlaylist(playlist, true)
               }
             />
           </Link>

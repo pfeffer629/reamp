@@ -65,8 +65,6 @@ export default function Playlist() {
       <div className="mt-4 w-full h-[2px] bg-whiteDisabled z-0"></div>
       <Tracklist tracks={selectedPlaylist.tracks} />
       <EditPlaylistModal
-        title={selectedPlaylist?.name}
-        cover={selectedPlaylist?.cover}
         show={showEditPlaylistModal}
         close={() => setShowEditPlaylistModal(false)}
       />
