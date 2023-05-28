@@ -18,9 +18,10 @@ TimeAgo.addDefaultLocale(en);
 
 type TracklistProps = {
   tracks: ITrack[];
+  playlistOptions?: boolean;
 };
 
-export default function Tracklist({ tracks }: TracklistProps) {
+export default function Tracklist({ tracks, playlistOptions }: TracklistProps) {
   const timeAgo = new TimeAgo("en-US");
   const mobileSize = 640;
   const [copyToClipbard, setCopyToClipbard] = useState(false);
@@ -255,7 +256,10 @@ export default function Tracklist({ tracks }: TracklistProps) {
                         alt="Three Dots"
                         className="w-[16px] hover:scale-125"
                       />
-                      {trackPopUp && (index === selectedIndex) && <div ref={trackPopUpRef}><TrackPopUp position={optionsPosition} shareTrack={()=>shareTrack(track.slug)}/></div>}
+                      {trackPopUp && (index === selectedIndex) 
+                      && <div ref={trackPopUpRef}>
+                        <TrackPopUp position={optionsPosition} shareTrack={()=>shareTrack(track.slug)} playlistOptions={playlistOptions}/>
+                        </div>}
                     </div>
                   </div>
                 </div>

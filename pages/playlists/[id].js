@@ -6,7 +6,7 @@ import Image from "next/image";
 import EditPlaylistModal from "../../components/EditPlaylistModal";
 
 export default function Playlist() {
-  const { selectedPlaylist } = useContext(PlaylistContext);
+  const { selectedPlaylist, removeFromPlaylist } = useContext(PlaylistContext);
   const [showEditPlaylistModal, setShowEditPlaylistModal] = useState(false);
 
   return (
@@ -63,7 +63,7 @@ export default function Playlist() {
         </div>
       </div>
       <div className="mt-4 w-full h-[2px] bg-whiteDisabled z-0"></div>
-      <Tracklist tracks={selectedPlaylist.tracks} />
+      <Tracklist tracks={selectedPlaylist.tracks} playlistOptions={true}/>
       <EditPlaylistModal
         show={showEditPlaylistModal}
         close={() => setShowEditPlaylistModal(false)}

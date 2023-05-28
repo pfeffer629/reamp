@@ -12,6 +12,6 @@ export default function Favorites() {
   />
 
   return (
-    favoriteTracks.length ? <Tracklist tracks={favoriteTracks} />
+    favoriteTracks.length ? <Tracklist tracks={favoriteTracks}/>
     : <Onboarding icon={smallHeartFilled} text={"Looks like you haven't favorited any tracks yet"} cta={"Explore Tracks"} ctaLink="/"/>);
 }
