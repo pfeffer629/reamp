@@ -30,7 +30,7 @@ function TrackPopUp({shareTrack, position, playlistOptions}) {
     >
         <img
         alt="Playlists"
-        src="/icons/Playlists.svg"
+        src="/icons/Remove.svg"
         className="h-[21px] mr-[16px]"
         />
         <span>Remove from Playlist</span>
