@@ -116,25 +116,27 @@ export default function Tracklist({ tracks }: TracklistProps) {
   }, []);
     
   return (
-    <div className="max-sm:w-full max-sm:mb-[140px] mb-0 w-[895px] mx-auto">
+    <div className="max-sm:w-full max-sm:mb-[140px] mb-0 w-full mx-auto">
       {copyToClipbard && <CopiedToClipboard />}
       <div className="flex flex-col space-y-4 min-h-[calc(100vh-160px)]">
         <div className="w-full" ref={trackRef}>
-          <div className="flex items-center max-sm:hidden block">
+          <div className="flex items-center justify-between max-sm:hidden block">
             <div className="w-[46px]"></div>
             <div className="p-[9px]">
               <div className="w-[52px]">Cover</div>
             </div>
             <div className="w-[191px] pl-2">Track</div>
-            <div className="w-[130px] pl-6 text-left">Released</div>
-            <div className="w-[200px] pl-6 text-center">Platform</div>
-            <div className="w-[66px]">Favorite</div>
+            <div className="w-[140px] pl-6 text-left">Released</div>
+            <div className="w-[200px] text-center">Platform</div>
+            <div className="w-[60px]">Favorite</div>
             <div className="w-[138px] text-center">Share</div>
+            <div className="w-[60px]"></div>
           </div>
           {tracks &&
             tracks.map((track, index) => (
-              <div className="flex flex-col space-y-4" key={index} onClick={(e) => handleTrackClick(e, track, window.innerWidth <= mobileSize)} onContextMenu={(event) => handleRightClick(event, track, index)}>
-                <div className={`flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg ${selectedTrack == track ? 'bg-blackSecondary' : ''}`}>
+              //<div className="flex flex-col justify-items-start justify-between space-y-4" key={index} onClick={(e) => handleTrackClick(e, track, window.innerWidth <= mobileSize)} onContextMenu={(event) => handleRightClick(event, track, index)}>
+                <div className={`flex space-y-4 w-full justify-between item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg ${selectedTrack == track ? 'bg-blackSecondary' : ''}`} 
+                key={index} onClick={(e) => handleTrackClick(e, track, window.innerWidth <= mobileSize)}>
                   <div className="w-[46px] max-sm:ml-[8px]">
                     <div className="flex items-center h-full justify-center">
                       {currentTrack.id === track.id && isPlaying ? (
@@ -172,7 +174,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       />
                     </div>
                   </div>
-                  <div className="flex items-center max-sm:w-2/5 w-[190px] ">
+                  <div className="flex items-center max-sm:w-2/5 w-[191px] ">
                     <div className="flex flex-col justify-center w-full ml-2 ">
                       {address ? (
                         <Link href={`/tracks/${track.slug}`}>
@@ -236,7 +238,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       )}
                     </div>
                   </div>
-                  <div className="max-sm:hidden block w-[130px] flex items-center justify-center h-[70px]">
+                  <div className="max-sm:hidden block w-[138px] flex items-center justify-center h-[70px]">
                     <div className="cursor-pointer hover:scale-125 transition-all p-2 select-none">
                       <img
                         alt="Small Share"
@@ -259,7 +261,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                     </div>
                   </div>
                 </div>
-              </div>
+              //</div>
             ))}
         </div>
       </div>

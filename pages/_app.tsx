@@ -109,7 +109,7 @@ export default function App({ Component, pageProps }: AppProps) {
                       Reamp.xyz | Discover, listen, and collect Music NFTs
                     </title>
                     <div
-                      className={`flex max-sm:w-[100vw] w-[1280px] font-Gilroy overflow-hidden ${
+                      className={`flex max-sm:w-[100vw] w-full font-Gilroy overflow-hidden ${
                         showMobileSidebar ? "h-[100vh]" : ""
                       }`}
                     >
@@ -125,7 +125,7 @@ export default function App({ Component, pageProps }: AppProps) {
                         </>
                       )}
                       <Sidebar />
-                      <div className="mx-auto max-sm:m-0 max-sm:w-[100vw] w-[895px]">
+                      <div className="max-sm:m-0 max-sm:w-[100vw] mx-[90px] w-full">
                         <div className="max-sm:hidden block">
                           <Header />
                         </div>
