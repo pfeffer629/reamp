@@ -5,6 +5,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      md: '768px',  // Medium screens and above
+      lg: '1024px', // Large screens and above
+      xl: '2560px', // Extra large screens and above
+    },
     extend: {
       colors: {
         buttonBg: "#111111",

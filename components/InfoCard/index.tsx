@@ -17,7 +17,7 @@ function InfoCard({
 
   return (
     <Link href={collection ? `/tracks/${track.slug}` : `/playlists/${playlist.id}`}>
-      <div className="px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full">
+      <div className="px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] max-md:w-[172px] w-[223px] min-xl:w-[341px] max-sm:w-auto max-w-full">
         <div className="relative inline">
           <Image
             src={
@@ -55,14 +55,14 @@ function InfoCard({
           )}
         </div>
         <div className="pt-2">
-          <div className="text-whiteDisabled text-xs font-normal">
+          <div className="text-whiteDisabled text-xs max-md:text-[8px] min-xl:text=[14px] font-normal">
             {!collection && <span>Playlist • {playlist.tracks.length} </span>}
             {!collection && playlist.tracks.length > 1 && "Tracks"}
             {(collection || playlist.tracks.length === 1) 
             && <span>Track {track.quantity > 1 && `• ${track.quantity} Editions`}</span>}
           </div>
         </div>
-        <div className="text-white text-[20px] text-base">
+        <div className="text-white text-[20px] max-md:text-[12px] min-xl:text-[22px] text-base">
           {!collection ? (playlist.name.length > 22 ? (
             <Marquee gradient={false}>
               {playlist.name}&nbsp;&nbsp;&nbsp;&nbsp;
@@ -78,14 +78,14 @@ function InfoCard({
             <span>{track.title}</span>
           ))}
         </div>
-        <div className="text-whiteDisabled text-xs font-normal">
+        <div className="text-whiteDisabled text-xs max-md:text-[12px] min-xl:text-[22px] font-normal">
           <Link
             href={`/artists/${track.artist?.slug}`}
             className="hover:underline">
             {collection && track.artist.name}
           </Link>
         </div>
-        <div className="flex flex-row items-center pt-1 text-sm space-x-[9px]">
+        <div className="flex flex-row items-center pt-1 text-sm max-md:text-[12px] min-xl:text-[16px] space-x-[9px]">
           <Image
             src={
               !collection
@@ -104,7 +104,7 @@ function InfoCard({
         </div>
         {!collection && (
           <div className="pt-2">
-            <div className="text-whiteDisabled text-[15px] text-xs">
+            <div className="text-whiteDisabled text-[15px] text-xs max-md:text-[8px] min-xl:text=[14px]">
               {timeAgo.format(new Date(playlist.created_at || 0))}
             </div>
           </div>
