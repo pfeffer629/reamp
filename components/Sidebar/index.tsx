@@ -73,16 +73,16 @@ export default function Sidebar() {
                   <img
                     src="/images/Reamp_WHT.svg"
                     alt="reamp logo"
-                    className="w-[115px] group-hover:opacity-0 transition-all"
+                    className="w-[115px] max-md:w-[91px] xl:w-[168px] group-hover:opacity-0 transition-all"
                   />
                   <img
                     src="/images/Reamp_AQUA.svg"
                     alt="reamp logo"
-                    className="w-[115px] absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-all"
+                    className="w-[115px] max-md:w-[91px] xl:w-[168px] absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-all"
                   />
                 </div>
               </Link>
-              <div className="text-[13px] pt-1 text-whiteDisabled">
+              <div className="text-[13px] max-md:text-[10px] xl:text-[24px] pt-1 text-whiteDisabled">
                 {currentDate}
                 <br />
                 {/*{location} */} Beta • {currentTime}
@@ -91,13 +91,13 @@ export default function Sidebar() {
             <div className="my-[18px] border-b border-darkLine w-full h-1"></div>
             <div className="flex items-center w-full space-x-[11px] text-whiteDisabled pb-[8px]">
               <div className="h-[13px] mb-[2px] w-[2px] rounded-md bg-whiteDisabled"></div>
-              <div className="text-sm">Discover</div>
+              <div className="text-sm max-md:text-[12px] xl:text-[26px]">Discover</div>
             </div>
             <div className="flex flex-col">
               <Link
                 href="/"
                 as="/"
-                className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+                className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] max-md:text-[10px] xl:text-[24px] relative group transition-all duration-500"
               >
                 <div
                   className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
@@ -110,7 +110,7 @@ export default function Sidebar() {
               <Link
                 href="/live"
                 as="/live"
-                className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+                className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] max-md:text-[10px] xl:text-[24px] relative group transition-all duration-500"
               >
                 <div
                   className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
@@ -125,13 +125,13 @@ export default function Sidebar() {
               <>
                 <div className="flex items-center w-full mt-[30px] space-x-[11px] text-whiteDisabled pb-[8px]">
                   <div className="h-[13px] mb-[2px] w-[2px] rounded-md bg-whiteDisabled"></div>
-                  <div className="text-sm">My Profile</div>
+                  <div className="text-sm max-md:text-[12px] xl:text-[26px]">My Profile</div>
                 </div>
                 <div className="flex flex-col">
                   <Link
                     href="/favorites"
                     as="/favorites"
-                    className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+                    className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] max-md:text-[10px] xl:text-[24px] relative group transition-all duration-500"
                   >
                     <div
                       className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
@@ -144,9 +144,9 @@ export default function Sidebar() {
                   <Link
                     href="/playlists"
                     as="/playlists"
-                    className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+                    className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] max-md:text-[10px] xl:text-[24px] relative group transition-all duration-500"
                   >
-                    <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
+                    <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] max-md:text-[10px] xl:text-[24px] relative group transition-all duration-500">
                       <div
                         className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
                         style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
@@ -159,9 +159,9 @@ export default function Sidebar() {
                   <Link
                     href="/collection"
                     as="/collection"
-                    className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+                    className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] max-md:text-[10px] xl:text-[24px] relative group transition-all duration-500"
                   >
-                    <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
+                    <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] max-md:text-[10px] xl:text-[24px] relative group transition-all duration-500">
                       <div
                         className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"
                         style={{ inset: "41.94% 89.88% 41.94% 7.14%" }}
@@ -187,7 +187,7 @@ export default function Sidebar() {
           <div className="pb-[65px]">
             {address ? (
               <div
-                className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+                className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] max-md:text-[10px] xl:text-[24px] relative group transition-all duration-500"
                 onClick={() => setShowFeedbackModal(true)}
               >
                 <div
@@ -200,7 +200,7 @@ export default function Sidebar() {
               </div>
             ) : (
               <a
-                className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500"
+                className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] max-md:text-[10px] xl:text-[24px] relative group transition-all duration-500"
                 href="https://form.typeform.com/to/i5cEbCte"
                 target="_blank"
               >
@@ -213,7 +213,7 @@ export default function Sidebar() {
                 </div>
               </a>
             )}
-            <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] relative group transition-all duration-500">
+            <div className="w-[177px] h-[31px] rounded-md bg-transparent hover:bg-sidebarMenuHoverBg cursor-pointer flex items-center text-[12px] max-md:text-[10px] xl:text-[24px] relative group transition-all duration-500">
               <a href="https://discord.gg/gxDV392tD8" target="_blank">
                 <div
                   className="rounded-full group-hover:opacity-100 opacity-0 transition-all duration-500 bg-selectedTab absolute"

@@ -149,14 +149,14 @@ export default function Tracklist({ tracks }: TracklistProps) {
                             loading="lazy"
                             alt="Play Button"
                             src="/icons/Play_Controls.svg"
-                            className="max-sm:hidden block w-[14px] translate-x-[1px]"
+                            className="max-sm:hidden block w-[14px] max-md:w-[8px] xl:w-[27px] translate-x-[1px]"
                             onClick={() => handleSelectTrack(track)}
                           />
                           <img
                             loading="lazy"
                             alt="Play Button"
                             src="/icons/Play_Controls.svg"
-                            className="max-sm:block hidden w-[14px] translate-x-[1px]"
+                            className="max-sm:block hidden w-[14px] max-md:w-[8px] xl:w-[27px] translate-x-[1px]"
                             onClick={() => handleSelectTrack(track, true)}
                           />
                         </div>
@@ -225,14 +225,14 @@ export default function Tracklist({ tracks }: TracklistProps) {
                         <img
                           src="/icons/SmallHeartFilled.svg"
                           alt="Heart Filled"
-                          className="w-[14px]"
+                          className="w-[14px] max-md:w-[8px] xl:w-[32px]"
                           onClick={() => removeFavorite(track.id)}
                         />
                       ) : (
                         <img
                           src="/icons/SmallHeart.svg"
                           alt="Heart Empty"
-                          className={`${!address && "cursor-default"} w-[14px]`}
+                          className={`${!address && "cursor-default"} w-[14px] max-md:w-[8px] xl:w-[32px]`}
                           onClick={() => addFavorite(track.id)}
                         />
                       )}
@@ -243,7 +243,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       <img
                         alt="Small Share"
                         src="/icons/SmallShare.svg"
-                        className="w-[14px]"
+                        className="w-[14px] max-md:w-[8px] xl:w-[28px]"
                         onClick={() => shareTrack(track.slug)}
                       />
                     </div>
@@ -255,7 +255,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       <img 
                         src="/icons/SmallThreeDots.svg"
                         alt="Three Dots"
-                        className="w-[16px] hover:scale-125"
+                        className="w-[16px] max-md:w-[10px] xl:w-[34px] hover:scale-125"
                       />
                       {trackPopUp && (index === selectedIndex) && <div ref={trackPopUpRef}><TrackPopUp position={optionsPosition} shareTrack={()=>shareTrack(track.slug)}/></div>}
                     </div>
