@@ -63,9 +63,9 @@ export default function Sidebar() {
   }, []);
 
   return (
-    <div className="z-[2] max-sm:hidden block w-[230px] bg-sidebarBg border-r border-darkLine relative">
+    <div className="z-[2] max-sm:hidden block w-[230px] max-md:w-[180px] xl:w-[452px] bg-sidebarBg border-r border-darkLine relative">
       <div className="fixed bg-sidebarBg border-r border-darkLine">
-        <div className="pb-0 p-[27px] h-[100vh] flex flex-col w-[230px] justify-between">
+        <div className="pb-0 p-[27px] h-[100vh] flex flex-col max-md:w-[180px] w-[230px] xl:w-[452px] justify-between">
           <div>
             <div>
               <Link className="relative group transition-all" href="/" as="/">

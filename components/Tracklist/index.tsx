@@ -123,20 +123,20 @@ export default function Tracklist({ tracks }: TracklistProps) {
           <div className="flex items-center justify-between max-sm:hidden block">
             <div className="w-[46px]"></div>
             <div className="p-[9px]">
-              <div className="w-[52px]">Cover</div>
+              <div className="w-[52px] max-md:text-[11px] xl:text-[32px]">Cover</div>
             </div>
-            <div className="w-[191px] pl-2">Track</div>
-            <div className="w-[140px] pl-6 text-left">Released</div>
-            <div className="w-[200px] text-center">Platform</div>
-            <div className="w-[60px]">Favorite</div>
-            <div className="w-[138px] text-center">Share</div>
+            <div className="w-[191px] pl-2 max-md:text-[11px] xl:text-[32px]">Track</div>
+            <div className="w-[140px] pl-6 text-left max-md:text-[11px] xl:text-[32px]">Released</div>
+            <div className="w-[200px] text-center max-md:text-[11px] xl:text-[32px]">Platform</div>
+            <div className="w-[60px] max-md:text-[11px] xl:text-[32px]">Favorite</div>
+            <div className="w-[138px] text-center max-md:text-[11px] xl:text-[32px]">Share</div>
             <div className="w-[60px]"></div>
           </div>
           {tracks &&
             tracks.map((track, index) => (
               //<div className="flex flex-col justify-items-start justify-between space-y-4" key={index} onClick={(e) => handleTrackClick(e, track, window.innerWidth <= mobileSize)} onContextMenu={(event) => handleRightClick(event, track, index)}>
                 <div className={`flex space-y-4 w-full justify-between item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg ${selectedTrack == track ? 'bg-blackSecondary' : ''}`} 
-                key={index} onClick={(e) => handleTrackClick(e, track, window.innerWidth <= mobileSize)}>
+                key={index} onClick={(e) => handleTrackClick(e, track, window.innerWidth <= mobileSize)} onContextMenu={(event) => handleRightClick(event, track, index)}>
                   <div className="w-[46px] max-sm:ml-[8px]">
                     <div className="flex items-center h-full justify-center">
                       {currentTrack.id === track.id && isPlaying ? (
@@ -174,7 +174,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       />
                     </div>
                   </div>
-                  <div className="flex items-center max-sm:w-2/5 w-[191px] ">
+                  <div className="flex items-center max-sm:w-2/5 max-md:text-[12px] xl:text-[32px] w-[191px] ">
                     <div className="flex flex-col justify-center w-full ml-2 ">
                       {address ? (
                         <Link href={`/tracks/${track.slug}`}>
@@ -185,7 +185,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       ) : (
                         <div className="truncate w-full">{track.title}</div>
                       )}
-                      <div className="text-whiteDisabled truncate w-full">
+                      <div className="text-whiteDisabled max-md:text-[10px] xl:text-[32px] truncate w-full">
                         {address ? (
                           <Link
                             href={`/artists/${track.artist?.slug}`}
@@ -199,10 +199,10 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       </div>
                     </div>
                   </div>
-                  <div className="max-sm:hidden block w-[140px] flex items-center justify-left pl-6 h-[72px]">
+                  <div className="max-sm:hidden block w-[140px] flex items-center justify-left pl-6 h-[72px] max-md:text-[12px] xl:text-[32px]">
                     {timeAgo.format(new Date(track.createdAtTime || 0))}
                   </div>
-                  <div className="max-sm:hidden block w-[200px] flex items-center justify-center h-[70px] capitalize">
+                  <div className="max-sm:hidden block w-[200px] flex items-center justify-center h-[70px] capitalize max-md:text-[12px] xl:text-[32px]">
                     <span className="text-center">
                       {track.platformId
                         .replace(
