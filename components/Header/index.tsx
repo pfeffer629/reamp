@@ -78,7 +78,7 @@ export default function Header() {
     <>
       {!address && (
         <div className="animate-marquee-infinite whitespace-nowrap py-[10px] text-[12px]">
-          Reamp.xyz is a music culture marketplace that makes it easy to 
+          Reamp.xyz is a music collectibles marketplace that makes it easy to 
           discover, listen, and collect music onchain&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             className="text-selectedTab underline"
@@ -87,7 +87,7 @@ export default function Header() {
           >
             Join Waitlist
           </a>
-          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is a music culture marketplace that makes it easy to 
+          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;Reamp.xyz is a music collectibles marketplace that makes it easy to 
           discover, listen, and collect music onchain&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             className="text-selectedTab underline"
@@ -96,7 +96,7 @@ export default function Header() {
           >
             Join Waitlist
           </a>
-          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp; Reamp.xyz is a music culture marketplace that makes it easy to 
+          &nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp; Reamp.xyz is a music collectibles marketplace that makes it easy to 
           discover, listen, and collect music onchain
           NFTs&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;&nbsp;&nbsp;&nbsp;
           <a
