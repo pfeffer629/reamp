@@ -123,13 +123,13 @@ export default function Tracklist({ tracks }: TracklistProps) {
           <div className="flex items-center justify-between max-sm:hidden block">
             <div className="w-[46px]"></div>
             <div className="p-[9px]">
-              <div className="w-[52px] max-md:text-[11px] xl:text-[32px]">Cover</div>
+              <div className="w-[52px]">Cover</div>
             </div>
-            <div className="w-[191px] pl-2 max-md:text-[11px] xl:text-[32px]">Track</div>
-            <div className="w-[140px] pl-6 text-left max-md:text-[11px] xl:text-[32px]">Released</div>
-            <div className="w-[200px] text-center max-md:text-[11px] xl:text-[32px]">Platform</div>
-            <div className="w-[60px] max-md:text-[11px] xl:text-[32px]">Favorite</div>
-            <div className="w-[138px] text-center max-md:text-[11px] xl:text-[32px]">Share</div>
+            <div className="w-[191px] pl-2">Track</div>
+            <div className="w-[140px] pl-6 text-left">Released</div>
+            <div className="w-[200px] text-center">Platform</div>
+            <div className="w-[60px]">Favorite</div>
+            <div className="w-[138px] text-center">Share</div>
             <div className="w-[60px]"></div>
           </div>
           {tracks &&
@@ -149,14 +149,14 @@ export default function Tracklist({ tracks }: TracklistProps) {
                             loading="lazy"
                             alt="Play Button"
                             src="/icons/Play_Controls.svg"
-                            className="max-sm:hidden block w-[14px] max-md:w-[8px] xl:w-[27px] translate-x-[1px]"
+                            className="max-sm:hidden block w-[14px] translate-x-[1px]"
                             onClick={() => handleSelectTrack(track)}
                           />
                           <img
                             loading="lazy"
                             alt="Play Button"
                             src="/icons/Play_Controls.svg"
-                            className="max-sm:block hidden w-[14px] max-md:w-[8px] xl:w-[27px] translate-x-[1px]"
+                            className="max-sm:block hidden w-[14px] translate-x-[1px]"
                             onClick={() => handleSelectTrack(track, true)}
                           />
                         </div>
@@ -174,7 +174,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       />
                     </div>
                   </div>
-                  <div className="flex items-center max-sm:w-2/5 max-md:text-[12px] xl:text-[32px] w-[191px] ">
+                  <div className="flex items-center max-sm:w-2/5 w-[191px] ">
                     <div className="flex flex-col justify-center w-full ml-2 ">
                       {address ? (
                         <Link href={`/tracks/${track.slug}`}>
@@ -185,7 +185,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       ) : (
                         <div className="truncate w-full">{track.title}</div>
                       )}
-                      <div className="text-whiteDisabled max-md:text-[10px] xl:text-[32px] truncate w-full">
+                      <div className="text-whiteDisabled truncate w-full">
                         {address ? (
                           <Link
                             href={`/artists/${track.artist?.slug}`}
@@ -199,10 +199,10 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       </div>
                     </div>
                   </div>
-                  <div className="max-sm:hidden block w-[140px] flex items-center justify-left pl-6 h-[72px] max-md:text-[12px] xl:text-[32px]">
+                  <div className="max-sm:hidden block w-[140px] flex items-center justify-left pl-6 h-[72px]">
                     {timeAgo.format(new Date(track.createdAtTime || 0))}
                   </div>
-                  <div className="max-sm:hidden block w-[200px] flex items-center justify-center h-[70px] capitalize max-md:text-[12px] xl:text-[32px]">
+                  <div className="max-sm:hidden block w-[200px] flex items-center justify-center h-[70px] capitalize">
                     <span className="text-center">
                       {track.platformId
                         .replace(
@@ -225,14 +225,14 @@ export default function Tracklist({ tracks }: TracklistProps) {
                         <img
                           src="/icons/SmallHeartFilled.svg"
                           alt="Heart Filled"
-                          className="w-[14px] max-md:w-[8px] xl:w-[32px]"
+                          className="w-[14px]"
                           onClick={() => removeFavorite(track.id)}
                         />
                       ) : (
                         <img
                           src="/icons/SmallHeart.svg"
                           alt="Heart Empty"
-                          className={`${!address && "cursor-default"} w-[14px] max-md:w-[8px] xl:w-[32px]`}
+                          className={`${!address && "cursor-default"} w-[14px]`}
                           onClick={() => addFavorite(track.id)}
                         />
                       )}
@@ -243,7 +243,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       <img
                         alt="Small Share"
                         src="/icons/SmallShare.svg"
-                        className="w-[14px] max-md:w-[8px] xl:w-[28px]"
+                        className="w-[14px]"
                         onClick={() => shareTrack(track.slug)}
                       />
                     </div>
@@ -255,7 +255,7 @@ export default function Tracklist({ tracks }: TracklistProps) {
                       <img 
                         src="/icons/SmallThreeDots.svg"
                         alt="Three Dots"
-                        className="w-[16px] max-md:w-[10px] xl:w-[34px] hover:scale-125"
+                        className="w-[16px] hover:scale-125"
                       />
                       {trackPopUp && (index === selectedIndex) && <div ref={trackPopUpRef}><TrackPopUp position={optionsPosition} shareTrack={()=>shareTrack(track.slug)}/></div>}
                     </div>
