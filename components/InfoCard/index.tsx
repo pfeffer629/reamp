@@ -17,7 +17,7 @@ function InfoCard({
 
   return (
     <Link href={collection ? `/tracks/${track.slug}` : `/playlists/${playlist.id}`}>
-      <div className="px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto max-w-full">
+      <div className="px-[10px] py-[10px] cursor-pointer transition-all duration-300 ease-in-out bg-transparent hover:bg-sidebarMenuHoverBg inline-block rounded-[14px] w-[223px] max-sm:w-auto">
         <div className="relative inline">
           <Image
             src={
