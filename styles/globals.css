@@ -1068,6 +1068,10 @@ video {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
 }
+.text-silver {
+  --tw-text-opacity: 1;
+  color: rgb(192 192 192 / var(--tw-text-opacity));
+}
 .opacity-0 {
   opacity: 0;
 }
