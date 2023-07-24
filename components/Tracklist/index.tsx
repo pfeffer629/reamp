@@ -18,9 +18,10 @@ TimeAgo.addDefaultLocale(en);
 
 type TracklistProps = {
   tracks: ITrack[];
+  playlistOptions?: boolean;
 };
 
-export default function Tracklist({ tracks }: TracklistProps) {
+export default function Tracklist({ tracks, playlistOptions }: TracklistProps) {
   const timeAgo = new TimeAgo("en-US");
   const mobileSize = 640;
   const [copyToClipbard, setCopyToClipbard] = useState(false);
@@ -101,8 +102,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
     trackRef.current && !trackRef.current.contains(event.target) && setSelectedTrack({});
   }
   
-  const handleTrackClick = (event, track: ITrack, mobile = false) => {
-    (event.detail == 2 || mobile) ? handleSelectTrack(track, mobile) : setSelectedTrack(track);
+  const handleTrackClick = (event, track: ITrack, index, mobile = false) => {
+    (event.detail == 2 || mobile) ? handleSelectTrack(track, mobile) : setSelectedIndex(index);
   }
 
   useEffect(() => {
@@ -133,8 +134,8 @@ export default function Tracklist({ tracks }: TracklistProps) {
           </div>
           {tracks &&
             tracks.map((track, index) => (
-              <div className="flex flex-col space-y-4" key={index} onClick={(e) => handleTrackClick(e, track, window.innerWidth <= mobileSize)} onContextMenu={(event) => handleRightClick(event, track, index)}>
-                <div className={`flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg ${selectedTrack == track ? 'bg-blackSecondary' : ''}`}>
+              <div className="flex flex-col space-y-4" key={index} onClick={(e) => handleTrackClick(e, track, index, window.innerWidth <= mobileSize)} onContextMenu={(event) => handleRightClick(event, track, index)}>
+                <div className={`flex w-full item-center bg-black group hover:bg-blackSecondary transition-all rounded-lg ${selectedIndex == index ? 'bg-blackSecondary' : ''}`}>
                   <div className="w-[46px] max-sm:ml-[8px]">
                     <div className="flex items-center h-full justify-center">
                       {currentTrack.id === track.id && isPlaying ? (
@@ -255,7 +256,10 @@ export default function Tracklist({ tracks }: TracklistProps) {
                         alt="Three Dots"
                         className="w-[16px] hover:scale-125"
                       />
-                      {trackPopUp && (index === selectedIndex) && <div ref={trackPopUpRef}><TrackPopUp position={optionsPosition} shareTrack={()=>shareTrack(track.slug)}/></div>}
+                      {trackPopUp && (index === selectedIndex) 
+                      && <div ref={trackPopUpRef}>
+                        <TrackPopUp position={optionsPosition} shareTrack={()=>shareTrack(track.slug)} playlistOptions={playlistOptions}/>
+                        </div>}
                     </div>
                   </div>
                 </div>

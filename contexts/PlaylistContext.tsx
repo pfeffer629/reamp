@@ -12,6 +12,11 @@ interface IPlaylistContextData {
   createPlaylist: any;
   addToPlaylist: any;
   selectedPlaylist: any;
+  editPlaylist: any;
+  deletePlaylist: any;
+  getPlaylist: any;
+  getPlaylists: any;
+  removeFromPlaylist: any;
 }
 
 export const PlaylistContext = createContext<IPlaylistContextData>(
@@ -139,13 +144,59 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
     try {
       let response = await supabase.rpc("add_track_to_playlist", {
         track_id: trackId,
-        id: playlistId,
+        id: playlistId
       });
     } catch (error) {
       throw error;
     } finally {
       setShowModal(false);
       getPlaylists(address);
+    }
+  }
+
+  async function removeFromPlaylist(playlistId: string, trackToRemove: ITrack) {
+    const trackId = trackToRemove.id;
+    if (!address) {
+      return;
+    }
+
+    try {
+      let response = await supabase.rpc("remove_track_from_playlist", {
+        track_id: trackId,
+        id: playlistId
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async function editPlaylist(playlistId: string, newName: string) {
+    if (!address || !newName) {
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+      .from("playlists")
+      .update({ name: newName })
+      .eq('id', playlistId);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async function deletePlaylist(playlistId: string) {
+    if (!address) {
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+      .from("playlists")
+      .delete()
+      .eq('id', playlistId);
+    } catch (error) {
+      throw error;
     }
   }
 
@@ -160,6 +211,11 @@ export function PlaylistProvider({ children }: { children: React.ReactNode }) {
           recentPlaylists,
           addToPlaylist,
           selectedPlaylist,
+          editPlaylist,
+          deletePlaylist,
+          getPlaylist,
+          getPlaylists,
+          removeFromPlaylist
         } as IPlaylistContextData
       }
     >
