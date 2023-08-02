@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { BidModal, CollectModal } from "@reservoir0x/reservoir-kit-ui";
+import { BidModal } from '@reservoir0x/reservoir-kit-ui';
+import { CollectModal } from '@reservoir0x/reservoir-kit-ui';
 import TrackContext from "../../contexts/TrackContext";
 
 function CollectButton({ track }) {
@@ -33,23 +34,23 @@ function CollectButton({ track }) {
     />
     :
     <CollectModal
-      trigger={
-          <button>
-            Collect
-          </button>
-        }
-      collectionId={collectionId}
-      mode="preferMint"
-      onCollectComplete={(data) => {
-        console.log('Collect Complete', data)
-      }}
-      onCollectError={(error, data) => {
-        console.log('Collect Error', error, data)
-      }}
-      onClose={(data, currentStep) => {
-        console.log('CollectModal Closed')
-      }}
-    />
+  trigger={
+    <div className="cursor-pointer bg-white group-hover:bg-selectedTab w-[67px] h-[20px] uppercase flex justify-center items-center text-[10px] rounded-[3px] text-black transition-all duration-500 mt-[6px] select-none">
+    collect
+  </div>
+    }
+  collectionId={collectionId}
+  mode="preferMint"
+  onCollectComplete={(data) => {
+    console.log('Collect Complete', data)
+  }}
+  onCollectError={(error, data) => {
+    console.log('Collect Error', error, data)
+  }}
+  onClose={(data, currentStep) => {
+    console.log('CollectModal Closed')
+  }}
+/>
   );
 }
 
