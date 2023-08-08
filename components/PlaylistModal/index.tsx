@@ -25,12 +25,12 @@ export default function PlaylistModal() {
     address = "0x12345";
   }
 
+  const { data: ensName } = useEnsName({ address });
   const { data: ensAvatar } = useEnsAvatar({
-    address: address,
+    name: ensName,
   });
 
   const { currentTrack } = useContext(TrackContext);
-  const { data: ensName } = useEnsName({ address });
   const ref = useRef(null);
   useDragScroll({
     sliderRef: ref,
