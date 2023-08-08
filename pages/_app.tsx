@@ -94,7 +94,7 @@ export default function App({ Component, pageProps }: AppProps) {
           {
             id: 1,
             baseApiUrl: "https://api.reservoir.tools",
-            default: true,
+            active: true,
             apiKey: process.env.RESERVOIR_API_KEY,
           },
         ],
