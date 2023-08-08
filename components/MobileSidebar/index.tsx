@@ -13,10 +13,10 @@ export default function MobileSidebar() {
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const { disconnect } = useDisconnect();
   const { address } = useAccount();
-  const { data: ensAvatar } = useEnsAvatar({
-    address: address,
-  });
   const { data: ensName } = useEnsName({ address });
+  const { data: ensAvatar } = useEnsAvatar({
+    name: ensName,
+  });
 
   useEffect(() => {
     if (address && !Object.keys(ethAccounts).includes(address)) {

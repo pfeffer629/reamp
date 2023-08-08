@@ -278,9 +278,7 @@ export default function Player() {
                 <p>{currentTrack?.artist?.name}</p>
               </span>
             )}
-            {currentTrack.platformId === "catalog" && (
-              <CollectButton track={currentTrack} />
-            )}
+            <CollectButton track={currentTrack} />
           </div>
         </div>
         <div className="flex flex-col items-center w-[720px] my-[18px]">

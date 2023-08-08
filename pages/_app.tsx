@@ -25,7 +25,8 @@ import {
   trustWallet,
   ledgerWallet,
 } from "@rainbow-me/rainbowkit/wallets";
-import { configureChains, createClient, WagmiConfig, useAccount } from "wagmi";
+import { configureChains, createConfig, WagmiConfig, useAccount, usePublicClient } from "wagmi";
+import { createPublicClient, http } from 'viem';
 import { mainnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { Analytics } from "@vercel/analytics/react";
@@ -34,7 +35,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { ReservoirKitProvider } from "@reservoir0x/reservoir-kit-ui";
 
-const { chains, provider, webSocketProvider } = configureChains(
+const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet],
   [
     // alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY as string }),
@@ -42,13 +43,17 @@ const { chains, provider, webSocketProvider } = configureChains(
   ]
 );
 
+const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID as string;
+
 const { wallets } = getDefaultWallets({
   appName: "REAMP",
+  projectId,
   chains,
 });
 
 const connectors = connectorsForWallets([
   ...wallets,
+  /*
   {
     groupName: "Other",
     wallets: [
@@ -57,13 +62,14 @@ const connectors = connectorsForWallets([
       ledgerWallet({ chains }),
     ],
   },
+  */
 ]);
 
-const wagmiClient = createClient({
+const wagmiClient = createConfig({
   autoConnect: true,
   connectors,
-  provider,
-  webSocketProvider,
+  publicClient,
+  webSocketPublicClient,
 });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -88,14 +94,14 @@ export default function App({ Component, pageProps }: AppProps) {
           {
             id: 1,
             baseApiUrl: "https://api.reservoir.tools",
-            default: true,
+            active: true,
             apiKey: process.env.RESERVOIR_API_KEY,
           },
         ],
         source: "beta.reamp.xyz"
       }}
     >
-      <WagmiConfig client={wagmiClient}>
+      <WagmiConfig config={wagmiClient}>
         <SpinampProvider>
           <TrackProvider>
             <RainbowKitProvider
