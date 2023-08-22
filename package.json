@@ -12,6 +12,7 @@
     "@next/font": "13.0.7",
     "@rainbow-me/rainbowkit": "^0.12.7",
     "@reservoir0x/reservoir-kit-ui": "^0.14.4",
+    "@soundxyz/sdk": "^1.1.1",
     "@spinamp/spinamp-hooks": "^0.0.7",
     "@spinamp/spinamp-sdk": "^0.0.8",
     "@supabase/supabase-js": "^2.2.2",
